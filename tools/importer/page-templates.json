@@ -1,0 +1,16 @@
+{
+  "templates": [
+    {
+      "name": "Homepage",
+      "urls": ["https://www.landrover-egypt.com/en/"],
+      "description": "Homepage with three vehicle family hero cards (Range Rover, Defender, Discovery) displayed as full-width cards with background images and ENTER CTA buttons.",
+      "blocks": [
+        {
+          "name": "cards",
+          "instances": [".jlr-house-of-brands-block"],
+          "section": "hero variant"
+        }
+      ]
+    }
+  ]
+}

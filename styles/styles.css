@@ -1,78 +1,134 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
+ * Land Rover Egypt - Global Design System
+ * Migrated from https://www.landrover-egypt.com/en/
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-  --overlay-background-color:lightgrey;
+  /* ==================== COLORS ==================== */
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* Brand colors */
+  --color-primary: #0c121c;
+  --color-white: #fff;
+  --color-black: #000;
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  /* Text colors */
+  --text-color: #4a4f54;
+  --text-color-emphasis: #0c121c;
+  --text-color-muted: rgb(0 0 0 / 70%);
+  --text-color-inverse: #fff;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* Background colors */
+  --background-color: #fff;
+  --light-color: #f8f9f9;
+  --dark-color: #0c121c;
+  --overlay-background-color: #f0f0f0;
+  --color-gray-light: #e9ecec;
+  --color-gray-medium: #4a4f54;
 
-  /* nav heights */
-  --nav-height: 64px;
+  /* Link colors */
+  --link-color: #0c121c;
+  --link-hover-color: #4a4f54;
+
+  /* ==================== FONTS ==================== */
+  --heading-font-family: "Land Rover", land-rover-fallback, helvetica, arial, sans-serif;
+  --body-font-family: "Avenir Next", avenir-next-fallback, helvetica, arial, sans-serif;
+
+  /* Body sizes */
+  --body-font-size-m: 14px;
+  --body-font-size-s: 11px;
+  --body-font-size-xs: 10px;
+
+  /* Heading sizes (mobile-first) */
+  --heading-font-size-xxl: 33px;
+  --heading-font-size-xl: 21px;
+  --heading-font-size-l: 16px;
+  --heading-font-size-m: 14px;
+  --heading-font-size-s: 12px;
+  --heading-font-size-xs: 10px;
+
+  /* ==================== TYPOGRAPHY ==================== */
+  --heading-letter-spacing: 1.65px;
+  --heading-letter-spacing-sm: 0.8px;
+  --heading-letter-spacing-md: 1.05px;
+  --heading-text-transform: uppercase;
+  --body-letter-spacing: 0.2px;
+  --body-line-height: 1.36;
+
+  /* ==================== BUTTONS ==================== */
+  --button-font-size: 10px;
+  --button-font-weight: 600;
+  --button-letter-spacing: 3px;
+  --button-text-transform: uppercase;
+  --button-height: 45px;
+  --button-padding: 0 20px;
+  --button-border-radius: 0;
+  --button-transition: all 0.3s ease;
+
+  /* Primary button */
+  --button-primary-bg: #0c121c;
+  --button-primary-color: #fff;
+  --button-primary-border: none;
+
+  /* Secondary button (white/outline) */
+  --button-secondary-bg: #fff;
+  --button-secondary-color: #0c121c;
+  --button-secondary-border: none;
+
+  /* Text link button */
+  --button-text-color: #4a4f54;
+  --button-text-font-weight: 700;
+  --button-text-letter-spacing: 2px;
+
+  /* ==================== SPACING ==================== */
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-section: 64px;
+
+  /* ==================== LAYOUT ==================== */
+  --nav-height: 48px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
+  --content-max-width: 1440px;
+  --content-padding: 24px;
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
+/* Desktop overrides */
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --heading-font-size-xxl: 44px;
+    --heading-font-size-xl: 33px;
+    --heading-font-size-l: 21px;
+    --heading-font-size-m: 16px;
+    --heading-font-size-s: 14px;
+    --heading-font-size-xs: 12px;
+    --body-font-size-m: 14px;
+    --body-font-size-s: 12px;
+    --body-font-size-xs: 10px;
+    --heading-letter-spacing: 2.2px;
+    --heading-letter-spacing-sm: 1.05px;
+    --heading-letter-spacing-md: 1.65px;
+    --content-padding: 32px;
   }
 }
 
+/* ==================== FALLBACK FONTS ==================== */
+@font-face {
+  font-family: land-rover-fallback;
+  size-adjust: 95%;
+  src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
+}
+
+@font-face {
+  font-family: avenir-next-fallback;
+  size-adjust: 100%;
+  src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
+}
+
+/* ==================== BASE STYLES ==================== */
 body {
   display: none;
   margin: 0;
@@ -80,7 +136,9 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+  -webkit-font-smoothing: antialiased;
 }
 
 body.appear {
@@ -107,17 +165,21 @@ footer .footer[data-block-status="loaded"] {
   }
 }
 
+/* ==================== HEADINGS ==================== */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: var(--spacing-m);
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--heading-letter-spacing);
+  text-transform: var(--heading-text-transform);
+  color: var(--text-color-emphasis);
   scroll-margin: 40px;
 }
 
@@ -128,14 +190,15 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
+/* ==================== TEXT ELEMENTS ==================== */
 p,
 dl,
 ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: var(--spacing-m);
 }
 
 code,
@@ -144,81 +207,98 @@ pre {
 }
 
 pre {
-  padding: 16px;
-  border-radius: 8px;
+  padding: var(--spacing-m);
+  border-radius: 0;
   background-color: var(--light-color);
   overflow-x: auto;
   white-space: pre;
 }
 
-main > div {
-  margin: 40px 16px;
-}
-
-input,
-textarea,
-select,
-button {
-  font: inherit;
-}
-
-/* links */
+/* ==================== LINKS ==================== */
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
   overflow-wrap: break-word;
+  transition: color 0.3s ease;
 }
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
 }
 
-/* buttons */
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ==================== BUTTONS ==================== */
 a.button:any-link,
 button {
   box-sizing: border-box;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: none;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  height: var(--button-height);
   font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
   font-style: normal;
-  font-weight: 500;
-  line-height: 1.25;
+  font-weight: var(--button-font-weight);
+  line-height: 1;
+  letter-spacing: var(--button-letter-spacing);
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  text-transform: var(--button-text-transform);
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: var(--button-transition);
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--color-gray-medium);
+  color: var(--text-color-inverse);
   cursor: pointer;
+}
+
+a.button:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
+  color: var(--text-color);
   cursor: unset;
 }
 
+/* Secondary button (white background) */
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-color);
+  border: 1px solid var(--color-primary);
 }
 
+a.button.secondary:hover,
+button.secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--text-color-inverse);
+}
+
+/* ==================== IMAGES ==================== */
 main img {
   max-width: 100%;
   width: auto;
@@ -236,15 +316,20 @@ main img {
   width: 100%;
 }
 
-/* sections */
+/* ==================== LAYOUT ==================== */
+main > div {
+  margin: var(--spacing-xl) var(--spacing-m);
+}
+
+/* Sections */
 main > .section {
-  margin: 40px 0;
+  margin: var(--spacing-section) 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--content-padding);
 }
 
 main > .section:first-of-type {
@@ -253,14 +338,97 @@ main > .section:first-of-type {
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 0 32px;
+    padding: 0 var(--content-padding);
   }
 }
 
-/* section metadata */
+/* ==================== SECTION VARIANTS ==================== */
+
+/* Light section */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding: var(--spacing-section) 0;
+}
+
+/* Dark section */
+main .section.dark {
+  background-color: var(--dark-color);
+  color: var(--text-color-inverse);
+  margin: 0;
+  padding: var(--spacing-section) 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--text-color-inverse);
+}
+
+main .section.dark a:any-link {
+  color: var(--text-color-inverse);
+}
+
+main .section.dark a.button:any-link {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-color);
+}
+
+main .section.dark a.button:hover {
+  background-color: var(--color-gray-medium);
+  color: var(--text-color-inverse);
+}
+
+/* Gray section */
+main .section.gray {
+  background-color: var(--color-gray-light);
+  margin: 0;
+  padding: var(--spacing-section) 0;
+}
+
+/* Full-width section (no max-width constraint) */
+main .section.full-width > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* ==================== FORM ELEMENTS ==================== */
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea,
+select {
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 1px solid var(--color-gray-medium);
+  border-radius: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  background-color: var(--background-color);
+  color: var(--text-color-emphasis);
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-color);
+  opacity: 0.7;
 }

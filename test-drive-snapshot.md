@@ -1,0 +1,348 @@
+- generic [ref=e6]:
+  - navigation "Dynamic navigation" [ref=e9]:
+    - button [ref=e12] [cursor=pointer]
+    - link [ref=e18] [cursor=pointer]:
+      - /url: /en/
+      - img [ref=e19]
+    - text:  
+  - generic [ref=e29]:
+    - generic [ref=e31]:
+      - heading "TEST DRIVE" [level=1] [ref=e352]
+      - paragraph [ref=e353]:
+        - text: Discover the capabilities of Land Rover by completing the form below to book a test drive.
+        - text: Fields marked with * are required.
+    - generic [ref=e35]:
+      - generic [ref=e36]: FIRST NAME *
+      - textbox "FIRST NAME *" [ref=e37]
+    - generic [ref=e39]:
+      - generic [ref=e40]: FAMILY NAME *
+      - textbox "FAMILY NAME *" [ref=e41]
+    - generic [ref=e43]:
+      - generic [ref=e44]: EMAIL *
+      - textbox "EMAIL *" [ref=e45]
+    - generic [ref=e47]:
+      - generic [ref=e48]: PHONE *
+      - generic [ref=e49]:
+        - button "Country Code Selector" [ref=e50] [cursor=pointer]:
+          - generic [ref=e53]: ▼
+        - textbox [ref=e54]: "+20"
+    - generic [ref=e56]:
+      - generic [ref=e57]: PREFERRED SHOWROOM *
+      - combobox "PREFERRED SHOWROOM *" [ref=e58] [cursor=pointer]:
+        - option [selected]
+        - option "CAIRO - SHOWROOM & SERVICE CENTER (Joseph Tito)"
+    - generic [ref=e60]:
+      - text: You agree by submitting this form that Jaguar Land Rover can contact you with marketing communications, special offers, news and events.
+      - text: Your information will be disclosed to Jaguar Land Rover, its retailers, franchise partners, agencies, affiliated or associated companies providing services for your benefit.
+      - text: I also agree to Jaguar Land Rover
+      - link "Privacy Policy" [ref=e354] [cursor=pointer]:
+        - /url: /en/privacy-policy
+      - text: and
+      - link "Terms & Conditions" [ref=e355] [cursor=pointer]:
+        - /url: /en/terms-and-conditions
+      - text: .
+      - text: "You may withdraw your consent at any time by sending an email to:"
+      - link "crcmena@jaguarlandrover.com" [ref=e356] [cursor=pointer]:
+        - /url: mailto:crcmena@jaguarlandrover.com
+    - generic [ref=e65]:
+      - checkbox "I agree to the above terms, conditions and privacy policies. * " [ref=e66] [cursor=pointer]
+      - generic [ref=e67] [cursor=pointer]: I agree to the above terms, conditions and privacy policies. * 
+    - button "SUBMIT" [ref=e68]
+  - contentinfo [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - heading "OUR VEHICLES" [level=2] [ref=e73]
+        - list [ref=e74]:
+          - listitem [ref=e75]:
+            - link "RANGE ROVER" [ref=e77] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover/overview
+          - listitem [ref=e78]:
+            - link "RANGE ROVER SPORT" [ref=e80] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover-sport/overview
+          - listitem [ref=e81]:
+            - link "RANGE ROVER VELAR" [ref=e83] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-velar/overview
+          - listitem [ref=e84]:
+            - link "RANGE ROVER EVOQUE" [ref=e86] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-evoque/overview
+          - listitem [ref=e87]:
+            - link "DISCOVERY" [ref=e89] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery/overview
+          - listitem [ref=e90]:
+            - link "DISCOVERY SPORT" [ref=e92] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery-sport/overview
+          - listitem [ref=e93]:
+            - link "DEFENDER 130" [ref=e95] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-130/overview
+          - listitem [ref=e96]:
+            - link "DEFENDER 110" [ref=e98] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/overview
+          - listitem [ref=e99]:
+            - link "DEFENDER 90" [ref=e101] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-90/overview
+          - listitem [ref=e102]:
+            - link "SPECIAL VEHICLE OPERATIONS" [ref=e104] [cursor=pointer]:
+              - /url: /en/special-vehicle-operations/overview
+          - listitem [ref=e105]:
+            - link "COMPARE OUR VEHICLES" [ref=e107] [cursor=pointer]:
+              - /url: /en/compare
+          - listitem [ref=e108]:
+            - link "OUR VEHICLES" [ref=e110] [cursor=pointer]:
+              - /url: /en/our-vehicles
+          - listitem [ref=e111]:
+            - link "SEVEN SEATER SUVS" [ref=e113] [cursor=pointer]:
+              - /url: /en/seven-seater-suvs
+          - listitem [ref=e114]:
+            - link "TOWING" [ref=e116] [cursor=pointer]:
+              - /url: /en/towing
+      - generic [ref=e117]:
+        - heading "OFFERS AND FINANCE" [level=2] [ref=e118]
+        - list [ref=e119]:
+          - listitem [ref=e120]:
+            - link "RANGE ROVER NEW VEHICLE OFFERS" [ref=e122] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/new-vehicles
+          - listitem [ref=e123]:
+            - link "RANGE ROVER APPROVED USED OFFERS" [ref=e125] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/approved-used
+          - listitem [ref=e126]:
+            - link "RANGE ROVER OWNERS OFFERS" [ref=e128] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/owners
+          - listitem [ref=e129]:
+            - link "RANGE ROVER COLLECTIONS OFFERS" [ref=e131] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/collections
+          - listitem [ref=e132]:
+            - link "DEFENDER NEW VEHICLE OFFERS" [ref=e134] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/new-vehicles
+          - listitem [ref=e135]:
+            - link "DEFENDER APPROVED USED OFFERS" [ref=e137] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/approved-used
+          - listitem [ref=e138]:
+            - link "DEFENDER OWNERS OFFERS" [ref=e140] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/owners
+          - listitem [ref=e141]:
+            - link "DEFENDER COLLECTIONS OFFERS" [ref=e143] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/collections
+          - listitem [ref=e144]:
+            - link "DISCOVERY NEW VEHICLE OFFERS" [ref=e146] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/new-vehicles
+          - listitem [ref=e147]:
+            - link "DISCOVERY APPROVED USED OFFERS" [ref=e149] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/approved-used
+          - listitem [ref=e150]:
+            - link "DISCOVERY OWNERS OFFERS" [ref=e152] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/owners
+          - listitem [ref=e153]:
+            - link "DISCOVERY COLLECTIONS OFFERS" [ref=e155] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/collections
+          - listitem [ref=e156]:
+            - link "RANGE ROVER FINANCIAL SERVICES" [ref=e158] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/financial-services
+          - listitem [ref=e159]:
+            - link "DEFENDER FINANCIAL SERVICES" [ref=e161] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/financial-services
+          - listitem [ref=e162]:
+            - link "DISCOVERY FINANCIAL SERVICES" [ref=e164] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/financial-services
+        - heading "RESEARCH" [level=2] [ref=e165]
+        - list [ref=e166]:
+          - listitem [ref=e167]:
+            - link "BUY ONLINE" [ref=e169] [cursor=pointer]:
+              - /url: /en/b
+          - listitem [ref=e170]:
+            - link "BOOK A TEST DRIVE" [ref=e172] [cursor=pointer]:
+              - /url: /en/t
+          - listitem [ref=e173]:
+            - link "REQUEST A CALLBACK" [ref=e175] [cursor=pointer]:
+              - /url: /en/request-a-call-back
+          - listitem [ref=e176]:
+            - link "HOW TO ORDER ONLINE" [ref=e178] [cursor=pointer]:
+              - /url: /en/offers-and-finance/how-to-order-online
+          - listitem [ref=e179]:
+            - link "DOWNLOAD A BROCHURE" [ref=e181] [cursor=pointer]:
+              - /url: /en/owners/brochures
+          - listitem [ref=e182]:
+            - link "NEW DIESEL, PETROL OR PHEV?" [ref=e184] [cursor=pointer]:
+              - /url: /en/owners/our-range-of-hybrid-petrol-or-euro-6-diesel-suvs/overview
+          - listitem [ref=e185]:
+            - link "KEEP ME INFORMED" [ref=e187] [cursor=pointer]:
+              - /url: /en/k
+        - heading "FLEET & BUSINESS" [level=2] [ref=e188]
+        - list [ref=e189]:
+          - listitem [ref=e190]:
+            - link "OVERVIEW" [ref=e192] [cursor=pointer]:
+              - /url: /en/fleet-and-business/overview
+          - listitem [ref=e193]:
+            - link "OUR APPROACH" [ref=e195] [cursor=pointer]:
+              - /url: /en/fleet-and-business/why-land-rover-for-business-our-responsible-future
+          - listitem [ref=e196]:
+            - link "VEHICLE RANGE" [ref=e198] [cursor=pointer]:
+              - /url: /en/fleet-and-business/vehicle-range
+          - listitem [ref=e199]:
+            - link "CONTACT US" [ref=e201] [cursor=pointer]:
+              - /url: /en/fleet-and-business/contact
+        - heading "ONLINE STORE" [level=2] [ref=e202]
+        - list [ref=e203]:
+          - listitem [ref=e204]:
+            - link "APPROVED USED" [ref=e206] [cursor=pointer]:
+              - /url: https://www.landrover-onlinestore.com/egypt/en/
+          - listitem [ref=e207]:
+            - link "KEEP ME INFORMED" [ref=e209] [cursor=pointer]:
+              - /url: /en/k
+          - listitem [ref=e210]:
+            - link "LAND ROVER COLLECTION" [ref=e212] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+      - generic [ref=e213]:
+        - heading "OWNERSHIP" [level=2] [ref=e214]
+        - list [ref=e215]:
+          - listitem [ref=e216]:
+            - link "OVERVIEW" [ref=e218] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/overview
+          - listitem [ref=e219]:
+            - link "CLIENT CARE" [ref=e221] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/contact-us
+          - listitem [ref=e222]:
+            - link "LAND ROVER CARE APP" [ref=e224] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/land-rover-care-app-mena
+        - heading "SERVICING, MAINTENANCE AND WARRANTY" [level=2] [ref=e225]
+        - list [ref=e226]:
+          - listitem [ref=e227]:
+            - link "BOOK A SERVICE ONLINE" [ref=e229] [cursor=pointer]:
+              - /url: /en/book-service-online
+          - listitem [ref=e230]:
+            - link "SERVICING AND SERVICE PLANS" [ref=e232] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/servicing/overview
+          - listitem [ref=e233]:
+            - link "MAINTENANCE EXCELLENCE" [ref=e235] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/maintenance/overview
+          - listitem [ref=e236]:
+            - link "WARRANTY & EXTENDED WARRANTY" [ref=e238] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/warranty/overview
+        - heading "MOBILITY SOLUTIONS" [level=2] [ref=e239]
+        - list [ref=e240]:
+          - listitem [ref=e241]:
+            - link "MOBILITY PROMISE" [ref=e243] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/mobility-promise
+          - listitem [ref=e244]:
+            - link "A SEAMLESS SERVICE EXPERIENCE" [ref=e246] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/seamless-service-experience
+        - heading "CONNECTED CARE" [level=2] [ref=e247]
+        - list [ref=e248]:
+          - listitem [ref=e249]:
+            - link "OVERVIEW" [ref=e251] [cursor=pointer]:
+              - /url: /range-rover/ownership/connected-care-24-7/connected-care-overview
+          - listitem [ref=e252]:
+            - link "INFOTAINMENT" [ref=e254] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/infotainment-systems/overview
+          - listitem [ref=e255]:
+            - link "REMOTE VEHICLE CONTROL AND APP" [ref=e257] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/remote-vehicle-control-and-app
+          - listitem [ref=e258]:
+            - link "SOFTWARE UPDATES" [ref=e260] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/software-update/overview
+      - generic [ref=e261]:
+        - heading "EXPLORE LAND ROVER" [level=2] [ref=e262]
+        - list [ref=e263]:
+          - listitem [ref=e264]:
+            - link "OVERVIEW" [ref=e266] [cursor=pointer]:
+              - /url: /en/explore/overview
+          - listitem [ref=e267]:
+            - link "ARDHI APP" [ref=e269] [cursor=pointer]:
+              - /url: /en/explore/ardhi-app
+          - listitem [ref=e270]:
+            - link "NEWS" [ref=e272] [cursor=pointer]:
+              - /url: /en/explore/news
+          - listitem [ref=e273]:
+            - link "LAND ROVER COLLECTION" [ref=e275] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+        - heading "EXPERIENCES" [level=2] [ref=e276]
+        - list [ref=e277]:
+          - listitem [ref=e278]:
+            - link "OVERVIEW" [ref=e280] [cursor=pointer]:
+              - /url: /en/experience/overview
+          - listitem [ref=e281]:
+            - link "EXPERIENCE DRIVES" [ref=e283] [cursor=pointer]:
+              - /url: /en/experience/lr-experience/drives
+          - listitem [ref=e284]:
+            - link "ADVENTURE TRAVEL" [ref=e286] [cursor=pointer]:
+              - /url: /en/experience/adventure-travel/overview
+          - listitem [ref=e287]:
+            - link "MANUFACTURING TOURS" [ref=e289] [cursor=pointer]:
+              - /url: /en/experience/manufacturing-tours
+          - listitem [ref=e290]:
+            - link "FIND A CENTRE" [ref=e292] [cursor=pointer]:
+              - /url: /en/experience/find-a-centre
+      - generic [ref=e293]:
+        - heading "JOIN THE CONVERSATION" [level=2] [ref=e294]
+        - list [ref=e295]:
+          - listitem [ref=e296]:
+            - link "INSTAGRAM" [ref=e298] [cursor=pointer]:
+              - /url: https://www.instagram.com/rangerover/
+              - generic [ref=e299]: 
+              - generic [ref=e300]: INSTAGRAM
+          - text:   
+          - listitem [ref=e301]:
+            - link "YOUTUBE" [ref=e303] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/LandRover
+              - generic [ref=e305]: YOUTUBE
+          - listitem [ref=e306]:
+            - link "FACEBOOK" [ref=e308] [cursor=pointer]:
+              - /url: https://www.facebook.com/rangerover
+              - generic [ref=e309]: 
+              - generic [ref=e310]: FACEBOOK
+          - text:   
+          - listitem [ref=e311]:
+            - link "TWITTER" [ref=e313] [cursor=pointer]:
+              - /url: https://twitter.com/rangerover
+              - generic [ref=e315]: TWITTER
+    - generic [ref=e318]:
+      - generic [ref=e319]:
+        - generic [ref=e320]: Countries
+        - generic [ref=e321]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e322]:
+        - generic [ref=e323]: Language
+        - generic [ref=e324]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e325]:
+        - generic [ref=e326]: Retailer
+        - generic [ref=e327]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - link "FIND A RETAILER" [ref=e329] [cursor=pointer]:
+        - /url: https://www.landrover-egypt.com/en/dealer-locator?id=undefined
+    - list [ref=e331]:
+      - listitem [ref=e332]:
+        - link "CAREERS" [ref=e333] [cursor=pointer]:
+          - /url: http://www.jaguarlandrovercareers.com/
+      - listitem [ref=e334]:
+        - link "TERMS & CONDITIONS" [ref=e335] [cursor=pointer]:
+          - /url: /en/terms-and-conditions
+      - listitem [ref=e336]:
+        - link "CONTACT US" [ref=e337] [cursor=pointer]:
+          - /url: /en/dealer-locator
+      - listitem [ref=e338]:
+        - link "PRIVACY POLICY" [ref=e339] [cursor=pointer]:
+          - /url: /en/privacy-policy
+      - listitem [ref=e340]:
+        - link "COOKIE POLICY" [ref=e341] [cursor=pointer]:
+          - /url: /en/cookie-policy
+      - listitem [ref=e342]:
+        - link "SITEMAP" [ref=e343] [cursor=pointer]:
+          - /url: /en/sitemap.xml
+      - listitem [ref=e344]:
+        - link "JAGUAR LAND ROVER CORPORATE" [ref=e345] [cursor=pointer]:
+          - /url: https://www.jaguarlandrover.com/
+    - generic [ref=e347]:
+      - img "Land Rover Logo" [ref=e349]
+      - paragraph [ref=e350]:
+        - text: © JAGUAR LAND ROVER LIMITED 2026.
+        - text: Egypt, MTI Automotive
+        - text: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation. A vehicle's actual fuel consumption may differ from that achieved in such tests and these figures are for comparative purposes only. The information, specification, prices and colours on this website may vary from market to market and are subject to change without notice. Please contact your local dealer for local availability and prices.
+        - text: Weights stated reflect vehicle standard specification. Accessories and other items fitted after the point of manufacture will affect payload. Ensure Gross Vehicle Weight and Maximum Axle Loads are not exceeded when loading the vehicle with accessories, occupants, fluids and fuels, and payload.
+        - strong [ref=e351]: Important note on imagery & specification.
+        - text: The global shortage of semiconductors is currently affecting vehicle build specifications, option availability, and build timings. This is a very dynamic situation, and as a result imagery used within the website at present may not fully reflect current specifications for features, options, trim and colour schemes. Please consult your Retailer who will be able to confirm any current restrictions with you in order to allow an informed choice

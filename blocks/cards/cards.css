@@ -1,3 +1,4 @@
+/* Default cards */
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -24,4 +25,122 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+/* Hero variant - break out of section constraints */
+.section.cards-container:has(.cards.hero) {
+  margin: 0;
+}
+
+.section.cards-container:has(.cards.hero) > .cards-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+/* Hero variant - full-width vehicle family cards */
+.cards.hero > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.cards.hero > ul > li {
+  position: relative;
+  border: none;
+  background-color: var(--color-primary);
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards.hero .cards-card-image {
+  position: absolute;
+  inset: 0;
+  line-height: 0;
+}
+
+.cards.hero .cards-card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 30%) 0%, rgb(0 0 0 / 10%) 50%, rgb(0 0 0 / 30%) 100%);
+  pointer-events: none;
+}
+
+.cards.hero > ul > li img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+.cards.hero .cards-card-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0;
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--text-color-inverse);
+}
+
+.cards.hero .cards-card-body p {
+  margin: 0;
+}
+
+.cards.hero .cards-card-body strong {
+  display: block;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--heading-letter-spacing);
+  color: var(--text-color-inverse);
+  margin: 0 0 24px;
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1;
+}
+
+.cards.hero .cards-card-body a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  height: var(--button-height);
+  padding: 0 32px;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border: 1px solid var(--text-color-inverse);
+  border-radius: var(--button-border-radius);
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  text-decoration: none;
+  transition: var(--button-transition);
+  cursor: pointer;
+}
+
+.cards.hero .cards-card-body a:hover {
+  background-color: var(--text-color-inverse);
+  color: var(--color-primary);
+}
+
+/* Hero variant - desktop: side-by-side layout */
+@media (width >= 900px) {
+  .cards.hero > ul {
+    grid-template-columns: repeat(3, 1fr);
+    height: calc(100vh - var(--nav-height));
+  }
+
+  .cards.hero > ul > li {
+    min-height: 100%;
+  }
 }

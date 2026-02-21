@@ -1,0 +1,628 @@
+- generic [ref=e6]:
+  - generic [ref=e7]:
+    - navigation "Dynamic navigation" [ref=e9]:
+      - button [ref=e12] [cursor=pointer]
+      - link [ref=e18] [cursor=pointer]:
+        - /url: /en/defender/overview
+        - img [ref=e19]
+      - text:  
+    - generic [ref=e21]:
+      - text: 
+      - generic [ref=e22]:
+        - generic [ref=e23]: EXPLORE DEFENDER 110
+        - generic [ref=e24]: OVERVIEW
+        - generic [ref=e25]: 
+  - generic [ref=e27]:
+    - generic [ref=e32]:
+      - generic [ref=e36]:
+        - heading "DEFENDER 525 ultimate edition" [level=2] [ref=e37]
+        - generic [ref=e38]: Unparalleled V8 performance. Exclusively available in MENA.
+        - generic [ref=e39]:
+          - link " EXPLORE" [ref=e709] [cursor=pointer]:
+            - /url: /en/defender/26my/defender-110/26my-525-ultimate-edition
+            - generic: 
+            - text: EXPLORE
+          - link " REQUEST A CALLBACK" [ref=e710] [cursor=pointer]:
+            - /url: /en/defender/26my/defender-110/26my-525-ultimate-edition#form
+            - generic: 
+            - text: REQUEST A CALLBACK
+      - button "" [ref=e46] [cursor=pointer]:
+        - generic [ref=e47]: 
+    - generic:
+      - generic:        
+    - navigation [ref=e55]:
+      - generic [ref=e57]:
+        - button "CAPABILITY" [ref=e59] [cursor=pointer]:
+          - generic [ref=e60]: CAPABILITY
+        - button "DESIGN" [ref=e62] [cursor=pointer]:
+          - generic [ref=e63]: DESIGN
+        - button "TECHNOLOGY" [ref=e65] [cursor=pointer]:
+          - generic [ref=e66]: TECHNOLOGY
+        - button "PERFORMANCE" [ref=e68] [cursor=pointer]:
+          - generic [ref=e69]: PERFORMANCE
+        - button "MODELS" [ref=e71] [cursor=pointer]:
+          - generic [ref=e72]: MODELS
+    - group "1 / 1" [ref=e714]:
+      - generic [ref=e717]: Load up. Go anywhere. Share the adventure with space for up to seven.
+    - generic [ref=e91]:
+      - generic [ref=e94]:
+        - heading "LOADSPACE" [level=2] [ref=e95]
+        - generic [ref=e96]:
+          - text: UP TO 2277
+          - generic [ref=e719]:
+            - text: litres
+            - superscript [ref=e720]: "*"
+            - subscript [ref=e721]: "* Wet: Volume as measured by simulating the loadspace filled with liquid behind Row 1 with rear seats folded flat. Volume for 5 & 6 seat variants provided. 7 seat variant up to 2233 litres. P300e models up to 2127 litres. Hard Top models: Includes underfloor stowage, excludes jack and tools."
+      - generic [ref=e102]:
+        - heading "SEATS" [level=2] [ref=e103]
+        - generic [ref=e104]: UP TO 7
+      - generic [ref=e107]:
+        - heading "MAXIMUM POWER" [level=2] [ref=e108]
+        - generic [ref=e109]: UP TO 425 HP
+      - generic [ref=e112]:
+        - heading "MAXIMUM TORQUE" [level=2] [ref=e113]
+        - generic [ref=e114]: UP TO 700 Nm
+    - iframe [ref=e726]:
+      - generic [ref=f41e3]:
+        - strong [ref=f41e4]: www.landrover-onlinestore.com
+        - text: refused to connect.
+    - heading "SERIOUSLY CAPABLE" [level=2] [ref=e122]
+    - generic [ref=e729]:
+      - generic:
+        - group "1 / 4" [ref=e730]:
+          - generic [ref=e731]:
+            - img "UNSTOPPABLE. ANYWHERE." [ref=e734]
+            - generic [ref=e739]:
+              - heading "UNSTOPPABLE. ANYWHERE." [level=1] [ref=e740]
+              - generic [ref=e741]: Go from road, to mud, to snow, to anywhere. Terrain Response 2 automatically adjusts Defender’s settings for optimum power and traction. The Adaptive Off-Road Cruise Control option keeps the pace on any surface
+        - group "2 / 4" [ref=e743]:
+          - generic [ref=e744]:
+            - img "CONFIDENCE AT EVERY TURN" [ref=e747]
+            - generic [ref=e752]:
+              - heading "CONFIDENCE AT EVERY TURN" [level=1] [ref=e753]
+              - generic [ref=e754]: Stay focused on long drives with the Driver Attention Monitor. A camera monitors drowsiness and alerts drivers for peace of mind on longer adventures.
+        - group "3 / 4" [ref=e756]:
+          - generic [ref=e757]:
+            - img "LEAVE NOTHING BEHIND" [ref=e760]
+            - generic [ref=e765]:
+              - heading "LEAVE NOTHING BEHIND" [level=1] [ref=e766]
+              - generic [ref=e767]:
+                - text: Pack everything with a loadspace of up to 2.277 litres
+                - superscript [ref=e768]: "****"
+                - text: behind the first row. Even with the bags piled high, the ClearSight rearview mirror
+                - superscript [ref=e769]: "1"
+                - text: gives you a full view behind.
+        - group "4 / 4" [ref=e771]:
+          - generic [ref=e772]:
+            - img "SPACE UPON SPACE" [ref=e775]
+            - generic [ref=e780]:
+              - heading "SPACE UPON SPACE" [level=2] [ref=e781]
+              - generic [ref=e782]:
+                - text: Bring even more, with the 168kg
+                - superscript [ref=e783]: "2"
+                - text: dynamic roof load. Once you’re parked up, the 300kg
+                - superscript [ref=e784]: "2"
+                - text: static load means your adventure can continue overnight with the optional Rooftop Tent.
+    - heading "TOUGH. INSIDE AND OUT." [level=2] [ref=e149]
+    - navigation [ref=e155]:
+      - button "EXTERIOR" [ref=e156] [cursor=pointer]:
+        - generic [ref=e157]: EXTERIOR
+      - button "INTERIOR" [ref=e158] [cursor=pointer]:
+        - generic [ref=e159]: INTERIOR
+    - generic [ref=e167]:
+      - button [ref=e794] [cursor=pointer]
+      - button [ref=e796] [cursor=pointer]
+      - button [ref=e798] [cursor=pointer]
+      - button [ref=e800] [cursor=pointer]
+      - button [ref=e802] [cursor=pointer]
+    - heading "PROTECTED. CONNECTED." [level=2] [ref=e176]
+    - generic [ref=e182]:
+      - img [ref=e187]
+      - generic [ref=e189]:
+        - navigation [ref=e193]:
+          - button "INTUITIVE" [ref=e194] [cursor=pointer]:
+            - generic [ref=e195]: INTUITIVE
+          - button "INFORMED" [ref=e196] [cursor=pointer]:
+            - generic [ref=e197]: INFORMED
+          - button "IMMERSED" [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: IMMERSED
+          - button "FOCUSED" [ref=e200] [cursor=pointer]:
+            - generic [ref=e201]: FOCUSED
+        - generic [ref=e202]:
+          - heading "INTUITIVE" [level=2] [ref=e203]
+          - generic [ref=e205]:
+            - text: Control at your fingertips. Complete up to 90% of tasks in just two-taps of the award-winning Pivi Pro
+            - superscript [ref=e803]: "6"
+            - text: infotainment system’s 13,1-inch Touchscreen.
+    - heading "EFFECTIVE. EFFICIENT. EVERYWHERE." [level=2] [ref=e214]
+    - navigation [ref=e220]:
+      - button "OCTA" [ref=e221] [cursor=pointer]:
+        - generic [ref=e222]: OCTA
+      - button "V8" [ref=e223] [cursor=pointer]:
+        - generic [ref=e224]: V8
+    - generic [ref=e229]:
+      - generic [ref=e230]:
+        - generic [ref=e231]:
+          - generic [ref=e232]:
+            - heading "0-100 KM/H" [level=4] [ref=e233]
+            - heading "4,0SEC" [level=5] [ref=e234]
+          - generic [ref=e235]:
+            - heading "MAXIMUM POWER" [level=4] [ref=e236]
+            - heading "635PS" [level=5] [ref=e237]
+          - generic [ref=e238]:
+            - heading "MAXIMUM TORQUE" [level=4] [ref=e239]
+            - heading "750NM" [level=5] [ref=e240]
+          - generic [ref=e241]:
+            - heading "TOP SPEED" [level=4] [ref=e242]
+            - heading "250KM/H*" [level=5] [ref=e243]:
+              - text: 250KM/H
+              - superscript [ref=e804]: "*"
+        - generic [ref=e245]:
+          - heading "DEFENDER OCTA" [level=2] [ref=e246]:
+            - strong [ref=e805]: DEFENDER OCTA
+          - generic [ref=e248]:
+            - paragraph [ref=e806]: The most powerful Defender ever.
+            - paragraph [ref=e807]
+            - paragraph [ref=e808]:
+              - subscript [ref=e809]: P635 engine detailed.
+          - link " EXPLORE OCTA" [ref=e811] [cursor=pointer]:
+            - /url: /en/defender/26my/defender-110/octa
+            - generic [ref=e812]: 
+            - generic [ref=e813]: EXPLORE OCTA
+      - img "<strong>DEFENDER OCTA</strong>" [ref=e261]
+    - generic [ref=e267]:
+      - generic [ref=e268]:
+        - generic [ref=e269]:
+          - heading "AN ICON REIMAGINED" [level=2] [ref=e270]
+          - generic [ref=e271]:
+            - paragraph [ref=e814]: Defender Trophy Edition pays homage to the original off-road legend, available in exclusive Deep Sandglow Yellow or Keswick Green.
+            - paragraph [ref=e815]
+            - paragraph [ref=e816]: The durable Ebony Windsor leather and Ebony Suedecloth headlining interior create a sophisticated blend of form and function.
+            - paragraph [ref=e817]
+            - paragraph [ref=e818]: Ready for anything. Defender Trophy Edition comes fully loaded with electronic winch, raised air intake, gear carrier, roof ladder, roof rack and wheel arch protection.
+        - link " EXPLORE DEFENDER TROPHY" [ref=e820] [cursor=pointer]:
+          - /url: /en/defender/25my/defender-110/defender-trophy-edition
+          - generic [ref=e821]: 
+          - generic [ref=e822]: EXPLORE DEFENDER TROPHY
+      - generic [ref=e284]:
+        - img "Illuminated treadplates pay homage" [ref=e286]
+        - img "Defender Trophy on hill" [ref=e288]
+        - img "Defender Exterior with Fixed Side Steps" [ref=e290]
+        - img "Side view of caption seat of defender" [ref=e292]
+    - generic [ref=e299]:
+      - heading "BUILD AND ORDER" [level=2] [ref=e300]
+      - paragraph [ref=e823]: Choose a Defender. Then make it yours.
+    - navigation [ref=e308]:
+      - button "DEFENDER 110" [ref=e309] [cursor=pointer]:
+        - generic [ref=e310]: DEFENDER 110
+      - button "DEFENDER OCTA" [ref=e311] [cursor=pointer]:
+        - generic [ref=e312]: DEFENDER OCTA
+    - generic [ref=e318]:
+      - img "DEFENDER 110 V8" [ref=e323]
+      - generic [ref=e325]:
+        - navigation [ref=e329]:
+          - button "525 Ultimate Edition V8" [ref=e330] [cursor=pointer]:
+            - generic [ref=e331]: 525 Ultimate Edition V8
+          - button "X" [ref=e332] [cursor=pointer]:
+            - generic [ref=e333]: X
+          - button "X-DYNAMIC HSE" [ref=e334] [cursor=pointer]:
+            - generic [ref=e335]: X-DYNAMIC HSE
+          - button "X-DYNAMIC SE" [ref=e336] [cursor=pointer]:
+            - generic [ref=e337]: X-DYNAMIC SE
+          - button "S" [ref=e338] [cursor=pointer]:
+            - generic [ref=e339]: S
+        - generic [ref=e340]:
+          - heading "Defender 525 Ultimate Edition V8" [level=2] [ref=e341]
+          - generic [ref=e342]:
+            - link " BUILD YOUR OWN" [ref=e343] [cursor=pointer]:
+              - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4ci0b/a-110_a-le19_a-p525-110_p/a-rec-x-110_n-039nn_n-1aa/ipr/personalise/accessory_packs/?formCode=lr-config-def-en&country=Egypt&language=en
+              - generic: 
+              - text: BUILD YOUR OWN
+            - link " EXPLORE MODELS" [ref=e345] [cursor=pointer]:
+              - /url: /en/defender/26my/models-and-specifications
+              - generic [ref=e346]: 
+              - generic [ref=e347]: EXPLORE MODELS
+    - generic [ref=e354]:
+      - heading "ACCESSORY PACKS" [level=2] [ref=e355]
+      - paragraph [ref=e824]: Ready for any environment. Enhance the capability and durability of your Defender with our selection of accessory packs.
+      - link " EXPLORE OPTIONS AND ACCESSORIES" [ref=e825] [cursor=pointer]:
+        - /url: /en/defender/26my/options-and-accessories
+        - generic: 
+        - text: EXPLORE OPTIONS AND ACCESSORIES
+    - generic [ref=e827]:
+      - generic [ref=e828]:
+        - generic:
+          - group "1 / 3" [ref=e829]:
+            - link "EXPLORER PACK Blaze your own trail, whatever the terrain. Explorer Pack equips Defender to defy conventions and conquer the most uncharted landscapes." [ref=e831] [cursor=pointer]:
+              - /url: /en/defender/26my/options-and-accessories/#accessory-packs
+              - generic [ref=e833]:
+                - heading "EXPLORER PACK" [level=2] [ref=e834]
+                - generic [ref=e835]: Blaze your own trail, whatever the terrain. Explorer Pack equips Defender to defy conventions and conquer the most uncharted landscapes.
+          - group "2 / 3" [ref=e836]:
+            - link "ADVENTURE PACK Take your passions to new territories. Adventure Pack equips Defender to take you off the beaten track and into nature’s playground." [ref=e838] [cursor=pointer]:
+              - /url: /en/defender/26my/options-and-accessories/#accessory-packs
+              - generic [ref=e840]:
+                - heading "ADVENTURE PACK" [level=2] [ref=e841]
+                - generic [ref=e842]: Take your passions to new territories. Adventure Pack equips Defender to take you off the beaten track and into nature’s playground.
+          - group "3 / 3" [ref=e843]:
+            - link "URBAN PACK Conquer the concrete jungle. Urban Pack equips Defender to stand out in the suburbs with head‑turning style, confidence and composure." [ref=e845] [cursor=pointer]:
+              - /url: /en/defender/26my/options-and-accessories/#accessory-packs
+              - generic [ref=e847]:
+                - heading "URBAN PACK" [level=2] [ref=e848]
+                - generic [ref=e849]: Conquer the concrete jungle. Urban Pack equips Defender to stand out in the suburbs with head‑turning style, confidence and composure.
+      - button "Previous slide" [disabled]:
+        - img
+      - button "Next slide" [ref=e850] [cursor=pointer]:
+        - img [ref=e851]
+    - heading "KEEP EXPLORING" [level=2] [ref=e393]
+    - generic [ref=e856]:
+      - generic [ref=e857]:
+        - generic:
+          - group "1 / 4" [ref=e858]:
+            - generic [ref=e860]:
+              - generic [ref=e861]:
+                - heading "DEFENDER OCTA" [level=2] [ref=e862]
+                - generic [ref=e863]: An unstoppable force on any terrain with a 635PS V8 Engine, cutting-edge air suspension and enhanced one meter wading depth. This is most powerful Defender ever made.
+                - link " EXPLORE DEFENDER OCTA" [ref=e866] [cursor=pointer]:
+                  - /url: /en/defender/26my/defender-110/octa
+                  - generic: 
+                  - text: EXPLORE DEFENDER OCTA
+              - img "DEFENDER OCTA" [ref=e869]
+          - group "2 / 4" [ref=e870]:
+            - generic [ref=e872]:
+              - generic [ref=e873]:
+                - heading "DEFENDER HARD TOP" [level=2] [ref=e874]
+                - generic [ref=e875]: Take your business anywhere.
+                - link " EXPLORE DEFENDER HARD TOP" [ref=e878] [cursor=pointer]:
+                  - /url: /en/defender/26my/defender-hard-top/overview
+                  - generic: 
+                  - text: EXPLORE DEFENDER HARD TOP
+              - img "DEFENDER HARD TOP" [ref=e881]
+          - group "3 / 4" [ref=e882]:
+            - generic [ref=e884]:
+              - generic [ref=e885]:
+                - heading "MODELS AND SPECIFICATIONS" [level=2] [ref=e886]
+                - generic [ref=e887]: Compare our full range side by side.
+                - link " EXPLORE MODELS AND SPECIFICATIONS" [ref=e890] [cursor=pointer]:
+                  - /url: /en/defender/26my/models-and-specifications
+                  - generic: 
+                  - text: EXPLORE MODELS AND SPECIFICATIONS
+              - img "MODELS AND SPECIFICATIONS" [ref=e893]
+          - group "4 / 4" [ref=e894]:
+            - generic [ref=e896]:
+              - generic [ref=e897]:
+                - heading "DEFENDER WORLD" [level=2] [ref=e898]
+                - generic [ref=e899]: Learn more about how the redesigned icon embraces the impossible.
+                - link " EXPLORE DEFENDER WORLD" [ref=e902] [cursor=pointer]:
+                  - /url: /en/explore/defender-world/overview
+                  - generic: 
+                  - text: EXPLORE DEFENDER WORLD
+              - img "DEFENDER WORLD" [ref=e905]
+      - generic [ref=e945]:
+        - img [ref=e946]
+        - img [ref=e948]
+        - generic [ref=e951]: 
+      - generic:
+        - button "Go to slide 1" [ref=e915] [cursor=pointer]
+        - button "Go to slide 2" [ref=e916] [cursor=pointer]
+        - button "Go to slide 3" [ref=e917] [cursor=pointer]
+        - button "Go to slide 4" [ref=e918] [cursor=pointer]
+    - generic [ref=e419]:
+      - paragraph [ref=e919]: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation with a fully charged battery. For comparison purposes only. Real world figures may differ. CO2, fuel economy, energy consumption and range figures may vary according to factors such as driving styles, environmental conditions, load, wheel fitment, accessories fitted, actual route and battery condition. Range figures are based upon production vehicle over a standardised route.
+      - paragraph [ref=e920]:
+        - superscript [ref=e921]: "*"
+        - text: Defender OCTA Max speed is 250km/h when fitted with 22" wheels. Max speed is 209km/h when fitted with 20" wheels and All-Terrain Tyres or 159km/h with 20" wheels and Advanced All-Terrain Tyres.
+      - paragraph [ref=e922]:
+        - superscript [ref=e923]: "**"
+        - text: Max speed is 191km/h when fitted with 20-inch wheels.
+      - paragraph [ref=e924]:
+        - superscript [ref=e925]: "***"
+        - text: "Charging times will vary dependent on many factors, including but not limited to: the age, condition, temperature and existing charge of the battery; facility used and duration of charge."
+      - paragraph
+      - paragraph [ref=e926]:
+        - superscript [ref=e927]: "****"
+        - text: "Wet: Volume as measured by simulating the loadspace filled with liquid."
+      - paragraph
+      - paragraph [ref=e928]:
+        - superscript [ref=e929]: "1"
+        - text: Feature subject to local regulations. If bifocal or varifocal users cannot easily adjust focus on the ClearSight digital rear view image, they may revert to rear view mirror mode at any time.
+      - paragraph [ref=e930]:
+        - superscript [ref=e931]: "2"
+        - text: With Off-Road Tyres. Maximum load includes weight of the roof rack. Not available on Defender V8 models.
+      - paragraph [ref=e932]:
+        - superscript [ref=e933]: "3"
+        - text: Always check route and exit before wading.
+      - paragraph [ref=e934]:
+        - superscript [ref=e935]: "4"
+        - text: Image is not live. Check surroundings for safety.
+      - paragraph [ref=e936]:
+        - superscript [ref=e937]: "5"
+        - text: Not compatible with Front Expedition Protection System or ‘A’ Frame Protection Bar.
+      - paragraph [ref=e938]:
+        - superscript [ref=e939]: "6"
+        - text: Pivi, Pivo Pro and InControl features, options, third party services and their availability remain market dependent – check with your Land Rover Retailer for local market availability and full terms. Mobile network connectivity cannot be guaranteed in all locations. Information and images displayed in relation to the InControl technology, including screens or sequences, are subject to software updates, version control and other system/visual changes depending on options selected.
+      - paragraph [ref=e940]:
+        - superscript [ref=e941]: "7"
+        - text: Connected Navigation will require further subscription after the initial term advised by your Land Rover Retailer.
+      - paragraph [ref=e942]:
+        - superscript [ref=e943]: "8"
+        - text: Texcell research, 2020 carried out for and result supplied by Panasonic. The PM2,5 filtration and Nanoe™ X technology may significantly reduce odours, bacteria, pathogens and allergens, when used as directed.
+      - paragraph [ref=e944]: In car features should be used by drivers only when safe to do so. Drivers must ensure they are in full control of the vehicle at all times.
+  - contentinfo [ref=e447]:
+    - generic [ref=e448]:
+      - generic [ref=e449]:
+        - heading "OUR VEHICLES" [level=2] [ref=e450]
+        - list [ref=e451]:
+          - listitem [ref=e452]:
+            - link "RANGE ROVER" [ref=e454] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover/overview
+          - listitem [ref=e455]:
+            - link "RANGE ROVER SPORT" [ref=e457] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover-sport/overview
+          - listitem [ref=e458]:
+            - link "RANGE ROVER VELAR" [ref=e460] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-velar/overview
+          - listitem [ref=e461]:
+            - link "RANGE ROVER EVOQUE" [ref=e463] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-evoque/overview
+          - listitem [ref=e464]:
+            - link "DISCOVERY" [ref=e466] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery/overview
+          - listitem [ref=e467]:
+            - link "DISCOVERY SPORT" [ref=e469] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery-sport/overview
+          - listitem [ref=e470]:
+            - link "DEFENDER 130" [ref=e472] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-130/overview
+          - listitem [ref=e473]:
+            - link "DEFENDER 110" [ref=e475] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/overview
+          - listitem [ref=e476]:
+            - link "DEFENDER 90" [ref=e478] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-90/overview
+          - listitem [ref=e479]:
+            - link "SPECIAL VEHICLE OPERATIONS" [ref=e481] [cursor=pointer]:
+              - /url: /en/special-vehicle-operations/overview
+          - listitem [ref=e482]:
+            - link "COMPARE OUR VEHICLES" [ref=e484] [cursor=pointer]:
+              - /url: /en/compare
+          - listitem [ref=e485]:
+            - link "OUR VEHICLES" [ref=e487] [cursor=pointer]:
+              - /url: /en/our-vehicles
+          - listitem [ref=e488]:
+            - link "SEVEN SEATER SUVS" [ref=e490] [cursor=pointer]:
+              - /url: /en/seven-seater-suvs
+          - listitem [ref=e491]:
+            - link "TOWING" [ref=e493] [cursor=pointer]:
+              - /url: /en/towing
+      - generic [ref=e494]:
+        - heading "OFFERS AND FINANCE" [level=2] [ref=e495]
+        - list [ref=e496]:
+          - listitem [ref=e497]:
+            - link "RANGE ROVER NEW VEHICLE OFFERS" [ref=e499] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/new-vehicles
+          - listitem [ref=e500]:
+            - link "RANGE ROVER APPROVED USED OFFERS" [ref=e502] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/approved-used
+          - listitem [ref=e503]:
+            - link "RANGE ROVER OWNERS OFFERS" [ref=e505] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/owners
+          - listitem [ref=e506]:
+            - link "RANGE ROVER COLLECTIONS OFFERS" [ref=e508] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/collections
+          - listitem [ref=e509]:
+            - link "DEFENDER NEW VEHICLE OFFERS" [ref=e511] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/new-vehicles
+          - listitem [ref=e512]:
+            - link "DEFENDER APPROVED USED OFFERS" [ref=e514] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/approved-used
+          - listitem [ref=e515]:
+            - link "DEFENDER OWNERS OFFERS" [ref=e517] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/owners
+          - listitem [ref=e518]:
+            - link "DEFENDER COLLECTIONS OFFERS" [ref=e520] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/collections
+          - listitem [ref=e521]:
+            - link "DISCOVERY NEW VEHICLE OFFERS" [ref=e523] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/new-vehicles
+          - listitem [ref=e524]:
+            - link "DISCOVERY APPROVED USED OFFERS" [ref=e526] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/approved-used
+          - listitem [ref=e527]:
+            - link "DISCOVERY OWNERS OFFERS" [ref=e529] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/owners
+          - listitem [ref=e530]:
+            - link "DISCOVERY COLLECTIONS OFFERS" [ref=e532] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/collections
+          - listitem [ref=e533]:
+            - link "RANGE ROVER FINANCIAL SERVICES" [ref=e535] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/financial-services
+          - listitem [ref=e536]:
+            - link "DEFENDER FINANCIAL SERVICES" [ref=e538] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/financial-services
+          - listitem [ref=e539]:
+            - link "DISCOVERY FINANCIAL SERVICES" [ref=e541] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/financial-services
+        - heading "RESEARCH" [level=2] [ref=e542]
+        - list [ref=e543]:
+          - listitem [ref=e544]:
+            - link "BUY ONLINE" [ref=e546] [cursor=pointer]:
+              - /url: /en/b
+          - listitem [ref=e547]:
+            - link "BOOK A TEST DRIVE" [ref=e549] [cursor=pointer]:
+              - /url: /en/t
+          - listitem [ref=e550]:
+            - link "REQUEST A CALLBACK" [ref=e552] [cursor=pointer]:
+              - /url: /en/request-a-call-back
+          - listitem [ref=e553]:
+            - link "HOW TO ORDER ONLINE" [ref=e555] [cursor=pointer]:
+              - /url: /en/offers-and-finance/how-to-order-online
+          - listitem [ref=e556]:
+            - link "DOWNLOAD A BROCHURE" [ref=e558] [cursor=pointer]:
+              - /url: /en/owners/brochures
+          - listitem [ref=e559]:
+            - link "NEW DIESEL, PETROL OR PHEV?" [ref=e561] [cursor=pointer]:
+              - /url: /en/owners/our-range-of-hybrid-petrol-or-euro-6-diesel-suvs/overview
+          - listitem [ref=e562]:
+            - link "KEEP ME INFORMED" [ref=e564] [cursor=pointer]:
+              - /url: /en/k
+        - heading "FLEET & BUSINESS" [level=2] [ref=e565]
+        - list [ref=e566]:
+          - listitem [ref=e567]:
+            - link "OVERVIEW" [ref=e569] [cursor=pointer]:
+              - /url: /en/fleet-and-business/overview
+          - listitem [ref=e570]:
+            - link "OUR APPROACH" [ref=e572] [cursor=pointer]:
+              - /url: /en/fleet-and-business/why-land-rover-for-business-our-responsible-future
+          - listitem [ref=e573]:
+            - link "VEHICLE RANGE" [ref=e575] [cursor=pointer]:
+              - /url: /en/fleet-and-business/vehicle-range
+          - listitem [ref=e576]:
+            - link "CONTACT US" [ref=e578] [cursor=pointer]:
+              - /url: /en/fleet-and-business/contact
+        - heading "ONLINE STORE" [level=2] [ref=e579]
+        - list [ref=e580]:
+          - listitem [ref=e581]:
+            - link "APPROVED USED" [ref=e583] [cursor=pointer]:
+              - /url: https://www.landrover-onlinestore.com/egypt/en/
+          - listitem [ref=e584]:
+            - link "KEEP ME INFORMED" [ref=e586] [cursor=pointer]:
+              - /url: /en/k
+          - listitem [ref=e587]:
+            - link "LAND ROVER COLLECTION" [ref=e589] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+      - generic [ref=e590]:
+        - heading "OWNERSHIP" [level=2] [ref=e591]
+        - list [ref=e592]:
+          - listitem [ref=e593]:
+            - link "OVERVIEW" [ref=e595] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/overview
+          - listitem [ref=e596]:
+            - link "CLIENT CARE" [ref=e598] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/contact-us
+          - listitem [ref=e599]:
+            - link "LAND ROVER CARE APP" [ref=e601] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/land-rover-care-app-mena
+        - heading "SERVICING, MAINTENANCE AND WARRANTY" [level=2] [ref=e602]
+        - list [ref=e603]:
+          - listitem [ref=e604]:
+            - link "BOOK A SERVICE ONLINE" [ref=e606] [cursor=pointer]:
+              - /url: /en/book-service-online
+          - listitem [ref=e607]:
+            - link "SERVICING AND SERVICE PLANS" [ref=e609] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/servicing/overview
+          - listitem [ref=e610]:
+            - link "MAINTENANCE EXCELLENCE" [ref=e612] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/maintenance/overview
+          - listitem [ref=e613]:
+            - link "WARRANTY & EXTENDED WARRANTY" [ref=e615] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/warranty/overview
+        - heading "MOBILITY SOLUTIONS" [level=2] [ref=e616]
+        - list [ref=e617]:
+          - listitem [ref=e618]:
+            - link "MOBILITY PROMISE" [ref=e620] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/mobility-promise
+          - listitem [ref=e621]:
+            - link "A SEAMLESS SERVICE EXPERIENCE" [ref=e623] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/seamless-service-experience
+        - heading "CONNECTED CARE" [level=2] [ref=e624]
+        - list [ref=e625]:
+          - listitem [ref=e626]:
+            - link "OVERVIEW" [ref=e628] [cursor=pointer]:
+              - /url: /range-rover/ownership/connected-care-24-7/connected-care-overview
+          - listitem [ref=e629]:
+            - link "INFOTAINMENT" [ref=e631] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/infotainment-systems/overview
+          - listitem [ref=e632]:
+            - link "REMOTE VEHICLE CONTROL AND APP" [ref=e634] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/remote-vehicle-control-and-app
+          - listitem [ref=e635]:
+            - link "SOFTWARE UPDATES" [ref=e637] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/software-update/overview
+      - generic [ref=e638]:
+        - heading "EXPLORE LAND ROVER" [level=2] [ref=e639]
+        - list [ref=e640]:
+          - listitem [ref=e641]:
+            - link "OVERVIEW" [ref=e643] [cursor=pointer]:
+              - /url: /en/explore/overview
+          - listitem [ref=e644]:
+            - link "ARDHI APP" [ref=e646] [cursor=pointer]:
+              - /url: /en/explore/ardhi-app
+          - listitem [ref=e647]:
+            - link "NEWS" [ref=e649] [cursor=pointer]:
+              - /url: /en/explore/news
+          - listitem [ref=e650]:
+            - link "LAND ROVER COLLECTION" [ref=e652] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+        - heading "EXPERIENCES" [level=2] [ref=e653]
+        - list [ref=e654]:
+          - listitem [ref=e655]:
+            - link "OVERVIEW" [ref=e657] [cursor=pointer]:
+              - /url: /en/experience/overview
+          - listitem [ref=e658]:
+            - link "EXPERIENCE DRIVES" [ref=e660] [cursor=pointer]:
+              - /url: /en/experience/lr-experience/drives
+          - listitem [ref=e661]:
+            - link "ADVENTURE TRAVEL" [ref=e663] [cursor=pointer]:
+              - /url: /en/experience/adventure-travel/overview
+          - listitem [ref=e664]:
+            - link "MANUFACTURING TOURS" [ref=e666] [cursor=pointer]:
+              - /url: /en/experience/manufacturing-tours
+          - listitem [ref=e667]:
+            - link "FIND A CENTRE" [ref=e669] [cursor=pointer]:
+              - /url: /en/experience/find-a-centre
+      - generic [ref=e670]:
+        - heading "JOIN THE CONVERSATION" [level=2] [ref=e671]
+        - list [ref=e672]:        
+    - generic [ref=e675]:
+      - generic [ref=e676]:
+        - generic [ref=e677]: Countries
+        - generic [ref=e678]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e679]:
+        - generic [ref=e680]: Language
+        - generic [ref=e681]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e682]:
+        - generic [ref=e683]: Retailer
+        - generic [ref=e684]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - link "FIND A RETAILER" [ref=e686] [cursor=pointer]:
+        - /url: https://www.landrover-egypt.com/en/dealer-locator?id=undefined
+    - list [ref=e688]:
+      - listitem [ref=e689]:
+        - link "CAREERS" [ref=e690] [cursor=pointer]:
+          - /url: http://www.jaguarlandrovercareers.com/
+      - listitem [ref=e691]:
+        - link "TERMS & CONDITIONS" [ref=e692] [cursor=pointer]:
+          - /url: /en/terms-and-conditions
+      - listitem [ref=e693]:
+        - link "CONTACT US" [ref=e694] [cursor=pointer]:
+          - /url: /en/dealer-locator
+      - listitem [ref=e695]:
+        - link "PRIVACY POLICY" [ref=e696] [cursor=pointer]:
+          - /url: /en/privacy-policy
+      - listitem [ref=e697]:
+        - link "COOKIE POLICY" [ref=e698] [cursor=pointer]:
+          - /url: /en/cookie-policy
+      - listitem [ref=e699]:
+        - link "SITEMAP" [ref=e700] [cursor=pointer]:
+          - /url: /en/sitemap.xml
+      - listitem [ref=e701]:
+        - link "JAGUAR LAND ROVER CORPORATE" [ref=e702] [cursor=pointer]:
+          - /url: https://www.jaguarlandrover.com/
+    - generic [ref=e704]:
+      - img "Land Rover Logo" [ref=e706]
+      - paragraph [ref=e707]:
+        - text: © JAGUAR LAND ROVER LIMITED 2026.
+        - text: Egypt, MTI Automotive
+        - text: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation. A vehicle's actual fuel consumption may differ from that achieved in such tests and these figures are for comparative purposes only. The information, specification, prices and colours on this website may vary from market to market and are subject to change without notice. Please contact your local dealer for local availability and prices.
+        - text: Weights stated reflect vehicle standard specification. Accessories and other items fitted after the point of manufacture will affect payload. Ensure Gross Vehicle Weight and Maximum Axle Loads are not exceeded when loading the vehicle with accessories, occupants, fluids and fuels, and payload.
+        - strong [ref=e708]: Important note on imagery & specification.
+        - text: The global shortage of semiconductors is currently affecting vehicle build specifications, option availability, and build timings. This is a very dynamic situation, and as a result imagery used within the website at present may not fully reflect current specifications for features, options, trim and colour schemes. Please consult your Retailer who will be able to confirm any current restrictions with you in order to allow an informed choice
