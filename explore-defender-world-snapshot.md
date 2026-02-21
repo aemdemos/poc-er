@@ -1,0 +1,439 @@
+- generic [ref=e6]:
+  - generic [ref=e7]:
+    - navigation "Dynamic navigation" [ref=e9]:
+      - button [ref=e12] [cursor=pointer]
+      - link [ref=e18] [cursor=pointer]:
+        - /url: /en/
+        - img [ref=e19]
+      - text:  
+    - generic [ref=e21]:
+      - text: 
+      - generic [ref=e22]:
+        - generic [ref=e23]: Defender World
+        - generic [ref=e24]: Overview
+        - generic [ref=e25]: 
+  - generic [ref=e27]:
+    - generic [ref=e552]:
+      - group "1 / 1" [ref=e554]:
+        - generic [ref=e555]:
+          - img "Defender front side view" [ref=e558]
+          - generic [ref=e563]:
+            - heading "DEFENDER WORLD" [level=1] [ref=e564]
+            - generic [ref=e565]: Learn more about how the redesigned icon embraces the impossible.
+      - generic [ref=e569]:
+        - img [ref=e570]
+        - img [ref=e572]
+        - generic [ref=e575]: 
+    - generic [ref=e577]:
+      - group "1 / 1" [ref=e579]:
+        - generic [ref=e580]:
+          - img "Rhino with a girl" [ref=e583]
+          - generic [ref=e586]:
+            - heading "THE RHINO WHISPERER" [level=2] [ref=e587]
+            - generic [ref=e588]:
+              - generic [ref=e589]: Inspired by a true story. A life dedicated to protecting one of the world’s most critically endangered species.
+              - link " FIND OUT MORE" [ref=e590] [cursor=pointer]:
+                - /url: /en/explore/defender-world/purpose/tusk/the-rhino-whisperer
+                - generic: 
+                - text: FIND OUT MORE
+      - generic [ref=e593]:
+        - img [ref=e594]
+        - img [ref=e596]
+        - generic [ref=e599]: 
+    - group "1 / 1" [ref=e603]:
+      - generic [ref=e605]:
+        - generic [ref=e606]:
+          - heading "THE EVOLUTION OF AN ICON" [level=2] [ref=e607]
+          - generic [ref=e608]: From its beginnings in 1947, the iconic 4x4 has raised the bar for capability in every era.
+          - link " FIND OUT MORE" [ref=e612] [cursor=pointer]:
+            - /url: /en/explore/defender-world/heritage/the-defender-story
+            - generic [ref=e613]: 
+            - generic [ref=e614]: FIND OUT MORE
+        - img "THE EVOLUTION OF AN ICON" [ref=e617]
+    - heading "ALWAYS PUSHING BOUNDARIES" [level=2] [ref=e93]
+    - generic [ref=e99]:
+      - img [ref=e104]
+      - generic [ref=e106]:
+        - navigation [ref=e110]:
+          - button "DEFENDER RALLY" [ref=e111] [cursor=pointer]:
+            - generic [ref=e112]: DEFENDER RALLY
+          - button "DEFENDER TROPHY" [ref=e113] [cursor=pointer]:
+            - generic [ref=e114]: DEFENDER TROPHY
+        - generic [ref=e115]:
+          - heading "DEFENDER RALLY" [level=2] [ref=e116]
+          - generic [ref=e117]:
+            - generic [ref=e118]: Defender takes on the 2026 Dakar Rally and FIA World Rally-Raid Championship in a showcase of strength, capability and durability.
+            - link " FIND OUT MORE" [ref=e119] [cursor=pointer]:
+              - /url: /en/explore/defender-world/motor-sport/defender-rally
+              - generic: 
+              - text: FIND OUT MORE
+    - heading "DEFENDER PARTNERSHIPS" [level=2] [ref=e127]
+    - generic [ref=e619]:
+      - group "1 / 1" [ref=e621]:
+        - generic [ref=e622]:
+          - img "Defender OCTA in a field" [ref=e625]
+          - generic [ref=e628]:
+            - heading "TUSK" [level=2] [ref=e629]
+            - generic [ref=e630]:
+              - generic [ref=e631]: A driving force in conservation, working together to protect biodiversity and wildlife in Africa.
+              - link " FIND OUT MORE" [ref=e633] [cursor=pointer]:
+                - /url: /en/explore/defender-world/purpose/tusk/overview
+                - generic [ref=e634]: 
+                - generic [ref=e635]: FIND OUT MORE
+      - generic [ref=e638]:
+        - img [ref=e639]
+        - img [ref=e641]
+        - generic [ref=e644]: 
+    - generic [ref=e157]:
+      - generic [ref=e158]:
+        - link "JLR_Red_Cross_NEC" [ref=e159] [cursor=pointer]:
+          - /url: /en/explore/defender-world/purpose/red-cross/overview
+          - img "JLR_Red_Cross_NEC" [ref=e162]
+        - generic [ref=e165]:
+          - heading "RED CROSS" [level=2] [ref=e166]
+          - generic [ref=e167]: Building community strength, preparedness and resilience around the world with the British Red Cross.
+          - link " FIND OUT MORE" [ref=e646] [cursor=pointer]:
+            - /url: /en/explore/defender-world/purpose/red-cross/overview
+            - generic [ref=e647]: 
+            - generic [ref=e648]: FIND OUT MORE
+      - generic [ref=e175]:
+        - img "Defender parked on the grass" [ref=e177]
+        - generic [ref=e179]:
+          - heading "GLASTONBURY" [level=2] [ref=e180]
+          - generic [ref=e181]: Defender is the Official Vehicle Partner of Glastonbury 2024.
+      - generic [ref=e182]:
+        - link "Rugby World Cup France Sponsor, Ryuichi Nagayama is Fuwaku Rugby Club's oldest active member and half a Defender" [ref=e183] [cursor=pointer]:
+          - /url: /en/sponsorship/rugby
+          - img "Rugby World Cup France Sponsor, Ryuichi Nagayama is Fuwaku Rugby Club's oldest active member and half a Defender" [ref=e186]
+        - generic [ref=e189]:
+          - heading "RUGBY WORLD CUP" [level=2] [ref=e190]
+          - generic [ref=e191]: Defender and rugby world cup. Forged in history, destined for greatness.
+          - link " FIND OUT MORE" [ref=e650] [cursor=pointer]:
+            - /url: /en/sponsorship/rugby
+            - generic [ref=e651]: 
+            - generic [ref=e652]: FIND OUT MORE
+    - heading "WOMEN AND DEFENDER" [level=2] [ref=e206]
+    - group "1 / 1" [ref=e656]:
+      - generic [ref=e658]:
+        - generic [ref=e659]:
+          - heading "WOMEN EMBRACING THE IMPOSSIBLE" [level=2] [ref=e660]
+          - generic [ref=e661]: Celebrate the intrepid women who embrace the impossible with Defender.
+          - link " FIND OUT MORE" [ref=e665] [cursor=pointer]:
+            - /url: /en/explore/defender-world/people/women-of-defender
+            - generic [ref=e666]: 
+            - generic [ref=e667]: FIND OUT MORE
+        - img "WOMEN EMBRACING THE IMPOSSIBLE" [ref=e670]
+    - generic [ref=e236]:
+      - generic [ref=e237]:
+        - link "Profile Photo of Emma Kowalczuk" [ref=e238] [cursor=pointer]:
+          - /url: /en/explore/defender-world/people/engineering-harmony
+          - img "Profile Photo of Emma Kowalczuk" [ref=e241]
+        - generic [ref=e244]:
+          - heading "ENGINEERING HARMONY" [level=2] [ref=e245]
+          - generic [ref=e246]: As Electromagnetics Chapter Lead, Emma heads a team of expert engineers using computer simulations to ensure wireless technology works in harmony.
+          - link " FIND OUT MORE" [ref=e672] [cursor=pointer]:
+            - /url: /en/explore/defender-world/people/engineering-harmony
+            - generic [ref=e673]: 
+            - generic [ref=e674]: FIND OUT MORE
+      - generic [ref=e254]:
+        - link "Profile photo of Ceri Bateman" [ref=e255] [cursor=pointer]:
+          - /url: /en/explore/defender-world/people/sculpting-the-future
+          - img "Profile photo of Ceri Bateman" [ref=e258]
+        - generic [ref=e261]:
+          - heading "SCULPTING THE FUTURE" [level=2] [ref=e262]
+          - generic [ref=e263]: Ceri connects the Defender’s distinctive appearance with its performance and durability. Her impact on Defender can be seen in its beautifully designed, headlights.
+          - link " FIND OUT MORE" [ref=e676] [cursor=pointer]:
+            - /url: /en/explore/defender-world/people/sculpting-the-future
+            - generic [ref=e677]: 
+            - generic [ref=e678]: FIND OUT MORE
+      - generic [ref=e271]:
+        - link "Profile photo of Deniz Yetkin" [ref=e272] [cursor=pointer]:
+          - /url: /en/explore/defender-world/people/every-detail-matters
+          - img "Profile photo of Deniz Yetkin" [ref=e275]
+        - generic [ref=e278]:
+          - heading "EVERY DETAIL MATTERS" [level=2] [ref=e279]
+          - generic [ref=e280]: As Head of Process Chain for Vehicle Programmes, Deniz works on Defender at every step to ensure the vehicle is innovative and meets the highest standards of quality and reliability.
+          - link " FIND OUT MORE" [ref=e680] [cursor=pointer]:
+            - /url: /en/explore/defender-world/people/every-detail-matters
+            - generic [ref=e681]: 
+            - generic [ref=e682]: FIND OUT MORE
+    - generic:
+      - generic:        
+  - contentinfo [ref=e289]:
+    - generic [ref=e290]:
+      - generic [ref=e291]:
+        - heading "OUR VEHICLES" [level=2] [ref=e292]
+        - list [ref=e293]:
+          - listitem [ref=e294]:
+            - link "RANGE ROVER" [ref=e296] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover/overview
+          - listitem [ref=e297]:
+            - link "RANGE ROVER SPORT" [ref=e299] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover-sport/overview
+          - listitem [ref=e300]:
+            - link "RANGE ROVER VELAR" [ref=e302] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-velar/overview
+          - listitem [ref=e303]:
+            - link "RANGE ROVER EVOQUE" [ref=e305] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-evoque/overview
+          - listitem [ref=e306]:
+            - link "DISCOVERY" [ref=e308] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery/overview
+          - listitem [ref=e309]:
+            - link "DISCOVERY SPORT" [ref=e311] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery-sport/overview
+          - listitem [ref=e312]:
+            - link "DEFENDER 130" [ref=e314] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-130/overview
+          - listitem [ref=e315]:
+            - link "DEFENDER 110" [ref=e317] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/overview
+          - listitem [ref=e318]:
+            - link "DEFENDER 90" [ref=e320] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-90/overview
+          - listitem [ref=e321]:
+            - link "SPECIAL VEHICLE OPERATIONS" [ref=e323] [cursor=pointer]:
+              - /url: /en/special-vehicle-operations/overview
+          - listitem [ref=e324]:
+            - link "COMPARE OUR VEHICLES" [ref=e326] [cursor=pointer]:
+              - /url: /en/compare
+          - listitem [ref=e327]:
+            - link "OUR VEHICLES" [ref=e329] [cursor=pointer]:
+              - /url: /en/our-vehicles
+          - listitem [ref=e330]:
+            - link "SEVEN SEATER SUVS" [ref=e332] [cursor=pointer]:
+              - /url: /en/seven-seater-suvs
+          - listitem [ref=e333]:
+            - link "TOWING" [ref=e335] [cursor=pointer]:
+              - /url: /en/towing
+      - generic [ref=e336]:
+        - heading "OFFERS AND FINANCE" [level=2] [ref=e337]
+        - list [ref=e338]:
+          - listitem [ref=e339]:
+            - link "RANGE ROVER NEW VEHICLE OFFERS" [ref=e341] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/new-vehicles
+          - listitem [ref=e342]:
+            - link "RANGE ROVER APPROVED USED OFFERS" [ref=e344] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/approved-used
+          - listitem [ref=e345]:
+            - link "RANGE ROVER OWNERS OFFERS" [ref=e347] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/owners
+          - listitem [ref=e348]:
+            - link "RANGE ROVER COLLECTIONS OFFERS" [ref=e350] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/collections
+          - listitem [ref=e351]:
+            - link "DEFENDER NEW VEHICLE OFFERS" [ref=e353] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/new-vehicles
+          - listitem [ref=e354]:
+            - link "DEFENDER APPROVED USED OFFERS" [ref=e356] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/approved-used
+          - listitem [ref=e357]:
+            - link "DEFENDER OWNERS OFFERS" [ref=e359] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/owners
+          - listitem [ref=e360]:
+            - link "DEFENDER COLLECTIONS OFFERS" [ref=e362] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/collections
+          - listitem [ref=e363]:
+            - link "DISCOVERY NEW VEHICLE OFFERS" [ref=e365] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/new-vehicles
+          - listitem [ref=e366]:
+            - link "DISCOVERY APPROVED USED OFFERS" [ref=e368] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/approved-used
+          - listitem [ref=e369]:
+            - link "DISCOVERY OWNERS OFFERS" [ref=e371] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/owners
+          - listitem [ref=e372]:
+            - link "DISCOVERY COLLECTIONS OFFERS" [ref=e374] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/collections
+          - listitem [ref=e375]:
+            - link "RANGE ROVER FINANCIAL SERVICES" [ref=e377] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/financial-services
+          - listitem [ref=e378]:
+            - link "DEFENDER FINANCIAL SERVICES" [ref=e380] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/financial-services
+          - listitem [ref=e381]:
+            - link "DISCOVERY FINANCIAL SERVICES" [ref=e383] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/financial-services
+        - heading "RESEARCH" [level=2] [ref=e384]
+        - list [ref=e385]:
+          - listitem [ref=e386]:
+            - link "BUY ONLINE" [ref=e388] [cursor=pointer]:
+              - /url: /en/b
+          - listitem [ref=e389]:
+            - link "BOOK A TEST DRIVE" [ref=e391] [cursor=pointer]:
+              - /url: /en/t
+          - listitem [ref=e392]:
+            - link "REQUEST A CALLBACK" [ref=e394] [cursor=pointer]:
+              - /url: /en/request-a-call-back
+          - listitem [ref=e395]:
+            - link "HOW TO ORDER ONLINE" [ref=e397] [cursor=pointer]:
+              - /url: /en/offers-and-finance/how-to-order-online
+          - listitem [ref=e398]:
+            - link "DOWNLOAD A BROCHURE" [ref=e400] [cursor=pointer]:
+              - /url: /en/owners/brochures
+          - listitem [ref=e401]:
+            - link "NEW DIESEL, PETROL OR PHEV?" [ref=e403] [cursor=pointer]:
+              - /url: /en/owners/our-range-of-hybrid-petrol-or-euro-6-diesel-suvs/overview
+          - listitem [ref=e404]:
+            - link "KEEP ME INFORMED" [ref=e406] [cursor=pointer]:
+              - /url: /en/k
+        - heading "FLEET & BUSINESS" [level=2] [ref=e407]
+        - list [ref=e408]:
+          - listitem [ref=e409]:
+            - link "OVERVIEW" [ref=e411] [cursor=pointer]:
+              - /url: /en/fleet-and-business/overview
+          - listitem [ref=e412]:
+            - link "OUR APPROACH" [ref=e414] [cursor=pointer]:
+              - /url: /en/fleet-and-business/why-land-rover-for-business-our-responsible-future
+          - listitem [ref=e415]:
+            - link "VEHICLE RANGE" [ref=e417] [cursor=pointer]:
+              - /url: /en/fleet-and-business/vehicle-range
+          - listitem [ref=e418]:
+            - link "CONTACT US" [ref=e420] [cursor=pointer]:
+              - /url: /en/fleet-and-business/contact
+        - heading "ONLINE STORE" [level=2] [ref=e421]
+        - list [ref=e422]:
+          - listitem [ref=e423]:
+            - link "APPROVED USED" [ref=e425] [cursor=pointer]:
+              - /url: https://www.landrover-onlinestore.com/egypt/en/
+          - listitem [ref=e426]:
+            - link "KEEP ME INFORMED" [ref=e428] [cursor=pointer]:
+              - /url: /en/k
+          - listitem [ref=e429]:
+            - link "LAND ROVER COLLECTION" [ref=e431] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+      - generic [ref=e432]:
+        - heading "OWNERSHIP" [level=2] [ref=e433]
+        - list [ref=e434]:
+          - listitem [ref=e435]:
+            - link "OVERVIEW" [ref=e437] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/overview
+          - listitem [ref=e438]:
+            - link "CLIENT CARE" [ref=e440] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/contact-us
+          - listitem [ref=e441]:
+            - link "LAND ROVER CARE APP" [ref=e443] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/land-rover-care-app-mena
+        - heading "SERVICING, MAINTENANCE AND WARRANTY" [level=2] [ref=e444]
+        - list [ref=e445]:
+          - listitem [ref=e446]:
+            - link "BOOK A SERVICE ONLINE" [ref=e448] [cursor=pointer]:
+              - /url: /en/book-service-online
+          - listitem [ref=e449]:
+            - link "SERVICING AND SERVICE PLANS" [ref=e451] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/servicing/overview
+          - listitem [ref=e452]:
+            - link "MAINTENANCE EXCELLENCE" [ref=e454] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/maintenance/overview
+          - listitem [ref=e455]:
+            - link "WARRANTY & EXTENDED WARRANTY" [ref=e457] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/warranty/overview
+        - heading "MOBILITY SOLUTIONS" [level=2] [ref=e458]
+        - list [ref=e459]:
+          - listitem [ref=e460]:
+            - link "MOBILITY PROMISE" [ref=e462] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/mobility-promise
+          - listitem [ref=e463]:
+            - link "A SEAMLESS SERVICE EXPERIENCE" [ref=e465] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/seamless-service-experience
+        - heading "CONNECTED CARE" [level=2] [ref=e466]
+        - list [ref=e467]:
+          - listitem [ref=e468]:
+            - link "OVERVIEW" [ref=e470] [cursor=pointer]:
+              - /url: /range-rover/ownership/connected-care-24-7/connected-care-overview
+          - listitem [ref=e471]:
+            - link "INFOTAINMENT" [ref=e473] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/infotainment-systems/overview
+          - listitem [ref=e474]:
+            - link "REMOTE VEHICLE CONTROL AND APP" [ref=e476] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/remote-vehicle-control-and-app
+          - listitem [ref=e477]:
+            - link "SOFTWARE UPDATES" [ref=e479] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/software-update/overview
+      - generic [ref=e480]:
+        - heading "EXPLORE LAND ROVER" [level=2] [ref=e481]
+        - list [ref=e482]:
+          - listitem [ref=e483]:
+            - link "OVERVIEW" [ref=e485] [cursor=pointer]:
+              - /url: /en/explore/overview
+          - listitem [ref=e486]:
+            - link "ARDHI APP" [ref=e488] [cursor=pointer]:
+              - /url: /en/explore/ardhi-app
+          - listitem [ref=e489]:
+            - link "NEWS" [ref=e491] [cursor=pointer]:
+              - /url: /en/explore/news
+          - listitem [ref=e492]:
+            - link "LAND ROVER COLLECTION" [ref=e494] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+        - heading "EXPERIENCES" [level=2] [ref=e495]
+        - list [ref=e496]:
+          - listitem [ref=e497]:
+            - link "OVERVIEW" [ref=e499] [cursor=pointer]:
+              - /url: /en/experience/overview
+          - listitem [ref=e500]:
+            - link "EXPERIENCE DRIVES" [ref=e502] [cursor=pointer]:
+              - /url: /en/experience/lr-experience/drives
+          - listitem [ref=e503]:
+            - link "ADVENTURE TRAVEL" [ref=e505] [cursor=pointer]:
+              - /url: /en/experience/adventure-travel/overview
+          - listitem [ref=e506]:
+            - link "MANUFACTURING TOURS" [ref=e508] [cursor=pointer]:
+              - /url: /en/experience/manufacturing-tours
+          - listitem [ref=e509]:
+            - link "FIND A CENTRE" [ref=e511] [cursor=pointer]:
+              - /url: /en/experience/find-a-centre
+      - generic [ref=e512]:
+        - heading "JOIN THE CONVERSATION" [level=2] [ref=e513]
+        - list [ref=e514]:        
+    - generic [ref=e517]:
+      - generic [ref=e518]:
+        - generic [ref=e519]: Countries
+        - generic [ref=e520]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e521]:
+        - generic [ref=e522]: Language
+        - generic [ref=e523]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e524]:
+        - generic [ref=e525]: Retailer
+        - generic [ref=e526]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - link "FIND A RETAILER" [ref=e528] [cursor=pointer]:
+        - /url: https://www.landrover-egypt.com/en/dealer-locator?id=undefined
+    - list [ref=e530]:
+      - listitem [ref=e531]:
+        - link "CAREERS" [ref=e532] [cursor=pointer]:
+          - /url: http://www.jaguarlandrovercareers.com/
+      - listitem [ref=e533]:
+        - link "TERMS & CONDITIONS" [ref=e534] [cursor=pointer]:
+          - /url: /en/terms-and-conditions
+      - listitem [ref=e535]:
+        - link "CONTACT US" [ref=e536] [cursor=pointer]:
+          - /url: /en/dealer-locator
+      - listitem [ref=e537]:
+        - link "PRIVACY POLICY" [ref=e538] [cursor=pointer]:
+          - /url: /en/privacy-policy
+      - listitem [ref=e539]:
+        - link "COOKIE POLICY" [ref=e540] [cursor=pointer]:
+          - /url: /en/cookie-policy
+      - listitem [ref=e541]:
+        - link "SITEMAP" [ref=e542] [cursor=pointer]:
+          - /url: /en/sitemap.xml
+      - listitem [ref=e543]:
+        - link "JAGUAR LAND ROVER CORPORATE" [ref=e544] [cursor=pointer]:
+          - /url: https://www.jaguarlandrover.com/
+    - generic [ref=e546]:
+      - img "Land Rover Logo" [ref=e548]
+      - paragraph [ref=e549]:
+        - text: © JAGUAR LAND ROVER LIMITED 2026.
+        - text: Egypt, MTI Automotive
+        - text: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation. A vehicle's actual fuel consumption may differ from that achieved in such tests and these figures are for comparative purposes only. The information, specification, prices and colours on this website may vary from market to market and are subject to change without notice. Please contact your local dealer for local availability and prices.
+        - text: Weights stated reflect vehicle standard specification. Accessories and other items fitted after the point of manufacture will affect payload. Ensure Gross Vehicle Weight and Maximum Axle Loads are not exceeded when loading the vehicle with accessories, occupants, fluids and fuels, and payload.
+        - strong [ref=e550]: Important note on imagery & specification.
+        - text: The global shortage of semiconductors is currently affecting vehicle build specifications, option availability, and build timings. This is a very dynamic situation, and as a result imagery used within the website at present may not fully reflect current specifications for features, options, trim and colour schemes. Please consult your Retailer who will be able to confirm any current restrictions with you in order to allow an informed choice

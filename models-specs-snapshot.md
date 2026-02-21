@@ -1,0 +1,477 @@
+- generic [ref=e6]:
+  - generic [ref=e7]:
+    - navigation "Dynamic navigation" [ref=e9]:
+      - button [ref=e12] [cursor=pointer]
+      - link [ref=e18] [cursor=pointer]:
+        - /url: /en/defender/overview
+        - img [ref=e19]
+      - text:  
+    - generic [ref=e22]:
+      - generic [ref=e23]: Defender 26MY
+      - generic [ref=e24]: MODELS AND SPECIFICATIONS
+      - generic [ref=e25]: 
+  - generic [ref=e27]:
+    - heading "DEFENDER MODELS AND SPECIFICATIONS" [level=1] [ref=e35]
+    - heading "CHOOSE YOUR BODYSTYLE" [level=2] [ref=e43]
+    - generic [ref=e417]:
+      - generic [ref=e418]:
+        - generic:
+          - group "1 / 4" [ref=e419] [cursor=pointer]:
+            - generic [ref=e422]:
+              - radio "Defender 90" [checked]
+              - generic [ref=e423]: Defender 90
+          - group "2 / 4" [ref=e424] [cursor=pointer]:
+            - generic [ref=e427]:
+              - radio "Defender 110"
+              - generic [ref=e428]: Defender 110
+          - group "3 / 4" [ref=e429] [cursor=pointer]:
+            - generic [ref=e432]:
+              - radio "Defender 130"
+              - generic [ref=e433]: Defender 130
+          - group "4 / 4" [ref=e434] [cursor=pointer]:
+            - generic [ref=e437]:
+              - radio "Defender OCTA"
+              - generic [ref=e438]: Defender OCTA
+      - generic [ref=e443]:
+        - button "Previous slide" [ref=e444] [cursor=pointer]: 
+        - button "Next slide" [ref=e445] [cursor=pointer]: 
+    - generic [ref=e72]:
+      - heading "CHOOSE YOUR MODEL" [level=2] [ref=e74]
+      - generic [ref=e447]:
+        - generic [ref=e448]:
+          - generic:
+            - group "1 / 5" [ref=e449]:
+              - generic [ref=e450]:
+                - img "Defender S" [ref=e452]
+                - heading "Defender S" [level=2] [ref=e453]
+                - list [ref=e455]:
+                  - listitem [ref=e456]:
+                    - img [ref=e457]
+                    - generic [ref=e459]: Petrol
+                - generic [ref=e460]:
+                  - link " Build your own" [ref=e461] [cursor=pointer]:
+                    - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-90/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+                    - generic: 
+                    - text: Build your own
+                  - button "ENGINES AND SPECIFICATIONS" [ref=e462] [cursor=pointer]
+            - group "2 / 5" [ref=e463]:
+              - generic [ref=e464]:
+                - img "Defender X-Dynamic SE" [ref=e466]
+                - heading "Defender X-Dynamic SE" [level=2] [ref=e467]
+                - list [ref=e469]:
+                  - listitem [ref=e470]:
+                    - img [ref=e471]
+                    - generic [ref=e473]: Petrol
+                - generic [ref=e474]:
+                  - link " Build your own" [ref=e475] [cursor=pointer]:
+                    - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-90/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+                    - generic: 
+                    - text: Build your own
+                  - button "ENGINES AND SPECIFICATIONS" [ref=e476] [cursor=pointer]
+            - group "3 / 5" [ref=e477]:
+              - generic [ref=e478]:
+                - img "Defender X-Dynamic HSE" [ref=e480]
+                - heading "Defender X-Dynamic HSE" [level=2] [ref=e481]
+                - list [ref=e483]:
+                  - listitem [ref=e484]:
+                    - img [ref=e485]
+                    - generic [ref=e487]: Petrol
+                - generic [ref=e488]:
+                  - link " Build your own" [ref=e489] [cursor=pointer]:
+                    - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-90/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+                    - generic: 
+                    - text: Build your own
+                  - button "ENGINES AND SPECIFICATIONS" [ref=e490] [cursor=pointer]
+            - group "4 / 5" [ref=e491]:
+              - generic [ref=e492]:
+                - img "Defender X" [ref=e494]
+                - heading "Defender X" [level=2] [ref=e495]
+                - list [ref=e497]:
+                  - listitem [ref=e498]:
+                    - img [ref=e499]
+                    - generic [ref=e501]: Petrol
+                - generic [ref=e502]:
+                  - link " Build your own" [ref=e503] [cursor=pointer]:
+                    - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-90/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+                    - generic: 
+                    - text: Build your own
+                  - button "ENGINES AND SPECIFICATIONS" [ref=e504] [cursor=pointer]
+            - group "5 / 5" [ref=e505]:
+              - generic [ref=e506]:
+                - img "Defender V8" [ref=e508]
+                - heading "Defender V8" [level=2] [ref=e509]
+                - list [ref=e511]:
+                  - listitem [ref=e512]:
+                    - img [ref=e513]
+                    - generic [ref=e515]: Petrol
+                - generic [ref=e516]:
+                  - link " Build your own" [ref=e517] [cursor=pointer]:
+                    - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-90/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+                    - generic: 
+                    - text: Build your own
+                  - button "ENGINES AND SPECIFICATIONS" [ref=e518] [cursor=pointer]
+        - generic [ref=e521]:
+          - button "Previous slide" [disabled]: 
+          - button "Next slide" [ref=e522] [cursor=pointer]: 
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107] [cursor=pointer]:
+            - heading "Key Features" [level=5] [ref=e108]
+            - generic [ref=e109]: 
+          - generic [ref=e525]:
+            - generic:
+              - group "1 / 5" [ref=e526]:
+                - generic [ref=e527]:
+                  - heading "Includes:" [level=6] [ref=e528]
+                  - list [ref=e529]:
+                    - listitem [ref=e530]: 19" Style 6010 wheels
+              - group "2 / 5" [ref=e531]:
+                - generic [ref=e532]:
+                  - heading "Includes:" [level=6] [ref=e533]
+                  - list [ref=e534]:
+                    - listitem [ref=e535]: 20" Style 5094, Satin Dark Grey wheels
+                    - listitem [ref=e536]: Black contrast roof
+                    - listitem [ref=e537]: Meridian™ Sound System
+                    - listitem [ref=e538]: Resist seats
+                    - listitem [ref=e539]: 12-way electric driver memory front seats with 2-way manual headrests
+              - group "3 / 5" [ref=e540]:
+                - generic [ref=e541]:
+                  - heading "Includes:" [level=6] [ref=e542]
+                  - list [ref=e543]:
+                    - listitem [ref=e544]: 20" Style 5098, Satin Dark Grey wheels
+                    - listitem [ref=e545]: Sliding panoramic roof
+                    - listitem [ref=e546]: Matrix LED headlights with signature DRL
+                    - listitem [ref=e547]: Windsor leather seats
+                    - listitem [ref=e548]: 14-way heated and cooled electric driver memory front seats with 4-way manual headrests
+                    - listitem [ref=e549]: Electrically adjustable steering column
+              - group "4 / 5" [ref=e550]:
+                - generic [ref=e551]:
+                  - heading "Includes:" [level=6] [ref=e552]
+                  - list [ref=e553]:
+                    - listitem [ref=e554]: 22" Style 7030, Dark Grey Diamond Turned wheels with Gloss Black contrast
+                    - listitem [ref=e555]: Meridian™ Surround Sound System
+                    - listitem [ref=e556]: Windsor leather and Kvadrat™ seats
+                    - listitem [ref=e557]: 14-way heated and cooled electric driver memory front seats with 4-way manual winged headrests
+                    - listitem [ref=e558]: Signature interior upgrade
+              - group "5 / 5" [ref=e559]:
+                - generic [ref=e560]:
+                  - heading "Includes:" [level=6] [ref=e561]
+                  - list [ref=e562]:
+                    - listitem [ref=e563]: Quad outboard mounted exhaust pipes
+        - generic [ref=e128] [cursor=pointer]:
+          - heading "Standard Features" [level=5] [ref=e129]
+          - generic [ref=e130]: 
+    - generic:
+      - generic:        
+    - generic [ref=e138]:
+      - paragraph
+      - superscript [ref=e564]: "**"
+      - text: WLTP figures.
+      - text: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation with a fully charged battery. For comparison purposes only. Real world figures may differ. CO
+      - subscript [ref=e565]: "2"
+      - text: ", fuel economy, energy consumption and range figures may vary according to factors such as driving styles, environmental conditions, load, wheel fitment, accessories fitted, actual route and battery condition. Range figures are based upon production vehicle over a standardised route. V8 P635 figures provided are manufacturer’s estimates and will be replaced with the official EU test figures as soon as they are available."
+      - superscript [ref=e566]: "**"
+      - text: Max speed is 191km/h when fitted with 20" wheels.
+      - superscript [ref=e567]: "***"
+      - text: Max speed is 209km/h when fitted with 22" wheels.
+      - superscript [ref=e568]: "***"
+      - text: When combined with electric motor.
+      - superscript [ref=e569]: △
+      - text: Includes a 75kg driver, full fluids and 90% fuel.
+      - superscript [ref=e570]: ▲
+      - text: Includes full fluids and 90% fuel.
+      - superscript [ref=e571]: ◇
+      - text: Dynamic roof load allows for up to 118kg/168kg (90/110 and 130) when fitted with Off-road tyres and Expedition Roof Rack. Static roof load allows for up to 300kg.
+      - superscript [ref=e572]: ⬧
+      - text: Behind row 1 figures for Hard Top relates to behind loadspace partition.
+      - superscript [ref=e573]: ✧
+      - text: "Dry: Volume as measured with VDA-compliant solid blocks (200mm x 50mm x 100mm). Hard Top models: Includes underfloor stowage, excludes jack and tools."
+      - superscript [ref=e574]: ✦
+      - text: "Wet: Volume as measured by simulating the loadspace filled with liquid. Hard Top models: Includes underfloor stowage, excludes jack and tools."
+      - superscript [ref=e575]: ▼
+      - text: Defender V8 models have no dynamic roof loading capacity. Static roof load allows for up to 300kg.
+      - superscript [ref=e576]: ▽
+      - text: With towing eye cover removed.
+      - superscript [ref=e577]: ▼▼
+      - text: 100kg (22" Wheels with All Season Tyres) / 168kg (20" Wheels with All-Terrain or Advanced All-Terrain Tyres). Roof load is 0kg when OCTA mode is activated.
+      - text: Weights reflect vehicles to standard specifications. Optional extras increase weight.
+      - text: Optional features and their availability may differ by vehicle specification (model and powertrain), or require the installation of other features in order to be fitted. Please contact your local Retailer for more details, or configure your vehicle online.
+      - paragraph
+  - contentinfo [ref=e154]:
+    - generic [ref=e155]:
+      - generic [ref=e156]:
+        - heading "OUR VEHICLES" [level=2] [ref=e157]
+        - list [ref=e158]:
+          - listitem [ref=e159]:
+            - link "RANGE ROVER" [ref=e161] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover/overview
+          - listitem [ref=e162]:
+            - link "RANGE ROVER SPORT" [ref=e164] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover-sport/overview
+          - listitem [ref=e165]:
+            - link "RANGE ROVER VELAR" [ref=e167] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-velar/overview
+          - listitem [ref=e168]:
+            - link "RANGE ROVER EVOQUE" [ref=e170] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-evoque/overview
+          - listitem [ref=e171]:
+            - link "DISCOVERY" [ref=e173] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery/overview
+          - listitem [ref=e174]:
+            - link "DISCOVERY SPORT" [ref=e176] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery-sport/overview
+          - listitem [ref=e177]:
+            - link "DEFENDER 130" [ref=e179] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-130/overview
+          - listitem [ref=e180]:
+            - link "DEFENDER 110" [ref=e182] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/overview
+          - listitem [ref=e183]:
+            - link "DEFENDER 90" [ref=e185] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-90/overview
+          - listitem [ref=e186]:
+            - link "SPECIAL VEHICLE OPERATIONS" [ref=e188] [cursor=pointer]:
+              - /url: /en/special-vehicle-operations/overview
+          - listitem [ref=e189]:
+            - link "COMPARE OUR VEHICLES" [ref=e191] [cursor=pointer]:
+              - /url: /en/compare
+          - listitem [ref=e192]:
+            - link "OUR VEHICLES" [ref=e194] [cursor=pointer]:
+              - /url: /en/our-vehicles
+          - listitem [ref=e195]:
+            - link "SEVEN SEATER SUVS" [ref=e197] [cursor=pointer]:
+              - /url: /en/seven-seater-suvs
+          - listitem [ref=e198]:
+            - link "TOWING" [ref=e200] [cursor=pointer]:
+              - /url: /en/towing
+      - generic [ref=e201]:
+        - heading "OFFERS AND FINANCE" [level=2] [ref=e202]
+        - list [ref=e203]:
+          - listitem [ref=e204]:
+            - link "RANGE ROVER NEW VEHICLE OFFERS" [ref=e206] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/new-vehicles
+          - listitem [ref=e207]:
+            - link "RANGE ROVER APPROVED USED OFFERS" [ref=e209] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/approved-used
+          - listitem [ref=e210]:
+            - link "RANGE ROVER OWNERS OFFERS" [ref=e212] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/owners
+          - listitem [ref=e213]:
+            - link "RANGE ROVER COLLECTIONS OFFERS" [ref=e215] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/collections
+          - listitem [ref=e216]:
+            - link "DEFENDER NEW VEHICLE OFFERS" [ref=e218] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/new-vehicles
+          - listitem [ref=e219]:
+            - link "DEFENDER APPROVED USED OFFERS" [ref=e221] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/approved-used
+          - listitem [ref=e222]:
+            - link "DEFENDER OWNERS OFFERS" [ref=e224] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/owners
+          - listitem [ref=e225]:
+            - link "DEFENDER COLLECTIONS OFFERS" [ref=e227] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/collections
+          - listitem [ref=e228]:
+            - link "DISCOVERY NEW VEHICLE OFFERS" [ref=e230] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/new-vehicles
+          - listitem [ref=e231]:
+            - link "DISCOVERY APPROVED USED OFFERS" [ref=e233] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/approved-used
+          - listitem [ref=e234]:
+            - link "DISCOVERY OWNERS OFFERS" [ref=e236] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/owners
+          - listitem [ref=e237]:
+            - link "DISCOVERY COLLECTIONS OFFERS" [ref=e239] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/collections
+          - listitem [ref=e240]:
+            - link "RANGE ROVER FINANCIAL SERVICES" [ref=e242] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/financial-services
+          - listitem [ref=e243]:
+            - link "DEFENDER FINANCIAL SERVICES" [ref=e245] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/financial-services
+          - listitem [ref=e246]:
+            - link "DISCOVERY FINANCIAL SERVICES" [ref=e248] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/financial-services
+        - heading "RESEARCH" [level=2] [ref=e249]
+        - list [ref=e250]:
+          - listitem [ref=e251]:
+            - link "BUY ONLINE" [ref=e253] [cursor=pointer]:
+              - /url: /en/b
+          - listitem [ref=e254]:
+            - link "BOOK A TEST DRIVE" [ref=e256] [cursor=pointer]:
+              - /url: /en/t
+          - listitem [ref=e257]:
+            - link "REQUEST A CALLBACK" [ref=e259] [cursor=pointer]:
+              - /url: /en/request-a-call-back
+          - listitem [ref=e260]:
+            - link "HOW TO ORDER ONLINE" [ref=e262] [cursor=pointer]:
+              - /url: /en/offers-and-finance/how-to-order-online
+          - listitem [ref=e263]:
+            - link "DOWNLOAD A BROCHURE" [ref=e265] [cursor=pointer]:
+              - /url: /en/owners/brochures
+          - listitem [ref=e266]:
+            - link "NEW DIESEL, PETROL OR PHEV?" [ref=e268] [cursor=pointer]:
+              - /url: /en/owners/our-range-of-hybrid-petrol-or-euro-6-diesel-suvs/overview
+          - listitem [ref=e269]:
+            - link "KEEP ME INFORMED" [ref=e271] [cursor=pointer]:
+              - /url: /en/k
+        - heading "FLEET & BUSINESS" [level=2] [ref=e272]
+        - list [ref=e273]:
+          - listitem [ref=e274]:
+            - link "OVERVIEW" [ref=e276] [cursor=pointer]:
+              - /url: /en/fleet-and-business/overview
+          - listitem [ref=e277]:
+            - link "OUR APPROACH" [ref=e279] [cursor=pointer]:
+              - /url: /en/fleet-and-business/why-land-rover-for-business-our-responsible-future
+          - listitem [ref=e280]:
+            - link "VEHICLE RANGE" [ref=e282] [cursor=pointer]:
+              - /url: /en/fleet-and-business/vehicle-range
+          - listitem [ref=e283]:
+            - link "CONTACT US" [ref=e285] [cursor=pointer]:
+              - /url: /en/fleet-and-business/contact
+        - heading "ONLINE STORE" [level=2] [ref=e286]
+        - list [ref=e287]:
+          - listitem [ref=e288]:
+            - link "APPROVED USED" [ref=e290] [cursor=pointer]:
+              - /url: https://www.landrover-onlinestore.com/egypt/en/
+          - listitem [ref=e291]:
+            - link "KEEP ME INFORMED" [ref=e293] [cursor=pointer]:
+              - /url: /en/k
+          - listitem [ref=e294]:
+            - link "LAND ROVER COLLECTION" [ref=e296] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+      - generic [ref=e297]:
+        - heading "OWNERSHIP" [level=2] [ref=e298]
+        - list [ref=e299]:
+          - listitem [ref=e300]:
+            - link "OVERVIEW" [ref=e302] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/overview
+          - listitem [ref=e303]:
+            - link "CLIENT CARE" [ref=e305] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/contact-us
+          - listitem [ref=e306]:
+            - link "LAND ROVER CARE APP" [ref=e308] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/land-rover-care-app-mena
+        - heading "SERVICING, MAINTENANCE AND WARRANTY" [level=2] [ref=e309]
+        - list [ref=e310]:
+          - listitem [ref=e311]:
+            - link "BOOK A SERVICE ONLINE" [ref=e313] [cursor=pointer]:
+              - /url: /en/book-service-online
+          - listitem [ref=e314]:
+            - link "SERVICING AND SERVICE PLANS" [ref=e316] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/servicing/overview
+          - listitem [ref=e317]:
+            - link "MAINTENANCE EXCELLENCE" [ref=e319] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/maintenance/overview
+          - listitem [ref=e320]:
+            - link "WARRANTY & EXTENDED WARRANTY" [ref=e322] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/warranty/overview
+        - heading "MOBILITY SOLUTIONS" [level=2] [ref=e323]
+        - list [ref=e324]:
+          - listitem [ref=e325]:
+            - link "MOBILITY PROMISE" [ref=e327] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/mobility-promise
+          - listitem [ref=e328]:
+            - link "A SEAMLESS SERVICE EXPERIENCE" [ref=e330] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/seamless-service-experience
+        - heading "CONNECTED CARE" [level=2] [ref=e331]
+        - list [ref=e332]:
+          - listitem [ref=e333]:
+            - link "OVERVIEW" [ref=e335] [cursor=pointer]:
+              - /url: /range-rover/ownership/connected-care-24-7/connected-care-overview
+          - listitem [ref=e336]:
+            - link "INFOTAINMENT" [ref=e338] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/infotainment-systems/overview
+          - listitem [ref=e339]:
+            - link "REMOTE VEHICLE CONTROL AND APP" [ref=e341] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/remote-vehicle-control-and-app
+          - listitem [ref=e342]:
+            - link "SOFTWARE UPDATES" [ref=e344] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/software-update/overview
+      - generic [ref=e345]:
+        - heading "EXPLORE LAND ROVER" [level=2] [ref=e346]
+        - list [ref=e347]:
+          - listitem [ref=e348]:
+            - link "OVERVIEW" [ref=e350] [cursor=pointer]:
+              - /url: /en/explore/overview
+          - listitem [ref=e351]:
+            - link "ARDHI APP" [ref=e353] [cursor=pointer]:
+              - /url: /en/explore/ardhi-app
+          - listitem [ref=e354]:
+            - link "NEWS" [ref=e356] [cursor=pointer]:
+              - /url: /en/explore/news
+          - listitem [ref=e357]:
+            - link "LAND ROVER COLLECTION" [ref=e359] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+        - heading "EXPERIENCES" [level=2] [ref=e360]
+        - list [ref=e361]:
+          - listitem [ref=e362]:
+            - link "OVERVIEW" [ref=e364] [cursor=pointer]:
+              - /url: /en/experience/overview
+          - listitem [ref=e365]:
+            - link "EXPERIENCE DRIVES" [ref=e367] [cursor=pointer]:
+              - /url: /en/experience/lr-experience/drives
+          - listitem [ref=e368]:
+            - link "ADVENTURE TRAVEL" [ref=e370] [cursor=pointer]:
+              - /url: /en/experience/adventure-travel/overview
+          - listitem [ref=e371]:
+            - link "MANUFACTURING TOURS" [ref=e373] [cursor=pointer]:
+              - /url: /en/experience/manufacturing-tours
+          - listitem [ref=e374]:
+            - link "FIND A CENTRE" [ref=e376] [cursor=pointer]:
+              - /url: /en/experience/find-a-centre
+      - generic [ref=e377]:
+        - heading "JOIN THE CONVERSATION" [level=2] [ref=e378]
+        - list [ref=e379]:        
+    - generic [ref=e382]:
+      - generic [ref=e383]:
+        - generic [ref=e384]: Countries
+        - generic [ref=e385]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e386]:
+        - generic [ref=e387]: Language
+        - generic [ref=e388]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e389]:
+        - generic [ref=e390]: Retailer
+        - generic [ref=e391]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - link "FIND A RETAILER" [ref=e393] [cursor=pointer]:
+        - /url: https://www.landrover-egypt.com/en/dealer-locator?id=undefined
+    - list [ref=e395]:
+      - listitem [ref=e396]:
+        - link "CAREERS" [ref=e397] [cursor=pointer]:
+          - /url: http://www.jaguarlandrovercareers.com/
+      - listitem [ref=e398]:
+        - link "TERMS & CONDITIONS" [ref=e399] [cursor=pointer]:
+          - /url: /en/terms-and-conditions
+      - listitem [ref=e400]:
+        - link "CONTACT US" [ref=e401] [cursor=pointer]:
+          - /url: /en/dealer-locator
+      - listitem [ref=e402]:
+        - link "PRIVACY POLICY" [ref=e403] [cursor=pointer]:
+          - /url: /en/privacy-policy
+      - listitem [ref=e404]:
+        - link "COOKIE POLICY" [ref=e405] [cursor=pointer]:
+          - /url: /en/cookie-policy
+      - listitem [ref=e406]:
+        - link "SITEMAP" [ref=e407] [cursor=pointer]:
+          - /url: /en/sitemap.xml
+      - listitem [ref=e408]:
+        - link "JAGUAR LAND ROVER CORPORATE" [ref=e409] [cursor=pointer]:
+          - /url: https://www.jaguarlandrover.com/
+    - generic [ref=e411]:
+      - img "Land Rover Logo" [ref=e413]
+      - paragraph [ref=e414]:
+        - text: © JAGUAR LAND ROVER LIMITED 2026.
+        - text: Egypt, MTI Automotive
+        - text: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation. A vehicle's actual fuel consumption may differ from that achieved in such tests and these figures are for comparative purposes only. The information, specification, prices and colours on this website may vary from market to market and are subject to change without notice. Please contact your local dealer for local availability and prices.
+        - text: Weights stated reflect vehicle standard specification. Accessories and other items fitted after the point of manufacture will affect payload. Ensure Gross Vehicle Weight and Maximum Axle Loads are not exceeded when loading the vehicle with accessories, occupants, fluids and fuels, and payload.
+        - strong [ref=e415]: Important note on imagery & specification.
+        - text: The global shortage of semiconductors is currently affecting vehicle build specifications, option availability, and build timings. This is a very dynamic situation, and as a result imagery used within the website at present may not fully reflect current specifications for features, options, trim and colour schemes. Please consult your Retailer who will be able to confirm any current restrictions with you in order to allow an informed choice

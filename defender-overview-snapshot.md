@@ -1,0 +1,704 @@
+- generic [ref=e6]:
+  - navigation "Dynamic navigation" [ref=e9]:
+    - button [ref=e12] [cursor=pointer]
+    - link [ref=e18] [cursor=pointer]:
+      - /url: /en/defender/overview
+      - img [ref=e19]
+    - text:  
+  - generic [ref=e22]:
+    - generic [ref=e27]:
+      - generic [ref=e716] [cursor=pointer]:
+        - img [ref=e717]
+        - img [ref=e719]
+        - generic [ref=e722]: 
+      - generic [ref=e43]:
+        - heading "EMBRACE THE IMPOSSIBLE" [level=1] [ref=e44]
+        - generic [ref=e45]: SINCE 1948
+        - link " EXPLORE" [ref=e723] [cursor=pointer]:
+          - /url: "#explore"
+          - generic: 
+          - text: EXPLORE
+      - button "" [ref=e50] [cursor=pointer]:
+        - generic [ref=e51]: 
+    - paragraph [ref=e724]: Model shown is Defender OCTA Black 26MY Global Specification, with optional features and accessories. Availability and specifications vary by market, check with your local retailer.
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - link "DEFENDER OCTA" [ref=e71] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-110/octa
+          - img "DEFENDER OCTA" [ref=e74]
+        - generic [ref=e77]:
+          - heading "DEFENDER OCTA" [level=2] [ref=e78]
+          - generic [ref=e79]:
+            - text: For adventure of extreme proportions.
+            - text: The most powerful Defender ever made.
+          - generic [ref=e80]:
+            - link " explore" [ref=e725] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/octa
+              - generic: 
+              - text: explore
+            - link " BUILD YOUR OWN" [ref=e727] [cursor=pointer]:
+              - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4ci0b/a-p635-110_a-sv-110_a-sv3_p/ipr/personalise/model/?formCode=lr-config-def-en&country=Egypt&language=en
+              - generic [ref=e728]: 
+              - generic [ref=e729]: BUILD YOUR OWN
+      - generic [ref=e90]:
+        - link "DEFENDER 130" [ref=e91] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-130/overview
+          - img "DEFENDER 130" [ref=e94]
+        - generic [ref=e97]:
+          - heading "DEFENDER 130" [level=2] [ref=e98]
+          - generic [ref=e99]:
+            - text: Space for shared epic adventure.
+            - paragraph
+            - paragraph [ref=e730]
+          - generic [ref=e101]:
+            - link " explore" [ref=e731] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-130/overview
+              - generic: 
+              - text: explore
+            - link " BUILD YOUR OWN" [ref=e733] [cursor=pointer]:
+              - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-130/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+              - generic [ref=e734]: 
+              - generic [ref=e735]: BUILD YOUR OWN
+      - generic [ref=e111]:
+        - link "DEFENDER 110" [ref=e112] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-110/overview
+          - img "DEFENDER 110" [ref=e115]
+        - generic [ref=e118]:
+          - heading "DEFENDER 110" [level=2] [ref=e119]
+          - generic [ref=e120]:
+            - text: Load up, go anywhere.
+            - paragraph
+            - paragraph [ref=e736]
+          - generic [ref=e122]:
+            - link " explore" [ref=e737] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/overview
+              - generic: 
+              - text: explore
+            - link " BUILD YOUR OWN" [ref=e739] [cursor=pointer]:
+              - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-110/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+              - generic [ref=e740]: 
+              - generic [ref=e741]: BUILD YOUR OWN
+      - generic [ref=e132]:
+        - link "DEFENDER 90" [ref=e133] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-90/overview
+          - img "DEFENDER 90" [ref=e136]
+        - generic [ref=e139]:
+          - heading "DEFENDER 90" [level=2] [ref=e140]
+          - generic [ref=e141]:
+            - text: Capable of great things.
+            - paragraph
+            - paragraph [ref=e742]
+          - generic [ref=e143]:
+            - link " explore" [ref=e743] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-90/overview
+              - generic: 
+              - text: explore
+            - link " BUILD YOUR OWN" [ref=e745] [cursor=pointer]:
+              - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-90/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+              - generic [ref=e746]: 
+              - generic [ref=e747]: BUILD YOUR OWN
+    - generic [ref=e159]:
+      - heading "DEFENDER TOUGH STORIES" [level=2] [ref=e160]
+      - paragraph [ref=e748]: Explore the essence of Defender in our series of short films.
+    - generic [ref=e750]:
+      - generic [ref=e751]:
+        - generic:
+          - group "1 / 4" [ref=e752]:
+            - generic [ref=e754]:
+              - generic [ref=e755]:
+                - heading "DURABILITY AND STRENGTH" [level=1] [ref=e756]
+                - generic [ref=e757]:
+                  - paragraph [ref=e758]: When we set out to create Defender, we set out to create a vehicle that would stand the test of time.
+                  - paragraph [ref=e759]
+                  - paragraph [ref=e760]: Engineered so you can push even harder, dig deeper, dream bigger, meaning you can make more of your adventure.
+                - link " EXPLORE" [ref=e763] [cursor=pointer]:
+                  - /url: /en/defender/defender-tough-stories
+                  - generic: 
+                  - text: EXPLORE
+              - generic [ref=e764]:
+                - img "DURABILITY AND STRENGTH" [ref=e766]
+                - iframe [ref=e768] [cursor=pointer]:
+                  - generic "YouTube Video Player" [ref=f23e3]:
+                    - generic [ref=f23e5]:
+                      - link "Photo image of Range Rover" [ref=f23e8] [cursor=pointer]:
+                        - /url: https://www.youtube.com/channel/UCZANLEnWKjMbuIkCtDUOqlA?embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - link "Durability and Strength" [ref=f23e11] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=Uk6yxzmhK04
+                      - button "Share" [ref=f23e13] [cursor=pointer]:
+                        - generic [ref=f23e14]:
+                          - img
+                        - generic [ref=f23e15]: Share
+                    - button "Play" [ref=f23e18] [cursor=pointer]:
+                      - img
+                    - link "Watch on YouTube" [ref=f23e19] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=Uk6yxzmhK04&embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - generic [ref=f23e20]: Watch on
+                      - generic [ref=f23e21]:
+                        - img
+                - generic [ref=e770] [cursor=pointer]: 
+          - group "2 / 4" [ref=e771]:
+            - generic [ref=e773]:
+              - generic [ref=e774]:
+                - heading "TESTED TO THE EXTREMES" [level=3] [ref=e775]
+                - generic [ref=e776]:
+                  - paragraph [ref=e777]: Engineered so you can push even harder, Defender’s capability lets you tackle the most challenging conditions with absolute confidence.
+                  - paragraph [ref=e778]
+                  - paragraph [ref=e779]: So whether it’s off road, in sand, mud or snow, you’re ready for anything.
+                - link " EXPLORE" [ref=e782] [cursor=pointer]:
+                  - /url: /en/defender/25my/defender-tough-stories
+                  - generic: 
+                  - text: EXPLORE
+              - generic [ref=e783]:
+                - img "TESTED TO THE EXTREMES" [ref=e785]
+                - iframe [ref=e787] [cursor=pointer]:
+                  - generic "YouTube Video Player" [ref=f24e3]:
+                    - generic [ref=f24e5]:
+                      - link "Photo image of Range Rover" [ref=f24e8] [cursor=pointer]:
+                        - /url: https://www.youtube.com/channel/UCZANLEnWKjMbuIkCtDUOqlA?embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - link "Tested to the Extremes" [ref=f24e11] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=I7CAB3z54Ms
+                      - button "Share" [ref=f24e13] [cursor=pointer]:
+                        - generic [ref=f24e14]:
+                          - img
+                        - generic [ref=f24e15]: Share
+                    - button "Play" [ref=f24e18] [cursor=pointer]:
+                      - img
+                    - link "Watch on YouTube" [ref=f24e19] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=I7CAB3z54Ms&embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - generic [ref=f24e20]: Watch on
+                      - generic [ref=f24e21]:
+                        - img
+                - generic [ref=e789] [cursor=pointer]: 
+          - group "3 / 4" [ref=e790]:
+            - generic [ref=e792]:
+              - generic [ref=e793]:
+                - heading "UNSTOPPABLE CAPABILITY" [level=3] [ref=e794]
+                - generic [ref=e795]:
+                  - paragraph [ref=e796]: Defender’s capability lets you tackle the most challenging conditions with absolute confidence.
+                  - paragraph [ref=e797]
+                  - paragraph [ref=e798]: Capable of great things, this is Defender. It couldn’t be anything else.
+                - link " explore" [ref=e801] [cursor=pointer]:
+                  - /url: /en/defender/25my/defender-tough-stories
+                  - generic: 
+                  - text: explore
+              - generic [ref=e802]:
+                - img "UNSTOPPABLE CAPABILITY" [ref=e804]
+                - iframe [ref=e806] [cursor=pointer]:
+                  - generic "YouTube Video Player" [ref=f25e3]:
+                    - generic [ref=f25e5]:
+                      - link "Photo image of Range Rover" [ref=f25e8] [cursor=pointer]:
+                        - /url: https://www.youtube.com/channel/UCZANLEnWKjMbuIkCtDUOqlA?embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - link "Defender = Capability" [ref=f25e11] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=MCvwYM98KMM
+                      - button "Share" [ref=f25e13] [cursor=pointer]:
+                        - generic [ref=f25e14]:
+                          - img
+                        - generic [ref=f25e15]: Share
+                    - button "Play" [ref=f25e18] [cursor=pointer]:
+                      - img
+                    - link "Watch on YouTube" [ref=f25e19] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=MCvwYM98KMM&embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - generic [ref=f25e20]: Watch on
+                      - generic [ref=f25e21]:
+                        - img
+                - generic [ref=e808] [cursor=pointer]: 
+          - group "4 / 4" [ref=e809]:
+            - generic [ref=e811]:
+              - generic [ref=e812]:
+                - heading "FOCUSED TECHNOLOGY" [level=3] [ref=e813]
+                - generic [ref=e814]: Equipped for 21st century adventures, Defender features our most advanced technologies to date, ensuring you are always connected, informed and entertained.
+                - link " EXPLORE" [ref=e817] [cursor=pointer]:
+                  - /url: /en/defender/25my/defender-tough-stories
+                  - generic: 
+                  - text: EXPLORE
+              - generic [ref=e818]:
+                - img "FOCUSED TECHNOLOGY" [ref=e820]
+                - iframe [ref=e822] [cursor=pointer]:
+                  - generic "YouTube Video Player" [ref=f26e3]:
+                    - generic [ref=f26e5]:
+                      - link "Photo image of Range Rover" [ref=f26e8] [cursor=pointer]:
+                        - /url: https://www.youtube.com/channel/UCZANLEnWKjMbuIkCtDUOqlA?embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - link "Fit for the Urban Jungle" [ref=f26e11] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=3lD39tSKLZU
+                      - button "Share" [ref=f26e13] [cursor=pointer]:
+                        - generic [ref=f26e14]:
+                          - img
+                        - generic [ref=f26e15]: Share
+                    - button "Play" [ref=f26e18] [cursor=pointer]:
+                      - img
+                    - link "Watch on YouTube" [ref=f26e19] [cursor=pointer]:
+                      - /url: https://www.youtube.com/watch?v=3lD39tSKLZU&embeds_referring_euri=https%3A%2F%2Fwww.landrover-egypt.com%2F&embeds_referring_origin=https%3A%2F%2Fwww.landrover-egypt.com
+                      - generic [ref=f26e20]: Watch on
+                      - generic [ref=f26e21]:
+                        - img
+                - generic [ref=e824] [cursor=pointer]: 
+      - generic:
+        - button "Go to slide 1" [ref=e825] [cursor=pointer]
+        - button "Go to slide 2" [ref=e826] [cursor=pointer]
+        - button "Go to slide 3" [ref=e827] [cursor=pointer]
+        - button "Go to slide 4" [ref=e828] [cursor=pointer]
+    - generic [ref=e190]:
+      - generic [ref=e191]:
+        - heading "DEFENDER OCTA" [level=2] [ref=e192]
+        - generic [ref=e193]: The master of extreme performance.
+      - generic [ref=e194]:
+        - link " EXPLORE OCTA" [ref=e829] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-110/octa
+          - generic: 
+          - text: EXPLORE OCTA
+        - link " EXPLORE OCTA BLACK" [ref=e830] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-110/octa-black
+          - generic: 
+          - text: EXPLORE OCTA BLACK
+        - link " BUILD YOUR OWN" [ref=e832] [cursor=pointer]:
+          - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4ci0b/a-p635-110_a-sv-110_a-sv3_p/ipr/personalise/model/?formCode=lr-config-def-en&country=Egypt&language=en
+          - generic [ref=e833]: 
+          - generic [ref=e834]: BUILD YOUR OWN
+    - generic [ref=e218]:
+      - generic [ref=e219]:
+        - heading "DEFENDER 130" [level=2] [ref=e220]
+        - generic [ref=e221]: Freedom for all. Eight seats for shared exploration.
+      - generic [ref=e222]:
+        - link " Explore" [ref=e835] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-130/overview
+          - generic: 
+          - text: Explore
+        - link " BUILD YOUR OWN" [ref=e837] [cursor=pointer]:
+          - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-130/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+          - generic [ref=e838]: 
+          - generic [ref=e839]: BUILD YOUR OWN
+    - generic [ref=e243]:
+      - generic [ref=e244]:
+        - heading "DEFENDER 110" [level=2] [ref=e245]
+        - generic [ref=e246]: Pack up and go anywhere. Optional third-row seating and serious capability.
+      - generic [ref=e247]:
+        - link " Explore" [ref=e840] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-110/overview
+          - generic: 
+          - text: Explore
+        - link " BUILD YOUR OWN" [ref=e842] [cursor=pointer]:
+          - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-110/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+          - generic [ref=e843]: 
+          - generic [ref=e844]: BUILD YOUR OWN
+    - generic [ref=e268]:
+      - generic [ref=e269]:
+        - heading "DEFENDER 90" [level=2] [ref=e270]
+        - generic [ref=e271]: Defender in its purest form. Endless possibilities await.
+      - generic [ref=e272]:
+        - link " Explore" [ref=e845] [cursor=pointer]:
+          - /url: /en/defender/26my/defender-90/overview
+          - generic: 
+          - text: Explore
+        - link " BUILD YOUR OWN" [ref=e847] [cursor=pointer]:
+          - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/4cp0v/a-90/ipr/personalise/bodystyle/?formCode=lr-config-def-en&country=Egypt&language=en
+          - generic [ref=e848]: 
+          - generic [ref=e849]: BUILD YOUR OWN
+    - generic [ref=e852]:
+      - generic:
+        - group "1 / 4" [ref=e853]:
+          - generic [ref=e854]:
+            - img "DEFENDER TROPHY" [ref=e857]
+            - generic [ref=e860]:
+              - generic [ref=e862]:
+                - heading "DEFENDER TROPHY" [level=2] [ref=e863]
+                - generic [ref=e864]: Epic adventure. Greater purpose.
+              - link " FIND OUT MORE" [ref=e868] [cursor=pointer]:
+                - /url: /en/defender/26my/defender-110/defender-trophy-edition
+                - generic: 
+                - text: FIND OUT MORE
+        - group "2 / 4" [ref=e869]:
+          - generic [ref=e870]:
+            - img "SINCE 1948" [ref=e873]
+            - generic [ref=e876]:
+              - generic [ref=e878]:
+                - heading "SINCE 1948" [level=2] [ref=e879]
+                - generic [ref=e880]: The evolution of the original 4x4 icon.
+              - link " EXPLORE" [ref=e884] [cursor=pointer]:
+                - /url: /en/explore/defender-world/heritage/the-defender-story
+                - generic: 
+                - text: EXPLORE
+        - group "3 / 4" [ref=e885]:
+          - generic [ref=e886]:
+            - img "THE RHINO WHISPERER" [ref=e889]
+            - generic [ref=e892]:
+              - generic [ref=e894]:
+                - heading "THE RHINO WHISPERER" [level=2] [ref=e895]
+                - generic [ref=e896]: Inspired by a true story. A life dedicated to protecting one of the world’s most critically endangered species.
+              - link " FIND OUT MORE" [ref=e900] [cursor=pointer]:
+                - /url: /en/explore/defender-world/purpose/tusk/the-rhino-whisperer
+                - generic: 
+                - text: FIND OUT MORE
+        - group "4 / 4" [ref=e901]:
+          - generic [ref=e902]:
+            - img "DEFENDER WORLD" [ref=e905]
+            - generic [ref=e908]:
+              - generic [ref=e910]:
+                - heading "DEFENDER WORLD" [level=2] [ref=e911]
+                - generic [ref=e912]: Learn more about how the redesigned icon embraces the impossible.
+              - link " EXPLORE" [ref=e916] [cursor=pointer]:
+                - /url: /en/explore/defender-world/overview
+                - generic: 
+                - text: EXPLORE
+    - generic [ref=e316]:
+      - heading "DEFENDER PARTNERSHIPS" [level=2] [ref=e317]
+      - paragraph [ref=e924]: Together we embrace the impossible.
+    - generic [ref=e328]:
+      - generic [ref=e329]:
+        - link "TUSK" [ref=e330] [cursor=pointer]:
+          - /url: /en/explore/defender-world/purpose/tusk/overview
+          - img "TUSK" [ref=e333]
+        - generic [ref=e336]:
+          - heading "TUSK" [level=2] [ref=e337]
+          - generic [ref=e338]: A driving force in conservation, working together to protect biodiversity and wildlife in Africa.
+          - link " FIND OUT MORE" [ref=e926] [cursor=pointer]:
+            - /url: /en/explore/defender-world/purpose/tusk/overview
+            - generic [ref=e927]: 
+            - generic [ref=e928]: FIND OUT MORE
+      - generic [ref=e346]:
+        - link "RED CROSS" [ref=e347] [cursor=pointer]:
+          - /url: /en/explore/defender-world/purpose/red-cross/overview
+          - img "RED CROSS" [ref=e350]
+        - generic [ref=e353]:
+          - heading "RED CROSS" [level=2] [ref=e354]
+          - generic [ref=e355]: 75 years helping people across the world prepare for and recover from disasters and emergencies.
+          - link " FIND OUT MORE" [ref=e930] [cursor=pointer]:
+            - /url: /en/explore/defender-world/purpose/red-cross/overview
+            - generic [ref=e931]: 
+            - generic [ref=e932]: FIND OUT MORE
+    - generic [ref=e369]:
+      - heading "EXPLORE NEW HORIZONS" [level=2] [ref=e370]
+      - paragraph [ref=e933]: Continue your journey with us.
+    - generic [ref=e381]:
+      - generic [ref=e382]:
+        - 'link "<!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->TEST DRIVE DEFENDER" [ref=e383] [cursor=pointer]':
+          - /url: /en/test-drive
+          - 'img "<!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->TEST DRIVE DEFENDER" [ref=e386]'
+        - generic [ref=e389]:
+          - heading "TEST DRIVE DEFENDER" [level=2] [ref=e390]
+          - generic [ref=e391]: Arrange a test drive through your nearest Retailer
+          - link " BOOK A TEST DRIVE" [ref=e935] [cursor=pointer]:
+            - /url: /en/test-drive
+            - generic [ref=e936]: 
+            - generic [ref=e937]: BOOK A TEST DRIVE
+      - generic [ref=e399]:
+        - 'link "<!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->BUILD YOUR DEFENDER" [ref=e400] [cursor=pointer]':
+          - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/?formCode=lr-config-def-en&country=Egypt&language=en
+          - 'img "<!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->BUILD YOUR DEFENDER" [ref=e403]'
+        - generic [ref=e406]:
+          - heading "BUILD YOUR DEFENDER" [level=1] [ref=e407]
+          - generic [ref=e408]: Use the configurator to build your perfect Defender
+          - link " BUILD YOUR OWN" [ref=e939] [cursor=pointer]:
+            - /url: https://buildyour.landrover.com/lr/en_xm/l663_k26/?formCode=lr-config-def-en&country=Egypt&language=en
+            - generic [ref=e940]: 
+            - generic [ref=e941]: BUILD YOUR OWN
+      - generic [ref=e416]:
+        - 'link "<!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}--> DEFENDER RETAILER" [ref=e417] [cursor=pointer]':
+          - /url: /en/dealer-locator
+          - 'img "<!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}--> DEFENDER RETAILER" [ref=e420]'
+        - generic [ref=e423]:
+          - heading "DEFENDER RETAILER" [level=2] [ref=e424]
+          - generic [ref=e425]: Search for a Defender Retailer near you
+          - link " FIND A RETAILER" [ref=e943] [cursor=pointer]:
+            - /url: /en/dealer-locator
+            - generic [ref=e944]: 
+            - generic [ref=e945]: FIND A RETAILER
+    - generic:
+      - generic:        
+  - contentinfo [ref=e434]:
+    - generic [ref=e435]:
+      - generic [ref=e436]:
+        - heading "OUR VEHICLES" [level=2] [ref=e437]
+        - list [ref=e438]:
+          - listitem [ref=e439]:
+            - link "RANGE ROVER" [ref=e441] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover/overview
+          - listitem [ref=e442]:
+            - link "RANGE ROVER SPORT" [ref=e444] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover-sport/overview
+          - listitem [ref=e445]:
+            - link "RANGE ROVER VELAR" [ref=e447] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-velar/overview
+          - listitem [ref=e448]:
+            - link "RANGE ROVER EVOQUE" [ref=e450] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-evoque/overview
+          - listitem [ref=e451]:
+            - link "DISCOVERY" [ref=e453] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery/overview
+          - listitem [ref=e454]:
+            - link "DISCOVERY SPORT" [ref=e456] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery-sport/overview
+          - listitem [ref=e457]:
+            - link "DEFENDER 130" [ref=e459] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-130/overview
+          - listitem [ref=e460]:
+            - link "DEFENDER 110" [ref=e462] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/overview
+          - listitem [ref=e463]:
+            - link "DEFENDER 90" [ref=e465] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-90/overview
+          - listitem [ref=e466]:
+            - link "SPECIAL VEHICLE OPERATIONS" [ref=e468] [cursor=pointer]:
+              - /url: /en/special-vehicle-operations/overview
+          - listitem [ref=e469]:
+            - link "COMPARE OUR VEHICLES" [ref=e471] [cursor=pointer]:
+              - /url: /en/compare
+          - listitem [ref=e472]:
+            - link "OUR VEHICLES" [ref=e474] [cursor=pointer]:
+              - /url: /en/our-vehicles
+          - listitem [ref=e475]:
+            - link "SEVEN SEATER SUVS" [ref=e477] [cursor=pointer]:
+              - /url: /en/seven-seater-suvs
+          - listitem [ref=e478]:
+            - link "TOWING" [ref=e480] [cursor=pointer]:
+              - /url: /en/towing
+      - generic [ref=e481]:
+        - heading "OFFERS AND FINANCE" [level=2] [ref=e482]
+        - list [ref=e483]:
+          - listitem [ref=e484]:
+            - link "RANGE ROVER NEW VEHICLE OFFERS" [ref=e486] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/new-vehicles
+          - listitem [ref=e487]:
+            - link "RANGE ROVER APPROVED USED OFFERS" [ref=e489] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/approved-used
+          - listitem [ref=e490]:
+            - link "RANGE ROVER OWNERS OFFERS" [ref=e492] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/owners
+          - listitem [ref=e493]:
+            - link "RANGE ROVER COLLECTIONS OFFERS" [ref=e495] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/collections
+          - listitem [ref=e496]:
+            - link "DEFENDER NEW VEHICLE OFFERS" [ref=e498] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/new-vehicles
+          - listitem [ref=e499]:
+            - link "DEFENDER APPROVED USED OFFERS" [ref=e501] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/approved-used
+          - listitem [ref=e502]:
+            - link "DEFENDER OWNERS OFFERS" [ref=e504] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/owners
+          - listitem [ref=e505]:
+            - link "DEFENDER COLLECTIONS OFFERS" [ref=e507] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/collections
+          - listitem [ref=e508]:
+            - link "DISCOVERY NEW VEHICLE OFFERS" [ref=e510] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/new-vehicles
+          - listitem [ref=e511]:
+            - link "DISCOVERY APPROVED USED OFFERS" [ref=e513] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/approved-used
+          - listitem [ref=e514]:
+            - link "DISCOVERY OWNERS OFFERS" [ref=e516] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/owners
+          - listitem [ref=e517]:
+            - link "DISCOVERY COLLECTIONS OFFERS" [ref=e519] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/collections
+          - listitem [ref=e520]:
+            - link "RANGE ROVER FINANCIAL SERVICES" [ref=e522] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/financial-services
+          - listitem [ref=e523]:
+            - link "DEFENDER FINANCIAL SERVICES" [ref=e525] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/financial-services
+          - listitem [ref=e526]:
+            - link "DISCOVERY FINANCIAL SERVICES" [ref=e528] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/financial-services
+        - heading "RESEARCH" [level=2] [ref=e529]
+        - list [ref=e530]:
+          - listitem [ref=e531]:
+            - link "BUY ONLINE" [ref=e533] [cursor=pointer]:
+              - /url: /en/b
+          - listitem [ref=e534]:
+            - link "BOOK A TEST DRIVE" [ref=e536] [cursor=pointer]:
+              - /url: /en/t
+          - listitem [ref=e537]:
+            - link "REQUEST A CALLBACK" [ref=e539] [cursor=pointer]:
+              - /url: /en/request-a-call-back
+          - listitem [ref=e540]:
+            - link "HOW TO ORDER ONLINE" [ref=e542] [cursor=pointer]:
+              - /url: /en/offers-and-finance/how-to-order-online
+          - listitem [ref=e543]:
+            - link "DOWNLOAD A BROCHURE" [ref=e545] [cursor=pointer]:
+              - /url: /en/owners/brochures
+          - listitem [ref=e546]:
+            - link "NEW DIESEL, PETROL OR PHEV?" [ref=e548] [cursor=pointer]:
+              - /url: /en/owners/our-range-of-hybrid-petrol-or-euro-6-diesel-suvs/overview
+          - listitem [ref=e549]:
+            - link "KEEP ME INFORMED" [ref=e551] [cursor=pointer]:
+              - /url: /en/k
+        - heading "FLEET & BUSINESS" [level=2] [ref=e552]
+        - list [ref=e553]:
+          - listitem [ref=e554]:
+            - link "OVERVIEW" [ref=e556] [cursor=pointer]:
+              - /url: /en/fleet-and-business/overview
+          - listitem [ref=e557]:
+            - link "OUR APPROACH" [ref=e559] [cursor=pointer]:
+              - /url: /en/fleet-and-business/why-land-rover-for-business-our-responsible-future
+          - listitem [ref=e560]:
+            - link "VEHICLE RANGE" [ref=e562] [cursor=pointer]:
+              - /url: /en/fleet-and-business/vehicle-range
+          - listitem [ref=e563]:
+            - link "CONTACT US" [ref=e565] [cursor=pointer]:
+              - /url: /en/fleet-and-business/contact
+        - heading "ONLINE STORE" [level=2] [ref=e566]
+        - list [ref=e567]:
+          - listitem [ref=e568]:
+            - link "APPROVED USED" [ref=e570] [cursor=pointer]:
+              - /url: https://www.landrover-onlinestore.com/egypt/en/
+          - listitem [ref=e571]:
+            - link "KEEP ME INFORMED" [ref=e573] [cursor=pointer]:
+              - /url: /en/k
+          - listitem [ref=e574]:
+            - link "LAND ROVER COLLECTION" [ref=e576] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+      - generic [ref=e577]:
+        - heading "OWNERSHIP" [level=2] [ref=e578]
+        - list [ref=e579]:
+          - listitem [ref=e580]:
+            - link "OVERVIEW" [ref=e582] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/overview
+          - listitem [ref=e583]:
+            - link "CLIENT CARE" [ref=e585] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/contact-us
+          - listitem [ref=e586]:
+            - link "LAND ROVER CARE APP" [ref=e588] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/land-rover-care-app-mena
+        - heading "SERVICING, MAINTENANCE AND WARRANTY" [level=2] [ref=e589]
+        - list [ref=e590]:
+          - listitem [ref=e591]:
+            - link "BOOK A SERVICE ONLINE" [ref=e593] [cursor=pointer]:
+              - /url: /en/book-service-online
+          - listitem [ref=e594]:
+            - link "SERVICING AND SERVICE PLANS" [ref=e596] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/servicing/overview
+          - listitem [ref=e597]:
+            - link "MAINTENANCE EXCELLENCE" [ref=e599] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/maintenance/overview
+          - listitem [ref=e600]:
+            - link "WARRANTY & EXTENDED WARRANTY" [ref=e602] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/warranty/overview
+        - heading "MOBILITY SOLUTIONS" [level=2] [ref=e603]
+        - list [ref=e604]:
+          - listitem [ref=e605]:
+            - link "MOBILITY PROMISE" [ref=e607] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/mobility-promise
+          - listitem [ref=e608]:
+            - link "A SEAMLESS SERVICE EXPERIENCE" [ref=e610] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/seamless-service-experience
+        - heading "CONNECTED CARE" [level=2] [ref=e611]
+        - list [ref=e612]:
+          - listitem [ref=e613]:
+            - link "OVERVIEW" [ref=e615] [cursor=pointer]:
+              - /url: /range-rover/ownership/connected-care-24-7/connected-care-overview
+          - listitem [ref=e616]:
+            - link "INFOTAINMENT" [ref=e618] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/infotainment-systems/overview
+          - listitem [ref=e619]:
+            - link "REMOTE VEHICLE CONTROL AND APP" [ref=e621] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/remote-vehicle-control-and-app
+          - listitem [ref=e622]:
+            - link "SOFTWARE UPDATES" [ref=e624] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/software-update/overview
+      - generic [ref=e625]:
+        - heading "EXPLORE LAND ROVER" [level=2] [ref=e626]
+        - list [ref=e627]:
+          - listitem [ref=e628]:
+            - link "OVERVIEW" [ref=e630] [cursor=pointer]:
+              - /url: /en/explore/overview
+          - listitem [ref=e631]:
+            - link "ARDHI APP" [ref=e633] [cursor=pointer]:
+              - /url: /en/explore/ardhi-app
+          - listitem [ref=e634]:
+            - link "NEWS" [ref=e636] [cursor=pointer]:
+              - /url: /en/explore/news
+          - listitem [ref=e637]:
+            - link "LAND ROVER COLLECTION" [ref=e639] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+        - heading "EXPERIENCES" [level=2] [ref=e640]
+        - list [ref=e641]:
+          - listitem [ref=e642]:
+            - link "OVERVIEW" [ref=e644] [cursor=pointer]:
+              - /url: /en/experience/overview
+          - listitem [ref=e645]:
+            - link "EXPERIENCE DRIVES" [ref=e647] [cursor=pointer]:
+              - /url: /en/experience/lr-experience/drives
+          - listitem [ref=e648]:
+            - link "ADVENTURE TRAVEL" [ref=e650] [cursor=pointer]:
+              - /url: /en/experience/adventure-travel/overview
+          - listitem [ref=e651]:
+            - link "MANUFACTURING TOURS" [ref=e653] [cursor=pointer]:
+              - /url: /en/experience/manufacturing-tours
+          - listitem [ref=e654]:
+            - link "FIND A CENTRE" [ref=e656] [cursor=pointer]:
+              - /url: /en/experience/find-a-centre
+      - generic [ref=e657]:
+        - heading "JOIN THE CONVERSATION" [level=2] [ref=e658]
+        - list [ref=e659]:
+          - listitem [ref=e660]:
+            - link "INSTAGRAM" [ref=e662] [cursor=pointer]:
+              - /url: https://www.instagram.com/rangerover/
+              - generic [ref=e663]: 
+              - generic [ref=e664]: INSTAGRAM
+          - text:   
+          - listitem [ref=e665]:
+            - link "YOUTUBE" [ref=e667] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/LandRover
+              - generic [ref=e669]: YOUTUBE
+          - listitem [ref=e670]:
+            - link "FACEBOOK" [ref=e672] [cursor=pointer]:
+              - /url: https://www.facebook.com/rangerover
+              - generic [ref=e673]: 
+              - generic [ref=e674]: FACEBOOK
+          - text:   
+          - listitem [ref=e675]:
+            - link "TWITTER" [ref=e677] [cursor=pointer]:
+              - /url: https://twitter.com/rangerover
+              - generic [ref=e679]: TWITTER
+    - generic [ref=e682]:
+      - generic [ref=e683]:
+        - generic [ref=e684]: Countries
+        - generic [ref=e685]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e686]:
+        - generic [ref=e687]: Language
+        - generic [ref=e688]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e689]:
+        - generic [ref=e690]: Retailer
+        - generic [ref=e691]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - link "FIND A RETAILER" [ref=e693] [cursor=pointer]:
+        - /url: https://www.landrover-egypt.com/en/dealer-locator?id=undefined
+    - list [ref=e695]:
+      - listitem [ref=e696]:
+        - link "CAREERS" [ref=e697] [cursor=pointer]:
+          - /url: http://www.jaguarlandrovercareers.com/
+      - listitem [ref=e698]:
+        - link "TERMS & CONDITIONS" [ref=e699] [cursor=pointer]:
+          - /url: /en/terms-and-conditions
+      - listitem [ref=e700]:
+        - link "CONTACT US" [ref=e701] [cursor=pointer]:
+          - /url: /en/dealer-locator
+      - listitem [ref=e702]:
+        - link "PRIVACY POLICY" [ref=e703] [cursor=pointer]:
+          - /url: /en/privacy-policy
+      - listitem [ref=e704]:
+        - link "COOKIE POLICY" [ref=e705] [cursor=pointer]:
+          - /url: /en/cookie-policy
+      - listitem [ref=e706]:
+        - link "SITEMAP" [ref=e707] [cursor=pointer]:
+          - /url: /en/sitemap.xml
+      - listitem [ref=e708]:
+        - link "JAGUAR LAND ROVER CORPORATE" [ref=e709] [cursor=pointer]:
+          - /url: https://www.jaguarlandrover.com/
+    - generic [ref=e711]:
+      - img "Land Rover Logo" [ref=e713]
+      - paragraph [ref=e714]:
+        - text: © JAGUAR LAND ROVER LIMITED 2026.
+        - text: Egypt, MTI Automotive
+        - text: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation. A vehicle's actual fuel consumption may differ from that achieved in such tests and these figures are for comparative purposes only. The information, specification, prices and colours on this website may vary from market to market and are subject to change without notice. Please contact your local dealer for local availability and prices.
+        - text: Weights stated reflect vehicle standard specification. Accessories and other items fitted after the point of manufacture will affect payload. Ensure Gross Vehicle Weight and Maximum Axle Loads are not exceeded when loading the vehicle with accessories, occupants, fluids and fuels, and payload.
+        - strong [ref=e715]: Important note on imagery & specification.
+        - text: The global shortage of semiconductors is currently affecting vehicle build specifications, option availability, and build timings. This is a very dynamic situation, and as a result imagery used within the website at present may not fully reflect current specifications for features, options, trim and colour schemes. Please consult your Retailer who will be able to confirm any current restrictions with you in order to allow an informed choice

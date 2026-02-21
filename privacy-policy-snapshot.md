@@ -1,0 +1,497 @@
+- generic [ref=e6]:
+  - navigation "Dynamic navigation" [ref=e9]:
+    - button [ref=e12] [cursor=pointer]
+    - link [ref=e18] [cursor=pointer]:
+      - /url: /en/
+      - img [ref=e19]
+    - text:  
+  - generic [ref=e22]:
+    - heading "PRIVACY POLICY" [level=1] [ref=e30]
+    - paragraph [ref=e329]:
+      - strong [ref=e330]: JAGUAR LAND ROVER LIMITED WEB SITES - IMPORTANT INFORMATION
+      - text: Because of the international nature of Land Rover's business, Land Rover processes and stores personal data outside the EU. We are obliged to ask you to agree to this. If you do not wish to, unfortunately we will not be able to process any request you make through this website. If you do agree, you may do so on the basis either that we use your data ONLY to process the request you make, or that Land Rover can make further use for further contacts (always subject to the Privacy Policy below).
+      - strong [ref=e331]: PRIVACY POLICY
+      - text: Jaguar Land Rover Limited respects the privacy of every individual who visits its Web Sites and any information collected about you will be used to first fulfil any service you might request and secondly improve how as a Company we serve you. We do this by making appropriate use of the information.
+      - text: This information will not be disclosed to anyone outside of Jaguar Land Rover Limited, its affiliated or associated companies, and the dealers, agencies and licensees of any of these companies, and any other companies with which Land Rover has directly or indirectly arranged services for your benefit. It will be treated in accordance with the relevant legal provisions concerning data protection and may be initially stored and processed inside or outside the European Union anywhere in the world. It will be used only in the connection with the marketing of Land Rover products and services and related products and services.
+      - text: You have the right as an individual to find out what information we hold about you and make corrections if necessary; you also have the right to ask us to not use the information. We will make all practical efforts to respect your wishes. However certain legislation, especially related to safety issues or financial regulation (e.g. when dealing with Land Rover Financial Services) might prevent this.
+      - strong [ref=e332]: INTERNET PRICE AND PRODUCT DISCLAIMER
+      - text: On the road prices consist of the recommended retail price of the vehicle, delivery to dealer, VAT, 12 months Government Road Fund Licence, Government Vehicle First Registration Fee and estimated cost of number plates. Option Prices assume supply on a new vehicle. Land Rover's policy is one of continuous product development. The right is reserved to change the specifications, colours and prices of the models and items illustrated and described in this website at any time.
+      - text: Every effort has been made to ensure that the information, details and descriptions set out were correct at the time of last updating. You are advised always to check vehicle specification with your Land Rover dealer prior to ordering to avoid any misunderstandings.
+      - text: Landrover.com website contains several market versions. Market sites could be accessible through the language selection page on Landrover.com home page. The information in each website relates to market specification of each vehicle and after sales services. Vehicle information can be different at market level. Nothing in this website constitutes an offer by Land Rover Cars or Land Rover Dealers to sell any particular vehicle.
+      - text: The colour samples shown are only a general guide to the shades available. Unfortunately, we cannot reproduce here the high quality paint surface of our cars.
+      - strong [ref=e333]: FREQUENTLY ASKED QUESTIONS [FAQ]
+      - text: 1. What are the benefits to me of Land Rover collecting my information?
+      - text: 2. What information might be collected by Land Rover Web Sites?
+      - text: 3. How will Land Rover collect and store this information?
+      - text: 4. For how long will Land Rover store this information?
+      - text: 5. Where will your personal information be stored?
+      - text: 6. Why do Land Rover collect this information?
+      - text: 7. Who does this policy apply to?
+      - text: 8. Land Rover's commitment to Children's Privacy.
+      - text: 9. What are cookies?
+      - text: 10. What are customer profiles?
+      - text: 11. How do I correct information about myself?
+      - text: 12. What options do I have if I choose to register?
+      - text: 13. What happens if I choose not to register?
+      - text: What are the benefits to me of Land Rover collecting my information?
+      - text: Collecting this information will help Land Rover to achieve the following;
+      - text: 1. To make the Site easier for you to use by not having to enter information more than once.
+      - text: 2. Help us to provide information faster.
+      - text: 3. To help us create content more relevant to you.
+      - text: 4. To help you quickly find services or information available from Land Rover.
+      - text: 5. Using information to make improvements to the Site.
+      - text: 6. Assessing general trends within the Web Site and its use.
+      - text: 7. To alert you to new products, special offers, updated information and other new services that Land Rover considers to be of interest to you. Where you have given us your permission we might authorise other companies to contact you directly.
+      - text: 8. To display relevant product, offer and service information based on your previous browsing activities within Landrover.com
+      - text: 9. To help you to store your favourite media (wallpapers, video, audio), configured cars and preferred dealer information within Landrover.com for your future reference.
+      - text: What information might be collected by Land Rover Web Sites?
+      - text: At Land Rover, we intend to give you as much control as possible over your personal information. In general, you can visit Land Rover on the Web without telling us who you are or revealing any information about yourself. There are times, however, when we may need information from you, such as your name and address. It is our intent to let you know before we collect information from you on the Internet.
+      - text: Even before registration we will collect anonymous information about how you have used the Web Site. This is a common standard procedure for any Web Site on the Internet. The information collected does not personally identify you but may be helpful to us for marketing purposes or improving the services we offer.
+      - text: To improve the services we offer we will also collect anonymous information about the referring website (for example Google search) or the referring banner that leads you to the Landrover.com websites.
+      - text: If you choose to give the Land Rover personal information via the Internet that we may need -- to correspond with you or provide you with a subscription, for example -- it is our intent to let you know how we will use such information. If you tell us that you do not wish to have this information used as a basis for further contact with you, we will respect your wishes.
+      - text: How will Land Rover collect and store this information?
+      - text: The Site can collect information about you in a number of ways; either directly requesting it from you (as on a registration form) or by automatically recording information about your visit to this Site. For example we might collect data regarding your journey through the Site or record the options that you have chosen to take.
+      - text: Information is stored in a secure environment protected by a combination of physical and technical measures. There is no general public access to this information.
+      - text: For how long will Land Rover store this information?
+      - text: Land Rover will store this information in a secure and protected environment for as long as we believe it will better help us to understand how we can serve you, and respect your wishes. In addition legislation might oblige us to store this information for a certain period of time. To understand how you can amend, or update information stored about you then please refer to the appropriate question in this section.
+      - text: Where will your personal information be stored?
+      - text: Land Rover operates in many countries across the world. To enable us to offer consistent service to you, our customers, wherever you may be, we manage our Internet sites from one central site. This is currently in the United Kingdom, but we also utilise web services which are delivered from other countries, including the United States of America. There is not one set of data protection laws that covers both Europe and the United States of America, and the European laws require you to give your unambiguous consent to us before we can transfer and store your personal data in the United States.
+      - text: Why do Land Rover collect this information?
+      - text: We need this information to help us improve our services to you; we want to make it easier to tailor our products and services to your particular needs.
+      - text: Who does this policy apply to?
+      - text: This policy applies to web sites designed for the use of individual consumers and corporate visitors.
+      - text: Land Rover's Commitment to Children's Privacy
+      - text: Protecting the privacy of children is important. For that reason, we never collect or maintain information at our web site from those we actually know are under 16.
+      - strong [ref=e334]: COOKIES POLICY
+      - text: Deleting cookies
+      - text: "You can easily delete any cookies that have been installed in the cookie folder of your browser. For example, if you are using Microsoft Windows Explorer:"
+      - text: Open 'Windows Explorer'
+      - text: Click on the 'Search' button on the tool bar
+      - text: Type "cookie" into the search box for 'Folders and Files'
+      - text: Select 'My Computer' in the 'Look In' box
+      - text: Click 'Search Now'
+      - text: Double click on the folders that are found
+      - text: "'Select' any cookie file"
+      - text: Hit the 'Delete' button on your keyboard
+      - text: If you are not using Microsoft Windows Explorer, then you should select "cookies" in the "Help" function for information on where to find your cookie folder.
+      - text: How do I correct information about myself?
+      - text: Some Land Rover Web Sites operate registration pages that allow you to review and update the Personal Information you have submitted. Elsewhere, you are simply given the option of cancelling your membership of the service. In other cases where you need to correct Personal Information you have submitted previously to a Land Rover Site please follow the instructions provided.
+      - text: What about Internet & Site Security?
+      - text: The Internet is not a secure system and you should always be cautious about the information you disclose whilst on-line. Personal Information collected by Land Rover Sites is stored in secure operating environments that are not available to the public. In some cases, the Personal Information is encrypted before you conduct your transaction, using appropriate secure technology.
+      - text: What happens if I choose not to register?
+      - text: If you choose not to register or provide personal information, you will in most cases still be able to use most of the Land Rover Web Sites. However you will not be able to access areas that require registration. Even if you do not register we will sometimes collect anonymous information about how you have used the Web Site. This is information that does not personally identify you but which may be helpful for marketing or improving the services we offer
+      - text: A cookie is a text-only string of information that a website transfers to the cookie file of the browser on your computer's hard disk so that the website can remember who you are. Cookies can help a website to arrange content to match your preferred interests more quickly - most major websites use cookies. Cookies alone cannot be used to identify you.
+      - text: A cookie will typically contain the name of the domain from which the cookie has come; the "lifetime" of the cookie; and a value, usually a randomly generated unique number.
+      - text: "Two types of cookies are used on this website:"
+      - text: Session Cookies, which are temporary cookies that remain in the cookie file of your browser until you leave the site.
+      - text: Persistent Cookies, which remain in the cookie file of your browser for much longer (though how long will depend on the lifetime of the specific cookie).
+      - text: How cookies are used on this site and what information is collected?
+      - text: "Session Cookies are used:"
+      - text: "- To allow you to carry information across pages of our site and avoid having to re-enter information."
+      - text: "- Within registration to allow you to access stored information."
+      - text: "Persistent Cookies are used:"
+      - text: "- To help us recognise you as a unique visitor (using a number, you cannot be identified personally) when you return to our website."
+      - text: "- To allow us to tailor content or advertisements to match your preferred interests or to avoid showing you the same adverts repeatedly."
+      - text: "- To compile anonymous, aggregated statistics that allow us to understand how users use our site and to help us improve the structure of our website. We cannot identify you personally in this way."
+      - text: Third Party Cookies
+      - text: "Third parties serve cookies via this site. These are used for the following purposes:"
+      - text: "- To serve advertisements on our site and track whether these advertisements are clicked on by users."
+      - text: "- To control how often you are shown a particular advertisement."
+      - text: "- To tailor content to your preferences."
+      - text: "- To count the number of anonymous users of our site."
+      - text: "- To provide security within shopping baskets or transactions."
+      - text: Web Beacons
+      - text: Some of our Web pages may contain electronic images known as Web Beacons (sometimes known as clear gifs) that allow us to count users who have visited these pages. Web Beacons collect only limited information which includes a cookie number; time and date of a page view; and a description of the page on which the Web Beacon resides. We may also carry Web Beacons placed by third party advertisers. These Beacons do not carry any personally identifiable information and are only used to track the effectiveness of a particular campaign.
+      - text: Disabling and Enabling Cookies
+      - text: "You have the ability to accept or decline cookies by modifying the settings in your browser. However, you may not be able to use all the interactive features of our site if cookies are disabled. Should you wish to be alerted before a cookie is accepted on your hard disk, guideline instructions follow below:"
+      - text: "In Internet Explorer 7.0+:"
+      - text: "- Go to the 'Tools' menu"
+      - text: "- Click on 'Internet Options'"
+      - text: "- Click the 'Privacy' tab"
+      - text: "- Move the slider to choose your preferred settings"
+      - text: "- Select security level 'High' if you don’t want to receive cookies anymore"
+      - text: "- Click on 'OK'"
+      - text: "- Click the “General” tab"
+      - text: "- Click “Delete” button on “Browsing History” section"
+      - text: "- Click “Delete Cookies” button on “Delete Browsing History” popup"
+      - text: "- This will delete all cookies"
+      - text: Once you delete these files, you will have no more cookies and your browser will no longer send or receive new cookies based on security level that you have selected.
+      - text: "In Internet Explorer 6.0+:"
+      - text: "- Go to the 'Tools' menu"
+      - text: "- Click on 'Internet Options' - Click the 'Privacy' tab"
+      - text: "- Move the slider to choose your preferred settings"
+      - text: "- Select security level 'High' if you don’t want to receive cookies anymore"
+      - text: "- Click on 'OK'"
+      - text: "- Go into your cookies directory"
+      - text: "- Delete all the files you have there, this will delete all cookies"
+      - text: Once you delete these files, you will have no more cookies and your browser will no longer send or receive new cookies based on security level that you have selected.
+      - text: "In Mozilla Firefox 3.0+:"
+      - text: "- Go to the ‘Tools” menu"
+      - text: "- Click on ‘Options’"
+      - text: "- Click on the ‘Privacy’ button"
+      - text: "- Uncheck ‘Accept cookies from sites’ option if you don’t want to receive cookies anymore"
+      - text: "- On the same window click ‘Clear now’ button to delete cookies"
+      - text: "- Check ‘Cookies’ on ‘Clear Private Data’"
+      - text: "- Click ‘Clear private data now’ button"
+      - text: Once you delete these files, you will have no more cookies and your browser will no longer send or receive new cookies according to your preference settings.
+      - text: "In Mozilla Firefox 2.0:"
+      - text: "- Go to the Tools menu (or Edit on Linux)"
+      - text: "- Click on the ‘Options’ (or Preferences on Linux)"
+      - text: "- Select the Privacy icon in the left-hand panel"
+      - text: "- Click on Cookies"
+      - text: "- Choose your preferred settings"
+      - text: "- Note that the option to block third-party cookies has been removed from Firefox 2's user interface."
+      - text: "In Mozilla Firefox 1.5:"
+      - text: "- Go to the Tools menu (or Edit on Linux)"
+      - text: "- Click on the ‘Options’ (or Preferences on Linux)"
+      - text: "- Select the Privacy icon in the left-hand panel"
+      - text: "- Click on Cookies"
+      - text: "- Choose your preferred settings"
+      - text: "In Safari 2.0.+:"
+      - text: "- Choose Preferences from Safari menu"
+      - text: "- Select Security icon"
+      - text: "- Cookie settings are shown in window"
+      - text: "- Choose your preferred settings"
+      - text: "Safari 1.2.+:"
+      - text: "- Choose Preferences from Safari menu"
+      - text: "- Select Security icon"
+      - text: "- Cookie settings are shown in window"
+      - text: "- Choose your preferred settings"
+      - text: Opera 8.5.0
+      - text: – Go to the "File" menu
+      - text: "- Click ’Preferences’"
+      - text: "- Select ‘Privacy’"
+      - text: "- Choose your preferred settings"
+      - text: "If you are using Netscape 7.0+:"
+      - text: "- Go to 'Edit' in the menu bar"
+      - text: "- Click on 'Preferences'"
+      - text: "- Click on ' Privacy & Security'"
+      - text: "- Select the 'Cookies' field"
+      - text: "- Choose your preferred settings"
+      - text: "- Click on 'OK'"
+      - text: "- Go to your 'Start' button"
+      - text: "- Click on 'Find'"
+      - text: "- Click on 'Files and Folders'"
+      - text: Type "cookies.txt" into the search box that appears
+      - text: "- Click 'Find Now'"
+      - text: "- When the search results appear drag all files listed into the 'Recycle Bin', this will delete all cookies"
+      - text: "- Now shut down and restart Netscape"
+      - text: Depending on your earlier choice you will either be prompted by new cookies or no cookies will be set or received.
+      - text: Deleting cookies
+      - text: "You can easily delete any cookies that have been installed in the cookie folder of your browser. For example, if you are using Microsoft Windows Explorer:"
+      - text: Open 'Windows Explorer'
+      - text: Click on the 'Search' button on the tool bar
+      - text: Type "cookie" into the search box for 'Folders and Files'
+      - text: Select 'My Computer' in the 'Look In' box
+      - text: Click 'Search Now'
+      - text: Double click on the folders that are found
+      - text: "'Select' any cookie file"
+      - text: Hit the 'Delete' button on your keyboard
+      - text: If you are not using Microsoft Windows Explorer, then you should select "cookies" in the "Help" function for information on where to find your cookie folder.
+      - text: How do I correct information about myself?
+      - text: Some Land Rover Web Sites operate registration pages that allow you to review and update the Personal Information you have submitted. Elsewhere, you are simply given the option of cancelling your membership of the service. In other cases where you need to correct Personal Information you have submitted previously to a Land Rover Site please follow the instructions provided.
+      - text: What about Internet & Site Security?
+      - text: The Internet is not a secure system and you should always be cautious about the information you disclose whilst on-line. Personal Information collected by Land Rover Sites is stored in secure operating environments that are not available to the public. In some cases, the Personal Information is encrypted before you conduct your transaction, using appropriate secure technology.
+      - text: What happens if I choose not to register?
+      - text: If you choose not to register or provide personal information, you will in most cases still be able to use most of the Land Rover Web Sites. However you will not be able to access areas that require registration. Even if you do not register we will sometimes collect anonymous information about how you have used the Web Site. This is information that does not personally identify you but which may be helpful for marketing or improving the services we offer.
+      - text: "You may withdraw your consent at any time by sending an email to:"
+      - link "crcmena@jaguarlandrover.com" [ref=e335] [cursor=pointer]:
+        - /url: mailto:crcmena@jaguarlandrover.com
+  - contentinfo [ref=e47]:
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - heading "OUR VEHICLES" [level=2] [ref=e50]
+        - list [ref=e51]:
+          - listitem [ref=e52]:
+            - link "RANGE ROVER" [ref=e54] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover/overview
+          - listitem [ref=e55]:
+            - link "RANGE ROVER SPORT" [ref=e57] [cursor=pointer]:
+              - /url: /en/range-rover/25my/range-rover-sport/overview
+          - listitem [ref=e58]:
+            - link "RANGE ROVER VELAR" [ref=e60] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-velar/overview
+          - listitem [ref=e61]:
+            - link "RANGE ROVER EVOQUE" [ref=e63] [cursor=pointer]:
+              - /url: /en/range-rover/26my/range-rover-evoque/overview
+          - listitem [ref=e64]:
+            - link "DISCOVERY" [ref=e66] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery/overview
+          - listitem [ref=e67]:
+            - link "DISCOVERY SPORT" [ref=e69] [cursor=pointer]:
+              - /url: /en/discovery/25my/discovery-sport/overview
+          - listitem [ref=e70]:
+            - link "DEFENDER 130" [ref=e72] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-130/overview
+          - listitem [ref=e73]:
+            - link "DEFENDER 110" [ref=e75] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-110/overview
+          - listitem [ref=e76]:
+            - link "DEFENDER 90" [ref=e78] [cursor=pointer]:
+              - /url: /en/defender/26my/defender-90/overview
+          - listitem [ref=e79]:
+            - link "SPECIAL VEHICLE OPERATIONS" [ref=e81] [cursor=pointer]:
+              - /url: /en/special-vehicle-operations/overview
+          - listitem [ref=e82]:
+            - link "COMPARE OUR VEHICLES" [ref=e84] [cursor=pointer]:
+              - /url: /en/compare
+          - listitem [ref=e85]:
+            - link "OUR VEHICLES" [ref=e87] [cursor=pointer]:
+              - /url: /en/our-vehicles
+          - listitem [ref=e88]:
+            - link "SEVEN SEATER SUVS" [ref=e90] [cursor=pointer]:
+              - /url: /en/seven-seater-suvs
+          - listitem [ref=e91]:
+            - link "TOWING" [ref=e93] [cursor=pointer]:
+              - /url: /en/towing
+      - generic [ref=e94]:
+        - heading "OFFERS AND FINANCE" [level=2] [ref=e95]
+        - list [ref=e96]:
+          - listitem [ref=e97]:
+            - link "RANGE ROVER NEW VEHICLE OFFERS" [ref=e99] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/new-vehicles
+          - listitem [ref=e100]:
+            - link "RANGE ROVER APPROVED USED OFFERS" [ref=e102] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/approved-used
+          - listitem [ref=e103]:
+            - link "RANGE ROVER OWNERS OFFERS" [ref=e105] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/owners
+          - listitem [ref=e106]:
+            - link "RANGE ROVER COLLECTIONS OFFERS" [ref=e108] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/collections
+          - listitem [ref=e109]:
+            - link "DEFENDER NEW VEHICLE OFFERS" [ref=e111] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/new-vehicles
+          - listitem [ref=e112]:
+            - link "DEFENDER APPROVED USED OFFERS" [ref=e114] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/approved-used
+          - listitem [ref=e115]:
+            - link "DEFENDER OWNERS OFFERS" [ref=e117] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/owners
+          - listitem [ref=e118]:
+            - link "DEFENDER COLLECTIONS OFFERS" [ref=e120] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/collections
+          - listitem [ref=e121]:
+            - link "DISCOVERY NEW VEHICLE OFFERS" [ref=e123] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/new-vehicles
+          - listitem [ref=e124]:
+            - link "DISCOVERY APPROVED USED OFFERS" [ref=e126] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/approved-used
+          - listitem [ref=e127]:
+            - link "DISCOVERY OWNERS OFFERS" [ref=e129] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/owners
+          - listitem [ref=e130]:
+            - link "DISCOVERY COLLECTIONS OFFERS" [ref=e132] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/collections
+          - listitem [ref=e133]:
+            - link "RANGE ROVER FINANCIAL SERVICES" [ref=e135] [cursor=pointer]:
+              - /url: /en/range-rover/offers-and-finance/financial-services
+          - listitem [ref=e136]:
+            - link "DEFENDER FINANCIAL SERVICES" [ref=e138] [cursor=pointer]:
+              - /url: /en/defender/offers-and-finance/financial-services
+          - listitem [ref=e139]:
+            - link "DISCOVERY FINANCIAL SERVICES" [ref=e141] [cursor=pointer]:
+              - /url: /en/discovery/offers-and-finance/financial-services
+        - heading "RESEARCH" [level=2] [ref=e142]
+        - list [ref=e143]:
+          - listitem [ref=e144]:
+            - link "BUY ONLINE" [ref=e146] [cursor=pointer]:
+              - /url: /en/b
+          - listitem [ref=e147]:
+            - link "BOOK A TEST DRIVE" [ref=e149] [cursor=pointer]:
+              - /url: /en/t
+          - listitem [ref=e150]:
+            - link "REQUEST A CALLBACK" [ref=e152] [cursor=pointer]:
+              - /url: /en/request-a-call-back
+          - listitem [ref=e153]:
+            - link "HOW TO ORDER ONLINE" [ref=e155] [cursor=pointer]:
+              - /url: /en/offers-and-finance/how-to-order-online
+          - listitem [ref=e156]:
+            - link "DOWNLOAD A BROCHURE" [ref=e158] [cursor=pointer]:
+              - /url: /en/owners/brochures
+          - listitem [ref=e159]:
+            - link "NEW DIESEL, PETROL OR PHEV?" [ref=e161] [cursor=pointer]:
+              - /url: /en/owners/our-range-of-hybrid-petrol-or-euro-6-diesel-suvs/overview
+          - listitem [ref=e162]:
+            - link "KEEP ME INFORMED" [ref=e164] [cursor=pointer]:
+              - /url: /en/k
+        - heading "FLEET & BUSINESS" [level=2] [ref=e165]
+        - list [ref=e166]:
+          - listitem [ref=e167]:
+            - link "OVERVIEW" [ref=e169] [cursor=pointer]:
+              - /url: /en/fleet-and-business/overview
+          - listitem [ref=e170]:
+            - link "OUR APPROACH" [ref=e172] [cursor=pointer]:
+              - /url: /en/fleet-and-business/why-land-rover-for-business-our-responsible-future
+          - listitem [ref=e173]:
+            - link "VEHICLE RANGE" [ref=e175] [cursor=pointer]:
+              - /url: /en/fleet-and-business/vehicle-range
+          - listitem [ref=e176]:
+            - link "CONTACT US" [ref=e178] [cursor=pointer]:
+              - /url: /en/fleet-and-business/contact
+        - heading "ONLINE STORE" [level=2] [ref=e179]
+        - list [ref=e180]:
+          - listitem [ref=e181]:
+            - link "APPROVED USED" [ref=e183] [cursor=pointer]:
+              - /url: https://www.landrover-onlinestore.com/egypt/en/
+          - listitem [ref=e184]:
+            - link "KEEP ME INFORMED" [ref=e186] [cursor=pointer]:
+              - /url: /en/k
+          - listitem [ref=e187]:
+            - link "LAND ROVER COLLECTION" [ref=e189] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+      - generic [ref=e190]:
+        - heading "OWNERSHIP" [level=2] [ref=e191]
+        - list [ref=e192]:
+          - listitem [ref=e193]:
+            - link "OVERVIEW" [ref=e195] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/overview
+          - listitem [ref=e196]:
+            - link "CLIENT CARE" [ref=e198] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/contact-us
+          - listitem [ref=e199]:
+            - link "LAND ROVER CARE APP" [ref=e201] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/client-care/land-rover-care-app-mena
+        - heading "SERVICING, MAINTENANCE AND WARRANTY" [level=2] [ref=e202]
+        - list [ref=e203]:
+          - listitem [ref=e204]:
+            - link "BOOK A SERVICE ONLINE" [ref=e206] [cursor=pointer]:
+              - /url: /en/book-service-online
+          - listitem [ref=e207]:
+            - link "SERVICING AND SERVICE PLANS" [ref=e209] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/servicing/overview
+          - listitem [ref=e210]:
+            - link "MAINTENANCE EXCELLENCE" [ref=e212] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/maintenance/overview
+          - listitem [ref=e213]:
+            - link "WARRANTY & EXTENDED WARRANTY" [ref=e215] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/warranty/overview
+        - heading "MOBILITY SOLUTIONS" [level=2] [ref=e216]
+        - list [ref=e217]:
+          - listitem [ref=e218]:
+            - link "MOBILITY PROMISE" [ref=e220] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/mobility-promise
+          - listitem [ref=e221]:
+            - link "A SEAMLESS SERVICE EXPERIENCE" [ref=e223] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/mobility/seamless-service-experience
+        - heading "CONNECTED CARE" [level=2] [ref=e224]
+        - list [ref=e225]:
+          - listitem [ref=e226]:
+            - link "OVERVIEW" [ref=e228] [cursor=pointer]:
+              - /url: /range-rover/ownership/connected-care-24-7/connected-care-overview
+          - listitem [ref=e229]:
+            - link "INFOTAINMENT" [ref=e231] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/infotainment-systems/overview
+          - listitem [ref=e232]:
+            - link "REMOTE VEHICLE CONTROL AND APP" [ref=e234] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/remote-vehicle-control-and-app
+          - listitem [ref=e235]:
+            - link "SOFTWARE UPDATES" [ref=e237] [cursor=pointer]:
+              - /url: /en/range-rover/ownership/connected-care-24-7/software-update/overview
+      - generic [ref=e238]:
+        - heading "EXPLORE LAND ROVER" [level=2] [ref=e239]
+        - list [ref=e240]:
+          - listitem [ref=e241]:
+            - link "OVERVIEW" [ref=e243] [cursor=pointer]:
+              - /url: /en/explore/overview
+          - listitem [ref=e244]:
+            - link "ARDHI APP" [ref=e246] [cursor=pointer]:
+              - /url: /en/explore/ardhi-app
+          - listitem [ref=e247]:
+            - link "NEWS" [ref=e249] [cursor=pointer]:
+              - /url: /en/explore/news
+          - listitem [ref=e250]:
+            - link "LAND ROVER COLLECTION" [ref=e252] [cursor=pointer]:
+              - /url: /en/explore/landrover-collection
+        - heading "EXPERIENCES" [level=2] [ref=e253]
+        - list [ref=e254]:
+          - listitem [ref=e255]:
+            - link "OVERVIEW" [ref=e257] [cursor=pointer]:
+              - /url: /en/experience/overview
+          - listitem [ref=e258]:
+            - link "EXPERIENCE DRIVES" [ref=e260] [cursor=pointer]:
+              - /url: /en/experience/lr-experience/drives
+          - listitem [ref=e261]:
+            - link "ADVENTURE TRAVEL" [ref=e263] [cursor=pointer]:
+              - /url: /en/experience/adventure-travel/overview
+          - listitem [ref=e264]:
+            - link "MANUFACTURING TOURS" [ref=e266] [cursor=pointer]:
+              - /url: /en/experience/manufacturing-tours
+          - listitem [ref=e267]:
+            - link "FIND A CENTRE" [ref=e269] [cursor=pointer]:
+              - /url: /en/experience/find-a-centre
+      - generic [ref=e270]:
+        - heading "JOIN THE CONVERSATION" [level=2] [ref=e271]
+        - list [ref=e272]:
+          - listitem [ref=e273]:
+            - link "INSTAGRAM" [ref=e275] [cursor=pointer]:
+              - /url: https://www.instagram.com/rangerover/
+              - generic [ref=e276]: 
+              - generic [ref=e277]: INSTAGRAM
+          - text:   
+          - listitem [ref=e278]:
+            - link "YOUTUBE" [ref=e280] [cursor=pointer]:
+              - /url: https://www.youtube.com/user/LandRover
+              - generic [ref=e282]: YOUTUBE
+          - listitem [ref=e283]:
+            - link "FACEBOOK" [ref=e285] [cursor=pointer]:
+              - /url: https://www.facebook.com/rangerover
+              - generic [ref=e286]: 
+              - generic [ref=e287]: FACEBOOK
+          - text:   
+          - listitem [ref=e288]:
+            - link "TWITTER" [ref=e290] [cursor=pointer]:
+              - /url: https://twitter.com/rangerover
+              - generic [ref=e292]: TWITTER
+    - generic [ref=e295]:
+      - generic [ref=e296]:
+        - generic [ref=e297]: Countries
+        - generic [ref=e298]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e299]:
+        - generic [ref=e300]: Language
+        - generic [ref=e301]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - generic [ref=e302]:
+        - generic [ref=e303]: Retailer
+        - generic [ref=e304]:
+          - combobox:
+            - generic:
+              - generic: Select option
+      - link "FIND A RETAILER" [ref=e306] [cursor=pointer]:
+        - /url: https://www.landrover-egypt.com/en/dealer-locator?id=undefined
+    - list [ref=e308]:
+      - listitem [ref=e309]:
+        - link "CAREERS" [ref=e310] [cursor=pointer]:
+          - /url: http://www.jaguarlandrovercareers.com/
+      - listitem [ref=e311]:
+        - link "TERMS & CONDITIONS" [ref=e312] [cursor=pointer]:
+          - /url: /en/terms-and-conditions
+      - listitem [ref=e313]:
+        - link "CONTACT US" [ref=e314] [cursor=pointer]:
+          - /url: /en/dealer-locator
+      - listitem [ref=e315]:
+        - link "PRIVACY POLICY" [ref=e316] [cursor=pointer]:
+          - /url: /en/privacy-policy
+      - listitem [ref=e317]:
+        - link "COOKIE POLICY" [ref=e318] [cursor=pointer]:
+          - /url: /en/cookie-policy
+      - listitem [ref=e319]:
+        - link "SITEMAP" [ref=e320] [cursor=pointer]:
+          - /url: /en/sitemap.xml
+      - listitem [ref=e321]:
+        - link "JAGUAR LAND ROVER CORPORATE" [ref=e322] [cursor=pointer]:
+          - /url: https://www.jaguarlandrover.com/
+    - generic [ref=e324]:
+      - img "Land Rover Logo" [ref=e326]
+      - paragraph [ref=e327]:
+        - text: © JAGUAR LAND ROVER LIMITED 2026.
+        - text: Egypt, MTI Automotive
+        - text: The figures provided are as a result of official manufacturer's tests in accordance with EU legislation. A vehicle's actual fuel consumption may differ from that achieved in such tests and these figures are for comparative purposes only. The information, specification, prices and colours on this website may vary from market to market and are subject to change without notice. Please contact your local dealer for local availability and prices.
+        - text: Weights stated reflect vehicle standard specification. Accessories and other items fitted after the point of manufacture will affect payload. Ensure Gross Vehicle Weight and Maximum Axle Loads are not exceeded when loading the vehicle with accessories, occupants, fluids and fuels, and payload.
+        - strong [ref=e328]: Important note on imagery & specification.
+        - text: The global shortage of semiconductors is currently affecting vehicle build specifications, option availability, and build timings. This is a very dynamic situation, and as a result imagery used within the website at present may not fully reflect current specifications for features, options, trim and colour schemes. Please consult your Retailer who will be able to confirm any current restrictions with you in order to allow an informed choice
