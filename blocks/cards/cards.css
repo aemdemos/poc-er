@@ -122,9 +122,10 @@
   cursor: pointer;
 }
 
-.cards.hero .cards-card-body a:hover {
+.cards.hero > ul > li:hover .cards-card-body a {
   background-color: var(--color-primary);
   color: var(--text-color-inverse);
+  border: 1px solid var(--text-color-inverse);
 }
 
 /* Hero variant - desktop: side-by-side layout */
