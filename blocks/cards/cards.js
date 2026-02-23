@@ -9,7 +9,7 @@ export default function decorate(block) {
     moveInstrumentation(row, li);
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
+      if (div.children.length === 1 && div.querySelector(':scope > picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body';
     });
     ul.append(li);
@@ -21,4 +21,27 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
+
+  /* hero variant: video backgrounds that play on hover */
+  if (block.classList.contains('hero')) {
+    ul.querySelectorAll('li').forEach((li) => {
+      const videoLink = li.querySelector('.cards-card-body a[href$=".mp4"]');
+      if (videoLink) {
+        const video = document.createElement('video');
+        video.muted = true;
+        video.loop = true;
+        video.preload = 'auto';
+        video.playsInline = true;
+        video.src = videoLink.href;
+
+        const imageDiv = li.querySelector('.cards-card-image');
+        if (imageDiv) imageDiv.append(video);
+
+        videoLink.remove();
+
+        li.addEventListener('mouseenter', () => video.play());
+        li.addEventListener('mouseleave', () => video.pause());
+      }
+    });
+  }
 }
