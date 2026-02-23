@@ -41,6 +41,8 @@
 .cards.hero > ul {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  height: calc(100vh - var(--nav-height));
   gap: 0;
   padding: 0;
   margin: 0;
@@ -51,7 +53,7 @@
   border: none;
   background-color: var(--color-primary);
   overflow: hidden;
-  min-height: 60vh;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
@@ -62,15 +64,7 @@
   line-height: 0;
 }
 
-.cards.hero .cards-card-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 30%) 0%, rgb(0 0 0 / 10%) 50%, rgb(0 0 0 / 30%) 100%);
-  pointer-events: none;
-}
-
-.cards.hero > ul > li img {
+.cards.hero .cards-card-image img {
   width: 100%;
   height: 100%;
   aspect-ratio: auto;
@@ -95,52 +89,60 @@
   margin: 0;
 }
 
-.cards.hero .cards-card-body strong {
+.cards.hero .cards-card-body picture {
   display: block;
-  font-family: var(--heading-font-family);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: var(--heading-letter-spacing);
-  color: var(--text-color-inverse);
-  margin: 0 0 24px;
-  font-size: var(--heading-font-size-xxl);
-  line-height: 1;
+  margin: 0 0 48px;
+}
+
+.cards.hero .cards-card-body img {
+  width: auto;
+  height: 20px;
+  max-width: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 .cards.hero .cards-card-body a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 140px;
-  height: var(--button-height);
-  padding: 0 32px;
-  background-color: var(--button-primary-bg);
-  color: var(--button-primary-color);
-  border: 1px solid var(--text-color-inverse);
-  border-radius: var(--button-border-radius);
+  height: 45px;
+  padding: 0 20px;
+  background-color: var(--text-color-inverse);
+  color: var(--color-primary);
+  border: none;
+  border-radius: 0;
   font-family: var(--body-font-family);
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  letter-spacing: var(--button-letter-spacing);
-  text-transform: var(--button-text-transform);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   text-decoration: none;
   transition: var(--button-transition);
   cursor: pointer;
 }
 
 .cards.hero .cards-card-body a:hover {
-  background-color: var(--text-color-inverse);
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--text-color-inverse);
 }
 
 /* Hero variant - desktop: side-by-side layout */
 @media (width >= 900px) {
   .cards.hero > ul {
-    grid-template-columns: repeat(3, 1fr);
-    height: calc(100vh - var(--nav-height));
+    display: flex;
   }
 
   .cards.hero > ul > li {
-    min-height: 100%;
+    flex: 1;
+    transition: flex 0.7s ease;
+  }
+
+  .cards.hero > ul:hover > li {
+    flex: 1;
+  }
+
+  .cards.hero > ul > li:hover {
+    flex: 2;
   }
 }
