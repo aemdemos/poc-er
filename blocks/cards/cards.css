@@ -42,7 +42,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
-  height: calc(100vh - var(--nav-height));
+  height: 100vh;
   gap: 0;
   padding: 0;
   margin: 0;
@@ -64,7 +64,10 @@
   line-height: 0;
 }
 
-.cards.hero .cards-card-image img {
+.cards.hero .cards-card-image img,
+.cards.hero .cards-card-image video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   aspect-ratio: auto;
@@ -118,7 +121,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: var(--button-transition);
+  transition: background-color 1.0s ease, color 1.0s ease, border 1.0s ease;
   cursor: pointer;
 }
 
@@ -136,14 +139,14 @@
 
   .cards.hero > ul > li {
     flex: 1;
-    transition: flex 0.7s ease;
+    transition: flex 1.0s ease;
   }
 
   .cards.hero > ul:hover > li {
-    flex: 1;
+    flex: 3;
   }
 
   .cards.hero > ul > li:hover {
-    flex: 2;
+    flex: 4;
   }
 }
