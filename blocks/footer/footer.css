@@ -32,12 +32,8 @@ footer .footer a:hover {
   text-decoration: underline;
 }
 
-/* ==================== SECTION 1: Nav Columns ==================== */
-footer .footer > div > .section:nth-child(1) > .default-content-wrapper {
-  padding: 40px 40px 0;
-}
-
-footer .footer > div > .section:nth-child(1) h2 {
+/* ==================== SHARED HEADING STYLES ==================== */
+footer .footer h2 {
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-xs);
   font-weight: 600;
@@ -48,8 +44,13 @@ footer .footer > div > .section:nth-child(1) h2 {
   line-height: 1.2;
 }
 
-footer .footer > div > .section:nth-child(1) h2:first-child {
+footer .footer h2:first-child {
   margin-top: 0;
+}
+
+/* ==================== SECTION 1: Nav Columns ==================== */
+footer .footer > div > .section:nth-child(1) > .default-content-wrapper {
+  padding: 40px 40px 0;
 }
 
 footer .footer > div > .section:nth-child(1) ul {
