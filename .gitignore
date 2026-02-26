@@ -9,3 +9,9 @@ helix-importer-ui
 .idea
 localhost.pem
 localhost-key.pem
+
+# Ignore PNGs except in images, icons, and blocks directories
+*.png
+!images/**/*.png
+!icons/**/*.png
+!blocks/**/*.png
