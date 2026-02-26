@@ -1,17 +1,80 @@
 /* Land Rover Egypt - Font Loading
  * Primary fonts: "Land Rover" (headings), "Avenir Next" (body/UI)
- * "Land Rover" is a proprietary brand font - using system fallbacks
- * "Avenir Next" is a Linotype font - using system fallbacks
+ * Loaded asynchronously via scripts.js for performance
  */
 
-/* Fallback font for "Land Rover" heading font */
+/* ==================== LAND ROVER (Heading Font) ==================== */
+@font-face {
+  font-family: "Land Rover";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/LandRoverWeb-Medium.woff2') format('woff2'),
+       url('/fonts/LandRoverWeb-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Land Rover";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/LandRoverWeb-Bold.woff2') format('woff2'),
+       url('/fonts/LandRoverWeb-Bold.woff') format('woff');
+}
+
+/* ==================== AVENIR NEXT (Body Font) ==================== */
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/AvenirNextW01-Regular.woff2') format('woff2'),
+       url('/fonts/AvenirNextW01-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/AvenirNextW01-Medium.woff2') format('woff2'),
+       url('/fonts/AvenirNextW01-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/AvenirNextW01-Demi.woff2') format('woff2'),
+       url('/fonts/AvenirNextW01-Demi.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/AvenirNextW01-Bold.woff2') format('woff2'),
+       url('/fonts/AvenirNextW01-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('/fonts/AvenirNextW01-Italic.woff2') format('woff2'),
+       url('/fonts/AvenirNextW01-Italic.woff') format('woff');
+}
+
+/* ==================== FALLBACK FONTS (CLS prevention) ==================== */
 @font-face {
   font-family: land-rover-fallback;
   size-adjust: 95%;
   src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
 }
 
-/* Fallback font for "Avenir Next" body font */
 @font-face {
   font-family: avenir-next-fallback;
   size-adjust: 100%;
