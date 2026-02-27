@@ -181,7 +181,7 @@ footer .footer .custom-select.open .custom-select-chevron {
 footer .footer .custom-select-panel {
   display: none;
   position: absolute;
-  top: 12px;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 100;
