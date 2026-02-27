@@ -13,9 +13,10 @@ export default function parse(element, document) {
     if (img && link) {
       const image = document.createElement('img');
       image.src = img.src;
-      image.alt = link.href.includes('rangerover') ? 'Range Rover'
-        : link.href.includes('defender') ? 'Defender'
-        : 'Discovery';
+      let alt = 'Discovery';
+      if (link.href.includes('rangerover')) alt = 'Range Rover';
+      else if (link.href.includes('defender')) alt = 'Defender';
+      image.alt = alt;
 
       const body = document.createElement('div');
       const strong = document.createElement('strong');

@@ -5,7 +5,6 @@
 import cardsHeroParser from '../block-parsers/cards-hero.js';
 
 export default function transform(document) {
-  const main = document.querySelector('main') || document.body;
   const results = [];
 
   // Parse the house of brands block
