@@ -146,6 +146,44 @@ export default async function decorate(block) {
   container.append(slidesWrapper);
   block.prepend(container);
 
+  /* Restructure slide content: parse ## headings, extract CTAs */
+  block.querySelectorAll('.carousel-slide-content').forEach((content) => {
+    const p = content.querySelector('p');
+    if (!p) return;
+
+    const links = [...p.querySelectorAll('a')];
+    links.forEach((link) => link.remove());
+
+    const text = p.textContent.trim();
+    if (text.startsWith('## ')) {
+      const rest = text.substring(3).trim();
+      const match = rest.match(/^((?:[A-Z0-9]+(?:\s+|$))+)([\s\S]*)/);
+      if (match) {
+        const h2 = document.createElement('h2');
+        h2.textContent = match[1].trim();
+        p.before(h2);
+        const desc = match[2].trim();
+        if (desc) {
+          p.textContent = desc;
+        } else {
+          p.remove();
+        }
+      }
+    } else if (!text) {
+      p.remove();
+    }
+
+    if (links.length > 0) {
+      const ctaDiv = document.createElement('div');
+      ctaDiv.className = 'carousel-slide-cta';
+      links.forEach((link) => {
+        link.classList.add('carousel-cta-button');
+        ctaDiv.append(link);
+      });
+      content.append(ctaDiv);
+    }
+  });
+
   if (!isSingleSlide) {
     bindEvents(block);
   }
