@@ -1,30 +1,133 @@
-/* Default cards */
+/* Default cards – grid adapts to card count (2/3/4 columns) */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
-}
-
-.cards .cards-card-body {
-  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
 }
 
 .cards .cards-card-image {
   line-height: 0;
 }
 
-.cards > ul > li img {
+.cards > ul > li .cards-card-image img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+/* Card body layout */
+.cards .cards-card-body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+/* Card title (extracted from <strong> by JS) */
+.cards .cards-card-body h3 {
+  margin: 28px 0 0;
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-color-emphasis);
+}
+
+/* Card description */
+.cards .cards-card-body .cards-card-description {
+  margin: 12px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: normal;
+  color: var(--text-color-muted);
+}
+
+/* CTA container */
+.cards .cards-card-cta {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Primary CTA – filled dark button (used when card has 2 links) */
+.cards .cards-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: var(--button-height);
+  padding: 0 20px;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  text-decoration: none;
+  border: none;
+  transition: var(--button-transition);
+}
+
+.cards .cards-cta-primary::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url('/icons/arrow-right.svg') no-repeat center;
+  background-size: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
+.cards .cards-cta-primary:hover {
+  background-color: var(--color-gray-medium);
+  color: var(--text-color-inverse);
+}
+
+/* Secondary CTA – text link with chevron */
+.cards .cards-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-text-font-weight);
+  letter-spacing: var(--button-text-letter-spacing);
+  text-transform: var(--button-text-transform);
+  color: var(--button-text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cards .cards-cta-secondary::before {
+  content: '\203A';
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.cards .cards-cta-secondary:hover {
+  color: var(--text-color-emphasis);
 }
 
 /* Hero variant - break out of section constraints */

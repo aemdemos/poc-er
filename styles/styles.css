@@ -390,6 +390,19 @@ main .section.gray {
   padding: var(--spacing-section) 0;
 }
 
+/* Disclaimer section (small print) */
+main .section.disclaimer {
+  margin: 0;
+  padding: 16px 0;
+}
+
+main .section.disclaimer p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+  color: var(--text-color-muted);
+  margin: 0;
+}
+
 /* Full-width section (no max-width constraint) */
 main .section.full-width > div {
   max-width: none;
