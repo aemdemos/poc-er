@@ -22,6 +22,49 @@ export default function decorate(block) {
   block.textContent = '';
   block.append(ul);
 
+  /* Default variant: restructure card body for proper styling hooks */
+  if (!block.classList.contains('hero')) {
+    ul.querySelectorAll('.cards-card-body').forEach((body) => {
+      const p = body.querySelector('p');
+      if (!p) return;
+
+      /* Extract <strong> as card title */
+      const strong = p.querySelector('strong');
+      if (strong) {
+        const title = document.createElement('h3');
+        title.textContent = strong.textContent;
+        body.insertBefore(title, p);
+        strong.remove();
+      }
+
+      /* Collect links into CTA container */
+      const links = [...p.querySelectorAll('a')];
+      let ctaDiv;
+      if (links.length > 0) {
+        ctaDiv = document.createElement('div');
+        ctaDiv.className = 'cards-card-cta';
+        links.forEach((link, idx) => {
+          link.classList.add(links.length > 1 && idx === 0
+            ? 'cards-cta-primary'
+            : 'cards-cta-secondary');
+          ctaDiv.append(link);
+        });
+      }
+
+      /* Remaining text becomes description */
+      const text = p.textContent.trim();
+      if (text) {
+        const desc = document.createElement('p');
+        desc.className = 'cards-card-description';
+        desc.textContent = text;
+        body.insertBefore(desc, p);
+      }
+
+      p.remove();
+      if (ctaDiv) body.append(ctaDiv);
+    });
+  }
+
   /* hero variant: video backgrounds that play on hover */
   if (block.classList.contains('hero')) {
     ul.querySelectorAll('li').forEach((li) => {

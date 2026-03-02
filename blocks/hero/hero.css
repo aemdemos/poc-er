@@ -1,3 +1,8 @@
+/* Hero block - full viewport with background image */
+main .section.hero-container {
+  padding: 0;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,33 +10,216 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  overflow: hidden;
+  background: #000;
+  text-align: center;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+/* First row is the background media container (picture + video) */
+.hero > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: opacity 0.4s ease;
 }
 
+/* Text content sits above the overlay */
+.hero > div:not(:first-child) {
+  position: relative;
+  z-index: 3;
+}
+
+/* Dim the video when paused – text stays fully visible */
+.hero.hero-paused > div:first-child {
+  opacity: 0.5;
+}
+
+/* Background image */
 .hero picture {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
 }
 
-.hero img {
+.hero img,
+.hero video {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
+/* Background video layers above the poster image */
+.hero video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Dark gradient overlay for text readability */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 60%) 0%,
+    rgb(0 0 0 / 30%) 40%,
+    rgb(0 0 0 / 10%) 100%
+  );
+  pointer-events: none;
+}
+
+/* Heading */
+.hero h1 {
+  max-width: 800px;
+  margin: 0 0 16px;
+  color: var(--text-color-inverse);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: 1.9px;
+  text-transform: uppercase;
+}
+
+/* Subtitle */
+.hero > div:last-of-type p {
+  margin: 0;
+  color: var(--text-color-inverse);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+/* CTA button – :any-link needed to beat .section.dark a:any-link specificity */
+.hero > div:last-of-type a:any-link {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  margin: 30px auto 0;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  padding: 0 20px 0 52px;
+  background-color: var(--text-color-inverse);
+  color: var(--color-primary);
+  font-family: var(--body-font-family);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  transition: var(--button-transition);
+}
+
+/* Down-arrow icon in CTA button */
+.hero > div:last-of-type a .hero-arrow-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  fill: var(--color-primary);
+  transition: fill 0.3s ease;
+}
+
+.hero > div:last-of-type a:hover .hero-arrow-icon {
+  fill: var(--text-color-inverse);
+}
+
+.hero > div:last-of-type a:any-link:hover {
+  background-color: var(--color-primary);
+  color: var(--text-color-inverse);
+  border: 1px solid var(--text-color-inverse);
+}
+
+/* Video play/pause toggle – circular ring with icon */
+.hero-video-toggle {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 4;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.3s ease;
+}
+
+.hero-video-toggle:focus,
+.hero-video-toggle:active {
+  outline: none;
+  background: none;
+}
+
+/* Circle ring (static border) */
+.hero-toggle-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-toggle-ring circle {
+  stroke: rgb(255 255 255 / 45%);
+  stroke-width: 4;
+}
+
+/* Circle ring (animated progress) */
+.hero-toggle-progress {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.hero-toggle-progress circle {
+  stroke: #fff;
+  stroke-width: 4;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+/* Play / pause icons – stroke-based, no fill */
+.hero-icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  color: rgb(255 255 255 / 90%);
+}
+
+.hero-video-toggle:hover {
+  opacity: 0.5;
+}
+
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    min-height: 85vh;
+    padding: 64px 48px;
+  }
+
+  .hero-video-toggle {
+    bottom: 48px;
+    right: 48px;
   }
 }

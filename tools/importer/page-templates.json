@@ -11,6 +11,29 @@
           "section": "hero variant"
         }
       ]
+    },
+    {
+      "name": "vehicle-family-overview",
+      "urls": ["https://www.landrover-egypt.com/en/defender/overview"],
+      "description": "Vehicle Family Overview page (T2) with hero, vehicle lineup cards, carousels, masonry columns sections, partnership and explore cards, and quick-action links bar.",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [".jlr-immersive-hero"]
+        },
+        {
+          "name": "cards",
+          "instances": [".jlr-content-blocks .jlr-grid--columns-4", ".jlr-content-blocks .jlr-grid--columns-2", ".jlr-content-blocks .jlr-grid--columns-3"]
+        },
+        {
+          "name": "carousel",
+          "instances": [".jlr-dual-frame-carousel", ".jlr-hero-slider-wrapper"]
+        },
+        {
+          "name": "columns",
+          "instances": [".jlr-masonry-block", ".ready-to-go-bar"]
+        }
+      ]
     }
   ]
 }
