@@ -1,0 +1,282 @@
+/* ──── Hero Image Carousel: constrained image + content below ──── */
+
+/* Wrapper: 1660px content + 60px side margins */
+.hero-image-carousel-wrapper {
+  max-width: 1780px !important;
+  margin: 0 auto !important;
+  padding: 0 60px !important;
+}
+
+.hero-image-carousel {
+  position: relative;
+  container-type: inline-size;
+}
+
+.hero-image-carousel .hero-image-carousel-slides-container {
+  position: relative;
+}
+
+.hero-image-carousel .hero-image-carousel-slides,
+.hero-image-carousel .hero-image-carousel-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-image-carousel .hero-image-carousel-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.hero-image-carousel .hero-image-carousel-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-image-carousel .hero-image-carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ──── Slide image: full-width ──── */
+.hero-image-carousel .hero-image-carousel-slide-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.hero-image-carousel .hero-image-carousel-slide-image picture {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-image-carousel .hero-image-carousel-slide-image picture > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ──── Slide content (inside each slide, scrolls with it) ──── */
+.hero-image-carousel .hero-image-carousel-slide-content {
+  padding: 24px 170px 40px;
+}
+
+.hero-image-carousel .hero-image-carousel-slide-content h2 {
+  margin: 0 0 8px;
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-color-emphasis);
+}
+
+.hero-image-carousel .hero-image-carousel-slide-content p {
+  margin: 0 0 12px;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--text-color-muted);
+}
+
+/* CTA button */
+.hero-image-carousel .hero-image-carousel-slide-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  position: relative;
+}
+
+/* Vertical rule 40px left of button */
+.hero-image-carousel .hero-image-carousel-slide-cta::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 64px;
+  background-color: #ccc;
+}
+
+.hero-image-carousel .hero-image-carousel-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--button-height);
+  padding: var(--button-padding);
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  text-transform: var(--button-text-transform);
+  text-decoration: none;
+  border: none;
+  transition: var(--button-transition);
+}
+
+.hero-image-carousel .hero-image-carousel-cta-button::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url('/icons/arrow-right.svg') no-repeat center;
+  background-size: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
+.hero-image-carousel .hero-image-carousel-cta-button:hover {
+  background-color: var(--color-gray-medium);
+  color: var(--text-color-inverse);
+}
+
+/* ──── Slide indicators (dots) – overlaid on image bottom-left ──── */
+.hero-image-carousel nav {
+  position: absolute;
+  top: calc(56.25cqi - 40px);
+  left: 20px;
+  z-index: 2;
+}
+
+.hero-image-carousel .hero-image-carousel-slide-indicators {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-image-carousel .hero-image-carousel-slide-indicator button {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 30%);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hero-image-carousel .hero-image-carousel-slide-indicator button:disabled {
+  background-color: #fff;
+}
+
+.hero-image-carousel .hero-image-carousel-slide-indicator button:hover,
+.hero-image-carousel .hero-image-carousel-slide-indicator button:focus-visible {
+  background-color: #fff;
+}
+
+/* ──── Navigation arrows: hidden, reveal on hover ──── */
+.hero-image-carousel .hero-image-carousel-navigation-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56.25cqi;
+  padding: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero-image-carousel .hero-image-carousel-navigation-buttons button {
+  width: 34px;
+  height: 49px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  top: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.3s;
+  opacity: 0;
+}
+
+.hero-image-carousel .hero-image-carousel-slides-container:hover
+  .hero-image-carousel-navigation-buttons button {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero-image-carousel .hero-image-carousel-navigation-buttons button:hover {
+  opacity: 0.6;
+}
+
+.hero-image-carousel .hero-image-carousel-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: 2px solid #fff;
+  border-bottom: 0;
+  border-left: 0;
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.hero-image-carousel .hero-image-carousel-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+/* ──── Desktop layout ──── */
+@media (width >= 900px) {
+  /* Content area: heading/desc left, CTA right */
+  .hero-image-carousel .hero-image-carousel-slide-content {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    padding: 24px 170px 40px;
+  }
+
+  /* H2 + P stack in left column */
+  .hero-image-carousel .hero-image-carousel-slide-content h2 {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 33px;
+    line-height: 38px;
+    letter-spacing: 1.65px;
+    margin: 0 0 16px;
+  }
+
+  .hero-image-carousel .hero-image-carousel-slide-content p {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 0 8px;
+  }
+
+  /* CTA moves to second column, vertically centered across both rows */
+  .hero-image-carousel .hero-image-carousel-slide-cta {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    place-self: center end;
+    margin-top: 0;
+  }
+
+  .hero-image-carousel .hero-image-carousel-navigation-buttons button {
+    margin: 0 20px;
+  }
+}
