@@ -13,6 +13,10 @@ export default function decorate(block) {
         col.classList.add('columns-masonry');
         if (pics.length === 4) col.classList.add('columns-masonry-4');
 
+        /* Flag masonry on the right side (second column) */
+        const colIndex = [...col.parentElement.children].indexOf(col);
+        if (colIndex === 1) col.classList.add('columns-masonry-right');
+
         /* 0. Tag every picture / video-link with its original position
          *    so we can restore correct order after DOM reshuffling. */
         let pos = 0;
