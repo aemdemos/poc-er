@@ -170,19 +170,6 @@
   border: none;
 }
 
-.carousel .carousel-video-restricted {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  padding: 8px;
-  font-family: var(--body-font-family);
-  font-size: 12px;
-  text-align: center;
-  color: #f44;
-  background: rgb(0 0 0 / 70%);
-}
 
 /* ──── Slide indicators (dots) ──── */
 .carousel .carousel-slide-indicators {

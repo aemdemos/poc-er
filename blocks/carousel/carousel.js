@@ -218,18 +218,6 @@ export default async function decorate(block) {
       iframe.setAttribute('allowfullscreen', '');
       iframe.className = 'carousel-video-embed';
       imageCol.append(iframe);
-
-      const msg = document.createElement('div');
-      msg.className = 'carousel-video-restricted';
-      msg.textContent = 'external domain playback restricted';
-      imageCol.append(msg);
-
-      setTimeout(() => {
-        iframe.remove();
-        msg.remove();
-        picture.style.display = '';
-        playBtn.style.display = '';
-      }, 2000);
     });
   });
 
