@@ -37,10 +37,9 @@ export default function parse(element, { document }) {
   // VALIDATED: div class="jlr-immersive-hero__content__paragraph"
   const subtitle = element.querySelector('.jlr-immersive-hero__content__paragraph');
 
-  // Extract CTA links
-  // VALIDATED: a.jlr-button inside .jlr-immersive-hero__content__buttons-holder
+  // Extract CTA links (primary buttons and anchor buttons)
   const ctaLinks = Array.from(
-    element.querySelectorAll('.jlr-immersive-hero__content__buttons-holder a.jlr-button')
+    element.querySelectorAll('.jlr-immersive-hero__content__buttons-holder a.jlr-button, .jlr-immersive-hero__content__buttons-holder a.jlr-immersive-hero__content__anchor-button')
   );
 
   // Build cells matching Hero block markdown structure
@@ -58,7 +57,7 @@ export default function parse(element, { document }) {
     cells.push([h1]);
   }
 
-  // Row 3: Subtitle + CTAs
+  // Row 3: Subtitle + CTAs + optional video link
   const contentCell = [];
   if (subtitle) {
     contentCell.push(subtitle.textContent.trim());
@@ -69,6 +68,18 @@ export default function parse(element, { document }) {
     a.textContent = link.textContent.trim();
     contentCell.push(a);
   });
+
+  // Extract video if present (desktop source preferred)
+  const videoSource = element.querySelector('.jlr-immersive-hero__video video source[src]')
+    || element.querySelector('.jlr-native-video-frame video source[src]')
+    || element.querySelector('video source[src]');
+  if (videoSource) {
+    const videoLink = document.createElement('a');
+    videoLink.href = videoSource.getAttribute('src');
+    videoLink.textContent = 'video';
+    contentCell.push(videoLink);
+  }
+
   if (contentCell.length > 0) {
     cells.push(contentCell);
   }

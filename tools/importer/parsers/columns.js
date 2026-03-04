@@ -23,8 +23,7 @@
  * </section>
  * Reversed variant: .jlr-grid--columns-3-reversed (images first, text second)
  *
- * Pattern 2 - Ready-to-go bar (.ready-to-go-bar):
- * Horizontal row of 4 quick-action links
+ * Note: Ready-to-go bar (.ready-to-go-bar) is handled by floating-quicklinks.js
  *
  * Generated: 2026-02-27
  */
@@ -99,19 +98,6 @@ export default function parse(element, { document }) {
       cells.push([imageCell, textCell]);
     } else {
       cells.push([textCell, imageCell]);
-    }
-  } else {
-    // Pattern 2: Ready-to-go bar or generic columns
-    // Extract all links as individual columns
-    const links = Array.from(element.querySelectorAll('a'));
-    if (links.length > 0) {
-      const row = links.map((link) => {
-        const a = document.createElement('a');
-        a.href = link.getAttribute('href');
-        a.textContent = link.textContent.trim();
-        return [a];
-      });
-      cells.push(row);
     }
   }
 

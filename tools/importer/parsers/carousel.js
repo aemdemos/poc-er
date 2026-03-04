@@ -20,13 +20,7 @@
  *   </div>
  * </section>
  *
- * Pattern 2 - Hero Slider (.jlr-hero-slider-wrapper):
- * <div class="jlr-hero-slider-wrapper">
- *   <div class="jlr-hero-slider__item">
- *     <img class="jlr-hero-slider__bg-image">
- *     <h2>heading</h2><p>description</p><a>CTA</a>
- *   </div>
- * </div>
+ * Note: Hero Slider (.jlr-hero-slider-wrapper) is handled by hero-image-carousel.js
  *
  * Generated: 2026-02-27
  */
@@ -77,55 +71,6 @@ export default function parse(element, { document }) {
       }
       if (text) {
         textCell.push(text.textContent.trim());
-      }
-      if (cta) {
-        const a = document.createElement('a');
-        a.href = cta.getAttribute('href');
-        a.textContent = cta.textContent.trim();
-        textCell.push(a);
-      }
-
-      cells.push([imageCell, textCell]);
-    });
-  } else {
-    // Pattern 2: Hero slider carousel
-    // VALIDATED: .jlr-hero-slider__item inside .jlr-hero-slider-wrapper
-    const heroSlides = Array.from(
-      element.querySelectorAll('.jlr-hero-slider__item, .swiper-slide')
-    );
-
-    heroSlides.forEach((slide) => {
-      // Extract background image
-      const img = slide.querySelector('.jlr-hero-slider__bg-image') ||
-                  slide.querySelector('img');
-
-      // Extract heading
-      const heading = slide.querySelector('h2, h1, h3');
-
-      // Extract description
-      const desc = slide.querySelector('.jlr-hero-slider__copy__paragraph') ||
-                   slide.querySelector('p');
-
-      // Extract CTA
-      const cta = slide.querySelector('a.jlr-button') ||
-                  slide.querySelector('a');
-
-      const imageCell = [];
-      if (img) {
-        const imgEl = document.createElement('img');
-        imgEl.src = img.getAttribute('src');
-        imgEl.alt = img.getAttribute('alt') || '';
-        imageCell.push(imgEl);
-      }
-
-      const textCell = [];
-      if (heading) {
-        const h2 = document.createElement('h2');
-        h2.textContent = heading.textContent.trim();
-        textCell.push(h2);
-      }
-      if (desc) {
-        textCell.push(desc.textContent.trim());
       }
       if (cta) {
         const a = document.createElement('a');
