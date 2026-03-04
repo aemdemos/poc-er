@@ -3,36 +3,49 @@
     {
       "name": "Homepage",
       "urls": ["https://www.landrover-egypt.com/en/"],
-      "description": "Homepage with three vehicle family hero cards (Range Rover, Defender, Discovery) displayed as full-width cards with background images and ENTER CTA buttons.",
+      "description": "Homepage with three vehicle family hero cards (Range Rover, Defender, Discovery).",
       "blocks": [
-        {
-          "name": "cards",
-          "instances": [".jlr-house-of-brands-block"],
-          "section": "hero variant"
-        }
+        { "name": "cards", "instances": [".jlr-house-of-brands-block"], "section": "hero variant" }
       ]
     },
     {
       "name": "vehicle-family-overview",
-      "urls": ["https://www.landrover-egypt.com/en/defender/overview"],
-      "description": "Vehicle Family Overview page (T2) with hero, vehicle lineup cards, carousels, masonry columns sections, partnership and explore cards, and quick-action links bar.",
+      "urls": [
+        "https://www.landrover-egypt.com/en/defender/overview",
+        "https://www.landrover-egypt.com/en/discovery/overview"
+      ],
+      "description": "Vehicle Family Overview page (T2) with hero, vehicle lineup cards, masonry columns, story carousels, partnership/explore cards, and quicklinks at bottom.",
       "blocks": [
-        {
-          "name": "hero",
-          "instances": [".jlr-immersive-hero"]
-        },
-        {
-          "name": "cards",
-          "instances": [".jlr-content-blocks .jlr-grid--columns-4", ".jlr-content-blocks .jlr-grid--columns-2", ".jlr-content-blocks .jlr-grid--columns-3"]
-        },
-        {
-          "name": "carousel",
-          "instances": [".jlr-dual-frame-carousel", ".jlr-hero-slider-wrapper"]
-        },
-        {
-          "name": "columns",
-          "instances": [".jlr-masonry-block", ".ready-to-go-bar"]
-        }
+        { "name": "hero", "instances": [".jlr-immersive-hero"] },
+        { "name": "cards", "instances": [".jlr-content-blocks"] },
+        { "name": "carousel", "instances": [".jlr-dual-frame-carousel"] },
+        { "name": "hero-image-carousel", "instances": [".jlr-hero-slider-wrapper"] },
+        { "name": "columns", "instances": [".jlr-masonry-block"] },
+        { "name": "floating-quicklinks", "instances": [".ready-to-go-bar"] }
+      ]
+    },
+    {
+      "name": "vehicle-model-overview",
+      "urls": [
+        "https://www.landrover-egypt.com/en/defender/26my/defender-110/overview",
+        "https://www.landrover-egypt.com/en/defender/26my/defender-90/overview",
+        "https://www.landrover-egypt.com/en/defender/26my/defender-130/overview",
+        "https://www.landrover-egypt.com/en/discovery/26my/discovery/overview",
+        "https://www.landrover-egypt.com/en/discovery/26my/discovery-sport/overview",
+        "https://www.landrover-egypt.com/en/range-rover/25my/range-rover/overview",
+        "https://www.landrover-egypt.com/en/range-rover/25my/range-rover-sport/overview",
+        "https://www.landrover-egypt.com/en/range-rover/26my/range-rover-evoque/overview",
+        "https://www.landrover-egypt.com/en/range-rover/26my/range-rover-velar/overview"
+      ],
+      "description": "Vehicle Model Overview page (T3) with hero, floating quicklinks, quote banner, design/technology/performance sections, editions, build-and-order, keep-exploring carousel, disclaimers.",
+      "blocks": [
+        { "name": "hero", "instances": [".jlr-immersive-hero"] },
+        { "name": "floating-quicklinks", "instances": [".ready-to-go-bar"] },
+        { "name": "hero-image-carousel", "instances": [".jlr-hero-slider-wrapper"] },
+        { "name": "carousel", "instances": [".jlr-dual-frame-carousel"] },
+        { "name": "cards", "instances": [".jlr-content-blocks", ".jlr-collection-carousel"] },
+        { "name": "columns", "instances": [".jlr-masonry-block", ".jlr-hotspots-container", ".jlr-electrifying-power", ".jlr-tabbed-component"] },
+        { "name": "image-box", "instances": [".jlr-image-box"] }
       ]
     }
   ]

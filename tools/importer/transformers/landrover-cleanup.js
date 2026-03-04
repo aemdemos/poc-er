@@ -62,8 +62,50 @@ export default function transform(hookName, element, payload) {
     ]);
 
     // Remove slide-down chevron button from hero
-    // EXTRACTED: Found in captured DOM <button class="jlr-immersive-hero__slide-down">
     WebImporter.DOMUtils.remove(element, ['.jlr-immersive-hero__slide-down']);
+
+    // Remove breadcrumbs
+    WebImporter.DOMUtils.remove(element, [
+      '.breadcrumbs-container',
+      '.breadcrumbs-seo',
+    ]);
+
+    // Remove in-page navigation (sticky anchor nav)
+    WebImporter.DOMUtils.remove(element, ['.jlr-in-page-navigation']);
+
+    // Remove iframe embeds (configurator / MENA)
+    WebImporter.DOMUtils.remove(element, ['.jlr-html-box', '.jlr-html-elements']);
+
+    // Remove swiper pagination and navigation controls (decorative)
+    WebImporter.DOMUtils.remove(element, [
+      '.swiper-pagination',
+      '.swiper-button-next',
+      '.swiper-button-prev',
+      '.jlr-carousel__loader-box',
+      '.jlr-carousel__hero-pagination',
+      '.jlr-carousel__hero-navigation-prev',
+      '.jlr-carousel__hero-navigation-next',
+      '.jlr-hero-carousel-core__container-end',
+      '.jlr-slider__pagination',
+      '.jlr-slider__navigation-prev',
+      '.jlr-slider__navigation-next',
+    ]);
+
+    // Remove hotspot interactive overlays (non-content)
+    WebImporter.DOMUtils.remove(element, [
+      '.jlr-hotspot',
+      '.jlr-hotspots-container__text',
+    ]);
+
+    // Remove footer
+    WebImporter.DOMUtils.remove(element, [
+      '.jlr-footer',
+      'footer',
+      '.footer-disclaimer',
+    ]);
+
+    // Remove cookie banner
+    WebImporter.DOMUtils.remove(element, ['.jlr-cookie-banner']);
 
     // Enable scrolling if body has overflow hidden
     if (element.style && element.style.overflow === 'hidden') {
