@@ -85,6 +85,20 @@ export default function parse(element, { document }) {
     textCell.push(desc.textContent.trim());
   }
 
+  // Extract CTA links (e.g., BUILD YOUR OWN, EXPLORE MODELS in Build & Order)
+  const ctaContainer = copyBox || tabbed;
+  const ctaLinks = Array.from(
+    ctaContainer.querySelectorAll('a.jlr-button, a.jlr-cta')
+  );
+  ctaLinks.forEach((link) => {
+    const p = document.createElement('p');
+    const a = document.createElement('a');
+    a.href = link.getAttribute('href');
+    a.textContent = link.textContent.trim();
+    p.appendChild(a);
+    textCell.push(p);
+  });
+
   if (imageCell.length > 0 || textCell.length > 0) {
     cells.push([imageCell, textCell]);
   }

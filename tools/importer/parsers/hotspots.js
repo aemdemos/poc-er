@@ -2,18 +2,24 @@
 /* global WebImporter */
 
 /**
- * Parser for hotspots container → extracts main image
+ * Parser for hotspots container → Hotspots block
  *
  * Source: .jlr-hotspots-container
- * Output: Returns the main image element for the page transformer to pair
+ * Base Block: Hotspots
  *
- * The page transformer collects images from consecutive hotspot sections
- * and pairs them into a single Columns block (exterior | interior).
+ * Extracts the main image, hotspot positions (from inline styles),
+ * and card content (headings + descriptions injected from __NUXT__
+ * by the cleanup transformer).
  *
- * Markdown output example (after pairing by page transformer):
- * | **Columns** | |
+ * The page transformer combines multiple hotspot containers (e.g.
+ * EXTERIOR + INTERIOR) into a single tabbed Hotspots block.
+ *
+ * Content model per container:
+ * | **Hotspots** | |
  * | --- | --- |
- * | ![Exterior](img1) | ![Interior](img2) |
+ * | ![Main Image](url) | |
+ * | 42, 25 | **UNSTOPPABLE** description text |
+ * | 53, 34 | **BUILT TO ENDURE** description text |
  *
  * Source HTML Pattern:
  * <section class="jlr-hotspots-container jlr-section">
@@ -21,31 +27,103 @@
  *     <div class="jlr-hotspots-container__columns">
  *       <div class="jlr-hotspots-wrapper">
  *         <picture><img src="..." alt="..."></picture>
- *         <div class="jlr-hotspots-wrapper__item">...</div>
+ *         <div class="jlr-hotspots-wrapper__item" style="top:42%;left:25%">
+ *           <button class="jlr-hotspot">...</button>
+ *         </div>
  *       </div>
  *     </div>
  *   </div>
  * </section>
  *
- * Generated: 2026-03-04
+ * Generated: 2026-03-06
  */
-export default function parse(element, { document }) {
-  // Extract the main hotspot image (first image in the wrapper)
+
+/**
+ * Extract structured hotspot data from a single container element.
+ * Used by both the standalone parser and the page transformer.
+ */
+export function extractHotspotData(element, document) {
+  // Main image
   const img = element.querySelector('.jlr-hotspots-wrapper img')
     || element.querySelector('.jlr-hotspots-container__columns img')
     || element.querySelector('img');
 
+  let imgEl = null;
   if (img) {
-    const imgEl = document.createElement('img');
+    imgEl = document.createElement('img');
     imgEl.src = img.getAttribute('src');
     imgEl.alt = img.getAttribute('alt') || '';
-    // Mark this element for the page transformer to collect
-    imgEl.setAttribute('data-hotspot-image', 'true');
-    element.replaceWith(imgEl);
-    return imgEl;
   }
 
-  // Remove if no image found
-  element.remove();
-  return null;
+  // Hotspot positions from wrapper item inline styles
+  const items = Array.from(
+    element.querySelectorAll('.jlr-hotspots-wrapper__item')
+  );
+  const positions = items.map((item) => {
+    const style = item.getAttribute('style') || '';
+    const topMatch = style.match(/top:\s*([\d.]+)%/);
+    const leftMatch = style.match(/left:\s*([\d.]+)%/);
+    return {
+      top: topMatch ? topMatch[1] : '0',
+      left: leftMatch ? leftMatch[1] : '0',
+    };
+  });
+
+  // Card content from data attribute (injected by cleanup transformer from __NUXT__)
+  let cards = [];
+  const cardsJson = element.getAttribute('data-hotspot-cards');
+  if (cardsJson) {
+    try { cards = JSON.parse(cardsJson); } catch (e) { /* ignore */ }
+  }
+
+  return { img: imgEl, positions, cards };
+}
+
+/**
+ * Standalone parser — creates a single Hotspots block from one container.
+ * The page transformer uses extractHotspotData() directly for combining
+ * multiple containers into one tabbed block.
+ */
+export default function parse(element, { document }) {
+  const data = extractHotspotData(element, document);
+
+  if (!data.img && data.positions.length === 0) {
+    element.remove();
+    return null;
+  }
+
+  const cells = [];
+
+  // Row 1: Main image
+  if (data.img) {
+    cells.push([[data.img], ['']]);
+  }
+
+  // Rows 2+: position | heading + description
+  const count = Math.max(data.positions.length, data.cards.length);
+  for (let i = 0; i < count; i++) {
+    const pos = data.positions[i] || { top: '0', left: '0' };
+    const card = data.cards[i] || {};
+
+    const posText = `${pos.top}, ${pos.left}`;
+
+    const contentCell = [];
+    if (card.heading) {
+      const strong = document.createElement('strong');
+      strong.textContent = card.heading;
+      contentCell.push(strong);
+    }
+    if (card.paragraph) {
+      if (contentCell.length > 0) {
+        contentCell.push(document.createElement('br'));
+      }
+      contentCell.push(card.paragraph);
+    }
+
+    cells.push([[posText], contentCell.length > 0 ? contentCell : ['']]);
+  }
+
+  const block = WebImporter.Blocks.createBlock(document, { name: 'Hotspots', cells });
+  element.replaceWith(block);
+  return block;
 }
