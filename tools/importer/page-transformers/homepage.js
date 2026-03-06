@@ -1,3 +1,6 @@
+/* eslint-disable */
+/* global WebImporter */
+
 /**
  * Homepage page transformer
  * Transforms the Land Rover Egypt homepage into EDS content.
