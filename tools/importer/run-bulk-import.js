@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-/* eslint-disable no-console, no-await-in-loop, import/no-extraneous-dependencies */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-console, no-await-in-loop, no-underscore-dangle */
+/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
 
 /**
  * Bulk Import Runner with Timing
