@@ -20,7 +20,7 @@ import imageBoxParser from '../parsers/image-box.js';
 import cardsParser from '../parsers/cards.js';
 import carouselParser from '../parsers/carousel.js';
 import columnsParser from '../parsers/columns.js';
-import hotspotsParser from '../parsers/hotspots.js';
+import { extractHotspotData } from '../parsers/hotspots.js';
 import electrifyingPowerParser from '../parsers/electrifying-power.js';
 import tabbedComponentParser from '../parsers/tabbed-component.js';
 import { createSectionMetadata, getStyleValue } from '../parsers/section-metadata.js';
@@ -119,6 +119,54 @@ function createLink(document, href, text) {
   a.href = href;
   a.textContent = text;
   return a;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Helper: create combined Hotspots block from accumulated data       */
+/* ------------------------------------------------------------------ */
+
+function createHotspotsBlock(document, hotspotsData) {
+  const cells = [];
+
+  hotspotsData.forEach((data) => {
+    // Tab label row (e.g. EXTERIOR / INTERIOR)
+    if (data.tabLabel) {
+      const strong = document.createElement('strong');
+      strong.textContent = data.tabLabel;
+      cells.push([[strong], ['']]);
+    }
+
+    // Image row
+    if (data.img) {
+      cells.push([[data.img], ['']]);
+    }
+
+    // Hotspot rows: position | heading + description
+    const count = Math.max(data.positions.length, data.cards.length);
+    for (let i = 0; i < count; i++) {
+      const pos = data.positions[i] || { top: '0', left: '0' };
+      const card = data.cards[i] || {};
+
+      const posText = `${pos.top}, ${pos.left}`;
+
+      const contentCell = [];
+      if (card.heading) {
+        const strong = document.createElement('strong');
+        strong.textContent = card.heading;
+        contentCell.push(strong);
+      }
+      if (card.paragraph) {
+        if (contentCell.length > 0) {
+          contentCell.push(document.createElement('br'));
+        }
+        contentCell.push(card.paragraph);
+      }
+
+      cells.push([[posText], contentCell.length > 0 ? contentCell : ['']]);
+    }
+  });
+
+  return WebImporter.Blocks.createBlock(document, { name: 'Hotspots', cells });
 }
 
 /* ------------------------------------------------------------------ */
@@ -231,17 +279,16 @@ export default function transform(main, document, url) {
   // Find all rdx-render-block containers
   const renderBlocks = Array.from(main.querySelectorAll('.rdx-render-block'));
 
-  let pendingSnippet = null; // Buffered snippet heading for next section
-  let hotspotImages = [];     // Accumulated hotspot images for pairing
+  let pendingSnippet = null;    // Buffered snippet heading for next section
+  let pendingTabLabels = [];    // Tab labels from preceding tab-nav
+  let pendingHotspots = [];     // Accumulated hotspot data for combined block
 
   for (let i = 0; i < renderBlocks.length; i++) {
     const renderBlock = renderBlocks[i];
 
-    // Skip inactive tab content
-    if (renderBlock.classList.contains('rdx-render-block--tab')
-      && !renderBlock.classList.contains('rdx-render-block--tab-current')) {
-      continue;
-    }
+    // Process ALL rdx-render-block--tab elements (both active and inactive).
+    // Inactive tabs have visibility:hidden + height:0 but full DOM content.
+    // The parsers extract content from the DOM regardless of CSS visibility.
 
     const section = renderBlock.querySelector(':scope > section')
       || renderBlock.querySelector('section');
@@ -251,7 +298,16 @@ export default function transform(main, document, url) {
     const theme = getTheme(section);
 
     // Skip elements that should be removed
-    if (blockType === 'remove' || blockType === 'tab-nav') continue;
+    if (blockType === 'remove') continue;
+
+    // Capture tab labels from tab navigation (used by subsequent hotspot blocks)
+    if (blockType === 'tab-nav') {
+      const buttons = Array.from(
+        section.querySelectorAll('.jlr-tabs__navigation button')
+      );
+      pendingTabLabels = buttons.map((b) => b.textContent.trim());
+      continue;
+    }
 
     // Handle snippets (section headings) — buffer them
     if (blockType === 'snippet') {
@@ -259,17 +315,12 @@ export default function transform(main, document, url) {
       continue;
     }
 
-    // Flush hotspot images if the current block isn't a hotspot
-    if (blockType !== 'hotspots' && hotspotImages.length > 0) {
-      // Create a Columns block from paired hotspot images
-      // Ground truth: | ![Exterior](url) | ![Interior](url) |  (one row, two cells)
-      const hotspotBlock = WebImporter.Blocks.createBlock(document, {
-        name: 'Columns',
-        cells: [hotspotImages.map((img) => [img])],
-      });
+    // Flush accumulated hotspots as a combined Hotspots block
+    if (blockType !== 'hotspots' && pendingHotspots.length > 0) {
+      const hotspotBlock = createHotspotsBlock(document, pendingHotspots);
       output.appendChild(hotspotBlock);
       output.appendChild(createHr(document));
-      hotspotImages = [];
+      pendingHotspots = [];
     }
 
     // Add pending snippet heading before the current block
@@ -332,16 +383,11 @@ export default function transform(main, document, url) {
       }
 
       case 'hotspots': {
-        // Accumulate hotspot images for pairing
-        const img = section.querySelector('.jlr-hotspots-wrapper img')
-          || section.querySelector('img');
-        if (img) {
-          const imgEl = document.createElement('img');
-          imgEl.src = img.getAttribute('src');
-          imgEl.alt = img.getAttribute('alt') || '';
-          hotspotImages.push(imgEl);
-        }
-        continue; // Don't add to output yet
+        // Extract full hotspot data (image, positions, cards)
+        const hotspotData = extractHotspotData(section, document);
+        hotspotData.tabLabel = pendingTabLabels.shift() || '';
+        pendingHotspots.push(hotspotData);
+        continue; // Don't add to output yet — flushed when next non-hotspot block
       }
 
       case 'electrifying-power': {
@@ -391,12 +437,9 @@ export default function transform(main, document, url) {
     output.appendChild(createHr(document));
   }
 
-  // Flush any remaining hotspot images
-  if (hotspotImages.length > 0) {
-    const hotspotBlock = WebImporter.Blocks.createBlock(document, {
-      name: 'Columns',
-      cells: [hotspotImages.map((img) => [img])],
-    });
+  // Flush any remaining accumulated hotspots
+  if (pendingHotspots.length > 0) {
+    const hotspotBlock = createHotspotsBlock(document, pendingHotspots);
     output.appendChild(hotspotBlock);
     output.appendChild(createHr(document));
   }

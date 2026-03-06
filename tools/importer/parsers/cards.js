@@ -39,6 +39,10 @@ export default function parse(element, { document }) {
   const cells = [];
 
   cardItems.forEach((card) => {
+    // Strip footnote markers (sub/sup) to prevent inline disclaimer text
+    // e.g., LOADSPACE "UP TO 2277 litres" instead of "UP TO 2277 litres** Wet: ..."
+    card.querySelectorAll('sub, sup, subscript, superscript').forEach((el) => el.remove());
+
     // Extract image
     // VALIDATED: img inside .jlr-block-item__image-wrapper picture
     const img = card.querySelector('.jlr-block-item__image-wrapper img') ||

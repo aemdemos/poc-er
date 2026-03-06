@@ -45,6 +45,61 @@ function detectTemplate(url) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Pre-processing: extract __NUXT__ hotspot data from raw HTML        */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Extracts hotspot card data (headings/descriptions) from the __NUXT__
+ * script in the raw HTML and injects it as data attributes on the
+ * corresponding DOM elements. This is needed because:
+ * - Card content is dynamic (loaded on click) and NOT in the static DOM
+ * - The helix-importer strips <script> tags when creating the document
+ * - The raw `html` string still contains the __NUXT__ IIFE
+ */
+function injectHotspotData(document, html) {
+  if (!html) return;
+
+  const hotspotContainers = Array.from(
+    document.querySelectorAll('.jlr-hotspots-container')
+  );
+  if (hotspotContainers.length === 0) return;
+
+  try {
+    // Extract the __NUXT__ IIFE from raw HTML
+    const match = html.match(/window\.__NUXT__\s*=\s*(\(function\([\s\S]*?\)\([\s\S]*?\)\))\s*;?\s*<\/script>/);
+    if (!match) return;
+
+    // Execute the IIFE to get the data object
+    const nuxt = new Function('return ' + match[1])();
+    if (!nuxt || !nuxt.data || !nuxt.data[0] || !nuxt.data[0].blocks) return;
+
+    const blocks = nuxt.data[0].blocks;
+    const nuxtHotspots = blocks.filter(
+      (b) => b && b.attributes && b.attributes.key === 'jlr-hotspots-container'
+    );
+
+    hotspotContainers.forEach((container, idx) => {
+      const nuxtBlock = nuxtHotspots[idx];
+      if (nuxtBlock && nuxtBlock.attributes && nuxtBlock.attributes.field_groups) {
+        const cards = nuxtBlock.attributes.field_groups.map((group) => {
+          let heading = '';
+          let paragraph = '';
+          for (let fi = 0; fi < group.length; fi++) {
+            const fkey = group[fi].key || group[fi].symbol || '';
+            if (fkey === 'heading' && group[fi].value) heading = String(group[fi].value);
+            if (fkey === 'paragraph' && group[fi].value) paragraph = String(group[fi].value);
+          }
+          return { heading, paragraph };
+        });
+        container.setAttribute('data-hotspot-cards', JSON.stringify(cards));
+      }
+    });
+  } catch (e) {
+    // Silent — positions and images will still be captured from the DOM
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /*  Export for AEM Bulk Import Tool                                     */
 /* ------------------------------------------------------------------ */
 
@@ -54,6 +109,9 @@ export default {
    * the root element to be then transformed to Markdown.
    */
   transformDOM({ document, url, html, params }) {
+    // 0. Inject __NUXT__ hotspot data before cleanup strips elements
+    injectHotspotData(document, html);
+
     // 1. Run cleanup (beforeTransform)
     cleanupTransform('beforeTransform', document.body, { document, url, html, params });
 

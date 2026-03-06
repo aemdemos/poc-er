@@ -50,10 +50,11 @@ export default function parse(element, { document }) {
       || slide.querySelector('.jlr-hero-slider__bg-image')
       || slide.querySelector('img');
 
-    // Extract heading from banner
-    const heading = slide.querySelector('.jlr-hero-slider-banner__copy h3')
+    // Extract heading from banner (source uses h1 or h2, not h3)
+    const heading = slide.querySelector('.jlr-hero-slider-banner__copy h1')
       || slide.querySelector('.jlr-hero-slider-banner__copy h2')
-      || slide.querySelector('.jlr-hero-slider-banner h3, .jlr-hero-slider-banner h2');
+      || slide.querySelector('.jlr-hero-slider-banner__copy h3')
+      || slide.querySelector('.jlr-hero-slider-banner h1, .jlr-hero-slider-banner h2');
 
     // Extract description
     const desc = slide.querySelector('.jlr-hero-slider-banner__copy .jlr-paragraph')
