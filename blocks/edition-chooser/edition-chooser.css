@@ -1,0 +1,248 @@
+/* Edition Chooser Block */
+.edition-chooser {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  font-family: var(--body-font-family);
+}
+
+/* Image */
+.ec-image {
+  width: 100%;
+}
+
+.ec-image picture {
+  display: block;
+  width: 100%;
+}
+
+.ec-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Tab Navigation */
+.ec-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid rgb(74 79 84 / 30%);
+  margin-bottom: 0;
+  padding: 0 16px;
+}
+
+.ec-tab {
+  background: none;
+  border: none;
+  border-bottom: 5px solid transparent;
+  padding: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+  color: rgb(12 18 28 / 66%);
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.ec-tab:hover,
+.ec-tab:focus,
+.ec-tab:focus-visible {
+  background: none;
+  outline: none;
+}
+
+.ec-tab:not([aria-selected="true"]):hover {
+  color: rgb(12 18 28 / 66%);
+  border-bottom-color: rgb(12 18 28 / 40%);
+}
+
+.ec-tab[aria-selected="true"] {
+  color: #0c121c;
+  border-bottom-color: #0c121c;
+}
+
+/* Hide tab bar when only one tab */
+.ec-tabs:has(.ec-tab:only-child) {
+  display: none;
+}
+
+/* Tab Panels */
+.ec-panel {
+  display: none;
+  padding: 24px 16px 32px;
+}
+
+.ec-panel[aria-hidden="false"] {
+  display: block;
+}
+
+/* Heading */
+.ec-panel h2 {
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #0c121c;
+  margin: 0 0 16px;
+}
+
+/* Right column wrapper */
+.ec-panel-right {
+  /* mobile: stacked */
+}
+
+/* Description */
+.ec-description {
+  font-size: 14px;
+  line-height: 1.35;
+  color: #4a4f54;
+}
+
+.ec-description p {
+  margin: 0 0 12px;
+}
+
+.ec-description ul {
+  list-style: disc;
+  padding-left: 40px;
+  margin: 0 0 16px;
+}
+
+.ec-description li {
+  margin-bottom: 4px;
+}
+
+/* CTAs — text link with chevron */
+.ec-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.ec-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  padding: 0;
+  color: #4a4f54;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  transition: color 0.3s;
+}
+
+.ec-cta::before {
+  content: '\203A';
+  font-size: 16px;
+  line-height: 1;
+}
+
+.ec-cta:hover {
+  color: #0c121c;
+}
+
+/* Section header styling (default content above the block) */
+.section:has(.edition-chooser) > .default-content-wrapper h2 {
+  font-family: var(--heading-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #0c121c;
+  line-height: 1;
+  margin: 0 0 12px;
+}
+
+.section:has(.edition-chooser) > .default-content-wrapper p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4a4f54;
+  line-height: 1.4;
+  margin: 0 0 24px;
+}
+
+/* Fade transition on tab switch */
+.ec-image,
+.ec-panel {
+  transition: opacity 0.25s ease;
+}
+
+.edition-chooser.ec-transitioning .ec-image,
+.edition-chooser.ec-transitioning .ec-panel {
+  opacity: 0;
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .ec-tabs {
+    padding: 0 32px;
+  }
+
+  .ec-tab {
+    height: 64px;
+  }
+
+  .ec-panel {
+    display: none;
+    padding: 33px 32px 40px;
+  }
+
+  .ec-panel[aria-hidden="false"] {
+    display: flex;
+    gap: 40px;
+  }
+
+  .ec-panel h2 {
+    font-size: 24px;
+    letter-spacing: 1.2px;
+    flex: 0 0 30%;
+    margin: 0;
+  }
+
+  .ec-panel-right {
+    flex: 1;
+  }
+
+  .ec-ctas {
+    margin-top: 24px;
+  }
+
+  .section:has(.edition-chooser) > .default-content-wrapper h2 {
+    font-size: 32px;
+    letter-spacing: 1.6px;
+  }
+
+  .section:has(.edition-chooser) > .default-content-wrapper p {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+}
+
+@media (width >= 1200px) {
+  .ec-tabs {
+    padding: 0 48px;
+  }
+
+  .ec-panel {
+    padding: 33px 48px 48px;
+  }
+
+  .section:has(.edition-chooser) > .default-content-wrapper h2 {
+    font-size: 38px;
+    letter-spacing: 1.9px;
+  }
+}

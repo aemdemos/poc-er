@@ -1,0 +1,104 @@
+<!--
+  BUILD AND ORDER Section - Complete HTML Structure
+  Source: https://www.landrover-egypt.com/en/discovery/26my/discovery/overview
+
+  PARENT HIERARCHY (from document root to blocks-list):
+    <div id="__nuxt">
+      <div id="__layout">
+        <div data-fetch-key="0" class="jlr-layout">
+          <div class="jlr-layout__container">
+            <div dir="ltr" class="jlr-content">
+              <div id="rdx-render" class="jlr-index-page">
+                <div class="blocks-list">
+                  ... blocks-list children (28 total) ...
+                  ... BUILD AND ORDER spans children at indices 20-24 ...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  RDX-RENDER-BLOCK WRAPPER:
+    <div id="models" class="rdx-render-block">
+      ... contains the heading section (block-index="20") ...
+    </div>
+
+  SECTION COMPOSITION:
+    Block 20 (index 20): Heading + subtitle snippet - wrapped in #models.rdx-render-block
+    Block 21 (index 21): Model family tabs (DISCOVERY / DISCOVERY COMMERCIAL) - #block-id-24141.rdx-render-block
+    Block 22 (index 22): Discovery trim tabs + vehicle image (S, DYNAMIC SE, GEMINI, etc.) - #block-id-24142.rdx-render-block.rdx-render-block--tab.rdx-render-block--tab-current
+    Block 23 (index 23): Discovery Commercial trim tabs + vehicle image (COMMERCIAL SE, COMMERCIAL DYNAMIC HSE) - #block-id-24143.rdx-render-block.rdx-render-block--tab
+    Block 24 (index 24): CTA buttons (BUILD YOUR OWN / EXPLORE MODELS) - #block-id-24144.rdx-render-block
+
+  KEY CSS CLASS PATTERNS:
+    - jlr-section / jlr-section--light-theme / jlr-section--white-theme
+    - jlr-grid__wrapper / jlr-grid / jlr-grid--columns-1 / jlr-grid--bottom-space-0
+    - jlr-grid--content-narrow / jlr-grid--content-narrow--left / jlr-grid--no-border
+    - jlr-snippet / jlr-snippet--narrow / jlr-snippet--left
+    - jlr-snippet__item / jlr-snippet__heading / jlr-snippet__paragraph
+    - jlr-heading / jlr-heading--level-2 / jlr-heading--light-theme / jlr-heading--size-xl
+    - jlr-paragraph / jlr-paragraph--light-theme / jlr-paragraph--size-l
+    - jlr-tabs / jlr-tabs__navigation / jlr-tabs__button / jlr-tabs__overlay
+    - jlr-tab-button / jlr-tab-button--light-theme / jlr-tab-button--active
+    - jlr-tab-button__text
+    - jlr-tabbed-component / jlr-tabbed-component__navigation
+    - jlr-image-component / jlr-image / jlr-image--ratio-16-9
+    - jlr-button / jlr-button--has-icon / jlr-button--type-primary / jlr-button--light-theme
+    - jlr-cta / jlr-cta--light-theme / jlr-cta__icon / jlr-cta__text
+    - jlr-icon / icon-ignite-configure / icon-right-open-big
+    - rdx-render-block / rdx-render-block--tab / rdx-render-block--tab-current
+    - rdx-render-block__options
+-->
+
+
+<!-- ============================================================ -->
+<!-- BLOCK 20: BUILD AND ORDER Heading + Subtitle (block-index=20) -->
+<!-- Parent: <div class="blocks-list"> child at index 20          -->
+<!-- ============================================================ -->
+
+<div><div id="models" class="rdx-render-block"><section dir="" data-cy="snippet__container" id="24140" block-id="24140" groups="" block-index="20" class="jlr-section jlr-section--light-theme"><div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns-1 jlr-grid--bottom-space-0 jlr-grid--content-narrow jlr-grid--content-narrow--left jlr-grid--no-border"><div data-cy="snippet__column" class="jlr-snippet jlr-snippet--narrow jlr-snippet--left"><div class="jlr-snippet__item"><h2 data-cy="snippet__header" class="jlr-snippet__heading jlr-html-elements jlr-heading jlr-heading--level-2 jlr-heading--light-theme jlr-heading--size-xl">BUILD AND ORDER</h2> <div data-cy="snippet__paragraph" class="jlr-snippet__paragraph jlr-html-elements jlr-paragraph jlr-paragraph--light-theme jlr-paragraph--size-l"><p>Choose from our distinct models to begin your journey.</p>
+</div> <!----> <!----></div></div></div></div></section> <div class="rdx-render-block__options"></div> <!----></div></div>
+
+
+<!-- ============================================================ -->
+<!-- BLOCK 21: Model Family Tabs (block-index=21)                  -->
+<!-- Tabs: DISCOVERY | DISCOVERY COMMERCIAL                        -->
+<!-- ============================================================ -->
+
+<div><div id="block-id-24141" class="rdx-render-block"><section dir="" block-index="21" class="jlr-tabs jlr-section jlr-section--light-theme"><div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns-1 jlr-grid--bottom-space-0"><!----> <div class="jlr-tabs__overlay"><span class="jlr-tabs__overlay__inner"></span></div> <!----> <nav class="jlr-tabs__navigation"><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme jlr-tab-button--active"><!----> <div class="jlr-tab-button__text"><span>DISCOVERY</span></div></button><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme"><!----> <div class="jlr-tab-button__text"><span>DISCOVERY COMMERCIAL</span></div></button></nav> <!----> <!----></div></div></section> <div class="rdx-render-block__options"></div> <!----></div></div>
+
+
+<!-- ============================================================ -->
+<!-- BLOCK 22: Discovery Trims - Vehicle Image + Trim Tabs         -->
+<!-- (block-index=22, ACTIVE TAB: rdx-render-block--tab-current)   -->
+<!-- Trim Tabs: S | DYNAMIC SE | GEMINI | DYNAMIC HSE |           -->
+<!--            METROPOLITAN EDITION | TEMPEST                     -->
+<!-- Vehicle Image: 113108 (S trim)                                -->
+<!-- ============================================================ -->
+
+<div><div id="block-id-24142" class="rdx-render-block rdx-render-block--tab rdx-render-block--tab-current"><section dir="" block-id="24142" block-index="22" class="jlr-section jlr-section--light-theme"><div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns- jlr-grid--x-space-0 jlr-grid--no-max-width jlr-grid--y-space-0"><div class="jlr-tabbed-component"><div><div groups="[object Object]" no-additional-padding="" class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns-ffi jlr-grid--y-space-0"><div class="jlr-image-component"><img src="https://media.cdn-jaguarlandrover.com/api/v2/images/113108/w/1600.jpg" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw" srcset="https://media.cdn-jaguarlandrover.com/api/v2/images/113108/w/640.jpg 640w, https://media.cdn-jaguarlandrover.com/api/v2/images/113108/w/1024.jpg 1024w, https://media.cdn-jaguarlandrover.com/api/v2/images/113108/w/1600.jpg 1600w" class="jlr-image jlr-image--ratio-16-9"> <!----> </div></div></div></div> <div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns- jlr-grid--y-space-0"><section dir="" class="jlr-tabs jlr-tabbed-component__navigation jlr-section jlr-section--light-theme"><div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns-1 jlr-grid--xy-space-0"><!----> <div class="jlr-tabs__overlay"><span class="jlr-tabs__overlay__inner"></span></div> <!----> <nav class="jlr-tabs__navigation"><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme jlr-tab-button--active"><!----> <div class="jlr-tab-button__text"><span>S</span></div></button><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme"><!----> <div class="jlr-tab-button__text"><span>DYNAMIC SE</span></div></button><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme"><!----> <div class="jlr-tab-button__text"><span>GEMINI</span></div></button><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme"><!----> <div class="jlr-tab-button__text"><span>DYNAMIC HSE</span></div></button><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme"><!----> <div class="jlr-tab-button__text"><span>METROPOLITAN EDITION</span></div></button><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme"><!----> <div class="jlr-tab-button__text"><span>TEMPEST</span></div></button></nav> <!----> <!----></div></div></section> <!----></div></div></div></div></div></section> <div class="rdx-render-block__options"></div> <!----></div></div>
+
+
+<!-- ============================================================ -->
+<!-- BLOCK 23: Discovery Commercial Trims - Vehicle Image + Tabs   -->
+<!-- (block-index=23, HIDDEN TAB: rdx-render-block--tab only)      -->
+<!-- Trim Tabs: COMMERCIAL SE | COMMERCIAL DYNAMIC HSE             -->
+<!-- Vehicle Image: 113156 (Commercial SE trim)                    -->
+<!-- ============================================================ -->
+
+<div><div id="block-id-24143" class="rdx-render-block rdx-render-block--tab"><section dir="" block-id="24143" block-index="23" class="jlr-section jlr-section--light-theme"><div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns- jlr-grid--x-space-0 jlr-grid--no-max-width jlr-grid--y-space-0"><div class="jlr-tabbed-component"><div><div groups="[object Object]" no-additional-padding="" class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns-ffi jlr-grid--y-space-0"><div class="jlr-image-component"><img src="https://media.cdn-jaguarlandrover.com/api/v2/images/113156/w/1600.jpg" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw" srcset="https://media.cdn-jaguarlandrover.com/api/v2/images/113156/w/640.jpg 640w, https://media.cdn-jaguarlandrover.com/api/v2/images/113156/w/1024.jpg 1024w, https://media.cdn-jaguarlandrover.com/api/v2/images/113156/w/1600.jpg 1600w" class="jlr-image jlr-image--ratio-16-9"> <!----> </div></div></div></div> <div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns- jlr-grid--y-space-0"><section dir="" class="jlr-tabs jlr-tabbed-component__navigation jlr-section jlr-section--light-theme"><div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns-1 jlr-grid--xy-space-0"><!----> <div class="jlr-tabs__overlay"><span class="jlr-tabs__overlay__inner"></span></div> <!----> <nav class="jlr-tabs__navigation"><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme jlr-tab-button--active"><!----> <div class="jlr-tab-button__text"><span>COMMERCIAL SE</span></div></button><button type="button" class="jlr-tabs__button jlr-tab-button jlr-tab-button--light-theme"><!----> <div class="jlr-tab-button__text"><span>COMMERCIAL DYNAMIC HSE</span></div></button></nav> <!----> <!----></div></div></section> <!----></div></div></div></div></div></section> <div class="rdx-render-block__options"></div> <!----></div></div>
+
+
+<!-- ============================================================ -->
+<!-- BLOCK 24: CTA Buttons (block-index=24)                        -->
+<!-- Buttons: BUILD YOUR OWN (primary) | EXPLORE MODELS (link)     -->
+<!-- ============================================================ -->
+
+<div><div id="block-id-24144" class="rdx-render-block"><section dir="" data-cy="snippet__container" id="24144" block-id="24144" groups="" block-index="24" class="jlr-section jlr-section--light-theme"><div class="jlr-grid__wrapper"><div class="jlr-grid jlr-grid--columns-1 jlr-grid-- jlr-grid--content-narrow jlr-grid--content-narrow--left jlr-grid--no-border"><div data-cy="snippet__column" class="jlr-snippet jlr-snippet--narrow jlr-snippet--left"><div class="jlr-snippet__item"><!----> <!----> <div class="jlr-snippet__container-buttons"><a href="https://buildyour.landrover.com/lr/en_xm/l462_k26/4c6e1/ipr/inspire?formCode=lr-config-disco-en&amp;country=Egypt&amp;language=en" target="_blank" class="jlr-snippet__button jlr-button jlr-button--has-icon jlr-button--type-primary jlr-button--light-theme" data-cy="snippet__button"><i class="jlr-button__icon jlr-icon icon-ignite-configure jlr-icon--light-theme jlr-icon--"></i>
+  BUILD YOUR OWN
+  </a></div> <div class="jlr-snippet__container-ctas"><div class="jlr-snippet__cta"><a href="/en/discovery/26my/discovery/models-and-specifications" data-cy="snippet__link" class="jlr-cta jlr-cta--light-theme"><i class="jlr-cta__icon jlr-icon icon-right-open-big jlr-icon--light-theme jlr-icon--"></i> <span class="jlr-cta__text jlr-cta--light-theme">
+        EXPLORE MODELS
+        </span></a></div></div></div></div></div></div></section> <div class="rdx-render-block__options"></div> <!----></div></div>
+

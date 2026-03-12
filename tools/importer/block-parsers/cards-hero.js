@@ -1,6 +1,7 @@
 /**
  * Cards (hero) block parser
- * Extracts vehicle family hero cards from the "house of brands" section
+ * Extracts vehicle family hero cards from the "house of brands" section.
+ * Each card gets: background image (col 1), brand name + CTA + video link (col 2).
  */
 export default function parse(element, document) {
   const items = element.querySelectorAll('.jlr-house-of-brands-block__item');
@@ -27,6 +28,15 @@ export default function parse(element, document) {
       cta.href = link.href;
       cta.textContent = link.textContent.trim() || 'Enter';
       body.appendChild(cta);
+
+      // Extract background video URL for hover playback
+      const videoSource = item.querySelector('video source');
+      if (videoSource && videoSource.src) {
+        const videoLink = document.createElement('a');
+        videoLink.href = videoSource.src;
+        videoLink.textContent = 'video';
+        body.appendChild(videoLink);
+      }
 
       cells.push([image, body]);
     }
