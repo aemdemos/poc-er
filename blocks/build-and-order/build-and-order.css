@@ -1,0 +1,225 @@
+/* Build and Order Block – trim chooser with CTA buttons */
+.build-and-order {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  font-family: var(--body-font-family);
+}
+
+/* Vehicle Image */
+.bo-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  transition: opacity 0.25s ease;
+}
+
+.bo-image picture {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.bo-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Shared tab bar styles */
+.bo-model-tabs,
+.bo-trim-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid rgb(74 79 84 / 30%);
+  padding: 0 16px;
+  overflow-x: auto;
+}
+
+.bo-model-tab,
+.bo-trim-tab {
+  background: none;
+  border: none;
+  border-bottom: 5px solid transparent;
+  padding: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+  color: rgb(12 18 28 / 66%);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+/* Override EDS default button hover/focus styles */
+.bo-model-tab:hover,
+.bo-model-tab:focus,
+.bo-model-tab:focus-visible,
+.bo-trim-tab:hover,
+.bo-trim-tab:focus,
+.bo-trim-tab:focus-visible {
+  background: none;
+  outline: none;
+}
+
+.bo-model-tab:not([aria-selected="true"]):hover,
+.bo-trim-tab:not([aria-selected="true"]):hover {
+  color: rgb(12 18 28 / 66%);
+  border-bottom-color: rgb(12 18 28 / 40%);
+}
+
+.bo-model-tab[aria-selected="true"],
+.bo-trim-tab[aria-selected="true"] {
+  color: #0c121c;
+  border-bottom-color: #0c121c;
+}
+
+/* Model tabs hidden when not needed */
+.bo-model-tabs[hidden] {
+  display: none;
+}
+
+/* Trim panels */
+.bo-trim-panel[aria-hidden="true"] {
+  display: none;
+}
+
+/* CTAs */
+.bo-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 40px 16px 48px;
+}
+
+.bo-cta-primary,
+.bo-cta-primary:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #0c121c;
+  color: #fff;
+  padding: 0 20px;
+  height: 45px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+}
+
+.bo-cta-primary::before {
+  content: '\2699';
+  font-size: 16px;
+  line-height: 1;
+}
+
+.bo-cta-primary:hover {
+  background-color: #1a2230;
+  color: #fff;
+}
+
+.bo-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  padding: 0;
+  color: #4a4f54;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  transition: color 0.3s;
+}
+
+.bo-cta-secondary::before {
+  content: '\203A';
+  font-size: 16px;
+  line-height: 1;
+}
+
+.bo-cta-secondary:hover {
+  color: #0c121c;
+}
+
+/* Fade transition on tab switch */
+.build-and-order.bo-transitioning .bo-image {
+  opacity: 0;
+}
+
+/* Section header styling */
+.section:has(.build-and-order) > .default-content-wrapper h2 {
+  font-family: var(--heading-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #0c121c;
+  line-height: 1;
+  margin: 0 0 12px;
+}
+
+.section:has(.build-and-order) > .default-content-wrapper p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4a4f54;
+  line-height: 1.4;
+  margin: 0 0 24px;
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .bo-model-tabs,
+  .bo-trim-tabs {
+    padding: 0 32px;
+  }
+
+  .bo-model-tab,
+  .bo-trim-tab {
+    height: 64px;
+  }
+
+  .bo-ctas {
+    padding: 60px 32px 80px;
+  }
+
+  .section:has(.build-and-order) > .default-content-wrapper h2 {
+    font-size: 32px;
+    letter-spacing: 1.6px;
+  }
+
+  .section:has(.build-and-order) > .default-content-wrapper p {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+}
+
+@media (width >= 1200px) {
+  .bo-model-tabs,
+  .bo-trim-tabs {
+    padding: 0 48px;
+  }
+
+  .bo-ctas {
+    padding: 60px 48px 80px;
+  }
+
+  .section:has(.build-and-order) > .default-content-wrapper h2 {
+    font-size: 38px;
+    letter-spacing: 1.9px;
+  }
+}
