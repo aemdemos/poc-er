@@ -2,127 +2,194 @@
 /* global WebImporter */
 
 /**
- * Parser for electrifying-power → Columns block with formatted specs
+ * Parser for electrifying-power → structured stat-card data
  *
  * Source: .jlr-electrifying-power
- * Base Block: Columns
+ * Target Block: Electrifying Power (custom tabbed block)
  *
- * Block Structure (from markdown example):
- * | **Columns** | |
- * | --- | --- |
- * | ## HEADING Description SPEC_LABEL: VALUE / SPEC_LABEL: VALUE [CTA](url) | ![img](url) |
- * OR reversed:
- * | ![img](url) | ## HEADING Description SPEC_LABEL: VALUE / SPEC_LABEL: VALUE |
+ * Extracts structured data from injected __NUXT__ data attribute
+ * (preferred) or falls back to DOM extraction.
  *
- * Source HTML Pattern:
- * <section class="jlr-electrifying-power jlr-section">
- *   <div class="jlr-grid--columns-3">
- *     <div class="jlr-electrifying-power__copy">
- *       <div class="jlr-electrifying-power__items">
- *         <div class="jlr-electrifying-power__item">
- *           <h4 class="__tagline">0-100 KM/H</h4>
- *           <h5 class="__title"><span>4,0</span>SEC</h5>
- *         </div>
- *         ...
- *       </div>
- *       <div class="jlr-column-template">
- *         <h2>DEFENDER OCTA</h2>
- *         <div class="jlr-column-template__paragraph">Description</div>
- *         <a href="...">CTA</a>
- *       </div>
- *     </div>
- *     <picture class="jlr-electrifying-power__image"><img></picture>
- *   </div>
- * </section>
+ * Returns: { heading, paragraph, isReversed, image, imageAlt, stats[], ctas[] }
  *
- * Generated: 2026-03-04
+ * Used by page transformer to combine multiple EP sections into
+ * a single tabbed block (same pattern as hotspots).
  */
-export default function parse(element, { document }) {
-  const cells = [];
 
-  // Extract heading
-  const heading = element.querySelector('.jlr-column-template__heading')
-    || element.querySelector('.jlr-electrifying-power__copy h2');
+/**
+ * Parse the title HTML from __NUXT__: "<span>360</span>PS<sup>*</sup>"
+ * Returns { value, unit }
+ */
+function parseTitleHtml(titleHtml) {
+  if (!titleHtml) return { value: '', unit: '' };
 
-  // Extract description
-  const desc = element.querySelector('.jlr-column-template__paragraph');
+  const spanMatch = titleHtml.match(/<span[^>]*>([\s\S]*?)<\/span>/);
+  if (spanMatch) {
+    const value = spanMatch[1].trim();
+    // Everything after </span>
+    let rest = titleHtml.substring(titleHtml.indexOf('</span>') + 7);
+    // Strip HTML tags but keep text content (including sup content inline)
+    rest = rest.replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g, '$1');
+    rest = rest.replace(/<[^>]+>/g, '').trim();
+    return { value, unit: rest };
+  }
 
-  // Extract spec items
-  const specItems = Array.from(element.querySelectorAll('.jlr-electrifying-power__item'));
-  const specs = specItems.map((item) => {
-    const tagline = item.querySelector('.jlr-electrifying-power__item__tagline');
-    const title = item.querySelector('.jlr-electrifying-power__item__title');
-    if (tagline && title) {
-      const label = tagline.textContent.trim();
-      const value = title.textContent.trim().replace(/\s+/g, ' ');
-      return `${label}: ${value}`;
+  // Fallback: raw text, try to split at digit/letter boundary
+  const text = titleHtml.replace(/<[^>]+>/g, '').trim();
+  const match = text.match(/^([\d,.]+)\s*(.*)/);
+  if (match) {
+    return { value: match[1], unit: match[2] };
+  }
+  return { value: text, unit: '' };
+}
+
+/**
+ * Decode common HTML entities to plain text
+ */
+function decodeEntities(text) {
+  if (!text) return '';
+  return text
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&amp;/gi, '&')
+    .replace(/&#x26;/gi, '&')
+    .replace(/\u00a0/g, ' ');
+}
+
+/**
+ * Clean disclaimer HTML — strip tags, keep text
+ */
+function cleanDisclaimer(html) {
+  if (!html) return '';
+  return html
+    .replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/\u00a0/g, ' ')
+    .trim();
+}
+
+/**
+ * Clean paragraph HTML — strip tags but preserve text
+ */
+function cleanParagraph(html) {
+  if (!html) return '';
+  return html
+    .replace(/<sub[^>]*>([\s\S]*?)<\/sub>/g, '$1')
+    .replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/\u00a0/g, ' ')
+    .trim();
+}
+
+/**
+ * Extract structured electrifying-power data from a single section.
+ * Called by the page transformer to accumulate multiple sections.
+ */
+export function extractElectrifyingPowerData(element, document) {
+  const result = {
+    heading: '',
+    paragraph: '',
+    isReversed: false,
+    image: null,
+    stats: [],
+    ctas: [],
+  };
+
+  // Prefer injected __NUXT__ data
+  const injectedJson = element.getAttribute('data-electrifying-power');
+  if (injectedJson) {
+    try {
+      const data = JSON.parse(injectedJson);
+      result.heading = data.heading || '';
+      result.paragraph = cleanParagraph(data.paragraph || '');
+      result.isReversed = !!data.isReversed;
+
+      if (data.image) {
+        const img = document.createElement('img');
+        img.src = data.image;
+        img.alt = data.imageAlt || result.heading || '';
+        result.image = img;
+      }
+
+      result.stats = (data.stats || []).map((stat) => {
+        const { value, unit } = parseTitleHtml(stat.title);
+        return {
+          tagline: decodeEntities((stat.tagline || '').replace(/<[^>]+>/g, '').trim()),
+          value: decodeEntities(value),
+          unit: decodeEntities(unit),
+          disclaimer: cleanDisclaimer(stat.disclaimer),
+        };
+      });
+    } catch (e) { /* fall through to DOM */ }
+  }
+
+  // DOM fallback for stats
+  if (result.stats.length === 0) {
+    const items = Array.from(element.querySelectorAll('[class*="electrifying-power__item"]'));
+    result.stats = items.map((item) => {
+      const taglineEl = item.querySelector('[class*="tagline"]');
+      const titleEl = item.querySelector('[class*="title"]');
+      const disclaimerEl = item.querySelector('[class*="disclaimer"]');
+
+      const titleText = titleEl ? titleEl.textContent.trim().replace(/\s+/g, '') : '';
+      const valMatch = titleText.match(/^([\d,.]+)(.*)/);
+
+      return {
+        tagline: taglineEl ? taglineEl.textContent.trim() : '',
+        value: valMatch ? valMatch[1] : titleText,
+        unit: valMatch ? valMatch[2] : '',
+        disclaimer: disclaimerEl ? disclaimerEl.textContent.trim() : '',
+      };
+    }).filter((s) => s.tagline || s.value);
+  }
+
+  // DOM fallback for heading
+  if (!result.heading) {
+    const h = element.querySelector('.jlr-column-template__heading')
+      || element.querySelector('.jlr-electrifying-power__copy h2');
+    if (h) result.heading = h.textContent.trim();
+  }
+
+  // DOM fallback for paragraph
+  if (!result.paragraph) {
+    const p = element.querySelector('.jlr-column-template__paragraph');
+    if (p) result.paragraph = p.textContent.trim();
+  }
+
+  // DOM fallback for image
+  if (!result.image) {
+    const img = element.querySelector('.jlr-electrifying-power__image img')
+      || element.querySelector('picture img');
+    if (img) {
+      const imgEl = document.createElement('img');
+      imgEl.src = img.getAttribute('src');
+      imgEl.alt = img.getAttribute('alt') || '';
+      result.image = imgEl;
     }
-    return null;
-  }).filter(Boolean);
-
-  // Extract CTAs
-  const ctaLinks = Array.from(element.querySelectorAll('.jlr-column-template__link a, .jlr-electrifying-power__copy a.jlr-cta, .jlr-electrifying-power__copy a.jlr-button'));
-
-  // Extract image
-  const img = element.querySelector('.jlr-electrifying-power__image img')
-    || element.querySelector('picture img');
-
-  // Build text cell
-  const textCell = [];
-  if (heading) {
-    const h2 = document.createElement('h2');
-    h2.textContent = heading.textContent.trim();
-    textCell.push(h2);
   }
 
-  // Combine description and specs into one text block
-  let textContent = '';
-  if (desc) {
-    // Get clean text, strip footnote markers
-    textContent = desc.textContent.trim().replace(/<[^>]+>/g, '');
-  }
-  if (specs.length > 0) {
-    const specLine = specs.join(' / ');
-    textContent = textContent ? `${textContent} ${specLine}` : specLine;
-  }
-  if (textContent) {
-    textCell.push(textContent);
+  // DOM fallback for reversed layout
+  if (!result.isReversed) {
+    const copyEl = element.querySelector('.jlr-electrifying-power__copy');
+    const imageEl = element.querySelector('.jlr-electrifying-power__image');
+    if (copyEl && imageEl) {
+      const position = copyEl.compareDocumentPosition(imageEl);
+      // eslint-disable-next-line no-bitwise
+      result.isReversed = !(position & Node.DOCUMENT_POSITION_FOLLOWING);
+    }
   }
 
-  ctaLinks.forEach((link) => {
-    const a = document.createElement('a');
-    a.href = link.getAttribute('href');
-    a.textContent = link.textContent.trim();
-    textCell.push(a);
-  });
+  // Extract CTAs from DOM
+  const ctaLinks = Array.from(element.querySelectorAll(
+    '.jlr-column-template__link a, .jlr-electrifying-power__copy a.jlr-cta, .jlr-electrifying-power__copy a.jlr-button'
+  ));
+  result.ctas = ctaLinks.map((link) => ({
+    href: link.getAttribute('href'),
+    text: link.textContent.trim(),
+  }));
 
-  // Build image cell
-  const imageCell = [];
-  if (img) {
-    const imgEl = document.createElement('img');
-    imgEl.src = img.getAttribute('src');
-    imgEl.alt = img.getAttribute('alt') || '';
-    imageCell.push(imgEl);
-  }
-
-  // Determine layout order: check if image comes before text in DOM
-  const copyEl = element.querySelector('.jlr-electrifying-power__copy');
-  const imageEl = element.querySelector('.jlr-electrifying-power__image');
-
-  let textFirst = true;
-  if (copyEl && imageEl) {
-    // Compare DOM positions - if image appears before copy, it's image-first
-    const position = copyEl.compareDocumentPosition(imageEl);
-    // eslint-disable-next-line no-bitwise
-    textFirst = !!(position & Node.DOCUMENT_POSITION_FOLLOWING);
-  }
-
-  if (textFirst) {
-    cells.push([textCell, imageCell]);
-  } else {
-    cells.push([imageCell, textCell]);
-  }
-
-  const block = WebImporter.Blocks.createBlock(document, { name: 'Columns', cells });
-  element.replaceWith(block);
+  return result;
 }

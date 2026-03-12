@@ -105,11 +105,40 @@ function sanitizeDocPath(docPath, url) {
 }
 
 /**
- * Wrap plain DA HTML in a full page structure for AEM dev server.
- * Includes head.html content so scripts/styles load correctly.
+ * Convert bare <img> tags to <picture> elements for local preview.
+ * EDS block JS/CSS expects images inside <picture> wrappers.
+ * The DA publishing pipeline does this automatically, but local
+ * preview needs it in the source HTML.
+ */
+function wrapImgsInPicture(html) {
+  // Match bare <img> NOT already inside a <picture>
+  // Replace: <img src="..." alt="..." ...>
+  // With:    <picture><source srcset="..."><img src="..." alt="..." loading="lazy"></picture>
+  return html.replace(
+    /<img\s+([^>]*?)>/gi,
+    (match, attrs) => {
+      const srcMatch = attrs.match(/src="([^"]*)"/);
+      if (!srcMatch) return match;
+      const src = srcMatch[1];
+      const altMatch = attrs.match(/alt="([^"]*)"/);
+      const alt = altMatch ? altMatch[1] : '';
+      return '<picture>'
+        + `<source srcset="${src}">`
+        + `<source srcset="${src}" media="(min-width: 600px)">`
+        + `<img src="${src}" alt="${alt}" loading="lazy">`
+        + '</picture>';
+    },
+  );
+}
+
+/**
+ * Wrap DA HTML in a full page for local `aem up` preview.
+ * The .html file is used by the local dev server.
  */
 function wrapInHtmlPage(plainHtml) {
-  return `<html>
+  const withPictures = wrapImgsInPicture(plainHtml);
+  return `<!DOCTYPE html>
+<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <script src="/scripts/aem.js" type="module"></script>
@@ -119,7 +148,7 @@ function wrapInHtmlPage(plainHtml) {
 <body>
 <header></header>
 <main>
-${plainHtml}
+${withPictures}
 </main>
 <footer></footer>
 </body>
@@ -227,10 +256,11 @@ async function processUrl({
 
     const relPath = sanitizeDocPath(result.path, url);
 
-    // Save as .html with full page wrapper
-    const htmlPath = join(outputDir, `${relPath}.html`);
-    ensureDir(dirname(htmlPath));
-    writeFileSync(htmlPath, wrapInHtmlPage(result.html), 'utf-8');
+    // Save .plain.html only — the AEM CLI (--html-folder) wraps it
+    // with head.html, scripts, and styles automatically.
+    const plainPath = join(outputDir, `${relPath}.plain.html`);
+    ensureDir(dirname(plainPath));
+    writeFileSync(plainPath, result.html, 'utf-8');
 
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`${label} Done: ${relPath}.html (${elapsed}s)`);
@@ -271,7 +301,7 @@ async function main() {
     parsed['--urls'] || 'tools/importer/bulk-urls.txt',
   );
   const outputDir = resolve(
-    parsed['--output-dir'] || 'content/bulk-import',
+    parsed['--output-dir'] || 'content',
   );
 
   if (!existsSync(importScriptPath)) {

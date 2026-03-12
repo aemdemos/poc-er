@@ -393,15 +393,26 @@ main .section.gray {
 
 /* Disclaimer section (small print) */
 main .section.disclaimer {
+  background-color: var(--color-gray-light);
   margin: 0;
-  padding: 16px 0;
+  padding: 24px 0;
 }
 
 main .section.disclaimer p {
   font-size: var(--body-font-size-s);
-  line-height: 1.5;
-  color: var(--text-color-muted);
-  margin: 0;
+  line-height: 1.27;
+  color: var(--color-gray-medium);
+  letter-spacing: 0.3px;
+  margin: 0 0 10px;
+}
+
+main .section.disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
+main .section.disclaimer a:any-link {
+  color: var(--color-gray-medium);
+  text-decoration: underline;
 }
 
 /* Full-width section (no max-width constraint) */

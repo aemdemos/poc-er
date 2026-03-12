@@ -2,6 +2,15 @@ export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
+  /* Wrap standalone <img> in <picture> (mirrors AEM CDN behaviour) */
+  block.querySelectorAll('img').forEach((img) => {
+    if (img.parentElement.tagName !== 'PICTURE') {
+      const picture = document.createElement('picture');
+      img.before(picture);
+      picture.append(img);
+    }
+  });
+
   /* Classify each column as image / masonry / text */
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {

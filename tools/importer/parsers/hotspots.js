@@ -39,6 +39,19 @@
  */
 
 /**
+ * Clean paragraph text from __NUXT__ data:
+ * - Strip <sup>...</sup> footnote references
+ * - Replace &nbsp; entities and Unicode non-breaking spaces with regular spaces
+ */
+function cleanParagraph(text) {
+  if (!text) return text;
+  return text
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/\u00a0/g, ' ')
+    .trim();
+}
+
+/**
  * Extract structured hotspot data from a single container element.
  * Used by both the standalone parser and the page transformer.
  */
@@ -73,7 +86,12 @@ export function extractHotspotData(element, document) {
   let cards = [];
   const cardsJson = element.getAttribute('data-hotspot-cards');
   if (cardsJson) {
-    try { cards = JSON.parse(cardsJson); } catch (e) { /* ignore */ }
+    try {
+      cards = JSON.parse(cardsJson).map((card) => ({
+        ...card,
+        paragraph: cleanParagraph(card.paragraph),
+      }));
+    } catch (e) { /* ignore */ }
   }
 
   return { img: imgEl, positions, cards };
@@ -99,7 +117,7 @@ export default function parse(element, { document }) {
     cells.push([[data.img], ['']]);
   }
 
-  // Rows 2+: position | heading + description
+  // Rows 2+: position | heading + description | sub-image
   const count = Math.max(data.positions.length, data.cards.length);
   for (let i = 0; i < count; i++) {
     const pos = data.positions[i] || { top: '0', left: '0' };
@@ -117,10 +135,24 @@ export default function parse(element, { document }) {
       if (contentCell.length > 0) {
         contentCell.push(document.createElement('br'));
       }
-      contentCell.push(card.paragraph);
+      const span = document.createElement('span');
+      span.innerHTML = card.paragraph;
+      contentCell.push(span);
     }
 
-    cells.push([[posText], contentCell.length > 0 ? contentCell : ['']]);
+    const imageCell = [];
+    if (card.image) {
+      const imgEl = document.createElement('img');
+      imgEl.src = card.image;
+      imgEl.alt = card.heading || '';
+      imageCell.push(imgEl);
+    }
+
+    cells.push([
+      [posText],
+      contentCell.length > 0 ? contentCell : [''],
+      imageCell.length > 0 ? imageCell : [''],
+    ]);
   }
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'Hotspots', cells });

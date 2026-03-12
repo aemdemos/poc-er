@@ -208,6 +208,18 @@
   object-fit: contain;
 }
 
+/* Brand name as text (when wordmark image is unavailable) */
+.cards.hero .cards-card-body strong {
+  display: block;
+  margin: 0 0 48px;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text-color-inverse);
+}
+
 .cards.hero .cards-card-body a {
   display: inline-flex;
   align-items: center;

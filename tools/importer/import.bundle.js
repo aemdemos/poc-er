@@ -46,6 +46,13 @@ var CustomImportScript = (() => {
         cta.href = link.href;
         cta.textContent = link.textContent.trim() || "Enter";
         body.appendChild(cta);
+        const videoSource = item.querySelector("video source");
+        if (videoSource && videoSource.src) {
+          const videoLink = document.createElement("a");
+          videoLink.href = videoSource.src;
+          videoLink.textContent = "video";
+          body.appendChild(videoLink);
+        }
         cells.push([image, body]);
       }
     });
@@ -93,7 +100,15 @@ var CustomImportScript = (() => {
 
   // tools/importer/parsers/hero.js
   function parse2(element, { document }) {
-    const heroImage = element.querySelector(".jlr-immersive-hero__auto-column--big img") || element.querySelector(".jlr-immersive-hero img");
+    let heroImage = element.querySelector(".jlr-immersive-hero__auto-column--big img") || element.querySelector(".jlr-immersive-hero img");
+    if (!heroImage) {
+      const video = element.querySelector(".jlr-immersive-hero__video video[poster]") || element.querySelector("video[poster]");
+      if (video && video.getAttribute("poster")) {
+        heroImage = document.createElement("img");
+        heroImage.src = video.getAttribute("poster");
+        heroImage.alt = "";
+      }
+    }
     const heading = element.querySelector(".jlr-immersive-hero__content__heading") || element.querySelector("h1");
     const subtitle = element.querySelector(".jlr-immersive-hero__content__paragraph");
     const ctaLinks = Array.from(
@@ -108,25 +123,27 @@ var CustomImportScript = (() => {
       h1.textContent = heading.textContent.trim();
       cells.push([h1]);
     }
-    const contentCell = [];
+    const wrapper = document.createElement("div");
     if (subtitle) {
-      contentCell.push(subtitle.textContent.trim());
+      const p = document.createElement("p");
+      p.textContent = subtitle.textContent.trim();
+      wrapper.appendChild(p);
     }
     ctaLinks.forEach((link) => {
       const a = document.createElement("a");
       a.href = link.getAttribute("href");
       a.textContent = link.textContent.trim();
-      contentCell.push(a);
+      wrapper.appendChild(a);
     });
     const videoSource = element.querySelector(".jlr-immersive-hero__video video source[src]") || element.querySelector(".jlr-native-video-frame video source[src]") || element.querySelector("video source[src]");
     if (videoSource) {
       const videoLink = document.createElement("a");
       videoLink.href = videoSource.getAttribute("src");
       videoLink.textContent = "video";
-      contentCell.push(videoLink);
+      wrapper.appendChild(videoLink);
     }
-    if (contentCell.length > 0) {
-      cells.push(contentCell);
+    if (wrapper.childNodes.length > 0) {
+      cells.push([wrapper]);
     }
     const block = WebImporter.Blocks.createBlock(document, { name: "Hero", cells });
     element.replaceWith(block);
@@ -368,6 +385,10 @@ var CustomImportScript = (() => {
   }
 
   // tools/importer/parsers/hotspots.js
+  function cleanParagraph(text) {
+    if (!text) return text;
+    return text.replace(/&nbsp;/gi, " ").replace(/\u00a0/g, " ").trim();
+  }
   function extractHotspotData(element, document) {
     const img = element.querySelector(".jlr-hotspots-wrapper img") || element.querySelector(".jlr-hotspots-container__columns img") || element.querySelector("img");
     let imgEl = null;
@@ -392,7 +413,10 @@ var CustomImportScript = (() => {
     const cardsJson = element.getAttribute("data-hotspot-cards");
     if (cardsJson) {
       try {
-        cards = JSON.parse(cardsJson);
+        cards = JSON.parse(cardsJson).map((card) => ({
+          ...card,
+          paragraph: cleanParagraph(card.paragraph)
+        }));
       } catch (e) {
       }
     }
@@ -400,114 +424,205 @@ var CustomImportScript = (() => {
   }
 
   // tools/importer/parsers/electrifying-power.js
-  function parse9(element, { document }) {
-    const cells = [];
-    const heading = element.querySelector(".jlr-column-template__heading") || element.querySelector(".jlr-electrifying-power__copy h2");
-    const desc = element.querySelector(".jlr-column-template__paragraph");
-    const specItems = Array.from(element.querySelectorAll(".jlr-electrifying-power__item"));
-    const specs = specItems.map((item) => {
-      const tagline = item.querySelector(".jlr-electrifying-power__item__tagline");
-      const title = item.querySelector(".jlr-electrifying-power__item__title");
-      if (tagline && title) {
-        const label = tagline.textContent.trim();
-        const value = title.textContent.trim().replace(/\s+/g, " ");
-        return `${label}: ${value}`;
+  function parseTitleHtml(titleHtml) {
+    if (!titleHtml) return { value: "", unit: "" };
+    const spanMatch = titleHtml.match(/<span[^>]*>([\s\S]*?)<\/span>/);
+    if (spanMatch) {
+      const value = spanMatch[1].trim();
+      let rest = titleHtml.substring(titleHtml.indexOf("</span>") + 7);
+      rest = rest.replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g, "$1");
+      rest = rest.replace(/<[^>]+>/g, "").trim();
+      return { value, unit: rest };
+    }
+    const text = titleHtml.replace(/<[^>]+>/g, "").trim();
+    const match = text.match(/^([\d,.]+)\s*(.*)/);
+    if (match) {
+      return { value: match[1], unit: match[2] };
+    }
+    return { value: text, unit: "" };
+  }
+  function decodeEntities(text) {
+    if (!text) return "";
+    return text.replace(/&nbsp;/gi, " ").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&amp;/gi, "&").replace(/&#x26;/gi, "&").replace(/\u00a0/g, " ");
+  }
+  function cleanDisclaimer(html) {
+    if (!html) return "";
+    return html.replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g, "$1").replace(/<[^>]+>/g, "").replace(/&nbsp;/gi, " ").replace(/\u00a0/g, " ").trim();
+  }
+  function cleanParagraph2(html) {
+    if (!html) return "";
+    return html.replace(/<sub[^>]*>([\s\S]*?)<\/sub>/g, "$1").replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g, "$1").replace(/<[^>]+>/g, "").replace(/&nbsp;/gi, " ").replace(/\u00a0/g, " ").trim();
+  }
+  function extractElectrifyingPowerData(element, document) {
+    const result = {
+      heading: "",
+      paragraph: "",
+      isReversed: false,
+      image: null,
+      stats: [],
+      ctas: []
+    };
+    const injectedJson = element.getAttribute("data-electrifying-power");
+    if (injectedJson) {
+      try {
+        const data = JSON.parse(injectedJson);
+        result.heading = data.heading || "";
+        result.paragraph = cleanParagraph2(data.paragraph || "");
+        result.isReversed = !!data.isReversed;
+        if (data.image) {
+          const img = document.createElement("img");
+          img.src = data.image;
+          img.alt = data.imageAlt || result.heading || "";
+          result.image = img;
+        }
+        result.stats = (data.stats || []).map((stat) => {
+          const { value, unit } = parseTitleHtml(stat.title);
+          return {
+            tagline: decodeEntities((stat.tagline || "").replace(/<[^>]+>/g, "").trim()),
+            value: decodeEntities(value),
+            unit: decodeEntities(unit),
+            disclaimer: cleanDisclaimer(stat.disclaimer)
+          };
+        });
+      } catch (e) {
       }
-      return null;
-    }).filter(Boolean);
-    const ctaLinks = Array.from(element.querySelectorAll(".jlr-column-template__link a, .jlr-electrifying-power__copy a.jlr-cta, .jlr-electrifying-power__copy a.jlr-button"));
-    const img = element.querySelector(".jlr-electrifying-power__image img") || element.querySelector("picture img");
-    const textCell = [];
-    if (heading) {
-      const h2 = document.createElement("h2");
-      h2.textContent = heading.textContent.trim();
-      textCell.push(h2);
     }
-    let textContent = "";
-    if (desc) {
-      textContent = desc.textContent.trim().replace(/<[^>]+>/g, "");
+    if (result.stats.length === 0) {
+      const items = Array.from(element.querySelectorAll('[class*="electrifying-power__item"]'));
+      result.stats = items.map((item) => {
+        const taglineEl = item.querySelector('[class*="tagline"]');
+        const titleEl = item.querySelector('[class*="title"]');
+        const disclaimerEl = item.querySelector('[class*="disclaimer"]');
+        const titleText = titleEl ? titleEl.textContent.trim().replace(/\s+/g, "") : "";
+        const valMatch = titleText.match(/^([\d,.]+)(.*)/);
+        return {
+          tagline: taglineEl ? taglineEl.textContent.trim() : "",
+          value: valMatch ? valMatch[1] : titleText,
+          unit: valMatch ? valMatch[2] : "",
+          disclaimer: disclaimerEl ? disclaimerEl.textContent.trim() : ""
+        };
+      }).filter((s) => s.tagline || s.value);
     }
-    if (specs.length > 0) {
-      const specLine = specs.join(" / ");
-      textContent = textContent ? `${textContent} ${specLine}` : specLine;
+    if (!result.heading) {
+      const h = element.querySelector(".jlr-column-template__heading") || element.querySelector(".jlr-electrifying-power__copy h2");
+      if (h) result.heading = h.textContent.trim();
     }
-    if (textContent) {
-      textCell.push(textContent);
+    if (!result.paragraph) {
+      const p = element.querySelector(".jlr-column-template__paragraph");
+      if (p) result.paragraph = p.textContent.trim();
     }
-    ctaLinks.forEach((link) => {
-      const a = document.createElement("a");
-      a.href = link.getAttribute("href");
-      a.textContent = link.textContent.trim();
-      textCell.push(a);
-    });
-    const imageCell = [];
-    if (img) {
-      const imgEl = document.createElement("img");
-      imgEl.src = img.getAttribute("src");
-      imgEl.alt = img.getAttribute("alt") || "";
-      imageCell.push(imgEl);
+    if (!result.image) {
+      const img = element.querySelector(".jlr-electrifying-power__image img") || element.querySelector("picture img");
+      if (img) {
+        const imgEl = document.createElement("img");
+        imgEl.src = img.getAttribute("src");
+        imgEl.alt = img.getAttribute("alt") || "";
+        result.image = imgEl;
+      }
     }
-    const copyEl = element.querySelector(".jlr-electrifying-power__copy");
-    const imageEl = element.querySelector(".jlr-electrifying-power__image");
-    let textFirst = true;
-    if (copyEl && imageEl) {
-      const position = copyEl.compareDocumentPosition(imageEl);
-      textFirst = !!(position & Node.DOCUMENT_POSITION_FOLLOWING);
+    if (!result.isReversed) {
+      const copyEl = element.querySelector(".jlr-electrifying-power__copy");
+      const imageEl = element.querySelector(".jlr-electrifying-power__image");
+      if (copyEl && imageEl) {
+        const position = copyEl.compareDocumentPosition(imageEl);
+        result.isReversed = !(position & Node.DOCUMENT_POSITION_FOLLOWING);
+      }
     }
-    if (textFirst) {
-      cells.push([textCell, imageCell]);
-    } else {
-      cells.push([imageCell, textCell]);
-    }
-    const block = WebImporter.Blocks.createBlock(document, { name: "Columns", cells });
-    element.replaceWith(block);
+    const ctaLinks = Array.from(element.querySelectorAll(
+      ".jlr-column-template__link a, .jlr-electrifying-power__copy a.jlr-cta, .jlr-electrifying-power__copy a.jlr-button"
+    ));
+    result.ctas = ctaLinks.map((link) => ({
+      href: link.getAttribute("href"),
+      text: link.textContent.trim()
+    }));
+    return result;
   }
 
   // tools/importer/parsers/tabbed-component.js
-  function parse10(element, { document }) {
-    const cells = [];
+  function cleanParagraph3(html) {
+    if (!html) return "";
+    let text = html.replace(/<li[^>]*>/gi, "\u2022 ");
+    text = text.replace(/<br\s*\/?>/gi, "\n");
+    text = text.replace(/<[^>]+>/g, "");
+    text = text.replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&#x26;/gi, "&").replace(/\u00a0/g, " ");
+    return text.split("\n").map((line) => line.trim()).filter((line) => line).join("\n");
+  }
+  function extractTabbedComponentData(element, document) {
+    const result = {
+      tabs: [],
+      isEditionChooser: false
+    };
     const tabbed = element.classList.contains("jlr-tabbed-component") ? element : element.querySelector(".jlr-tabbed-component");
-    if (!tabbed) {
-      element.remove();
-      return;
+    if (!tabbed) return result;
+    const injectedJson = tabbed.getAttribute("data-tabbed-component");
+    if (injectedJson) {
+      try {
+        const data = JSON.parse(injectedJson);
+        if (data.tabs && data.tabs.length > 0) {
+          result.tabs = data.tabs.map((tab) => {
+            const tabObj = {
+              tabLabel: tab.tabLabel || "",
+              heading: tab.heading || "",
+              paragraph: cleanParagraph3(tab.paragraph || ""),
+              image: null,
+              ctas: []
+            };
+            if (tab.image) {
+              const img = document.createElement("img");
+              img.src = tab.image;
+              img.alt = tab.heading || tab.tabLabel || "";
+              tabObj.image = img;
+            }
+            if (tab.links && tab.links.length > 0) {
+              tabObj.ctas = tab.links.map((link) => ({
+                href: link.url || "",
+                text: link.text || ""
+              }));
+            }
+            return tabObj;
+          });
+          const firstTab = result.tabs[0];
+          result.isEditionChooser = !!(firstTab.heading && firstTab.paragraph && firstTab.image);
+        }
+      } catch (e) {
+      }
     }
-    const img = tabbed.querySelector(".jlr-image-component img") || tabbed.querySelector("img");
-    const copyBox = tabbed.querySelector(".jlr-copy-box") || tabbed.querySelector(".jlr-tabbed-component__copy-box");
-    const heading = copyBox ? copyBox.querySelector(".jlr-copy-box__heading") || copyBox.querySelector("h2") : null;
-    const desc = copyBox ? copyBox.querySelector(".jlr-copy-box__paragraph") || copyBox.querySelector(".jlr-paragraph") : null;
-    const imageCell = [];
-    if (img) {
-      const imgEl = document.createElement("img");
-      imgEl.src = img.getAttribute("src");
-      imgEl.alt = img.getAttribute("alt") || "";
-      imageCell.push(imgEl);
+    if (result.tabs.length === 0) {
+      const copyBox = tabbed.querySelector(".jlr-copy-box") || tabbed.querySelector(".jlr-tabbed-component__copy-box");
+      const heading = copyBox ? copyBox.querySelector(".jlr-copy-box__heading") || copyBox.querySelector("h2") : null;
+      const desc = copyBox ? copyBox.querySelector(".jlr-copy-box__paragraph") || copyBox.querySelector(".jlr-paragraph") : null;
+      const img = tabbed.querySelector(".jlr-image-component img") || tabbed.querySelector("img");
+      const tabButtons = Array.from(
+        tabbed.querySelectorAll(".jlr-tabs__navigation button")
+      );
+      const activeLabel = tabButtons.length > 0 ? tabButtons[0].textContent.trim() : "";
+      const tab = {
+        tabLabel: activeLabel,
+        heading: heading ? heading.textContent.trim() : "",
+        paragraph: desc ? desc.textContent.trim() : "",
+        image: null,
+        ctas: []
+      };
+      if (img) {
+        const imgEl = document.createElement("img");
+        imgEl.src = img.getAttribute("src");
+        imgEl.alt = img.getAttribute("alt") || "";
+        tab.image = imgEl;
+      }
+      const ctaContainer = copyBox || tabbed;
+      const ctaLinks = Array.from(
+        ctaContainer.querySelectorAll("a.jlr-button, a.jlr-cta")
+      );
+      tab.ctas = ctaLinks.map((link) => ({
+        href: link.getAttribute("href"),
+        text: link.textContent.trim()
+      }));
+      if (tab.heading || tab.paragraph || tab.image) {
+        result.tabs.push(tab);
+        result.isEditionChooser = !!(tab.heading && tab.paragraph && tab.image);
+      }
     }
-    const textCell = [];
-    if (heading) {
-      const h2 = document.createElement("h2");
-      h2.textContent = heading.textContent.trim();
-      textCell.push(h2);
-    }
-    if (desc) {
-      textCell.push(desc.textContent.trim());
-    }
-    const ctaContainer = copyBox || tabbed;
-    const ctaLinks = Array.from(
-      ctaContainer.querySelectorAll("a.jlr-button, a.jlr-cta")
-    );
-    ctaLinks.forEach((link) => {
-      const p = document.createElement("p");
-      const a = document.createElement("a");
-      a.href = link.getAttribute("href");
-      a.textContent = link.textContent.trim();
-      p.appendChild(a);
-      textCell.push(p);
-    });
-    if (imageCell.length > 0 || textCell.length > 0) {
-      cells.push([imageCell, textCell]);
-    }
-    const block = WebImporter.Blocks.createBlock(document, { name: "Columns", cells });
-    element.replaceWith(block);
+    return result;
   }
 
   // tools/importer/parsers/section-metadata.js
@@ -613,12 +728,173 @@ var CustomImportScript = (() => {
           if (contentCell.length > 0) {
             contentCell.push(document.createElement("br"));
           }
-          contentCell.push(card.paragraph);
+          const span = document.createElement("span");
+          span.innerHTML = card.paragraph;
+          contentCell.push(span);
         }
-        cells.push([[posText], contentCell.length > 0 ? contentCell : [""]]);
+        const imageCell = [];
+        if (card.image) {
+          const imgEl = document.createElement("img");
+          imgEl.src = card.image;
+          imgEl.alt = card.heading || "";
+          imageCell.push(imgEl);
+        }
+        cells.push([
+          [posText],
+          contentCell.length > 0 ? contentCell : [""],
+          imageCell.length > 0 ? imageCell : [""]
+        ]);
       }
     });
     return WebImporter.Blocks.createBlock(document, { name: "Hotspots", cells });
+  }
+  function createElectrifyingPowerBlock(document, epDataArray) {
+    const cells = [];
+    epDataArray.forEach((data) => {
+      if (data.tabLabel) {
+        const strong = document.createElement("strong");
+        strong.textContent = data.tabLabel;
+        cells.push([[strong], [""], [""], [""]]);
+      }
+      data.stats.forEach((stat) => {
+        const taglineSpan = document.createElement("span");
+        taglineSpan.textContent = stat.tagline;
+        const valueSpan = document.createElement("span");
+        valueSpan.textContent = stat.value;
+        const unitSpan = document.createElement("span");
+        unitSpan.textContent = stat.unit;
+        const disclaimerSpan = document.createElement("span");
+        disclaimerSpan.textContent = stat.disclaimer;
+        cells.push([
+          [taglineSpan],
+          [valueSpan],
+          [unitSpan],
+          [disclaimerSpan]
+        ]);
+      });
+      if (data.heading) {
+        const h3 = document.createElement("h3");
+        h3.textContent = data.heading;
+        cells.push([[h3], [""], [""], [""]]);
+      }
+      if (data.paragraph) {
+        const p = document.createElement("p");
+        p.textContent = data.paragraph;
+        cells.push([[p], [""], [""], [""]]);
+      }
+      data.ctas.forEach((cta) => {
+        const a = document.createElement("a");
+        a.href = cta.href;
+        a.textContent = cta.text;
+        cells.push([[a], [""], [""], [""]]);
+      });
+      if (data.image) {
+        cells.push([[data.image], [""], [""], [""]]);
+      }
+      if (data.isReversed) {
+        cells.push([["reversed"], [""], [""], [""]]);
+      }
+    });
+    return WebImporter.Blocks.createBlock(document, {
+      name: "Electrifying Power",
+      cells
+    });
+  }
+  function createEditionChooserBlock(document, tabsData) {
+    const cells = [];
+    tabsData.forEach((tab) => {
+      if (tab.tabLabel) {
+        const strong = document.createElement("strong");
+        strong.textContent = tab.tabLabel;
+        cells.push([[strong]]);
+      }
+      if (tab.image) {
+        cells.push([[tab.image]]);
+      }
+      if (tab.heading) {
+        const h3 = document.createElement("h3");
+        h3.textContent = tab.heading;
+        cells.push([[h3]]);
+      }
+      if (tab.paragraph) {
+        const lines = tab.paragraph.split("\n").filter((l) => l.trim());
+        const hasBullets = lines.some((l) => l.startsWith("\u2022") || l.startsWith("-"));
+        if (hasBullets) {
+          const ul = document.createElement("ul");
+          lines.forEach((line) => {
+            const li = document.createElement("li");
+            li.textContent = line.replace(/^[•\-]\s*/, "").trim();
+            ul.appendChild(li);
+          });
+          cells.push([[ul]]);
+        } else {
+          const p = document.createElement("p");
+          p.textContent = tab.paragraph;
+          cells.push([[p]]);
+        }
+      }
+      tab.ctas.forEach((cta) => {
+        const a = document.createElement("a");
+        a.href = cta.href;
+        a.textContent = cta.text;
+        cells.push([[a]]);
+      });
+    });
+    return WebImporter.Blocks.createBlock(document, {
+      name: "Edition Chooser",
+      cells
+    });
+  }
+  function createBuildAndOrderBlock(document, boData) {
+    const cells = [];
+    boData.models.forEach((model) => {
+      if (model.name) {
+        const h3 = document.createElement("h3");
+        h3.textContent = model.name;
+        cells.push([[h3], [""]]);
+      }
+      model.trims.forEach((trim) => {
+        const labelCell = [];
+        if (trim.label) {
+          const strong = document.createElement("strong");
+          strong.textContent = trim.label;
+          labelCell.push(strong);
+        }
+        const imageCell = [];
+        if (trim.image) {
+          const img = document.createElement("img");
+          img.src = trim.image;
+          img.alt = trim.label || "";
+          imageCell.push(img);
+        }
+        cells.push([labelCell, imageCell]);
+      });
+    });
+    const primaryCtas = boData.ctas.filter((c) => c.primary);
+    const secondaryCtas = boData.ctas.filter((c) => !c.primary);
+    const col1 = [];
+    primaryCtas.forEach((cta) => {
+      const a = document.createElement("a");
+      a.href = cta.href;
+      a.textContent = cta.text;
+      const strong = document.createElement("strong");
+      strong.appendChild(a);
+      col1.push(strong);
+    });
+    const col2 = [];
+    secondaryCtas.forEach((cta) => {
+      const a = document.createElement("a");
+      a.href = cta.href;
+      a.textContent = cta.text;
+      col2.push(a);
+    });
+    if (col1.length > 0 || col2.length > 0) {
+      cells.push([col1.length > 0 ? col1 : [""], col2.length > 0 ? col2 : [""]]);
+    }
+    return WebImporter.Blocks.createBlock(document, {
+      name: "Build And Order",
+      cells
+    });
   }
   function extractSnippetContent(section, document) {
     const elements = [];
@@ -642,19 +918,43 @@ var CustomImportScript = (() => {
     const elements = [];
     const disclaimer = section.querySelector(".jlr-snippet--disclaimer");
     if (!disclaimer) return elements;
-    const paragraphs = Array.from(disclaimer.querySelectorAll(".jlr-paragraph p, .jlr-paragraph"));
-    paragraphs.forEach((p) => {
-      const text = p.textContent.trim();
-      if (text) {
-        elements.push(createParagraph(document, text));
-      }
-    });
-    if (elements.length === 0) {
+    const sourceP = disclaimer.querySelector(".jlr-paragraph p") || disclaimer.querySelector("p");
+    if (!sourceP) {
       const text = disclaimer.textContent.trim();
-      if (text) {
-        elements.push(createParagraph(document, text));
+      if (text) elements.push(createParagraph(document, text));
+      return elements;
+    }
+    const childNodes = Array.from(sourceP.childNodes);
+    let currentP = document.createElement("p");
+    const flushParagraph = () => {
+      if (currentP.childNodes.length > 0 && currentP.textContent.trim()) {
+        elements.push(currentP);
+      }
+      currentP = document.createElement("p");
+    };
+    let prevWasBr = false;
+    for (const node of childNodes) {
+      const isBr = node.nodeName === "BR";
+      if (isBr && prevWasBr) {
+        flushParagraph();
+        prevWasBr = false;
+        continue;
+      }
+      if (prevWasBr) {
+        currentP.appendChild(document.createElement("br"));
+      }
+      if (isBr) {
+        prevWasBr = true;
+        continue;
+      }
+      prevWasBr = false;
+      if (node.nodeType === 3) {
+        currentP.appendChild(document.createTextNode(node.textContent));
+      } else if (node.nodeType === 1) {
+        currentP.appendChild(node.cloneNode(true));
       }
     }
+    flushParagraph();
     return elements;
   }
   function parseCollectionCarousel(section, document) {
@@ -692,6 +992,7 @@ var CustomImportScript = (() => {
     let pendingSnippet = null;
     let pendingTabLabels = [];
     let pendingHotspots = [];
+    let pendingEP = [];
     for (let i = 0; i < renderBlocks.length; i++) {
       const renderBlock = renderBlocks[i];
       const section = renderBlock.querySelector(":scope > section") || renderBlock.querySelector("section");
@@ -700,6 +1001,39 @@ var CustomImportScript = (() => {
       const theme = getTheme(section);
       if (blockType === "remove") continue;
       if (blockType === "tab-nav") {
+        const boAttr = renderBlock.getAttribute("data-build-and-order") || section.getAttribute("data-build-and-order");
+        if (boAttr) {
+          try {
+            const boData = JSON.parse(boAttr);
+            if (boData.models && boData.models.length > 0) {
+              if (pendingSnippet) {
+                pendingSnippet.forEach((el) => output.appendChild(el));
+                pendingSnippet = null;
+              }
+              const boBlock = createBuildAndOrderBlock(document, boData);
+              output.appendChild(boBlock);
+              output.appendChild(createHr(document));
+              let skip = i + 1;
+              while (skip < renderBlocks.length) {
+                const nextSection = renderBlocks[skip].querySelector(":scope > section") || renderBlocks[skip].querySelector("section");
+                if (nextSection && nextSection.querySelector(".jlr-tabbed-component")) {
+                  skip++;
+                } else {
+                  break;
+                }
+              }
+              if (skip < renderBlocks.length) {
+                const nextSection = renderBlocks[skip].querySelector(":scope > section") || renderBlocks[skip].querySelector("section");
+                if (nextSection && nextSection.querySelector(".jlr-snippet") && !nextSection.querySelector(".jlr-snippet--disclaimer")) {
+                  skip++;
+                }
+              }
+              i = skip - 1;
+              continue;
+            }
+          } catch (e) {
+          }
+        }
         const buttons = Array.from(
           section.querySelectorAll(".jlr-tabs__navigation button")
         );
@@ -715,6 +1049,12 @@ var CustomImportScript = (() => {
         output.appendChild(hotspotBlock);
         output.appendChild(createHr(document));
         pendingHotspots = [];
+      }
+      if (blockType !== "electrifying-power" && pendingEP.length > 0) {
+        const epBlock = createElectrifyingPowerBlock(document, pendingEP);
+        output.appendChild(epBlock);
+        output.appendChild(createHr(document));
+        pendingEP = [];
       }
       if (pendingSnippet) {
         pendingSnippet.forEach((el) => output.appendChild(el));
@@ -769,13 +1109,35 @@ var CustomImportScript = (() => {
           continue;
         }
         case "electrifying-power": {
-          const nodes = callParser(parse9, section, document);
-          blockElements = nodes;
-          break;
+          const epData = extractElectrifyingPowerData(section, document);
+          epData.tabLabel = pendingTabLabels.shift() || "";
+          pendingEP.push(epData);
+          continue;
         }
         case "tabbed-component": {
-          const nodes = callParser(parse10, section, document);
-          blockElements = nodes;
+          const boAttr = renderBlock.getAttribute("data-build-and-order") || section.getAttribute("data-build-and-order");
+          if (boAttr) {
+            try {
+              const boData = JSON.parse(boAttr);
+              if (boData.models && boData.models.length > 0) {
+                const boBlock = createBuildAndOrderBlock(document, boData);
+                blockElements = [boBlock];
+                if (i + 1 < renderBlocks.length) {
+                  const nextSection = renderBlocks[i + 1].querySelector(":scope > section") || renderBlocks[i + 1].querySelector("section");
+                  if (nextSection && nextSection.querySelector(".jlr-snippet") && !nextSection.querySelector(".jlr-snippet--disclaimer")) {
+                    i++;
+                  }
+                }
+                break;
+              }
+            } catch (e) {
+            }
+          }
+          const tcData = extractTabbedComponentData(section, document);
+          if (tcData.isEditionChooser && tcData.tabs.length > 0) {
+            const ecBlock = createEditionChooserBlock(document, tcData.tabs);
+            blockElements = [ecBlock];
+          }
           break;
         }
         case "disclaimer": {
@@ -806,6 +1168,11 @@ var CustomImportScript = (() => {
     if (pendingHotspots.length > 0) {
       const hotspotBlock = createHotspotsBlock(document, pendingHotspots);
       output.appendChild(hotspotBlock);
+      output.appendChild(createHr(document));
+    }
+    if (pendingEP.length > 0) {
+      const epBlock = createElectrifyingPowerBlock(document, pendingEP);
+      output.appendChild(epBlock);
       output.appendChild(createHr(document));
     }
     const metadataBlock = createMetadataBlock(document);
@@ -939,16 +1306,293 @@ var CustomImportScript = (() => {
           const cards = nuxtBlock.attributes.field_groups.map((group) => {
             let heading = "";
             let paragraph = "";
+            let image = "";
             for (let fi = 0; fi < group.length; fi++) {
               const fkey = group[fi].key || group[fi].symbol || "";
               if (fkey === "heading" && group[fi].value) heading = String(group[fi].value);
               if (fkey === "paragraph" && group[fi].value) paragraph = String(group[fi].value);
+              if (fkey === "rdx-image" && group[fi].value) {
+                try {
+                  const imgVal = typeof group[fi].value === "string" ? JSON.parse(group[fi].value) : group[fi].value;
+                  if (imgVal && imgVal.id) {
+                    image = `https://media.cdn-jaguarlandrover.com/api/v2/images/${imgVal.id}/w/1600/h/900.jpg`;
+                  }
+                } catch (e) {
+                }
+              }
             }
-            return { heading, paragraph };
+            return { heading, paragraph, image };
           });
           container.setAttribute("data-hotspot-cards", JSON.stringify(cards));
         }
       });
+    } catch (e) {
+    }
+  }
+  function injectElectrifyingPowerData(document, html) {
+    if (!html) return;
+    const containers = Array.from(
+      document.querySelectorAll(".jlr-electrifying-power")
+    );
+    if (containers.length === 0) return;
+    try {
+      const match = html.match(/window\.__NUXT__\s*=\s*(\(function\([\s\S]*?\)\([\s\S]*?\)\))\s*;?\s*<\/script>/);
+      if (!match) return;
+      const nuxt = new Function("return " + match[1])();
+      if (!nuxt || !nuxt.data || !nuxt.data[0] || !nuxt.data[0].blocks) return;
+      const blocks = nuxt.data[0].blocks;
+      const epBlocks = blocks.filter(
+        (b) => b && b.attributes && b.attributes.key === "jlr-electrifying-power"
+      );
+      containers.forEach((container, idx) => {
+        const nuxtBlock = epBlocks[idx];
+        if (!nuxtBlock || !nuxtBlock.attributes) return;
+        const attrs = nuxtBlock.attributes;
+        const data = {
+          heading: "",
+          paragraph: "",
+          isReversed: false,
+          image: "",
+          imageAlt: "",
+          stats: []
+        };
+        if (attrs.fields) {
+          for (let fi = 0; fi < attrs.fields.length; fi++) {
+            const f = attrs.fields[fi];
+            const sym = f.symbol || f.key || "";
+            if (sym === "heading" && f.value) data.heading = String(f.value);
+            if (sym === "paragraph" && f.value) data.paragraph = String(f.value);
+            if (sym === "is_reversed") data.isReversed = !!f.value;
+            if (sym === "rdx-image" && f.value) {
+              try {
+                const imgVal = typeof f.value === "string" ? JSON.parse(f.value) : f.value;
+                if (imgVal && imgVal.id) {
+                  data.image = `https://media.cdn-jaguarlandrover.com/api/v2/images/${imgVal.id}/w/1600/h/900.jpg`;
+                  data.imageAlt = imgVal.alt || "";
+                }
+              } catch (e) {
+              }
+            }
+          }
+        }
+        if (attrs.field_groups) {
+          data.stats = attrs.field_groups.map((group) => {
+            const stat = { tagline: "", title: "", disclaimer: "" };
+            for (let gi = 0; gi < group.length; gi++) {
+              const sym = group[gi].symbol || group[gi].key || "";
+              if (sym === "tagline" && group[gi].value) stat.tagline = String(group[gi].value);
+              if (sym === "title" && group[gi].value) stat.title = String(group[gi].value);
+              if (sym === "disclaimer" && group[gi].value) stat.disclaimer = String(group[gi].value);
+            }
+            return stat;
+          });
+        }
+        container.setAttribute("data-electrifying-power", JSON.stringify(data));
+      });
+    } catch (e) {
+    }
+  }
+  function injectTabbedComponentData(document, html) {
+    if (!html) return;
+    const containers = Array.from(
+      document.querySelectorAll(".jlr-tabbed-component")
+    );
+    if (containers.length === 0) return;
+    try {
+      const match = html.match(/window\.__NUXT__\s*=\s*(\(function\([\s\S]*?\)\([\s\S]*?\)\))\s*;?\s*<\/script>/);
+      if (!match) return;
+      const nuxt = new Function("return " + match[1])();
+      if (!nuxt || !nuxt.data || !nuxt.data[0] || !nuxt.data[0].blocks) return;
+      const blocks = nuxt.data[0].blocks;
+      const tcBlocks = blocks.filter(
+        (b) => b && b.attributes && b.attributes.key === "jlr-tabbed-component"
+      );
+      containers.forEach((container, idx) => {
+        const nuxtBlock = tcBlocks[idx];
+        if (!nuxtBlock || !nuxtBlock.attributes) return;
+        const attrs = nuxtBlock.attributes;
+        const data = {
+          tabs: [],
+          theme: ""
+        };
+        if (attrs.fields) {
+          for (let fi = 0; fi < attrs.fields.length; fi++) {
+            const f = attrs.fields[fi];
+            const sym = f.symbol || f.key || "";
+            if (sym === "box_color" && f.value) data.theme = String(f.value);
+          }
+        }
+        if (attrs.field_groups) {
+          data.tabs = attrs.field_groups.map((group) => {
+            const tab = {
+              tabLabel: "",
+              heading: "",
+              paragraph: "",
+              image: "",
+              links: []
+            };
+            for (let gi = 0; gi < group.length; gi++) {
+              const sym = group[gi].symbol || group[gi].key || "";
+              if (sym === "tab_label" && group[gi].value) tab.tabLabel = String(group[gi].value);
+              if (sym === "heading" && group[gi].value) tab.heading = String(group[gi].value);
+              if (sym === "paragraph" && group[gi].value) tab.paragraph = String(group[gi].value);
+              if (sym === "rdx-image" && group[gi].value) {
+                try {
+                  const imgVal = typeof group[gi].value === "string" ? JSON.parse(group[gi].value) : group[gi].value;
+                  if (imgVal && imgVal.id) {
+                    tab.image = `https://media.cdn-jaguarlandrover.com/api/v2/images/${imgVal.id}/w/1600/h/900.jpg`;
+                  }
+                } catch (e) {
+                }
+              }
+              if (sym === "rdx-links" && group[gi].value) {
+                const links = Array.isArray(group[gi].value) ? group[gi].value : [];
+                tab.links = links.filter((l) => l && l.link_text && l.url).map((l) => ({ text: l.link_text, url: l.url }));
+              }
+            }
+            return tab;
+          });
+        }
+        container.setAttribute("data-tabbed-component", JSON.stringify(data));
+      });
+    } catch (e) {
+    }
+  }
+  function injectBuildAndOrderData(document, html) {
+    if (!html) return;
+    try {
+      const match = html.match(/window\.__NUXT__\s*=\s*(\(function\([\s\S]*?\)\([\s\S]*?\)\))\s*;?\s*<\/script>/);
+      if (!match) return;
+      const nuxt = new Function("return " + match[1])();
+      if (!nuxt || !nuxt.data || !nuxt.data[0] || !nuxt.data[0].blocks) return;
+      const blocks = nuxt.data[0].blocks;
+      const isTrimChooser = (block) => {
+        const groups = block?.attributes?.field_groups;
+        if (!Array.isArray(groups) || groups.length < 2) return false;
+        return groups.some((group) => {
+          let hasLabel = false;
+          let hasImage = false;
+          for (let k = 0; k < group.length; k++) {
+            const sym = group[k].symbol || group[k].key || "";
+            if (sym === "tab_label" && group[k].value) hasLabel = true;
+            if (sym === "rdx-image" && group[k].value) hasImage = true;
+          }
+          return hasLabel && hasImage;
+        });
+      };
+      const hasPopulatedLinks = (fields) => fields.some((f) => {
+        if (f.symbol !== "rdx-link" && f.symbol !== "rdx-links") return false;
+        return Array.isArray(f.value) && f.value.length > 0;
+      });
+      const isHeadingSnippet = (block) => {
+        const fields = block?.attributes?.fields;
+        if (!Array.isArray(fields)) return false;
+        const hasTitle = fields.some((f) => f.symbol === "section_title" && f.value);
+        return hasTitle && !hasPopulatedLinks(fields);
+      };
+      const isCtaSnippet = (block) => {
+        const fields = block?.attributes?.fields;
+        if (!Array.isArray(fields)) return false;
+        return hasPopulatedLinks(fields);
+      };
+      for (let i = 0; i < blocks.length; i++) {
+        const b = blocks[i];
+        if (!b || !b.attributes) continue;
+        if (b.attributes.key !== "jlr-snippet") continue;
+        if (!isHeadingSnippet(b)) continue;
+        let j = i + 1;
+        if (j >= blocks.length) continue;
+        const data = { models: [], ctas: [] };
+        if (blocks[j]?.attributes?.key === "jlr-tabs") {
+          if (j + 1 >= blocks.length || blocks[j + 1]?.attributes?.key !== "jlr-tabbed-component" || !isTrimChooser(blocks[j + 1])) continue;
+          const tabsBlock = blocks[j].attributes;
+          const modelLabels = (tabsBlock.field_groups || []).map((g) => {
+            for (let k = 0; k < g.length; k++) {
+              if ((g[k].symbol || g[k].key) === "tab_label") return String(g[k].value || "");
+            }
+            return "";
+          });
+          j++;
+          modelLabels.forEach((label) => {
+            if (j < blocks.length && blocks[j]?.attributes?.key === "jlr-tabbed-component") {
+              const model = { name: label, trims: [] };
+              const groups = blocks[j].attributes.field_groups || [];
+              groups.forEach((group) => {
+                const trim = { label: "", image: "" };
+                for (let k = 0; k < group.length; k++) {
+                  const sym = group[k].symbol || group[k].key || "";
+                  if (sym === "tab_label" && group[k].value) trim.label = String(group[k].value);
+                  if (sym === "rdx-image" && group[k].value) {
+                    try {
+                      const imgVal = typeof group[k].value === "string" ? JSON.parse(group[k].value) : group[k].value;
+                      if (imgVal && imgVal.id) {
+                        trim.image = `https://media.cdn-jaguarlandrover.com/api/v2/images/${imgVal.id}/w/1600.jpg`;
+                      }
+                    } catch (e) {
+                    }
+                  }
+                }
+                model.trims.push(trim);
+              });
+              data.models.push(model);
+              j++;
+            }
+          });
+        } else if (blocks[j]?.attributes?.key === "jlr-tabbed-component" && isTrimChooser(blocks[j])) {
+          const model = { name: "", trims: [] };
+          const groups = blocks[j].attributes.field_groups || [];
+          groups.forEach((group) => {
+            const trim = { label: "", image: "" };
+            for (let k = 0; k < group.length; k++) {
+              const sym = group[k].symbol || group[k].key || "";
+              if (sym === "tab_label" && group[k].value) trim.label = String(group[k].value);
+              if (sym === "rdx-image" && group[k].value) {
+                try {
+                  const imgVal = typeof group[k].value === "string" ? JSON.parse(group[k].value) : group[k].value;
+                  if (imgVal && imgVal.id) {
+                    trim.image = `https://media.cdn-jaguarlandrover.com/api/v2/images/${imgVal.id}/w/1600.jpg`;
+                  }
+                } catch (e) {
+                }
+              }
+            }
+            model.trims.push(trim);
+          });
+          data.models.push(model);
+          j++;
+        } else {
+          continue;
+        }
+        if (j >= blocks.length || blocks[j]?.attributes?.key !== "jlr-snippet" || !isCtaSnippet(blocks[j])) continue;
+        const ctaFields = blocks[j].attributes.fields || [];
+        const rdxLinkField = Array.isArray(ctaFields) ? ctaFields.find((f) => f.symbol === "rdx-link") : null;
+        if (rdxLinkField && Array.isArray(rdxLinkField.value)) {
+          rdxLinkField.value.forEach((link) => {
+            if (link && link.link_text && link.url) {
+              data.ctas.push({ text: link.link_text, href: link.url, primary: true });
+            }
+          });
+        }
+        const rdxLinksField = Array.isArray(ctaFields) ? ctaFields.find((f) => f.symbol === "rdx-links") : null;
+        if (rdxLinksField && Array.isArray(rdxLinksField.value)) {
+          rdxLinksField.value.forEach((l) => {
+            if (l && l.link_text && l.url) {
+              data.ctas.push({ text: l.link_text, href: l.url, primary: false });
+            }
+          });
+        }
+        if (data.models.length === 0) continue;
+        const allRenderBlocks = Array.from(document.querySelectorAll(".rdx-render-block"));
+        if (i < allRenderBlocks.length) {
+          for (let t = i + 1; t < allRenderBlocks.length; t++) {
+            const next = allRenderBlocks[t];
+            if (next.querySelector(".jlr-tabs__navigation") || next.querySelector(".jlr-tabbed-component")) {
+              next.setAttribute("data-build-and-order", JSON.stringify(data));
+              break;
+            }
+          }
+        }
+      }
     } catch (e) {
     }
   }
@@ -959,6 +1603,9 @@ var CustomImportScript = (() => {
      */
     transformDOM({ document, url, html, params }) {
       injectHotspotData(document, html);
+      injectElectrifyingPowerData(document, html);
+      injectTabbedComponentData(document, html);
+      injectBuildAndOrderData(document, html);
       transform4("beforeTransform", document.body, { document, url, html, params });
       const template = detectTemplate(url);
       const main = document.querySelector("#rdx-render") || document.querySelector(".blocks-list") || document.querySelector(".jlr-content") || document.body;
