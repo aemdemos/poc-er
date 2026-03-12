@@ -104,57 +104,6 @@ function sanitizeDocPath(docPath, url) {
   return normalized;
 }
 
-/**
- * Convert bare <img> tags to <picture> elements for local preview.
- * EDS block JS/CSS expects images inside <picture> wrappers.
- * The DA publishing pipeline does this automatically, but local
- * preview needs it in the source HTML.
- */
-function wrapImgsInPicture(html) {
-  // Match bare <img> NOT already inside a <picture>
-  // Replace: <img src="..." alt="..." ...>
-  // With:    <picture><source srcset="..."><img src="..." alt="..." loading="lazy"></picture>
-  return html.replace(
-    /<img\s+([^>]*?)>/gi,
-    (match, attrs) => {
-      const srcMatch = attrs.match(/src="([^"]*)"/);
-      if (!srcMatch) return match;
-      const src = srcMatch[1];
-      const altMatch = attrs.match(/alt="([^"]*)"/);
-      const alt = altMatch ? altMatch[1] : '';
-      return '<picture>'
-        + `<source srcset="${src}">`
-        + `<source srcset="${src}" media="(min-width: 600px)">`
-        + `<img src="${src}" alt="${alt}" loading="lazy">`
-        + '</picture>';
-    },
-  );
-}
-
-/**
- * Wrap DA HTML in a full page for local `aem up` preview.
- * The .html file is used by the local dev server.
- */
-function wrapInHtmlPage(plainHtml) {
-  const withPictures = wrapImgsInPicture(plainHtml);
-  return `<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<script src="/scripts/aem.js" type="module"></script>
-<script src="/scripts/scripts.js" type="module"></script>
-<link rel="stylesheet" href="/styles/styles.css"/>
-</head>
-<body>
-<header></header>
-<main>
-${withPictures}
-</main>
-<footer></footer>
-</body>
-</html>`;
-}
-
 async function processUrl({
   context, url, helixScript, importScript, outputDir, index, total,
 }) {
