@@ -1,8 +1,25 @@
 var CustomImportScript = (() => {
   var __defProp = Object.defineProperty;
+  var __defProps = Object.defineProperties;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop))
+          __defNormalProp(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
   var __export = (target, all) => {
     for (var name in all)
       __defProp(target, name, { get: all[name], enumerable: true });
@@ -413,8 +430,7 @@ var CustomImportScript = (() => {
     const cardsJson = element.getAttribute("data-hotspot-cards");
     if (cardsJson) {
       try {
-        cards = JSON.parse(cardsJson).map((card) => ({
-          ...card,
+        cards = JSON.parse(cardsJson).map((card) => __spreadProps(__spreadValues({}, card), {
           paragraph: cleanParagraph(card.paragraph)
         }));
       } catch (e) {
@@ -1459,6 +1475,7 @@ var CustomImportScript = (() => {
     }
   }
   function injectBuildAndOrderData(document, html) {
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     if (!html) return;
     try {
       const match = html.match(/window\.__NUXT__\s*=\s*(\(function\([\s\S]*?\)\([\s\S]*?\)\))\s*;?\s*<\/script>/);
@@ -1467,7 +1484,8 @@ var CustomImportScript = (() => {
       if (!nuxt || !nuxt.data || !nuxt.data[0] || !nuxt.data[0].blocks) return;
       const blocks = nuxt.data[0].blocks;
       const isTrimChooser = (block) => {
-        const groups = block?.attributes?.field_groups;
+        var _a2;
+        const groups = (_a2 = block == null ? void 0 : block.attributes) == null ? void 0 : _a2.field_groups;
         if (!Array.isArray(groups) || groups.length < 2) return false;
         return groups.some((group) => {
           let hasLabel = false;
@@ -1485,13 +1503,15 @@ var CustomImportScript = (() => {
         return Array.isArray(f.value) && f.value.length > 0;
       });
       const isHeadingSnippet = (block) => {
-        const fields = block?.attributes?.fields;
+        var _a2;
+        const fields = (_a2 = block == null ? void 0 : block.attributes) == null ? void 0 : _a2.fields;
         if (!Array.isArray(fields)) return false;
         const hasTitle = fields.some((f) => f.symbol === "section_title" && f.value);
         return hasTitle && !hasPopulatedLinks(fields);
       };
       const isCtaSnippet = (block) => {
-        const fields = block?.attributes?.fields;
+        var _a2;
+        const fields = (_a2 = block == null ? void 0 : block.attributes) == null ? void 0 : _a2.fields;
         if (!Array.isArray(fields)) return false;
         return hasPopulatedLinks(fields);
       };
@@ -1503,8 +1523,8 @@ var CustomImportScript = (() => {
         let j = i + 1;
         if (j >= blocks.length) continue;
         const data = { models: [], ctas: [] };
-        if (blocks[j]?.attributes?.key === "jlr-tabs") {
-          if (j + 1 >= blocks.length || blocks[j + 1]?.attributes?.key !== "jlr-tabbed-component" || !isTrimChooser(blocks[j + 1])) continue;
+        if (((_b = (_a = blocks[j]) == null ? void 0 : _a.attributes) == null ? void 0 : _b.key) === "jlr-tabs") {
+          if (j + 1 >= blocks.length || ((_d = (_c = blocks[j + 1]) == null ? void 0 : _c.attributes) == null ? void 0 : _d.key) !== "jlr-tabbed-component" || !isTrimChooser(blocks[j + 1])) continue;
           const tabsBlock = blocks[j].attributes;
           const modelLabels = (tabsBlock.field_groups || []).map((g) => {
             for (let k = 0; k < g.length; k++) {
@@ -1514,7 +1534,8 @@ var CustomImportScript = (() => {
           });
           j++;
           modelLabels.forEach((label) => {
-            if (j < blocks.length && blocks[j]?.attributes?.key === "jlr-tabbed-component") {
+            var _a2, _b2;
+            if (j < blocks.length && ((_b2 = (_a2 = blocks[j]) == null ? void 0 : _a2.attributes) == null ? void 0 : _b2.key) === "jlr-tabbed-component") {
               const model = { name: label, trims: [] };
               const groups = blocks[j].attributes.field_groups || [];
               groups.forEach((group) => {
@@ -1538,7 +1559,7 @@ var CustomImportScript = (() => {
               j++;
             }
           });
-        } else if (blocks[j]?.attributes?.key === "jlr-tabbed-component" && isTrimChooser(blocks[j])) {
+        } else if (((_f = (_e = blocks[j]) == null ? void 0 : _e.attributes) == null ? void 0 : _f.key) === "jlr-tabbed-component" && isTrimChooser(blocks[j])) {
           const model = { name: "", trims: [] };
           const groups = blocks[j].attributes.field_groups || [];
           groups.forEach((group) => {
@@ -1563,7 +1584,7 @@ var CustomImportScript = (() => {
         } else {
           continue;
         }
-        if (j >= blocks.length || blocks[j]?.attributes?.key !== "jlr-snippet" || !isCtaSnippet(blocks[j])) continue;
+        if (j >= blocks.length || ((_h = (_g = blocks[j]) == null ? void 0 : _g.attributes) == null ? void 0 : _h.key) !== "jlr-snippet" || !isCtaSnippet(blocks[j])) continue;
         const ctaFields = blocks[j].attributes.fields || [];
         const rdxLinkField = Array.isArray(ctaFields) ? ctaFields.find((f) => f.symbol === "rdx-link") : null;
         if (rdxLinkField && Array.isArray(rdxLinkField.value)) {
