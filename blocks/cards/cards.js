@@ -54,14 +54,20 @@ export default function decorate(block) {
   /* hero variant: video backgrounds that play on hover */
   if (block.classList.contains('hero')) {
     ul.querySelectorAll('li').forEach((li) => {
-      const videoLink = li.querySelector('.cards-card-body a[href$=".mp4"]');
+      const videoLink = [...li.querySelectorAll('.cards-card-body a')]
+        .find((a) => /^video\b/i.test(a.textContent.trim()));
       if (videoLink) {
+        /* Extract URL from link text (DA preserves text but mangles href) */
+        const urlMatch = videoLink.textContent.trim()
+          .match(/^video\s+(https?:\/\/.+)/i);
+        const videoUrl = urlMatch ? urlMatch[1] : videoLink.href;
+
         const video = document.createElement('video');
         video.muted = true;
         video.loop = true;
         video.preload = 'auto';
         video.playsInline = true;
-        video.src = videoLink.href;
+        video.src = videoUrl;
 
         const imageDiv = li.querySelector('.cards-card-image');
         if (imageDiv) imageDiv.append(video);

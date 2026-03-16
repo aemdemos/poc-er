@@ -49,7 +49,7 @@ export default function parse(element, document) {
       if (videoSource && videoSource.src) {
         const videoLink = document.createElement('a');
         videoLink.href = videoSource.src;
-        videoLink.textContent = 'video';
+        videoLink.textContent = `video ${videoSource.src}`;
         body.appendChild(videoLink);
       }
 

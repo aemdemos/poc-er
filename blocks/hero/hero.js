@@ -1,7 +1,21 @@
 /* Helper: test whether a link is a video link (by text convention from the import parser) */
 function isVideoLink(a) {
+  return /^video\b/i.test(a.textContent.trim());
+}
+
+/* Extract the actual video URL from link text (DA mangles href, but preserves text).
+ * Text format: "video https://cdn.example.com/file.mp4"
+ * Falls back to href for local preview where DA processing doesn't apply. */
+function getVideoUrl(a) {
+  const match = a.textContent.trim().match(/^(?:video-mobile|video-poster|video)\s+(https?:\/\/.+)/i);
+  return match ? match[1] : a.href;
+}
+
+/* Return the video type keyword from the link text */
+function getVideoType(a) {
   const t = a.textContent.trim().toLowerCase();
-  return t === 'video' || t === 'video-mobile';
+  if (t.startsWith('video-mobile')) return 'video-mobile';
+  return 'video';
 }
 
 export default function decorate(block) {
@@ -57,27 +71,27 @@ export default function decorate(block) {
     video.preload = 'auto';
 
     /* Separate desktop vs mobile sources by link text convention */
-    const desktopLink = videoLinks.find((a) => a.textContent.trim().toLowerCase() === 'video')
+    const desktopLink = videoLinks.find((a) => getVideoType(a) === 'video')
       || videoLinks[0];
-    const mobileLink = videoLinks.find((a) => a.textContent.trim().toLowerCase() === 'video-mobile');
+    const mobileLink = videoLinks.find((a) => getVideoType(a) === 'video-mobile');
 
     if (mobileLink && desktopLink) {
       /* Responsive sources: mobile for narrow screens, desktop for wide */
       const mobileSrc = document.createElement('source');
-      mobileSrc.src = mobileLink.href;
+      mobileSrc.src = getVideoUrl(mobileLink);
       mobileSrc.type = 'video/mp4';
       mobileSrc.media = '(max-width: 899px)';
       video.append(mobileSrc);
 
       const desktopSrc = document.createElement('source');
-      desktopSrc.src = desktopLink.href;
+      desktopSrc.src = getVideoUrl(desktopLink);
       desktopSrc.type = 'video/mp4';
       desktopSrc.media = '(min-width: 900px)';
       video.append(desktopSrc);
     } else {
       /* Single source — no media query needed */
       const source = document.createElement('source');
-      source.src = desktopLink.href;
+      source.src = getVideoUrl(desktopLink);
       source.type = 'video/mp4';
       video.append(source);
     }

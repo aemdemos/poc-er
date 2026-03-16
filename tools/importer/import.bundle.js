@@ -35,7 +35,7 @@ function parse(element, document) {
       if (videoSource && videoSource.src) {
         const videoLink = document.createElement("a");
         videoLink.href = videoSource.src;
-        videoLink.textContent = "video";
+        videoLink.textContent = `video ${videoSource.src}`;
         body.appendChild(videoLink);
       }
       cells.push([image, body]);
@@ -155,7 +155,7 @@ function parse2(element, { document }) {
     const p = document.createElement("p");
     const videoLink = document.createElement("a");
     videoLink.href = videoDesktop;
-    videoLink.textContent = "video";
+    videoLink.textContent = `video ${videoDesktop}`;
     p.appendChild(videoLink);
     wrapper.appendChild(p);
   }
@@ -163,7 +163,7 @@ function parse2(element, { document }) {
     const p = document.createElement("p");
     const mobileLink = document.createElement("a");
     mobileLink.href = videoMobile;
-    mobileLink.textContent = "video-mobile";
+    mobileLink.textContent = `video-mobile ${videoMobile}`;
     p.appendChild(mobileLink);
     wrapper.appendChild(p);
   }
@@ -487,7 +487,7 @@ function parse8(element, { document }) {
       const noPoster = masonryRoot.getAttribute("data-masonry-video-no-poster") === "true";
       const videoLink = document.createElement("a");
       videoLink.href = masonryVideo;
-      videoLink.textContent = noPoster ? "video" : "video-poster";
+      videoLink.textContent = noPoster ? `video ${masonryVideo}` : `video-poster ${masonryVideo}`;
       const videoP = document.createElement("p");
       videoP.appendChild(videoLink);
       if (!noPoster && isReversed && imageCell.length >= 2) {

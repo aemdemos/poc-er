@@ -1,7 +1,14 @@
 /* Helper: test whether a link is a video link (by text convention from the import parser) */
 function isVideoLink(a) {
-  const t = a.textContent.trim().toLowerCase();
-  return t === 'video' || t === 'video-mobile' || t === 'video-poster';
+  return /^video\b/i.test(a.textContent.trim());
+}
+
+/* Extract the actual video URL from link text (DA mangles href, but preserves text).
+ * Text format: "video-poster https://cdn.example.com/file.mp4"
+ * Falls back to href for local preview where DA processing doesn't apply. */
+function getVideoUrl(a) {
+  const match = a.textContent.trim().match(/^(?:video-mobile|video-poster|video)\s+(https?:\/\/.+)/i);
+  return match ? match[1] : a.href;
 }
 
 export default function decorate(block) {
@@ -59,7 +66,7 @@ export default function decorate(block) {
          *    The poster picture is the link's previous element sibling (if any).
          *    EDS wraps bare <img> in <p>, so the poster may be inside a <p>. */
         videoLinks.forEach((link) => {
-          const videoUrl = link.href;
+          const videoUrl = getVideoUrl(link);
 
           const video = document.createElement('video');
           video.src = videoUrl;
@@ -71,8 +78,8 @@ export default function decorate(block) {
           const wrapper = document.createElement('div');
           wrapper.className = 'columns-masonry-video';
 
-          /* Only absorb preceding image as poster when link text is 'video-poster' */
-          const wantsPoster = link.textContent.trim().toLowerCase() === 'video-poster';
+          /* Only absorb preceding image as poster when link text starts with 'video-poster' */
+          const wantsPoster = link.textContent.trim().toLowerCase().startsWith('video-poster');
           const prevEl = link.previousElementSibling;
           let prevPic = null;
           if (wantsPoster && prevEl) {

@@ -119,7 +119,7 @@ export default function parse(element, { document }) {
       const noPoster = masonryRoot.getAttribute('data-masonry-video-no-poster') === 'true';
       const videoLink = document.createElement('a');
       videoLink.href = masonryVideo;
-      videoLink.textContent = noPoster ? 'video' : 'video-poster';
+      videoLink.textContent = noPoster ? `video ${masonryVideo}` : `video-poster ${masonryVideo}`;
       const videoP = document.createElement('p');
       videoP.appendChild(videoLink);
 

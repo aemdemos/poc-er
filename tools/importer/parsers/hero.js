@@ -128,7 +128,7 @@ export default function parse(element, { document }) {
     const p = document.createElement('p');
     const videoLink = document.createElement('a');
     videoLink.href = videoDesktop;
-    videoLink.textContent = 'video';
+    videoLink.textContent = `video ${videoDesktop}`;
     p.appendChild(videoLink);
     wrapper.appendChild(p);
   }
@@ -136,7 +136,7 @@ export default function parse(element, { document }) {
     const p = document.createElement('p');
     const mobileLink = document.createElement('a');
     mobileLink.href = videoMobile;
-    mobileLink.textContent = 'video-mobile';
+    mobileLink.textContent = `video-mobile ${videoMobile}`;
     p.appendChild(mobileLink);
     wrapper.appendChild(p);
   }
