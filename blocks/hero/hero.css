@@ -10,7 +10,8 @@ main .section.hero-container {
 
 .hero {
   position: relative;
-  min-height: calc(100vh - var(--nav-height));
+  height: calc(100vh - var(--header-height));
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -209,10 +210,6 @@ main .section.dark .hero > div:last-of-type a:any-link:hover {
 }
 
 @media (width >= 900px) {
-  .hero {
-    min-height: calc(100vh - var(--nav-height));
-  }
-
   .hero-video-toggle {
     bottom: 48px;
     right: 48px;
@@ -236,7 +233,7 @@ main .section.dark .hero > div:last-of-type a:any-link:hover {
   justify-content: flex-end;
   align-items: flex-start;
   text-align: left;
-  padding-bottom: 80px;
+  padding: 48px 24px 80px;
 }
 
 /* Softer gradient – just the bottom portion for text readability */
@@ -351,6 +348,6 @@ main .section.dark .hero > div:last-of-type a:any-link:hover {
 
 @media (width >= 900px) {
   .hero.model-overview {
-    padding-bottom: 100px;
+    padding: 64px 48px 100px;
   }
 }
