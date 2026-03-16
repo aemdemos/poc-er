@@ -10,12 +10,11 @@ main .section.hero-container {
 
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: calc(100vh - var(--nav-height));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 48px 24px;
   overflow: hidden;
   background: #000;
   text-align: center;
@@ -99,8 +98,8 @@ main .section.hero-container {
   text-transform: uppercase;
 }
 
-/* CTA button – :any-link needed to beat .section.dark a:any-link specificity */
-.hero > div:last-of-type a:any-link {
+/* CTA button – specificity must beat main .section.dark a.button:any-link (0-4-2) */
+main .section.dark .hero > div:last-of-type a:any-link {
   position: relative;
   display: flex;
   width: fit-content;
@@ -109,8 +108,8 @@ main .section.hero-container {
   justify-content: center;
   height: 45px;
   padding: 0 20px 0 52px;
-  background-color: var(--text-color-inverse);
-  color: var(--color-primary);
+  background-color: rgb(12 18 28 / 20%);
+  color: #fff;
   font-family: var(--body-font-family);
   font-size: 10px;
   font-weight: 600;
@@ -119,6 +118,7 @@ main .section.hero-container {
   text-transform: uppercase;
   text-decoration: none;
   border: none;
+  box-shadow: none;
   transition: var(--button-transition);
 }
 
@@ -130,18 +130,14 @@ main .section.hero-container {
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  fill: var(--color-primary);
+  fill: #fff;
   transition: fill 0.3s ease;
 }
 
-.hero > div:last-of-type a:hover .hero-arrow-icon {
-  fill: var(--text-color-inverse);
-}
-
-.hero > div:last-of-type a:any-link:hover {
-  background-color: var(--color-primary);
-  color: var(--text-color-inverse);
-  border: 1px solid var(--text-color-inverse);
+main .section.dark .hero > div:last-of-type a:any-link:hover {
+  background-color: rgb(12 18 28 / 40%);
+  color: #fff;
+  border: 1px solid rgb(255 255 255 / 40%);
 }
 
 /* Video play/pause toggle – circular ring with icon */
@@ -214,12 +210,147 @@ main .section.hero-container {
 
 @media (width >= 900px) {
   .hero {
-    min-height: 85vh;
-    padding: 64px 48px;
+    min-height: calc(100vh - var(--nav-height));
   }
 
   .hero-video-toggle {
     bottom: 48px;
     right: 48px;
+  }
+}
+
+/* ──── Model-overview variant ──── */
+
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+@font-face {
+  font-display: block;
+  font-family: icons;
+  src:
+    url('/fonts/icons.woff2') format('woff2'),
+    url('/fonts/icons.woff') format('woff');
+}
+
+/* stylelint-enable font-family-no-missing-generic-family-keyword */
+
+.hero.model-overview {
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  padding-bottom: 80px;
+}
+
+/* Softer gradient – just the bottom portion for text readability */
+.hero.model-overview::after {
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 50%) 0%,
+    rgb(0 0 0 / 20%) 50%,
+    transparent 100%
+  );
+}
+
+/* Content containers – limit width */
+.hero.model-overview > div:not(:first-child) {
+  max-width: 720px;
+}
+
+/* Heading */
+.hero.model-overview h1 {
+  font-size: 33px;
+  line-height: 33px;
+  letter-spacing: 1.65px;
+}
+
+/* Subtitle */
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.model-overview > div:last-of-type p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+}
+
+/* Button row – side-by-side layout */
+.hero-cta-row {
+  display: flex;
+  gap: 32px;
+  margin-top: 30px;
+}
+
+.hero-cta-row .button-container {
+  margin: 0;
+}
+
+/* Override global .button styling inside model-overview hero */
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.model-overview .hero-cta-row a:any-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  padding: 0 20px 0 52px;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+  white-space: nowrap;
+  transition: var(--button-transition);
+}
+
+/* Primary CTA – white solid background, dark text */
+.hero.model-overview a.hero-cta-primary:any-link {
+  background-color: #fff;
+  color: var(--color-primary);
+}
+
+.hero.model-overview a.hero-cta-primary:any-link:hover {
+  background-color: rgb(255 255 255 / 80%);
+  color: var(--color-primary);
+}
+
+/* Secondary CTA – regular hero button look; .hero-cta-row beats dark-section specificity */
+.hero.model-overview .hero-cta-row a.hero-cta-secondary:any-link {
+  background-color: rgb(12 18 28 / 20%);
+  color: #fff;
+}
+
+.hero.model-overview .hero-cta-row a.hero-cta-secondary:any-link:hover {
+  background-color: rgb(12 18 28 / 40%);
+  color: #fff;
+  border: 1px solid rgb(255 255 255 / 40%);
+}
+
+/* CTA icons via icon font – positioned inside buttons */
+.hero.model-overview .hero-cta-row a::before {
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: icons;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero.model-overview a.hero-cta-primary::before {
+  content: '\e078';
+}
+
+.hero.model-overview a.hero-cta-secondary::before {
+  content: '\e11c';
+}
+
+@media (width >= 900px) {
+  .hero.model-overview {
+    padding-bottom: 100px;
   }
 }

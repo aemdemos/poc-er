@@ -177,35 +177,8 @@
   color: var(--text-color);
 }
 
-/* CTA container in text column */
-.columns-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 16px;
-}
-
-/* Primary CTA – dark filled button */
-.columns .columns-cta-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--button-height);
-  padding: var(--button-padding);
-  margin-bottom: 16px;
-  background-color: var(--button-primary-bg);
-  color: var(--button-primary-color);
-  font-family: var(--body-font-family);
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  letter-spacing: var(--button-letter-spacing);
-  text-transform: var(--button-text-transform);
-  text-decoration: none;
-  border: none;
-  transition: var(--button-transition);
-}
-
-.columns .columns-cta-primary::before {
+/* Primary CTA – arrow icon (inherits base .button styling from styles.css) */
+.columns .button-container .button::before {
   content: '';
   display: inline-block;
   width: 20px;
@@ -217,18 +190,14 @@
   flex-shrink: 0;
 }
 
-.columns .columns-cta-primary:hover {
-  background-color: var(--color-gray-medium);
-  color: var(--text-color-inverse);
+/* Secondary CTA – text link with › chevron */
+.columns .columns-text-link,
+.columns-2-cols > div > div:not(.columns-img-col, .columns-masonry) p:not(.button-container):has(a:not(.button)) {
+  margin: 4px 0 0;
 }
 
-/* Secondary CTA – text link with chevron */
-.columns .columns-cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  padding: 0;
-  background: none;
-  border: none;
+.columns .columns-text-link a,
+.columns-2-cols > div > div:not(.columns-img-col, .columns-masonry) p:not(.button-container) a:not(.button) {
   font-family: var(--body-font-family);
   font-size: var(--button-font-size);
   font-weight: var(--button-text-font-weight);
@@ -239,15 +208,9 @@
   transition: color 0.3s ease;
 }
 
-.columns .columns-cta-secondary::before {
-  content: '\203A';
-  margin-right: 10px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.columns .columns-cta-secondary:hover {
+/* stylelint-disable-next-line no-descending-specificity */
+.columns .columns-text-link a:hover,
+.columns-2-cols > div > div:not(.columns-img-col, .columns-masonry) p:not(.button-container) a:not(.button):hover {
   color: var(--text-color-emphasis);
 }
 
@@ -268,6 +231,7 @@
   }
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .columns-4-cols a {
   display: inline-flex;
   align-items: center;
@@ -299,6 +263,7 @@
   flex-shrink: 0;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .columns-4-cols a:hover {
   background-color: var(--color-gray-medium);
   color: var(--text-color-inverse);

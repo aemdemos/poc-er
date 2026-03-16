@@ -1,17 +1,19 @@
-# Land Rover Egypt — 10 remaining pages for bulk import
-# (Defender 110 overview and Defender family overview already imported)
+# Land Rover Egypt — All pages except homepage (11 pages)
 
-# Homepage
-https://www.landrover-egypt.com/en/
-
-# Vehicle Family Overview (T2)
+# Vehicle Family Overviews (T2)
+https://www.landrover-egypt.com/en/defender/overview
 https://www.landrover-egypt.com/en/discovery/overview
 
-# Vehicle Model Overviews (T3)
+# Vehicle Model Overviews (T3) — Defender
+https://www.landrover-egypt.com/en/defender/26my/defender-110/overview
 https://www.landrover-egypt.com/en/defender/26my/defender-90/overview
 https://www.landrover-egypt.com/en/defender/26my/defender-130/overview
+
+# Vehicle Model Overviews (T3) — Discovery
 https://www.landrover-egypt.com/en/discovery/26my/discovery/overview
 https://www.landrover-egypt.com/en/discovery/26my/discovery-sport/overview
+
+# Vehicle Model Overviews (T3) — Range Rover
 https://www.landrover-egypt.com/en/range-rover/25my/range-rover/overview
 https://www.landrover-egypt.com/en/range-rover/25my/range-rover-sport/overview
 https://www.landrover-egypt.com/en/range-rover/26my/range-rover-evoque/overview

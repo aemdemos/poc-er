@@ -1,5 +1,5 @@
-/* Build and Order Block – trim chooser with CTA buttons */
-.build-and-order {
+/* Model Selector Block – trim chooser with CTA buttons */
+.model-selector {
   position: relative;
   width: 100%;
   max-width: 1600px;
@@ -157,12 +157,12 @@
 }
 
 /* Fade transition on tab switch */
-.build-and-order.bo-transitioning .bo-image {
+.model-selector.bo-transitioning .bo-image {
   opacity: 0;
 }
 
 /* Section header styling */
-.section:has(.build-and-order) > .default-content-wrapper h2 {
+.section:has(.model-selector) > .default-content-wrapper h2 {
   font-family: var(--heading-font-family);
   font-size: 28px;
   font-weight: 700;
@@ -173,7 +173,7 @@
   margin: 0 0 12px;
 }
 
-.section:has(.build-and-order) > .default-content-wrapper p {
+.section:has(.model-selector) > .default-content-wrapper p {
   font-size: 16px;
   font-weight: 400;
   color: #4a4f54;
@@ -197,12 +197,12 @@
     padding: 60px 32px 80px;
   }
 
-  .section:has(.build-and-order) > .default-content-wrapper h2 {
+  .section:has(.model-selector) > .default-content-wrapper h2 {
     font-size: 32px;
     letter-spacing: 1.6px;
   }
 
-  .section:has(.build-and-order) > .default-content-wrapper p {
+  .section:has(.model-selector) > .default-content-wrapper p {
     font-size: 18px;
     line-height: 1.35;
   }
@@ -218,7 +218,7 @@
     padding: 60px 48px 80px;
   }
 
-  .section:has(.build-and-order) > .default-content-wrapper h2 {
+  .section:has(.model-selector) > .default-content-wrapper h2 {
     font-size: 38px;
     letter-spacing: 1.9px;
   }

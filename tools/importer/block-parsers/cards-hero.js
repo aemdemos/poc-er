@@ -1,8 +1,15 @@
 /**
  * Cards (hero) block parser
  * Extracts vehicle family hero cards from the "house of brands" section.
- * Each card gets: background image (col 1), brand name + CTA + video link (col 2).
+ * Each card gets: background image (col 1), wordmark + CTA + video link (col 2).
  */
+
+const WORDMARK_MAP = {
+  'Range Rover': '/icons/wordmark-range-rover.svg',
+  Defender: '/icons/wordmark-defender.svg',
+  Discovery: '/icons/wordmark-discovery.svg',
+};
+
 export default function parse(element, document) {
   const items = element.querySelectorAll('.jlr-house-of-brands-block__item');
   const cells = [['Cards (hero)']];
@@ -20,10 +27,18 @@ export default function parse(element, document) {
       image.alt = alt;
 
       const body = document.createElement('div');
-      const strong = document.createElement('strong');
-      strong.textContent = image.alt;
-      body.appendChild(strong);
-      body.appendChild(document.createTextNode(' '));
+
+      // Wordmark image instead of plain text brand name
+      const wordmarkSrc = WORDMARK_MAP[alt];
+      if (wordmarkSrc) {
+        const wordmark = document.createElement('img');
+        wordmark.src = wordmarkSrc;
+        wordmark.alt = alt;
+        const p = document.createElement('p');
+        p.appendChild(wordmark);
+        body.appendChild(p);
+      }
+
       const cta = document.createElement('a');
       cta.href = link.href;
       cta.textContent = link.textContent.trim() || 'Enter';

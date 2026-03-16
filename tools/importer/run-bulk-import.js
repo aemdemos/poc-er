@@ -3,13 +3,26 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
 
 /**
- * Bulk Import Runner with Timing
+ * Bulk Import Runner — uses the real `aem import` server
+ *
+ * This script starts the official AEM CLI import server (`aem import`) which
+ * provides a CORS proxy, then uses Playwright to load each page through that
+ * proxy and run the import transformation. This is the same pipeline the
+ * helix-importer-ui uses when you do a bulk import through the browser UI.
  *
  * Usage:
  *   node tools/importer/run-bulk-import.js \
- *     --import-script tools/importer/import.bundle.js \
- *     --urls tools/importer/bulk-urls.txt \
- *     --output-dir content/bulk-import
+ *     --urls tools/importer/all-urls.txt \
+ *     --output-dir content
+ *
+ * Options:
+ *   --urls          Path to a text file with one URL per line (default: tools/importer/all-urls.txt)
+ *   --output-dir    Directory to write .plain.html files (default: content)
+ *   --port          Port for the aem import server (default: 3001)
+ *   --cache         Path to a local folder to cache proxied responses (optional)
+ *
+ * Alternative (bypass aem import, use direct Playwright navigation):
+ *   See: tools/importer/run-bulk-import.playwright-direct.js
  */
 
 import {
@@ -17,6 +30,7 @@ import {
 } from 'fs';
 import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { spawn } from 'child_process';
 import { chromium } from 'playwright';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,23 +41,114 @@ const VIEWPORT_HEIGHT = 1080;
 const PAGE_TIMEOUT = 45000;
 const POPUP_DISMISS_DELAY = 500;
 const ESCAPE_KEY_DELAY = 300;
-const MIN_DELAY = 1000;
-const MAX_DELAY = 3000;
+const SERVER_STARTUP_TIMEOUT = 30000;
+const SERVER_POLL_INTERVAL = 500;
 
-async function randomDelay() {
-  const delay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
-  await new Promise((r) => { setTimeout(r, delay); });
+function ensureDir(p) {
+  mkdirSync(p, { recursive: true });
 }
 
-async function randomScroll(page) {
-  try {
-    const scrolls = Math.floor(Math.random() * 3) + 1;
-    for (let i = 0; i < scrolls; i += 1) {
-      const scrollAmount = Math.floor(Math.random() * 500) + 200;
-      await page.evaluate((amount) => window.scrollBy(0, amount), scrollAmount);
-      await new Promise((r) => { setTimeout(r, Math.random() * 500 + 200); });
+function sanitizeDocPath(docPath, url) {
+  let normalized = docPath;
+  if (!normalized || typeof normalized !== 'string') {
+    normalized = new URL(url).pathname || '/';
+  }
+  normalized = normalized.replace(/\\/g, '/');
+  if (normalized.startsWith('/')) normalized = normalized.slice(1);
+  if (normalized.endsWith('/')) normalized = normalized.slice(0, -1);
+  if (normalized === '') normalized = 'index';
+  return normalized;
+}
+
+/**
+ * Build the proxied URL for a given source URL through the aem import server.
+ * Format: http://localhost:<port>/<path>?host=<origin>
+ */
+function buildProxyUrl(sourceUrl, port) {
+  const u = new URL(sourceUrl);
+  const proxyBase = `http://localhost:${port}`;
+  return `${proxyBase}${u.pathname}${u.search ? u.search + '&' : '?'}host=${encodeURIComponent(u.origin)}`;
+}
+
+/**
+ * Start the `aem import` server as a child process.
+ * Returns the child process handle.
+ */
+function startAemImportServer(port, cacheDir) {
+  const args = [
+    'import',
+    '--no-open',
+    '--skip-ui',
+    '--port', String(port),
+    '--allow-insecure',
+  ];
+
+  if (cacheDir) {
+    args.push('--cache', cacheDir);
+  }
+
+  console.log(`  Starting: aem ${args.join(' ')}`);
+
+  const child = spawn('aem', args, {
+    cwd: resolve(__dirname, '../..'),
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+
+  child.stdout.on('data', (data) => {
+    const line = data.toString().trim();
+    if (line) console.log(`  [aem import] ${line}`);
+  });
+
+  child.stderr.on('data', (data) => {
+    const line = data.toString().trim();
+    if (line) console.error(`  [aem import] ${line}`);
+  });
+
+  return child;
+}
+
+/**
+ * Wait for the aem import server to become ready by polling the port.
+ */
+async function waitForServer(port, timeoutMs = SERVER_STARTUP_TIMEOUT) {
+  const start = Date.now();
+  const url = `http://localhost:${port}/`;
+
+  while (Date.now() - start < timeoutMs) {
+    try {
+      const resp = await fetch(url);
+      // The server returns 403 when no host param is set — that means it's up
+      if (resp.status === 403 || resp.ok) {
+        return true;
+      }
+    } catch {
+      // not ready yet
     }
-  } catch { /* ignore scroll errors */ }
+    await new Promise((r) => { setTimeout(r, SERVER_POLL_INTERVAL); });
+  }
+
+  throw new Error(`aem import server did not start within ${timeoutMs / 1000}s`);
+}
+
+/**
+ * Gracefully stop the aem import server.
+ */
+function stopServer(child) {
+  return new Promise((res) => {
+    if (!child || child.killed) {
+      res();
+      return;
+    }
+    child.on('close', () => res());
+    child.kill('SIGTERM');
+    // Force kill after 5s if it hasn't exited
+    setTimeout(() => {
+      if (!child.killed) {
+        child.kill('SIGKILL');
+      }
+      res();
+    }, 5000);
+  });
 }
 
 async function dismissPopups(page) {
@@ -62,54 +167,44 @@ async function dismissPopups(page) {
   try {
     const keywords = ['accept', 'agree', 'consent', 'allow', 'ok', 'close', 'continue'];
 
-    selectors.forEach(async (sel) => {
+    for (const sel of selectors) {
       const els = await page.$$(sel);
-      const visible = await Promise.all(
-        els.map(async (el) => {
-          const isVisible = await el.isVisible().catch(() => false);
-          return { el, isVisible };
-        }),
-      );
-
-      const visibleEls = visible.filter((v) => v.isVisible);
-      await Promise.all(
-        visibleEls.map(async ({ el }) => {
+      for (const el of els) {
+        const isVisible = await el.isVisible().catch(() => false);
+        if (isVisible) {
           const text = await el.evaluate((e) => e.textContent?.toLowerCase() || '');
           if (keywords.some((w) => text.includes(w))) {
             await el.click().catch(() => {});
             await page.waitForTimeout(POPUP_DISMISS_DELAY);
           }
-        }),
-      );
-    });
+        }
+      }
+    }
 
     await page.keyboard.press('Escape').catch(() => {});
     await page.waitForTimeout(ESCAPE_KEY_DELAY);
   } catch { /* ignore popup errors */ }
 }
 
-function ensureDir(p) {
-  mkdirSync(p, { recursive: true });
-}
-
-function sanitizeDocPath(docPath, url) {
-  let normalized = docPath;
-  if (!normalized || typeof normalized !== 'string') {
-    normalized = new URL(url).pathname || '/';
-  }
-  normalized = normalized.replace(/\\/g, '/');
-  if (normalized.startsWith('/')) normalized = normalized.slice(1);
-  if (normalized.endsWith('/')) normalized = normalized.slice(0, -1);
-  if (normalized === '') normalized = 'index';
-  return normalized;
+async function randomScroll(page) {
+  try {
+    const scrolls = Math.floor(Math.random() * 3) + 1;
+    for (let i = 0; i < scrolls; i += 1) {
+      const scrollAmount = Math.floor(Math.random() * 500) + 200;
+      await page.evaluate((amount) => window.scrollBy(0, amount), scrollAmount);
+      await new Promise((r) => { setTimeout(r, Math.random() * 500 + 200); });
+    }
+  } catch { /* ignore scroll errors */ }
 }
 
 async function processUrl({
-  context, url, helixScript, importScript, outputDir, index, total,
+  context, url, helixScript, importScript, outputDir, port, index, total,
 }) {
   const label = `[${index}/${total}]`;
   const startTime = Date.now();
+  const proxyUrl = buildProxyUrl(url, port);
   console.log(`${label} Starting: ${url}`);
+  console.log(`  Proxy → ${proxyUrl}`);
 
   const page = await context.newPage();
 
@@ -123,28 +218,16 @@ async function processUrl({
     }
   });
 
-  // Stealth
-  await page.addInitScript(() => {
-    Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-    window.chrome = { runtime: {} };
-    Object.defineProperty(navigator, 'plugins', {
-      get: () => [1, 2, 3, 4, 5],
-    });
-    Object.defineProperty(navigator, 'languages', {
-      get: () => ['en-US', 'en'],
-    });
-  });
-
   try {
-    // Navigate
+    // Navigate through the aem import proxy
     try {
-      await page.goto(url, {
+      await page.goto(proxyUrl, {
         waitUntil: 'networkidle',
         timeout: PAGE_TIMEOUT,
       });
     } catch {
       console.log('  Fallback to domcontentloaded...');
-      await page.goto(url, {
+      await page.goto(proxyUrl, {
         waitUntil: 'domcontentloaded',
         timeout: PAGE_TIMEOUT,
       });
@@ -154,7 +237,7 @@ async function processUrl({
     await dismissPopups(page);
     await randomScroll(page);
 
-    // Inject helix-importer bundle
+    // Inject helix-importer library
     await page.evaluate((script) => {
       const orig = window.define;
       if (typeof window.define !== 'undefined') delete window.define;
@@ -178,7 +261,8 @@ async function processUrl({
       { timeout: 10000 },
     );
 
-    // Run the transformation
+    // Run the transformation — pass the ORIGINAL url (not the proxy url)
+    // so that generateDocumentPath and template detection work correctly
     const result = await page.evaluate(async (pageUrl) => {
       if (!window.WebImporter
         || typeof window.WebImporter.html2md !== 'function') {
@@ -205,8 +289,6 @@ async function processUrl({
 
     const relPath = sanitizeDocPath(result.path, url);
 
-    // Save .plain.html only — the AEM CLI (--html-folder) wraps it
-    // with head.html, scripts, and styles automatically.
     const plainPath = join(outputDir, `${relPath}.plain.html`);
     ensureDir(dirname(plainPath));
     writeFileSync(plainPath, result.html, 'utf-8');
@@ -243,14 +325,18 @@ async function main() {
     }
   }
 
-  const importScriptPath = resolve(
-    parsed['--import-script'] || 'tools/importer/import.bundle.js',
-  );
   const urlsFile = resolve(
-    parsed['--urls'] || 'tools/importer/bulk-urls.txt',
+    parsed['--urls'] || 'tools/importer/all-urls.txt',
   );
   const outputDir = resolve(
     parsed['--output-dir'] || 'content',
+  );
+  const port = parseInt(parsed['--port'] || '3001', 10);
+  const cacheDir = parsed['--cache'] || null;
+
+  // The import script is still needed for browser injection
+  const importScriptPath = resolve(
+    parsed['--import-script'] || 'tools/importer/import.bundle.js',
   );
 
   if (!existsSync(importScriptPath)) {
@@ -269,19 +355,56 @@ async function main() {
   }
 
   const helixScript = readFileSync(helixPath, 'utf-8');
-  const importScript = readFileSync(importScriptPath, 'utf-8');
+  // The bundle uses ES module `export { import_default as default }` which
+  // doesn't work when injected as a regular <script> tag. Replace it with a
+  // window global assignment so the script is accessible after injection.
+  const importScriptRaw = readFileSync(importScriptPath, 'utf-8');
+  const importScript = importScriptRaw.replace(
+    /export\s*\{\s*import_default\s+as\s+default\s*\}\s*;?\s*$/,
+    'window.CustomImportScript = { default: import_default };',
+  );
   const urls = readFileSync(urlsFile, 'utf-8')
     .split('\n')
     .map((l) => l.trim())
     .filter((l) => l && !l.startsWith('#'));
 
   console.log('');
-  console.log('=== BULK IMPORT ===');
+  console.log('=== BULK IMPORT (aem import proxy) ===');
   console.log(`  Import script: ${importScriptPath}`);
   console.log(`  URLs:          ${urls.length} pages`);
   console.log(`  Output:        ${outputDir}`);
+  console.log(`  Proxy port:    ${port}`);
+  if (cacheDir) console.log(`  Cache:         ${cacheDir}`);
   console.log('');
 
+  // --- Start the aem import server ---
+  console.log('Starting aem import server...');
+  const aemProcess = startAemImportServer(port, cacheDir);
+
+  let serverStopped = false;
+  const cleanup = async () => {
+    if (!serverStopped) {
+      serverStopped = true;
+      console.log('\nStopping aem import server...');
+      await stopServer(aemProcess);
+      console.log('Server stopped.');
+    }
+  };
+
+  // Ensure cleanup on exit
+  process.on('SIGINT', async () => { await cleanup(); process.exit(130); });
+  process.on('SIGTERM', async () => { await cleanup(); process.exit(143); });
+
+  try {
+    await waitForServer(port);
+    console.log(`aem import server ready on port ${port}\n`);
+  } catch (err) {
+    console.error(err.message);
+    await cleanup();
+    process.exit(1);
+  }
+
+  // --- Run the import ---
   ensureDir(outputDir);
   const totalStart = Date.now();
 
@@ -311,13 +434,13 @@ async function main() {
 
   try {
     for (let i = 0; i < urls.length; i += 1) {
-      if (i > 0) await randomDelay();
       const result = await processUrl({
         context,
         url: urls[i],
         helixScript,
         importScript,
         outputDir,
+        port,
         index: i + 1,
         total: urls.length,
       });
@@ -326,8 +449,10 @@ async function main() {
   } finally {
     await context.close().catch(() => {});
     await browser.close().catch(() => {});
+    await cleanup();
   }
 
+  // --- Report ---
   const totalElapsed = ((Date.now() - totalStart) / 1000).toFixed(1);
   const successes = results.filter((r) => r.success);
   const failures = results.filter((r) => !r.success);
@@ -355,6 +480,8 @@ async function main() {
   // Save timing report as JSON
   const report = {
     timestamp: new Date().toISOString(),
+    method: 'aem-import-proxy',
+    proxyPort: port,
     totalElapsedSeconds: parseFloat(totalElapsed),
     successCount: successes.length,
     failureCount: failures.length,
@@ -366,7 +493,7 @@ async function main() {
   console.log(`\nReport saved to ${reportPath}`);
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
   console.error('[Bulk Import] Fatal error:', err);
   process.exit(1);
 });

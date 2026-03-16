@@ -1,3 +1,9 @@
+/* Helper: test whether a link is a video link (by text convention from the import parser) */
+function isVideoLink(a) {
+  const t = a.textContent.trim().toLowerCase();
+  return t === 'video' || t === 'video-mobile' || t === 'video-poster';
+}
+
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
@@ -15,48 +21,85 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
       const pics = col.querySelectorAll('picture');
-      const hasNonVideoLinks = col.querySelector('a:not([href$=".mp4"])');
+      const videoLinks = [...col.querySelectorAll('a')].filter(isVideoLink);
+      const allLinks = col.querySelectorAll('a');
+      const hasNonVideoLinks = [...allLinks].some((a) => !isVideoLink(a));
 
       if (pics.length > 1 && !hasNonVideoLinks) {
         /* Multi-image masonry grid */
         col.classList.add('columns-masonry');
-        if (pics.length === 4) col.classList.add('columns-masonry-4');
 
         /* Flag masonry on the right side (second column) */
         const colIndex = [...col.parentElement.children].indexOf(col);
         if (colIndex === 1) col.classList.add('columns-masonry-right');
 
-        /* 0. Tag every picture / video-link with its original position
-         *    so we can restore correct order after DOM reshuffling. */
+        /* 0a. Unwrap video links from <p> / button-container wrappers.
+         *     The EDS server wraps bare <a> in <p> via decorateButtons, which
+         *     breaks poster detection (previousElementSibling). Move the <a>
+         *     to the column level so it sits alongside <picture> siblings. */
+        videoLinks.forEach((link) => {
+          const parent = link.parentElement;
+          if (parent && parent !== col && (parent.tagName === 'P' || parent.tagName === 'DIV')) {
+            parent.before(link);
+            if (!parent.textContent.trim() && !parent.querySelector('picture, img, a')) {
+              parent.remove();
+            }
+          }
+          link.classList.remove('button');
+        });
+
+        /* 0b. Tag every picture / video-link with its original position
+         *     so we can restore correct order after DOM reshuffling. */
         let pos = 0;
         const tagItem = (el) => { el.dataset.gridPos = pos; pos += 1; };
-        col.querySelectorAll('picture, a[href$=".mp4"]').forEach(tagItem);
+        col.querySelectorAll('picture').forEach(tagItem);
+        videoLinks.forEach(tagItem);
 
-        /* 1. Convert .mp4 links into video wrappers.
-         *    The poster picture is the link's previous element sibling. */
-        col.querySelectorAll('a[href$=".mp4"]').forEach((link) => {
+        /* 1. Convert video links into video wrappers.
+         *    The poster picture is the link's previous element sibling (if any).
+         *    EDS wraps bare <img> in <p>, so the poster may be inside a <p>. */
+        videoLinks.forEach((link) => {
           const videoUrl = link.href;
-          const prevPic = link.previousElementSibling;
-          if (prevPic && prevPic.tagName === 'PICTURE') {
+
+          const video = document.createElement('video');
+          video.src = videoUrl;
+          video.muted = true;
+          video.loop = true;
+          video.playsInline = true;
+          video.autoplay = true;
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'columns-masonry-video';
+
+          /* Only absorb preceding image as poster when link text is 'video-poster' */
+          const wantsPoster = link.textContent.trim().toLowerCase() === 'video-poster';
+          const prevEl = link.previousElementSibling;
+          let prevPic = null;
+          if (wantsPoster && prevEl) {
+            if (prevEl.tagName === 'PICTURE') {
+              prevPic = prevEl;
+            } else if (prevEl.tagName === 'P') {
+              const innerPic = prevEl.querySelector(':scope > picture');
+              if (innerPic) prevPic = innerPic;
+            }
+          }
+
+          if (prevPic) {
+            /* Use preceding picture as poster */
             const posterImg = prevPic.querySelector('img');
-            const posterSrc = posterImg ? posterImg.currentSrc || posterImg.src : '';
-
-            const video = document.createElement('video');
-            video.src = videoUrl;
-            video.poster = posterSrc;
-            video.muted = true;
-            video.loop = true;
-            video.playsInline = true;
-            video.autoplay = true;
-
-            const wrapper = document.createElement('div');
-            wrapper.className = 'columns-masonry-video';
-            /* Carry the poster picture's position to the wrapper */
+            video.poster = posterImg ? posterImg.currentSrc || posterImg.src : '';
             wrapper.dataset.gridPos = prevPic.dataset.gridPos;
             wrapper.append(prevPic);
-            wrapper.append(video);
-            link.before(wrapper);
+            /* Remove empty <p> wrapper left behind */
+            if (prevEl !== prevPic && !prevEl.textContent.trim() && !prevEl.querySelector('picture, img')) {
+              prevEl.remove();
+            }
+          } else {
+            /* Posterless video — keep its own grid position */
+            wrapper.dataset.gridPos = link.dataset.gridPos || '0';
           }
+          wrapper.append(video);
+          link.before(wrapper);
           link.remove();
         });
 
@@ -84,57 +127,31 @@ export default function decorate(block) {
           delete item.dataset.gridPos;
           col.append(item);
         });
+
+        /* Set masonry-4 based on actual grid item count (pics + posterless videos) */
+        if (gridItems.length >= 4) col.classList.add('columns-masonry-4');
       } else if (pics.length === 1 && !hasNonVideoLinks) {
         col.classList.add('columns-img-col');
       }
     });
   });
 
-  /* Process text columns in 2-col layouts */
+  /* Convert secondary button-containers to text links (› chevron style).
+   * decorateButtons runs before block JS, so all links are already buttonized.
+   * The first .button-container stays as a primary button; subsequent ones
+   * become plain text links matching the original site's secondary CTA style. */
   block.querySelectorAll(
     '.columns-2-cols > div > div:not(.columns-img-col):not(.columns-masonry)',
   ).forEach((textCol) => {
-    const p = textCol.querySelector('p');
-    if (!p) return;
-
-    /* 1. Collect links and remove them from the paragraph */
-    const links = [...p.querySelectorAll('a')];
-    links.forEach((link) => link.remove());
-
-    /* 2. Parse "## HEADING description" text */
-    const text = p.textContent.trim();
-    if (text.startsWith('## ')) {
-      const rest = text.substring(3).trim();
-      /* Heading = leading ALL-CAPS / digit-only words */
-      const match = rest.match(/^((?:[A-Z0-9]+(?:\s+|$))+)([\s\S]*)/);
-      if (match) {
-        const h2 = document.createElement('h2');
-        h2.textContent = match[1].trim();
-        p.before(h2);
-
-        const desc = match[2].trim();
-        if (desc) {
-          p.textContent = desc;
-        } else {
-          p.remove();
-        }
-      }
-    } else if (!text) {
-      p.remove();
-    }
-
-    /* 3. Build CTA container from collected links */
-    if (links.length > 0) {
-      const ctaDiv = document.createElement('div');
-      ctaDiv.className = 'columns-cta';
-      links.forEach((link) => {
-        const label = link.textContent.trim().toUpperCase();
-        link.classList.add(
-          label === 'BUILD YOUR OWN' ? 'columns-cta-secondary' : 'columns-cta-primary',
-        );
-        ctaDiv.append(link);
-      });
-      textCol.append(ctaDiv);
-    }
+    const containers = [...textCol.querySelectorAll('.button-container')];
+    containers.forEach((container, idx) => {
+      if (idx === 0) return; // keep first as primary button
+      const a = container.querySelector('a.button');
+      if (!a) return;
+      a.classList.remove('button');
+      container.classList.remove('button-container');
+      container.classList.add('columns-text-link');
+      container.insertBefore(document.createTextNode('\u203A '), a);
+    });
   });
 }

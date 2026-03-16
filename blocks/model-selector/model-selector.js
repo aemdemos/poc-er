@@ -1,6 +1,6 @@
 /* eslint-disable */
 /**
- * Build and Order Block
+ * Model Selector Block
  *
  * Two-level tabbed model/trim chooser with vehicle images and CTAs.
  *

@@ -1,14 +1,5 @@
 /* stylelint-disable font-family-no-missing-generic-family-keyword */
 
-/* ──── Icon font (same as JLR site) ──── */
-@font-face {
-  font-display: block;
-  font-family: icons;
-  src:
-    url('/fonts/icons.woff2') format('woff2'),
-    url('/fonts/icons.woff') format('woff');
-}
-
 /* ──── Floating Quick Links ──── */
 
 /* Remove block from document flow — the wrapper section should not
@@ -77,22 +68,31 @@
   background-color: rgb(0 0 0 / 5%);
 }
 
-/* Icon — rendered via icon font ::before pseudo-element */
+/* Icon font — JLR glyphs rendered as text content */
+@font-face {
+  font-display: block;
+  font-family: icons;
+  src:
+    url('/fonts/icons.woff2') format('woff2'),
+    url('/fonts/icons.woff') format('woff');
+}
+
+/* stylelint-enable font-family-no-missing-generic-family-keyword */
+
 .floating-quicklinks-icon {
+  font-family: icons; /* stylelint-disable-line font-family-no-missing-generic-family-keyword */
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  font-family: icons;
-  font-size: 18px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1;
-  color: var(--text-color-emphasis, #0c121c);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color-emphasis, #0c121c);
 }
 
 /* Label — hidden in collapsed state, revealed on hover */
