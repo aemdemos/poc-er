@@ -1,3 +1,4 @@
+/* Standard text quote */
 .quote blockquote {
   margin: 0 auto;
   padding: 0 24px;
@@ -24,11 +25,11 @@
 }
 
 .quote blockquote .quote-quotation p:first-child::before {
-  content: '“';
+  content: '\201C';
 }
 
 .quote blockquote .quote-quotation p:last-child::after {
-  content: '”';
+  content: '\201D';
 }
 
 .quote blockquote .quote-attribution {
@@ -36,6 +37,53 @@
 }
 
 .quote blockquote .quote-attribution p:first-child::before {
-  content: '—';
+  content: '\2014';
   padding-right: 0.5ch;
+}
+
+/* Background-image quote (pulled quote on T3 pages) */
+.quote.has-background {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.quote.has-background > picture {
+  position: absolute;
+  inset: 0;
+}
+
+.quote.has-background > img,
+.quote.has-background > picture img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quote.has-background .quote-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 120px 160px;
+  box-sizing: border-box;
+}
+
+.quote.has-background .quote-text > div {
+  max-width: 65%;
+}
+
+.quote.has-background .quote-text p {
+  color: var(--text-color-inverse);
+  font-family: var(--body-font-family);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 2.5rem;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+  margin: 0;
 }

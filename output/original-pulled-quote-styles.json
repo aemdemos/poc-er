@@ -1,0 +1,30 @@
+{
+  "element": {
+    "xpath": "/html/body/div/div/div/div[1]/div/div[2]/div[2]/div[4]",
+    "url": "https://www.landrover-egypt.com/en/discovery/26my/discovery/overview",
+    "description": "Pulled quote / tagline carousel section"
+  },
+  "text_elements": [
+    {
+      "tag": "DIV",
+      "xpath": "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[4]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/swiper-container[1]/div[1]/div[1]/div[1]/div[1]",
+      "text": "Go anywhere. Take everyone. The seven-seat SUV that's as adventurous as you.",
+      "bounding_rect": {
+        "top": 120,
+        "left": 30,
+        "width": 468,
+        "height": 102
+      },
+      "computed_styles": {
+        "font-size": "28px",
+        "color": "rgb(255, 255, 255)",
+        "font-family": "\"Avenir Next\", Arial, Helvetica, \"Microsoft JhengHei\", sans-serif",
+        "font-weight": "400",
+        "line-height": "34px",
+        "text-align": "start",
+        "letter-spacing": "normal",
+        "text-transform": "none"
+      }
+    }
+  ]
+}

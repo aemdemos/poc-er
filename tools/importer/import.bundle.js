@@ -280,22 +280,25 @@ function parse4(element, { document }) {
 
 // tools/importer/parsers/image-box.js
 function parse5(element, { document }) {
-  const container = document.createElement("div");
+  const cells = [];
   const img = element.querySelector(".jlr-image-box__background") || element.querySelector(".jlr-image-box img") || element.querySelector("img");
   if (img) {
     const imgEl = document.createElement("img");
     imgEl.src = img.getAttribute("src");
     imgEl.alt = img.getAttribute("alt") || "";
-    container.appendChild(imgEl);
+    cells.push([[imgEl]]);
   }
   const quote = element.querySelector(".jlr-paragraph--size-quote") || element.querySelector(".jlr-image-box__content .jlr-paragraph");
   if (quote) {
     const p = document.createElement("p");
-    const text = quote.textContent.trim();
-    p.textContent = `"${text}"`;
-    container.appendChild(p);
+    p.textContent = quote.textContent.trim();
+    cells.push([[p]]);
   }
-  element.replaceWith(container);
+  const block = WebImporter.Blocks.createBlock(document, {
+    name: "Quote",
+    cells
+  });
+  element.replaceWith(block);
 }
 
 // tools/importer/parsers/cards.js

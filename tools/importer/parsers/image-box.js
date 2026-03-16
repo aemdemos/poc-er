@@ -2,15 +2,16 @@
 /* global WebImporter */
 
 /**
- * Parser for image-box (quote banner) → default content
+ * Parser for image-box (quote banner) → Quote block
  *
  * Source: .jlr-image-box (usually inside a carousel wrapper)
- * Output: Default content (image + quote paragraph), NOT a block table
+ * Output: Quote block with background image row + quotation row
  *
- * Markdown output example:
- * ![alt](image-url)
- *
- * "Quote text here."
+ * EDS block table structure:
+ * | Quote         |
+ * | ------------- |
+ * | ![](img-url)  |
+ * | "Quote text." |
  *
  * Source HTML Pattern:
  * <section class="jlr-section">
@@ -25,11 +26,12 @@
  * </section>
  *
  * Generated: 2026-03-04
+ * Updated: 2026-03-16 — changed from default content to Quote block
  */
 export default function parse(element, { document }) {
-  const container = document.createElement('div');
+  const cells = [];
 
-  // Extract the background image
+  // Row 1: background image
   const img = element.querySelector('.jlr-image-box__background')
     || element.querySelector('.jlr-image-box img')
     || element.querySelector('img');
@@ -38,21 +40,23 @@ export default function parse(element, { document }) {
     const imgEl = document.createElement('img');
     imgEl.src = img.getAttribute('src');
     imgEl.alt = img.getAttribute('alt') || '';
-    container.appendChild(imgEl);
+    cells.push([[imgEl]]);
   }
 
-  // Extract quote text
+  // Row 2: quote text
   const quote = element.querySelector('.jlr-paragraph--size-quote')
     || element.querySelector('.jlr-image-box__content .jlr-paragraph');
 
   if (quote) {
     const p = document.createElement('p');
-    // Wrap in quotes to match ground truth format
-    const text = quote.textContent.trim();
-    p.textContent = `"${text}"`;
-    container.appendChild(p);
+    p.textContent = quote.textContent.trim();
+    cells.push([[p]]);
   }
 
-  // This outputs default content, not a block table
-  element.replaceWith(container);
+  const block = WebImporter.Blocks.createBlock(document, {
+    name: 'Quote',
+    cells,
+  });
+
+  element.replaceWith(block);
 }
