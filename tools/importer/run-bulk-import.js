@@ -16,7 +16,7 @@
  *     --output-dir content
  *
  * Options:
- *   --urls          Path to a text file with one URL per line (default: tools/importer/all-urls.txt)
+ *   --urls          Text file with one URL per line (default: tools/importer/all-urls.txt)
  *   --output-dir    Directory to write .plain.html files (default: content)
  *   --port          Port for the aem import server (default: 3001)
  *   --cache         Path to a local folder to cache proxied responses (optional)
@@ -67,7 +67,8 @@ function sanitizeDocPath(docPath, url) {
 function buildProxyUrl(sourceUrl, port) {
   const u = new URL(sourceUrl);
   const proxyBase = `http://localhost:${port}`;
-  return `${proxyBase}${u.pathname}${u.search ? u.search + '&' : '?'}host=${encodeURIComponent(u.origin)}`;
+  const sep = u.search ? `${u.search}&` : '?';
+  return `${proxyBase}${u.pathname}${sep}host=${encodeURIComponent(u.origin)}`;
 }
 
 /**
@@ -167,9 +168,9 @@ async function dismissPopups(page) {
   try {
     const keywords = ['accept', 'agree', 'consent', 'allow', 'ok', 'close', 'continue'];
 
-    for (const sel of selectors) {
+    const dismissOne = async (sel) => {
       const els = await page.$$(sel);
-      for (const el of els) {
+      await Promise.all(els.map(async (el) => {
         const isVisible = await el.isVisible().catch(() => false);
         if (isVisible) {
           const text = await el.evaluate((e) => e.textContent?.toLowerCase() || '');
@@ -178,8 +179,9 @@ async function dismissPopups(page) {
             await page.waitForTimeout(POPUP_DISMISS_DELAY);
           }
         }
-      }
-    }
+      }));
+    };
+    await Promise.all(selectors.map(dismissOne));
 
     await page.keyboard.press('Escape').catch(() => {});
     await page.waitForTimeout(ESCAPE_KEY_DELAY);
