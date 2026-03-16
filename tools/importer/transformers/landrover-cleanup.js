@@ -32,6 +32,48 @@ function removeElements(root, selectors) {
   }
 }
 
+/**
+ * Rewrite rangerover.com and /en-eg/ links to match our content tree.
+ * Applied universally — safe no-op on pages without matching links.
+ */
+function rewriteRangeRoverLinks(root) {
+  root.querySelectorAll('a[href]').forEach((a) => {
+    let href = a.getAttribute('href');
+    if (!href) return;
+
+    // Absolute rangerover.com homepage → our Range Rover overview
+    if (/^https?:\/\/(www\.)?rangerover\.com\/en-eg\/?$/.test(href)) {
+      a.setAttribute('href', '/en/range-rover/overview');
+      return;
+    }
+
+    // Strip absolute rangerover.com domain to relative path
+    href = href.replace(/^https?:\/\/(www\.)?rangerover\.com/, '');
+
+    // Strip localhost proxy prefix (artefact from import proxy)
+    href = href.replace(/^http:\/\/localhost:\d+/, '');
+
+    // Vehicle model rewrites — longer names first to avoid partial matches.
+    // Range Rover Sport → 25my in our tree
+    href = href.replace(/\/en-eg\/26my\/range-rover-sport(\/|$|#)/, '/en/range-rover/25my/range-rover-sport$1');
+    href = href.replace(/^\/26my\/range-rover-sport(\/|$|#)/, '/en/range-rover/25my/range-rover-sport$1');
+    // Range Rover Velar → 26my in our tree
+    href = href.replace(/\/en-eg\/26my\/range-rover-velar(\/|$|#)/, '/en/range-rover/26my/range-rover-velar$1');
+    href = href.replace(/^\/26my\/range-rover-velar(\/|$|#)/, '/en/range-rover/26my/range-rover-velar$1');
+    // Range Rover Evoque → 26my in our tree
+    href = href.replace(/\/en-eg\/26my\/range-rover-evoque(\/|$|#)/, '/en/range-rover/26my/range-rover-evoque$1');
+    href = href.replace(/^\/26my\/range-rover-evoque(\/|$|#)/, '/en/range-rover/26my/range-rover-evoque$1');
+    // Range Rover → 25my in our tree (must come after sport/velar/evoque)
+    href = href.replace(/\/en-eg\/26my\/range-rover(\/|$|#)/, '/en/range-rover/25my/range-rover$1');
+    href = href.replace(/^\/26my\/range-rover(\/|$|#)/, '/en/range-rover/25my/range-rover$1');
+
+    // General /en-eg/ → /en/ for all remaining links
+    href = href.replace(/\/en-eg\//, '/en/');
+
+    a.setAttribute('href', href);
+  });
+}
+
 export default function transform(hookName, element, payload) {
   if (hookName === TransformHook.beforeTransform) {
     // Remove navigation structure
@@ -148,5 +190,8 @@ export default function transform(hookName, element, payload) {
       el.removeAttribute('data-analytics');
       el.removeAttribute('onclick');
     });
+
+    // Rewrite rangerover.com / /en-eg/ links to our content tree paths
+    rewriteRangeRoverLinks(element);
   }
 }

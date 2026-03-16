@@ -23,8 +23,12 @@ import cleanupTransform from './transformers/landrover-cleanup.js';
 /* ------------------------------------------------------------------ */
 
 function detectTemplate(url) {
-  const path = new URL(url).pathname.replace(/\/$/, '');
+  const u = new URL(url);
+  const path = u.pathname.replace(/\/$/, '');
   const segments = path.split('/').filter(Boolean);
+
+  // Range Rover brand site (rangerover.com) — treat as vehicle family overview
+  if (u.hostname.includes('rangerover.com')) return 'vehicle-family-overview';
 
   // Homepage: /en or /en/
   if (segments.length <= 1) return 'homepage';
@@ -704,6 +708,16 @@ export default {
   generateDocumentPath({ document, url }) {
     const u = new URL(url);
     let path = u.pathname.replace(/\/$/, '') || '/index';
+
+    // Custom path overrides for cross-domain imports
+    const PATH_OVERRIDES = {
+      'rangerover.com:/en-eg': '/en/range-rover/overview',
+    };
+    const key = `${u.hostname.replace('www.', '')}:${path}`;
+    if (PATH_OVERRIDES[key]) {
+      path = PATH_OVERRIDES[key];
+    }
+
     return WebImporter.FileUtils.sanitizePath(path);
   },
 };

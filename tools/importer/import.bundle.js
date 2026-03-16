@@ -1329,6 +1329,28 @@ function removeElements(root, selectors) {
     });
   }
 }
+function rewriteRangeRoverLinks(root) {
+  root.querySelectorAll("a[href]").forEach((a) => {
+    let href = a.getAttribute("href");
+    if (!href) return;
+    if (/^https?:\/\/(www\.)?rangerover\.com\/en-eg\/?$/.test(href)) {
+      a.setAttribute("href", "/en/range-rover/overview");
+      return;
+    }
+    href = href.replace(/^https?:\/\/(www\.)?rangerover\.com/, "");
+    href = href.replace(/^http:\/\/localhost:\d+/, "");
+    href = href.replace(/\/en-eg\/26my\/range-rover-sport(\/|$|#)/, "/en/range-rover/25my/range-rover-sport$1");
+    href = href.replace(/^\/26my\/range-rover-sport(\/|$|#)/, "/en/range-rover/25my/range-rover-sport$1");
+    href = href.replace(/\/en-eg\/26my\/range-rover-velar(\/|$|#)/, "/en/range-rover/26my/range-rover-velar$1");
+    href = href.replace(/^\/26my\/range-rover-velar(\/|$|#)/, "/en/range-rover/26my/range-rover-velar$1");
+    href = href.replace(/\/en-eg\/26my\/range-rover-evoque(\/|$|#)/, "/en/range-rover/26my/range-rover-evoque$1");
+    href = href.replace(/^\/26my\/range-rover-evoque(\/|$|#)/, "/en/range-rover/26my/range-rover-evoque$1");
+    href = href.replace(/\/en-eg\/26my\/range-rover(\/|$|#)/, "/en/range-rover/25my/range-rover$1");
+    href = href.replace(/^\/26my\/range-rover(\/|$|#)/, "/en/range-rover/25my/range-rover$1");
+    href = href.replace(/\/en-eg\//, "/en/");
+    a.setAttribute("href", href);
+  });
+}
 function transform4(hookName, element, payload) {
   if (hookName === TransformHook.beforeTransform) {
     removeElements(element, [
@@ -1397,13 +1419,16 @@ function transform4(hookName, element, payload) {
       el.removeAttribute("data-analytics");
       el.removeAttribute("onclick");
     });
+    rewriteRangeRoverLinks(element);
   }
 }
 
 // tools/importer/import.js
 function detectTemplate(url) {
-  const path = new URL(url).pathname.replace(/\/$/, "");
+  const u = new URL(url);
+  const path = u.pathname.replace(/\/$/, "");
   const segments = path.split("/").filter(Boolean);
+  if (u.hostname.includes("rangerover.com")) return "vehicle-family-overview";
   if (segments.length <= 1) return "homepage";
   if (segments.length === 3 && segments[2] === "overview") {
     return "vehicle-family-overview";
@@ -1860,6 +1885,13 @@ var import_default = {
   generateDocumentPath({ document, url }) {
     const u = new URL(url);
     let path = u.pathname.replace(/\/$/, "") || "/index";
+    const PATH_OVERRIDES = {
+      "rangerover.com:/en-eg": "/en/range-rover/overview"
+    };
+    const key = `${u.hostname.replace("www.", "")}:${path}`;
+    if (PATH_OVERRIDES[key]) {
+      path = PATH_OVERRIDES[key];
+    }
     return WebImporter.FileUtils.sanitizePath(path);
   }
 };
