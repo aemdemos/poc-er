@@ -66,31 +66,70 @@ export default function parse(element, { document }) {
         textCell.push(desc.textContent.trim());
       }
 
-      // Extract CTAs
+      // Extract CTAs — primary buttons become EDS buttons, secondary become text links
       // VALIDATED: a.jlr-button (primary) and a.jlr-cta (secondary) in captured DOM
-      const buttons = Array.from(copyBlock.querySelectorAll('a.jlr-button'));
-      const ctaLinks = Array.from(copyBlock.querySelectorAll('a.jlr-cta'));
+      const primaryBtns = Array.from(copyBlock.querySelectorAll('a.jlr-button, a.jlr-column-template__button'));
+      const secondaryLinks = Array.from(copyBlock.querySelectorAll('a.jlr-cta'));
 
-      [...buttons, ...ctaLinks].forEach((link) => {
+      primaryBtns.forEach((link) => {
+        const p = document.createElement('p');
         const a = document.createElement('a');
         a.href = link.getAttribute('href');
         a.textContent = link.textContent.trim();
-        textCell.push(a);
+        p.appendChild(a);
+        textCell.push(p);
+      });
+      secondaryLinks.forEach((link) => {
+        const p = document.createElement('p');
+        p.append('\u203A ');
+        const a = document.createElement('a');
+        a.href = link.getAttribute('href');
+        a.textContent = link.textContent.trim();
+        p.appendChild(a);
+        textCell.push(p);
       });
     }
 
-    // Extract images
-    // VALIDATED: .jlr-masonry-block__grid-wrapper contains image grid items
+    // Extract images from masonry grid
+    // DOM uses <picture><img> inside grid items, not .jlr-masonry-block__image
     const imageWrapper = masonryRoot.querySelector('.jlr-masonry-block__grid-wrapper');
     const imageCell = [];
     if (imageWrapper) {
-      const images = Array.from(imageWrapper.querySelectorAll('.jlr-masonry-block__image'));
+      const seen = new Set();
+      const images = Array.from(imageWrapper.querySelectorAll(
+        '.jlr-masonry-block__grid__item img, .jlr-masonry-block__image, picture img'
+      ));
       images.forEach((img) => {
+        const src = img.getAttribute('src');
+        if (!src || seen.has(src)) return;
+        seen.add(src);
         const imgEl = document.createElement('img');
-        imgEl.src = img.getAttribute('src');
+        imgEl.src = src;
         imgEl.alt = img.getAttribute('alt') || '';
         imageCell.push(imgEl);
       });
+    }
+
+    // Extract video from NUXT-injected data attribute.
+    // Video link goes into imageCell at the "wide" slot position.
+    // For images-left (reversed): wide slot is child 2 (after 2nd image, absorbs it as poster).
+    // For images-right (not reversed): wide slot is last (standalone, no poster).
+    const masonryVideo = masonryRoot.getAttribute('data-masonry-video');
+    if (masonryVideo) {
+      const noPoster = masonryRoot.getAttribute('data-masonry-video-no-poster') === 'true';
+      const videoLink = document.createElement('a');
+      videoLink.href = masonryVideo;
+      videoLink.textContent = noPoster ? `video ${masonryVideo}` : `video-poster ${masonryVideo}`;
+      const videoP = document.createElement('p');
+      videoP.appendChild(videoLink);
+
+      if (!noPoster && isReversed && imageCell.length >= 2) {
+        // Images-left: video after 2nd image (absorbs it as poster for wide top-right slot)
+        imageCell.splice(2, 0, videoP);
+      } else {
+        // Images-right or no poster: video last (standalone in wide bottom-right slot)
+        imageCell.push(videoP);
+      }
     }
 
     // Build row based on orientation

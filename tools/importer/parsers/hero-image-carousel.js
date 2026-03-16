@@ -51,14 +51,20 @@ export default function parse(element, { document }) {
       || slide.querySelector('img');
 
     // Extract heading from banner (source uses h1 or h2, not h3)
+    // Some pages use .jlr-hero-slider-banner__copy, others use .jlr-hero-slider-banner__ffi / .jlr-copy-box
     const heading = slide.querySelector('.jlr-hero-slider-banner__copy h1')
       || slide.querySelector('.jlr-hero-slider-banner__copy h2')
       || slide.querySelector('.jlr-hero-slider-banner__copy h3')
-      || slide.querySelector('.jlr-hero-slider-banner h1, .jlr-hero-slider-banner h2');
+      || slide.querySelector('.jlr-hero-slider-banner h1, .jlr-hero-slider-banner h2')
+      || slide.querySelector('.jlr-copy-box__heading')
+      || slide.querySelector('.jlr-hero-carousel-slide-core__banner h1, .jlr-hero-carousel-slide-core__banner h2, .jlr-hero-carousel-slide-core__banner h3');
 
     // Extract description
+    // Some pages use .jlr-hero-slider-banner__copy .jlr-paragraph, others use .jlr-copy-box__paragraph
     const desc = slide.querySelector('.jlr-hero-slider-banner__copy .jlr-paragraph')
-      || slide.querySelector('.jlr-hero-slider-banner__copy div[class*="paragraph"]');
+      || slide.querySelector('.jlr-hero-slider-banner__copy div[class*="paragraph"]')
+      || slide.querySelector('.jlr-copy-box__paragraph')
+      || slide.querySelector('.jlr-hero-carousel-slide-core__banner .jlr-paragraph');
 
     // Build image cell
     const imageCell = [];
@@ -68,6 +74,14 @@ export default function parse(element, { document }) {
       imgEl.alt = img.getAttribute('alt') || '';
       imageCell.push(imgEl);
     }
+
+    // Extract CTAs — primary buttons and secondary text links
+    const primaryBtns = Array.from(
+      slide.querySelectorAll('.jlr-hero-slider-banner a.jlr-button, .jlr-hero-carousel-slide-core a.jlr-button')
+    );
+    const secondaryLinks = Array.from(
+      slide.querySelectorAll('.jlr-hero-slider-banner a.jlr-cta, .jlr-hero-carousel-slide-core a.jlr-cta')
+    );
 
     // Build text cell
     const textCell = [];
@@ -79,6 +93,23 @@ export default function parse(element, { document }) {
     if (desc) {
       textCell.push(desc.textContent.trim());
     }
+    primaryBtns.forEach((link) => {
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.textContent = link.textContent.trim();
+      p.appendChild(a);
+      textCell.push(p);
+    });
+    secondaryLinks.forEach((link) => {
+      const p = document.createElement('p');
+      p.append('\u203A ');
+      const a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.textContent = link.textContent.trim();
+      p.appendChild(a);
+      textCell.push(p);
+    });
 
     if (imageCell.length > 0 || textCell.length > 0) {
       cells.push([imageCell, textCell]);

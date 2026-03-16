@@ -23,7 +23,7 @@ import columnsParser from '../parsers/columns.js';
 import { extractHotspotData } from '../parsers/hotspots.js';
 import { extractElectrifyingPowerData } from '../parsers/electrifying-power.js';
 import { extractTabbedComponentData } from '../parsers/tabbed-component.js';
-import { extractBuildAndOrderData } from '../parsers/build-and-order.js';
+import { extractModelSelectorData } from '../parsers/model-selector.js';
 import { createSectionMetadata, getStyleValue } from '../parsers/section-metadata.js';
 import { createMetadataBlock } from '../parsers/metadata.js';
 
@@ -320,10 +320,10 @@ function createEditionChooserBlock(document, tabsData) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Helper: create Build and Order block from extracted data            */
+/*  Helper: create Model Selector block from extracted data             */
 /* ------------------------------------------------------------------ */
 
-function createBuildAndOrderBlock(document, boData) {
+function createModelSelectorBlock(document, boData) {
   const cells = [];
 
   boData.models.forEach((model) => {
@@ -377,7 +377,7 @@ function createBuildAndOrderBlock(document, boData) {
   }
 
   return WebImporter.Blocks.createBlock(document, {
-    name: 'Build And Order',
+    name: 'Model Selector',
     cells,
   });
 }
@@ -549,9 +549,9 @@ export default function transform(main, document, url) {
 
     // Capture tab labels from tab navigation (used by subsequent hotspot blocks)
     if (blockType === 'tab-nav') {
-      // Check if this is a build-and-order model switcher
-      const boAttr = renderBlock.getAttribute('data-build-and-order')
-        || section.getAttribute('data-build-and-order');
+      // Check if this is a model-selector model switcher
+      const boAttr = renderBlock.getAttribute('data-model-selector')
+        || section.getAttribute('data-model-selector');
       if (boAttr) {
         try {
           const boData = JSON.parse(boAttr);
@@ -561,7 +561,7 @@ export default function transform(main, document, url) {
               pendingSnippet.forEach((el) => output.appendChild(el));
               pendingSnippet = null;
             }
-            const boBlock = createBuildAndOrderBlock(document, boData);
+            const boBlock = createModelSelectorBlock(document, boData);
             output.appendChild(boBlock);
             output.appendChild(createHr(document));
             // Skip the subsequent tabbed-component blocks that belong to this B&O
@@ -693,14 +693,14 @@ export default function transform(main, document, url) {
       }
 
       case 'tabbed-component': {
-        // Check if this is a build-and-order single-model case
-        const boAttr = renderBlock.getAttribute('data-build-and-order')
-          || section.getAttribute('data-build-and-order');
+        // Check if this is a model-selector single-model case
+        const boAttr = renderBlock.getAttribute('data-model-selector')
+          || section.getAttribute('data-model-selector');
         if (boAttr) {
           try {
             const boData = JSON.parse(boAttr);
             if (boData.models && boData.models.length > 0) {
-              const boBlock = createBuildAndOrderBlock(document, boData);
+              const boBlock = createModelSelectorBlock(document, boData);
               blockElements = [boBlock];
               // Skip the CTA snippet that follows
               if (i + 1 < renderBlocks.length) {
@@ -727,10 +727,17 @@ export default function transform(main, document, url) {
         const disclaimerElements = extractDisclaimerContent(section, document);
         disclaimerElements.forEach((el) => output.appendChild(el));
 
-        // Add Section Metadata: disclaimer
-        const disclaimerMeta = createSectionMetadata(document, 'jlr-section--grey-theme');
-        if (disclaimerMeta) {
-          output.appendChild(disclaimerMeta);
+        // Use hero-disclaimer for disclaimer sections without grey theme
+        // (e.g., hero disclaimer on family overview pages has transparent bg)
+        if (theme === 'jlr-section--grey-theme') {
+          const disclaimerMeta = createSectionMetadata(document, 'jlr-section--grey-theme');
+          if (disclaimerMeta) {
+            output.appendChild(disclaimerMeta);
+          }
+        } else {
+          const cells = [[['Style'], ['hero-disclaimer']]];
+          const heroDisclaimerMeta = WebImporter.Blocks.createBlock(document, { name: 'Section Metadata', cells });
+          output.appendChild(heroDisclaimerMeta);
         }
         output.appendChild(createHr(document));
         continue;

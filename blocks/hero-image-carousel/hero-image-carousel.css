@@ -50,12 +50,14 @@
   overflow: hidden;
 }
 
-.hero-image-carousel .hero-image-carousel-slide-image picture {
+.hero-image-carousel .hero-image-carousel-slide-image picture,
+.hero-image-carousel .hero-image-carousel-slide-image p {
   position: absolute;
   inset: 0;
+  margin: 0;
 }
 
-.hero-image-carousel .hero-image-carousel-slide-image picture > img {
+.hero-image-carousel .hero-image-carousel-slide-image img {
   height: 100%;
   width: 100%;
   object-fit: cover;

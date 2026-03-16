@@ -53,6 +53,9 @@ export default function parse(element, { document }) {
     element.querySelectorAll('.jlr-immersive-hero__content__buttons-holder a.jlr-button, .jlr-immersive-hero__content__buttons-holder a.jlr-immersive-hero__content__anchor-button')
   );
 
+  // Detect model-overview variant: 2+ CTA buttons means model-specific page
+  const isModelOverview = ctaLinks.filter((a) => a.classList.contains('jlr-button')).length >= 2;
+
   // Build cells matching Hero block markdown structure
   const cells = [];
 
@@ -75,28 +78,74 @@ export default function parse(element, { document }) {
     p.textContent = subtitle.textContent.trim();
     wrapper.appendChild(p);
   }
-  ctaLinks.forEach((link) => {
-    const a = document.createElement('a');
-    a.href = link.getAttribute('href');
-    a.textContent = link.textContent.trim();
-    wrapper.appendChild(a);
-  });
 
-  // Extract video if present (desktop source preferred)
-  const videoSource = element.querySelector('.jlr-immersive-hero__video video source[src]')
-    || element.querySelector('.jlr-native-video-frame video source[src]')
-    || element.querySelector('video source[src]');
-  if (videoSource) {
+  if (isModelOverview) {
+    // Model-overview: wrap each CTA in its own <p><a> so decorateButtons() adds .button class
+    ctaLinks.forEach((link) => {
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.textContent = link.textContent.trim();
+      p.appendChild(a);
+      wrapper.appendChild(p);
+    });
+  } else {
+    // Family-overview: wrap each CTA in its own <p><a> so they render on separate lines
+    ctaLinks.forEach((link) => {
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.textContent = link.textContent.trim();
+      p.appendChild(a);
+      wrapper.appendChild(p);
+    });
+  }
+
+  // Extract video — prefer NUXT-injected data attribute, fallback to DOM <source>
+  let videoDesktop = '';
+  let videoMobile = '';
+
+  const heroVideoAttr = element.getAttribute('data-hero-video');
+  if (heroVideoAttr) {
+    try {
+      const vdata = JSON.parse(heroVideoAttr);
+      videoDesktop = vdata.desktop || '';
+      videoMobile = vdata.mobile || '';
+    } catch (e) { /* ignore */ }
+  }
+
+  // Fallback: DOM <source> elements (may be stripped by cleanup on some pages)
+  if (!videoDesktop) {
+    const videoSource = element.querySelector('.jlr-immersive-hero__video video source[src]')
+      || element.querySelector('.jlr-native-video-frame video source[src]')
+      || element.querySelector('video source[src]');
+    if (videoSource) {
+      videoDesktop = videoSource.getAttribute('src');
+    }
+  }
+
+  if (videoDesktop) {
+    const p = document.createElement('p');
     const videoLink = document.createElement('a');
-    videoLink.href = videoSource.getAttribute('src');
-    videoLink.textContent = 'video';
-    wrapper.appendChild(videoLink);
+    videoLink.href = videoDesktop;
+    videoLink.textContent = `video ${videoDesktop}`;
+    p.appendChild(videoLink);
+    wrapper.appendChild(p);
+  }
+  if (videoMobile && videoMobile !== videoDesktop) {
+    const p = document.createElement('p');
+    const mobileLink = document.createElement('a');
+    mobileLink.href = videoMobile;
+    mobileLink.textContent = `video-mobile ${videoMobile}`;
+    p.appendChild(mobileLink);
+    wrapper.appendChild(p);
   }
 
   if (wrapper.childNodes.length > 0) {
     cells.push([wrapper]);
   }
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'Hero', cells });
+  const blockName = isModelOverview ? 'Hero (model-overview)' : 'Hero';
+  const block = WebImporter.Blocks.createBlock(document, { name: blockName, cells });
   element.replaceWith(block);
 }

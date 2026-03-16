@@ -23,8 +23,12 @@ import cleanupTransform from './transformers/landrover-cleanup.js';
 /* ------------------------------------------------------------------ */
 
 function detectTemplate(url) {
-  const path = new URL(url).pathname.replace(/\/$/, '');
+  const u = new URL(url);
+  const path = u.pathname.replace(/\/$/, '');
   const segments = path.split('/').filter(Boolean);
+
+  // Range Rover brand site (rangerover.com) — treat as vehicle family overview
+  if (u.hostname.includes('rangerover.com')) return 'vehicle-family-overview';
 
   // Homepage: /en or /en/
   if (segments.length <= 1) return 'homepage';
@@ -295,7 +299,7 @@ function injectTabbedComponentData(document, html) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Pre-processing: extract __NUXT__ build-and-order data               */
+/*  Pre-processing: extract __NUXT__ model-selector data                */
 /* ------------------------------------------------------------------ */
 
 /**
@@ -312,9 +316,9 @@ function injectTabbedComponentData(document, html) {
  *   2. Followed by tabbed-component(s) whose field_groups contain tab_label + rdx-image
  *   3. Followed by a CTA jlr-snippet (has *populated* rdx-link or rdx-links values)
  *
- * Injects aggregated JSON as data-build-and-order on the DOM anchor element.
+ * Injects aggregated JSON as data-model-selector on the DOM anchor element.
  */
-function injectBuildAndOrderData(document, html) {
+function injectModelSelectorData(document, html) {
   if (!html) return;
 
   try {
@@ -445,7 +449,7 @@ function injectBuildAndOrderData(document, html) {
         data.models.push(model);
         j++;
       } else {
-        // Neither tabs nor trim-chooser follows this heading — not a build-and-order section
+        // Neither tabs nor trim-chooser follows this heading — not a model-selector section
         continue;
       }
 
@@ -485,7 +489,7 @@ function injectBuildAndOrderData(document, html) {
         for (let t = i + 1; t < allRenderBlocks.length; t++) {
           const next = allRenderBlocks[t];
           if (next.querySelector('.jlr-tabs__navigation') || next.querySelector('.jlr-tabbed-component')) {
-            next.setAttribute('data-build-and-order', JSON.stringify(data));
+            next.setAttribute('data-model-selector', JSON.stringify(data));
             break;
           }
         }
@@ -493,6 +497,157 @@ function injectBuildAndOrderData(document, html) {
     }
   } catch (e) {
     // Silent — block simply won't be created
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Pre-processing: extract __NUXT__ video data for hero + masonry     */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Extracts video URLs from the __NUXT__ data for:
+ *   - jlr-immersive-hero blocks (native_video, native_video_mobile)
+ *   - jlr-masonry blocks (native_video_background)
+ *
+ * The hero's <video><source> elements are often present in the DOM but
+ * get stripped by cleanup; masonry video slots are dynamically loaded
+ * by Vue and are always empty in the static HTML. Injecting the NUXT
+ * data as attributes ensures both parsers can reliably access video URLs.
+ */
+function injectVideoData(document, html) {
+  if (!html) return;
+
+  try {
+    const match = html.match(/window\.__NUXT__\s*=\s*(\(function\([\s\S]*?\)\([\s\S]*?\)\))\s*;?\s*<\/script>/);
+    if (!match) return;
+
+    const nuxt = new Function('return ' + match[1])();
+    if (!nuxt || !nuxt.data || !nuxt.data[0] || !nuxt.data[0].blocks) return;
+
+    const blocks = nuxt.data[0].blocks;
+
+    // --- Hero video injection ---
+    const heroBlocks = blocks.filter(
+      (b) => b && b.attributes && b.attributes.key === 'jlr-immersive-hero'
+    );
+    const heroDomEls = Array.from(
+      document.querySelectorAll('.jlr-immersive-hero')
+    );
+
+    heroBlocks.forEach((nuxtBlock, idx) => {
+      const container = heroDomEls[idx];
+      if (!container) return;
+
+      const data = { desktop: '', mobile: '' };
+      const fields = nuxtBlock.attributes.fields || [];
+
+      // fields may be an object with .data array or a plain array
+      const fieldList = Array.isArray(fields) ? fields : (fields.data || []);
+      fieldList.forEach((f) => {
+        const attrs = f.attributes || f;
+        const sym = attrs.symbol || attrs.key || '';
+        if (sym === 'native_video' && attrs.value) data.desktop = String(attrs.value);
+        if (sym === 'native_video_mobile' && attrs.value) data.mobile = String(attrs.value);
+      });
+
+      if (data.desktop || data.mobile) {
+        container.setAttribute('data-hero-video', JSON.stringify(data));
+      }
+    });
+
+    // --- Masonry video injection ---
+    const masonryBlocks = blocks.filter(
+      (b) => b && b.attributes && b.attributes.key === 'jlr-masonry'
+    );
+    const masonryDomEls = Array.from(
+      document.querySelectorAll('.jlr-masonry-block')
+    );
+
+    masonryBlocks.forEach((nuxtBlock, idx) => {
+      const container = masonryDomEls[idx];
+      if (!container) return;
+
+      let videoUrl = '';
+      let hasVideoPoster = false;
+      const fields = nuxtBlock.attributes.fields || [];
+      const fieldList = Array.isArray(fields) ? fields : (fields.data || []);
+      fieldList.forEach((f) => {
+        const attrs = f.attributes || f;
+        const sym = attrs.symbol || attrs.key || '';
+        if (sym === 'native_video_background' && attrs.value) {
+          videoUrl = String(attrs.value);
+        }
+        if (sym === 'image_video_placeholder') {
+          const val = attrs.value || attrs.data || {};
+          const id = val.id ?? val;
+          if (id && id !== 0) hasVideoPoster = true;
+        }
+      });
+
+      if (videoUrl) {
+        container.setAttribute('data-masonry-video', videoUrl);
+        if (!hasVideoPoster) {
+          container.setAttribute('data-masonry-video-no-poster', 'true');
+        }
+      }
+    });
+  } catch (e) {
+    // Silent — DOM-based extraction remains the fallback
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Pre-processing: extract __NUXT__ dual-frame carousel YouTube data  */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Extracts YouTube video IDs from the __NUXT__ data for
+ * jlr-dual-frame-carousel-new blocks. Each slide in the carousel
+ * has a `youtube` field with a video ID but the actual <iframe>/<video>
+ * is blocked by cookie consent and never appears in the static DOM.
+ *
+ * Injects a JSON array of per-slide data as `data-carousel-slides`
+ * on the `.jlr-dual-frame-carousel` container element.
+ */
+function injectDualFrameCarouselData(document, html) {
+  if (!html) return;
+
+  try {
+    const match = html.match(/window\.__NUXT__\s*=\s*(\(function\([\s\S]*?\)\([\s\S]*?\)\))\s*;?\s*<\/script>/);
+    if (!match) return;
+
+    const nuxt = new Function('return ' + match[1])();
+    if (!nuxt || !nuxt.data || !nuxt.data[0] || !nuxt.data[0].blocks) return;
+
+    const blocks = nuxt.data[0].blocks;
+    const dfcBlocks = blocks.filter(
+      (b) => b && b.attributes && b.attributes.key === 'jlr-dual-frame-carousel-new'
+    );
+    const dfcDomEls = Array.from(
+      document.querySelectorAll('.jlr-dual-frame-carousel')
+    );
+
+    dfcBlocks.forEach((nuxtBlock, idx) => {
+      const container = dfcDomEls[idx];
+      if (!container) return;
+
+      const groups = nuxtBlock.attributes.field_groups || [];
+      const slides = groups.map((group) => {
+        const slide = { youtube: '', heading: '' };
+        for (let k = 0; k < group.length; k++) {
+          const sym = group[k].symbol || group[k].key || '';
+          if (sym === 'youtube' && group[k].value) slide.youtube = String(group[k].value);
+          if (sym === 'heading' && group[k].value) slide.heading = String(group[k].value);
+        }
+        return slide;
+      });
+
+      if (slides.some((s) => s.youtube)) {
+        container.setAttribute('data-carousel-slides', JSON.stringify(slides));
+      }
+    });
+  } catch (e) {
+    // Silent — images and text will still be captured from DOM
   }
 }
 
@@ -510,7 +665,9 @@ export default {
     injectHotspotData(document, html);
     injectElectrifyingPowerData(document, html);
     injectTabbedComponentData(document, html);
-    injectBuildAndOrderData(document, html);
+    injectModelSelectorData(document, html);
+    injectVideoData(document, html);
+    injectDualFrameCarouselData(document, html);
 
     // 1. Run cleanup (beforeTransform)
     cleanupTransform('beforeTransform', document.body, { document, url, html, params });
@@ -551,6 +708,16 @@ export default {
   generateDocumentPath({ document, url }) {
     const u = new URL(url);
     let path = u.pathname.replace(/\/$/, '') || '/index';
+
+    // Custom path overrides for cross-domain imports
+    const PATH_OVERRIDES = {
+      'rangerover.com:/en-eg': '/en/range-rover/overview',
+    };
+    const key = `${u.hostname.replace('www.', '')}:${path}`;
+    if (PATH_OVERRIDES[key]) {
+      path = PATH_OVERRIDES[key];
+    }
+
     return WebImporter.FileUtils.sanitizePath(path);
   },
 };

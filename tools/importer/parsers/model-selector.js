@@ -1,21 +1,21 @@
 /* eslint-disable */
 /**
- * Build and Order Parser
+ * Model Selector Parser
  *
  * Extracts model/trim chooser data from injected __NUXT__ data
- * (data-build-and-order attribute) or falls back to DOM extraction.
+ * (data-model-selector attribute) or falls back to DOM extraction.
  *
  * Returns: { models: [{ name, trims: [{ label, image }] }], ctas: [{ text, href, primary }] }
  */
 
-export function extractBuildAndOrderData(element, document) {
+export function extractModelSelectorData(element, document) {
   const result = { models: [], ctas: [] };
 
   // Prefer injected NUXT data
-  const anchor = element.querySelector('[data-build-and-order]');
+  const anchor = element.querySelector('[data-model-selector]');
   if (anchor) {
     try {
-      const data = JSON.parse(anchor.getAttribute('data-build-and-order'));
+      const data = JSON.parse(anchor.getAttribute('data-model-selector'));
       if (data && data.models) return data;
     } catch (e) { /* fall through to DOM extraction */ }
   }

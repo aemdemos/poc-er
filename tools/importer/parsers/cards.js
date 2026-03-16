@@ -72,30 +72,39 @@ export default function parse(element, { document }) {
       imageCell.push(imgEl);
     }
 
-    // Build text cell
-    const textCell = [];
+    // Build text cell — each piece in its own <p> for clear line separation
+    const body = document.createElement('div');
     if (heading) {
+      const p = document.createElement('p');
       const strong = document.createElement('strong');
       strong.textContent = heading.textContent.trim();
-      textCell.push(strong);
+      p.appendChild(strong);
+      body.appendChild(p);
     }
     if (description) {
-      textCell.push(description.textContent.trim());
+      const p = document.createElement('p');
+      p.textContent = description.textContent.trim();
+      body.appendChild(p);
     }
     if (primaryCta) {
+      const p = document.createElement('p');
       const a = document.createElement('a');
       a.href = primaryCta.getAttribute('href');
       a.textContent = primaryCta.textContent.trim();
-      textCell.push(a);
+      p.appendChild(a);
+      body.appendChild(p);
     }
     if (secondaryCta) {
+      const p = document.createElement('p');
+      p.append('\u203A ');
       const a = document.createElement('a');
       a.href = secondaryCta.getAttribute('href');
       a.textContent = secondaryCta.textContent.trim();
-      textCell.push(a);
+      p.appendChild(a);
+      body.appendChild(p);
     }
 
-    cells.push([imageCell, textCell]);
+    cells.push([imageCell, body]);
   });
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'Cards', cells });

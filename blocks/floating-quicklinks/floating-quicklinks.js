@@ -1,16 +1,8 @@
-/* Icon font character map — from JLR icons.woff */
-const ICON_MAP = {
-  configure: '\ue078',
-  'steering-wheel': '\ue056',
-  calculator: '\ue069',
-  envelope: '\ue05b',
-};
-
 export default function decorate(block) {
   const items = [];
 
   /* Parse authored rows: each row = one quick link
-   * Col 1: icon (span.icon.icon-{name}) or text
+   * Col 1: icon glyph character (raw unicode from the JLR icon font)
    * Col 2: link (<a>)
    */
   [...block.children].forEach((row) => {
@@ -23,16 +15,9 @@ export default function decorate(block) {
     const link = linkCol.querySelector('a');
     if (!link) return;
 
-    /* Resolve icon character from span.icon class name */
-    const iconSpan = iconCol.querySelector('.icon');
-    let iconChar = '';
-    if (iconSpan) {
-      const iconClass = [...iconSpan.classList].find((c) => c.startsWith('icon-'));
-      const iconName = iconClass ? iconClass.substring(5) : '';
-      iconChar = ICON_MAP[iconName] || '';
-    }
+    const glyph = iconCol.textContent.trim();
 
-    items.push({ iconChar, label: link.textContent.trim(), href: link.href });
+    items.push({ glyph, label: link.textContent.trim(), href: link.href });
   });
 
   /* Build floating sidebar markup */
@@ -42,21 +27,21 @@ export default function decorate(block) {
 
   const list = document.createElement('ul');
 
-  items.forEach(({ iconChar, label, href }) => {
+  items.forEach(({ glyph, label, href }) => {
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.href = href;
     a.setAttribute('aria-label', label);
 
-    const iconWrap = document.createElement('span');
-    iconWrap.className = 'floating-quicklinks-icon';
-    iconWrap.textContent = iconChar;
+    const iconSpan = document.createElement('span');
+    iconSpan.className = 'floating-quicklinks-icon';
+    iconSpan.textContent = glyph;
 
     const labelSpan = document.createElement('span');
     labelSpan.className = 'floating-quicklinks-label';
     labelSpan.textContent = label;
 
-    a.append(iconWrap);
+    a.append(iconSpan);
     a.append(labelSpan);
     li.append(a);
     list.append(li);

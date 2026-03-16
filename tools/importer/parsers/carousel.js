@@ -27,13 +27,20 @@
 export default function parse(element, { document }) {
   const cells = [];
 
+  // Read NUXT-injected per-slide data (YouTube IDs) if available
+  let carouselSlideData = [];
+  const slidesAttr = element.getAttribute('data-carousel-slides');
+  if (slidesAttr) {
+    try { carouselSlideData = JSON.parse(slidesAttr); } catch (e) { /* ignore */ }
+  }
+
   // Detect pattern: dual-frame carousel
   // VALIDATED: .swiper-slide.jlr-slide inside .jlr-dual-frame-carousel
   const dualFrameSlides = Array.from(element.querySelectorAll('.swiper-slide.jlr-slide'));
 
   if (dualFrameSlides.length > 0) {
     // Pattern 1: Dual-frame carousel
-    dualFrameSlides.forEach((slide) => {
+    dualFrameSlides.forEach((slide, slideIdx) => {
       // Extract image
       // VALIDATED: .jlr-dual-frame-carousel__slider-img img
       const img = slide.querySelector('.jlr-dual-frame-carousel__slider-img img') ||
@@ -48,12 +55,12 @@ export default function parse(element, { document }) {
       // VALIDATED: div class="jlr-column-template__paragraph"
       const text = slide.querySelector('.jlr-column-template__paragraph');
 
-      // Extract CTA
-      // VALIDATED: a.jlr-column-template__button
-      const cta = slide.querySelector('.jlr-column-template__button') ||
-                  slide.querySelector('a.jlr-button');
+      // Extract CTAs — primary buttons and secondary text links
+      // VALIDATED: a.jlr-column-template__button / a.jlr-button (primary) and a.jlr-cta (secondary)
+      const primaryBtns = Array.from(slide.querySelectorAll('a.jlr-column-template__button, a.jlr-button'));
+      const secondaryLinks = Array.from(slide.querySelectorAll('a.jlr-cta'));
 
-      // Build image cell
+      // Build image cell — include YouTube video link if available
       const imageCell = [];
       if (img) {
         const imgEl = document.createElement('img');
@@ -62,22 +69,45 @@ export default function parse(element, { document }) {
         imageCell.push(imgEl);
       }
 
+      // Match NUXT slide data by heading text (more reliable than index due to Swiper clones)
+      const headingText = heading ? heading.textContent.trim() : '';
+      const nuxtSlide = carouselSlideData.find((s) => s.heading && s.heading === headingText);
+      const youtubeId = nuxtSlide ? nuxtSlide.youtube : '';
+
+      if (youtubeId) {
+        const videoLink = document.createElement('a');
+        videoLink.href = `https://www.youtube.com/watch?v=${youtubeId}`;
+        videoLink.textContent = headingText || 'video';
+        imageCell.push(videoLink);
+      }
+
       // Build text cell
       const textCell = [];
       if (heading) {
         const h2 = document.createElement('h2');
-        h2.textContent = heading.textContent.trim();
+        h2.textContent = headingText;
         textCell.push(h2);
       }
       if (text) {
         textCell.push(text.textContent.trim());
       }
-      if (cta) {
+      primaryBtns.forEach((link) => {
+        const p = document.createElement('p');
         const a = document.createElement('a');
-        a.href = cta.getAttribute('href');
-        a.textContent = cta.textContent.trim();
-        textCell.push(a);
-      }
+        a.href = link.getAttribute('href');
+        a.textContent = link.textContent.trim();
+        p.appendChild(a);
+        textCell.push(p);
+      });
+      secondaryLinks.forEach((link) => {
+        const p = document.createElement('p');
+        p.append('\u203A ');
+        const a = document.createElement('a');
+        a.href = link.getAttribute('href');
+        a.textContent = link.textContent.trim();
+        p.appendChild(a);
+        textCell.push(p);
+      });
 
       cells.push([imageCell, textCell]);
     });

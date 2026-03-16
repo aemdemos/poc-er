@@ -415,6 +415,31 @@ main .section.disclaimer a:any-link {
   text-decoration: underline;
 }
 
+/* Hero disclaimer section (transparent/white background, below hero on family overview pages) */
+main .section.hero-disclaimer {
+  margin: 0;
+  padding: 24px 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.hero-disclaimer p {
+  font-size: .6875rem;
+  /* stylelint-disable-next-line number-max-precision */
+  letter-spacing: .01875rem;
+  line-height: .875rem;
+  color: var(--text-color-muted);
+  margin: 0 0 10px;
+}
+
+main .section.hero-disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
+main .section.hero-disclaimer a:any-link {
+  color: var(--text-color-muted);
+  text-decoration: underline;
+}
+
 /* Full-width section (no max-width constraint) */
 main .section.full-width > div {
   max-width: none;

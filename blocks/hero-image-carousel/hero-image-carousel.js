@@ -148,30 +148,43 @@ export default async function decorate(block) {
 
   /* Restructure slide content: parse ## headings, extract CTAs */
   block.querySelectorAll('.hero-image-carousel-slide-content').forEach((content) => {
-    const p = content.querySelector('p');
-    if (!p) return;
+    const p = content.querySelector('p:not(.button-container)');
 
-    const links = [...p.querySelectorAll('a')];
-    links.forEach((link) => link.remove());
+    const links = [];
 
-    const text = p.textContent.trim();
-    if (text.startsWith('## ')) {
-      const rest = text.substring(3).trim();
-      const match = rest.match(/^((?:[A-Z0-9]+(?:\s+|$))+)([\s\S]*)/);
-      if (match) {
-        const h2 = document.createElement('h2');
-        h2.textContent = match[1].trim();
-        p.before(h2);
-        const desc = match[2].trim();
-        if (desc) {
-          p.textContent = desc;
-        } else {
-          p.remove();
+    /* Extract links from the first plain <p> (pre-decorateButtons case) */
+    if (p) {
+      [...p.querySelectorAll('a')].forEach((link) => {
+        link.remove();
+        links.push(link);
+      });
+
+      const text = p.textContent.trim();
+      if (text.startsWith('## ')) {
+        const rest = text.substring(3).trim();
+        const match = rest.match(/^((?:[A-Z0-9]+(?:\s+|$))+)([\s\S]*)/);
+        if (match) {
+          const h2 = document.createElement('h2');
+          h2.textContent = match[1].trim();
+          p.before(h2);
+          const desc = match[2].trim();
+          if (desc) {
+            p.textContent = desc;
+          } else {
+            p.remove();
+          }
         }
+      } else if (!text) {
+        p.remove();
       }
-    } else if (!text) {
-      p.remove();
     }
+
+    /* Also extract links from .button-container elements (post-decorateButtons case) */
+    content.querySelectorAll('.button-container a').forEach((link) => {
+      link.classList.remove('button');
+      links.push(link);
+    });
+    content.querySelectorAll('.button-container').forEach((bc) => bc.remove());
 
     if (links.length > 0) {
       const ctaDiv = document.createElement('div');
